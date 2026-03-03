@@ -1,0 +1,62 @@
+# ---------------------------------------------------------------------------
+# Build system — setuptools only; hatchling removed to avoid conflict.
+# pybind11 is a build-time dep because setup.py imports it for include dirs.
+# ---------------------------------------------------------------------------
+[build-system]
+requires = [
+  "setuptools>=68",
+  "wheel",
+  "pybind11>=2.13.6",
+]
+build-backend = "setuptools.build_meta"
+
+# ---------------------------------------------------------------------------
+# Project metadata (PEP 621)
+# ---------------------------------------------------------------------------
+[project]
+name = "lensgopt"
+version = "0.1.0"
+description = "Geometric ray tracing and lens optimisation with JAX."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Kirill Antonov" },
+]
+
+# Dependencies are now declared inline (NOT dynamic).
+# The old file had  dynamic = ["dependencies"]  with an empty
+# [tool.setuptools.dynamic] section, so they were never picked up.
+dependencies = [
+    "adjustText>=1.3.0",
+    "jax>=0.6.1",
+    "jaxlib>=0.4",
+    "matplotlib>=3.10",
+    "numpy>=2.1,<3",
+    "openpyxl>=3.1",
+    "pandas>=2.3,<3",
+    "pybind11>=2.13.6",
+    "setuptools>=78",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "cma>=4.2"]
+hillvall = ["pybind11>=2.13.6"]
+
+# ---------------------------------------------------------------------------
+# Setuptools configuration
+# ---------------------------------------------------------------------------
+[tool.setuptools.packages.find]
+include = ["lensgopt*"]
+
+# Data files that live alongside the Python source but aren't .py files
+# (glass catalog spreadsheet, pre-built lens definition files, etc.).
+[tool.setuptools.package-data]
+"lensgopt.materials" = ["databases/**/*"]
+"lensgopt.parsers"   = ["lenses/**/*"]
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+    "notebook>=7.5.4",
+]

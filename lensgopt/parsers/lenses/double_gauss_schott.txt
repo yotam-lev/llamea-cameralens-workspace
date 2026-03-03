@@ -1,0 +1,17 @@
+Originate from zemax setup of double gauss 28
+Field: {"type": "angle", "MAX_FIELD": 14}
+Aperture: {"type": "ED", "MAX_D": 33.33}
+type                distance            roc                 material
+O                   0.000000000000000   inf                 VACUUM
+S                   inf                 54.153246165738     N-SK2:Schott
+S                   8.746657850000000   152.521920940111    VACUUM
+S                   0.500000000000000   35.950624450485     N-SK16:Schott
+S                   14.00000000000000   inf                 F5:Schott
+S                   3.776965890000000   22.269924618009     VACUUM
+A                   14.25305930000000   inf                 VACUUM
+S                   12.42812910000000   -25.685033030461    F5:Schott
+S                   3.776965890000000   inf                 N-SK16:Schott
+S                   10.83392850000000   -36.980220728632    VACUUM
+S                   0.500000000000000   196.417334096508    N-SK16:Schott
+S                   6.858174910000000   -67.146717481011    VACUUM
+I                   57.31761908949600   inf                 VACUUM
