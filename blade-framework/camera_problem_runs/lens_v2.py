@@ -3,17 +3,39 @@ V2: Larger population, diverse mutations, tighter timeout,
     with domain-aware lens optimisation context.
 """
 import os
-import jax
-jax.config.update("jax_enable_x64", True)
+import sys
+
+# Ensure the blade-framework root is on sys.path so that framework-level
+# modules (contextual_lens_problem, config, …) are importable from this subdirectory.
+_FRAMEWORK_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _FRAMEWORK_ROOT not in sys.path:
+    sys.path.insert(0, _FRAMEWORK_ROOT)
 
 from iohblade.experiment import Experiment
 from iohblade.methods import LLaMEA, RandomSearch
 from iohblade.loggers import ExperimentLogger
 from contextual_lens_problem import ContextualLensOptimisation
-from config import get_llm, get_n_jobs
-if __name__ == "__main__":
-    llm = get_llm()
 
+# Metadata for the run selector
+RUN_META = {
+    "name": "Lens V2",
+    "description": "LLaMEA with large population and domain-aware mutations (context)",
+    "context": True,
+    "version": "v2",
+}
+
+
+def configure_run(llm, n_jobs):
+    """
+    Return a fully configured Experiment ready to be called.
+
+    Args:
+        llm: Pre-initialized LLM instance from config.
+        n_jobs: Worker count from config.
+
+    Returns:
+        iohblade.experiment.Experiment instance.
+    """
     budget = 50
 
     RS = RandomSearch(llm, budget=budget, name="RS_baseline")
@@ -56,14 +78,12 @@ if __name__ == "__main__":
     os.makedirs("results", exist_ok=True)
     logger = ExperimentLogger("results/lens_v2")
 
-    experiment = Experiment(
+    return Experiment(
         methods=[llamea],
         problems=[lens_problem],
         runs=3,
         show_stdout=True,
         exp_logger=logger,
         budget=budget,
-        n_jobs=1,
+        n_jobs=n_jobs,
     )
-
-    experiment()
