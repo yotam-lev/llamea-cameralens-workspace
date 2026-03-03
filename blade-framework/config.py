@@ -2,9 +2,10 @@
 Shared configuration for all experiment scripts.
 
 Provides:
-    - get_llm()   : LLM selection (Gemini API → Ollama fallback)
-    - get_n_jobs() : Parallel worker count based on detected hardware
-    - PLATFORM     : "nvidia_gpu", "apple_silicon", or "cpu_only"
+    - get_llm()      : LLM selection (Gemini API → Ollama fallback)
+    - get_n_jobs()   : Parallel worker count based on detected hardware
+    - get_platform() : Cached platform string
+    - PLATFORM       : "nvidia_gpu", "apple_silicon", or "cpu_only" (lazy, backward-compat)
 """
 import os
 import logging
@@ -20,15 +21,23 @@ logger = logging.getLogger(__name__)
 
 # ── Platform Detection ────────────────────────────────────────────
 
+_PLATFORM_CACHE: str | None = None
+
+
 def _detect_platform() -> str:
     """
     Detect hardware by checking for NVIDIA GPU or Apple Silicon.
+    Result is cached after the first call so subprocess calls run exactly once.
 
     Returns:
         "nvidia_gpu"     — NVIDIA GPU detected (HPC / workstation)
         "apple_silicon"  — Apple M-series chip detected (MacBook)
         "cpu_only"       — neither detected
     """
+    global _PLATFORM_CACHE
+    if _PLATFORM_CACHE is not None:
+        return _PLATFORM_CACHE
+
     # Check for NVIDIA GPU via nvidia-smi
     try:
         result = subprocess.run(
@@ -38,19 +47,34 @@ def _detect_platform() -> str:
         )
         if result.returncode == 0 and result.stdout.strip():
             gpu_info = result.stdout.strip().split("\n")[0]
-            print(f"[config] 🟢 NVIDIA GPU detected: {gpu_info}")
-            return "nvidia_gpu"
+            logger.info("[config] 🟢 NVIDIA GPU detected: %s", gpu_info)
+            _PLATFORM_CACHE = "nvidia_gpu"
+            return _PLATFORM_CACHE
     except (FileNotFoundError, subprocess.TimeoutExpired):
         pass
 
     # Check for Apple Silicon
     if platform.system() == "Darwin" and platform.machine() == "arm64":
         chip = _get_apple_chip_name()
-        print(f"[config] 🍎 Apple Silicon detected: {chip}")
-        return "apple_silicon"
+        logger.info("[config] 🍎 Apple Silicon detected: %s", chip)
+        _PLATFORM_CACHE = "apple_silicon"
+        return _PLATFORM_CACHE
 
-    print("[config] ⚪ No GPU detected, CPU-only mode")
-    return "cpu_only"
+    logger.info("[config] ⚪ No GPU detected, CPU-only mode")
+    _PLATFORM_CACHE = "cpu_only"
+    return _PLATFORM_CACHE
+
+
+def get_platform() -> str:
+    """Return the (cached) platform string."""
+    return _detect_platform()
+
+
+def __getattr__(name: str):
+    """Lazy module-level attribute for backward-compatible ``PLATFORM`` access."""
+    if name == "PLATFORM":
+        return get_platform()
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
 def _get_apple_chip_name() -> str:
@@ -84,9 +108,6 @@ def _get_nvidia_vram_gb() -> float:
     return 0.0
 
 
-PLATFORM = _detect_platform()
-
-
 # ── Compute Configuration ─────────────────────────────────────────
 
 def get_n_jobs() -> int:
@@ -103,36 +124,37 @@ def get_n_jobs() -> int:
         int: Number of parallel workers for Experiment(n_jobs=...).
     """
     total_cores = multiprocessing.cpu_count()
+    current_platform = get_platform()
 
-    if PLATFORM == "nvidia_gpu":
+    if current_platform == "nvidia_gpu":
         # Respect SLURM allocation if running as a cluster job
         slurm_cpus = os.getenv("SLURM_CPUS_PER_TASK")
         if slurm_cpus:
             n = int(slurm_cpus)
-            print(f"[config] 🖥️  HPC: {n} workers (SLURM allocation)")
+            logger.info("[config] 🖥️  HPC: %d workers (SLURM allocation)", n)
             return max(1, n)
 
         slurm_ntasks = os.getenv("SLURM_NTASKS")
         if slurm_ntasks:
             n = int(slurm_ntasks)
-            print(f"[config] 🖥️  HPC: {n} workers (SLURM_NTASKS)")
+            logger.info("[config] 🖥️  HPC: %d workers (SLURM_NTASKS)", n)
             return max(1, n)
 
         # No SLURM — use most cores, leave 2 for system
         n = max(1, total_cores - 2)
-        print(f"[config] 🖥️  NVIDIA workstation: {n} workers ({total_cores} cores)")
+        logger.info("[config] 🖥️  NVIDIA workstation: %d workers (%d cores)", n, total_cores)
         return n
 
-    if PLATFORM == "apple_silicon":
+    if current_platform == "apple_silicon":
         # M-series: efficiency + performance cores
         # Cap at 4 to avoid thermal throttling and leave room for Ollama
         n = min(4, max(1, total_cores // 2))
-        print(f"[config] 💻 Apple Silicon: {n} workers ({total_cores} cores)")
+        logger.info("[config] 💻 Apple Silicon: %d workers (%d cores)", n, total_cores)
         return n
 
     # cpu_only fallback
     n = max(1, total_cores // 2)
-    print(f"[config] 💻 CPU-only: {n} workers ({total_cores} cores)")
+    logger.info("[config] 💻 CPU-only: %d workers (%d cores)", n, total_cores)
     return n
 
 
@@ -151,7 +173,7 @@ def get_llm():
     """
     api_key = os.getenv("GEMINI_API_KEY")
 
-    if not api_key:
+    if api_key:
         try:
             from iohblade.llm import Gemini_LLM
 
@@ -162,13 +184,13 @@ def get_llm():
                 [{"role": "user", "content": "Respond with only: OK"}]
             )
             if response:
-                print("[config] ✅ Using Gemini API (gemini-2.0-flash)")
+                logger.info("[config] ✅ Using Gemini API (gemini-2.0-flash)")
                 return llm
 
         except Exception as e:
-            print(f"[config] ⚠️  Gemini failed: {e}")
+            logger.warning("[config] ⚠️  Gemini failed: %s", e)
 
     from iohblade.llm import Ollama_LLM
 
-    print("[config] 🔄 Using Ollama local (qwen2.5-coder:14b)")
+    logger.info("[config] 🔄 Using Ollama local (qwen2.5-coder:14b)")
     return Ollama_LLM("qwen2.5-coder:14b")
