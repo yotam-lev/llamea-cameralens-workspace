@@ -12,11 +12,9 @@ CAMERA_LENS_ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "CameraLensSimulation")
 )
 
-# Ensure CameraLensSimulation is importable in this process
 if CAMERA_LENS_ROOT not in sys.path:
     sys.path.insert(0, CAMERA_LENS_ROOT)
 
-# Ensure it's also in the environment for subprocesses
 _current = os.environ.get("PYTHONPATH", "")
 if CAMERA_LENS_ROOT not in _current:
     os.environ["PYTHONPATH"] = CAMERA_LENS_ROOT + os.pathsep + _current
