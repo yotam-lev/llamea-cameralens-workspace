@@ -171,7 +171,8 @@ def get_llm():
     Returns:
         LLM: An instance of Gemini_LLM or Ollama_LLM.
     """
-    api_key = os.getenv("GEMINI_API_KEY")
+    #api_key = os.getenv("GEMINI_API_KEY")
+    api_key = None  # Force Ollama fallback for now, as Gemini API is not yet available
 
     if api_key:
         try:

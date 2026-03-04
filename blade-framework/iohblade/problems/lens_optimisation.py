@@ -10,17 +10,20 @@ from __future__ import annotations
 
 import traceback
 import numpy as np
+import builtins
 
 from ..problem import Problem
 from ..solution import Solution
+#from ..utils import OverBudgetException, aoc_logger, correcct_aoc
+
+
 
 
 class LensOptimisation(Problem):
     """
-    BLADE problem that evaluates LLM-generated optimizers on the
-    Double-Gauss camera lens design from CameraLensSimulation.
+    Problem class for Double-Gauss camera lens design.
     
-    The LLM generates a Python class with signature:
+    LLM generates a Python class with signature:
         class Optimizer:
             def __init__(self, budget: int, dim: int): ...
             def __call__(self, func) -> tuple[float, np.ndarray]: ...
@@ -38,24 +41,28 @@ class LensOptimisation(Problem):
         budget_factor: int = 5000,
         name: str = "Lensoptimisation",
         eval_timeout: int = 600,
+        seeds=5,
         logger=None,
+        dependencies=None,
+        imports=None,
     ):
         # Dependencies that will be pip-installed in the eval sandbox
-        deps = [
-            "jax>=0.4",
-            "jaxlib>=0.4",
-            "pandas>=2",
-            "openpyxl>=3",
-            # Option A: if lensgopt is on PyPI or installable
-            # "lensgopt",
-            # Option B: install from git
-            "lensgopt @ git+https://github.com/yotam-lev/CameraLensSimulation.git",
-        ]
-
-        imports = (
-            "import numpy as np\n"
-            "import jax.numpy as jnp\n"
-        )
+        if dependencies is None:
+            dependencies = [
+                "jax>=0.4",
+                "jaxlib>=0.4",
+                "pandas>=2",
+                "openpyxl>=3",
+            ]
+            try:
+                dependencies.append("lensgopt")
+            except ImportError:
+                dependencies.append("lensgopt @ git+https://github.com/yotam-lev/CameraLensSimulation.git")
+        if imports is None:
+            imports = (
+                "import numpy as np\n"
+                "import jax.numpy as jnp\n"
+            )
 
         # Training instances = (seed,) tuples for reproducibility
         if training_instances is None:
@@ -69,7 +76,7 @@ class LensOptimisation(Problem):
             test_instances=test_instances,
             name=name,
             eval_timeout=eval_timeout,
-            dependencies=deps,
+            dependencies=dependencies,
             imports=imports,
         )
 
@@ -157,6 +164,10 @@ class LensOptimisation(Problem):
 
             # Compile and instantiate the LLM-generated optimizer
             local_ns = {}
+             
+            safe_globals = {"__builtins__": builtins, "np": np, "numpy": np}
+            exec(Solution.code, safe_globals, local_ns)
+
             exec(solution.code, {"np": np, "numpy": np}, local_ns)
             OptimizerClass = local_ns.get("Optimizer")
             if OptimizerClass is None:

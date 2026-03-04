@@ -2,6 +2,7 @@
 V2: Larger population, diverse mutations, tighter timeout,
     with domain-aware lens optimisation context.
 """
+from math import lcm
 import os
 import sys
 
@@ -15,6 +16,7 @@ from iohblade.experiment import Experiment
 from iohblade.methods import LLaMEA, RandomSearch
 from iohblade.loggers import ExperimentLogger
 from contextual_lens_problem import ContextualLensOptimisation
+from config import get_llm, get_n_jobs
 
 # Metadata for the run selector
 RUN_META = {
@@ -87,3 +89,11 @@ def configure_run(llm, n_jobs):
         budget=budget,
         n_jobs=n_jobs,
     )
+
+
+if __name__ == "__main__":
+    
+    experiment = configure_run(get_llm(), n_jobs=1)
+
+    print(f"Starting experiment: {RUN_META['name']} - {RUN_META['description']}")
+    experiment()
