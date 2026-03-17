@@ -26,24 +26,34 @@ The "Critical Bug" previously documented regarding `-inf` scores has been resolv
 ### 1. Verification
 Before starting a long run, always verify the pipeline:
 ```bash
-cd blade-framework
-uv run python test_lens_eval.py
+uv run python blade-framework/test_lens_eval.py
 ```
-A successful output should show a numeric (negative) fitness score, not `-inf`.
+A successful output should show a numeric (negative) fitness score (e.g., `-2797.25`), not `-inf`.
 
 ### 2. Running the Experiment
 To execute the main LLaMEA v2 run:
 ```bash
-cd blade-framework
-uv run python camera_problem_runs/lens_v2.py
+uv run python main.py --run lens_v2
 ```
 
-### 3. Troubleshooting `-inf` scores (New Failures)
+### 3. Applying the Best Optimizer
+Once the experiment is finished (or you have a high-performing `Optimizer` class from the logs), you can apply it to the full Double-Gauss problem:
+1.  Open `solve_lens.py`.
+2.  Paste your extracted `Optimizer` class into the designated section.
+3.  Run the solver:
+    ```bash
+    uv run python solve_lens.py
+    ```
+This will run the optimizer with a larger budget (default 10,000) and generate a visualization (`optimized_lens.png`) of the resulting camera lens.
+
+### 4. Troubleshooting "-inf" scores
 If `-inf` scores reappear in `results/lens_v2/log.jsonl`, it is likely due to:
-* **Missing Imports:** The LLM may use a library not currently in the environment (e.g., `sklearn`, `jax`). 
-    * *Fix:* Check the `error` field in the log and run `uv add <package>` in the `blade-framework` directory.
-* **Logic Errors:** The LLM may generate syntactically correct but logically flawed Python code (e.g., index out of bounds).
-    * *Fix:* The LLaMEA algorithm should naturally provide this error as feedback to the LLM for the next iteration.
+* **Timeouts:** Complex optimizers may exceed the 300s limit. Consider increasing `eval_timeout` in `lens_v2.py`.
+* **Missing Imports:** The LLM may use a library not currently in the environment.
+* **Logic Errors:** The LLM may generate flawed code. These are usually caught and provided as feedback to the LLM.
+
+### 5. Note on "0 Fitness"
+If you see "0" as fitness in some outputs, ensure that evaluations have actually completed. The framework may initialize scores to 0 before the first generation's results are processed. Real fitness scores for this problem are negative (e.g., `-0.119` for a good design).
 
 ## 📊 Results & Monitoring
 * **Logs:** Found in `results/lens_v2/run-LLaMEA_v2-DoubleGauss_v2-X/log.jsonl`.

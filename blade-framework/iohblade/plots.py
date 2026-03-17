@@ -3,6 +3,7 @@ import copy
 import difflib
 import os
 from collections import Counter
+import time
 
 import plotly.graph_objects as go
 
@@ -18,6 +19,7 @@ from sklearn.preprocessing import StandardScaler, minmax_scale
 
 from .loggers import ExperimentLogger
 from .misc.ast import analyse_complexity, process_code
+import time
 
 try:
     from tokencost import (
@@ -888,7 +890,7 @@ def plot_token_usage(
         tokens = 0
         if "log_dir" in row:
             convo_path = os.path.join(
-                logger.dirname, row["log_dir"], "conversationlog.jsonl"
+                logger.dirname, row["log_dir"], f"conversationlog_{time.strftime('%H_%d-%m')}.jsonl"
             )
             if os.path.isfile(convo_path):
                 with jsonlines.open(convo_path) as f:

@@ -1,0 +1,25 @@
+# Environments
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Build & Dist
+build/
+dist/
+*.egg-info/
+
+# Logs & Results
+results/
+lens_visualisation_results/
+*.log
+
+# Sub-repository dependencies
+camera-lens-simulation/external/
+camera-lens-simulation/build/
+blade-framework/results/
+
+# User-specific
+.DS_Store
+.idea/
+.vscode/

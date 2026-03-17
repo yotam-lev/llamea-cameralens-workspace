@@ -21,12 +21,6 @@ from iohblade.problems.lens_optimisation import LensOptimisation
 class ContextualLensOptimisation(LensOptimisation):
     """Injects optics domain knowledge into the LLM prompts."""
 
-    def _ensure_env(self):
-        if self._env_path is not None:
-            return
-        self._env_path = Path(tempfile.mkdtemp(prefix="blade_env_"))
-        self._python_bin = Path(sys.executable)
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -65,6 +59,6 @@ class ContextualLensOptimisation(LensOptimisation):
             "numpy array of shape (dim,) and returns a scalar loss.\n\n"
 
             "Environment Note: The following modules are already imported "
-            "and available in the global namespace: `np`, `scipy`, `math`, and "
-            "`optics`. Do NOT write import statements for these."
+            "and available in the global namespace: `np`, `scipy`, `math`, `cma`, "
+            "`latin_hypercube_sampling`, and `optics`. Do NOT write import statements for these."
         )

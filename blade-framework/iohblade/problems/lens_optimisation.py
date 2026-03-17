@@ -53,6 +53,9 @@ class LensOptimisation(Problem):
                 "jaxlib>=0.4",
                 "pandas>=2",
                 "openpyxl>=3",
+                "scipy>=1.10",
+                "cma>=3.3",
+                "pydoe>=0.3",
             ]
             try:
                 dependencies.append("lensgopt")  
@@ -60,8 +63,8 @@ class LensOptimisation(Problem):
                 dependencies.append("lensgopt @ git+https://github.com/yotam-lev/CameraLensSimulation.git")
         if imports is None:
             imports = (
-                "import scipy\n",
-                "import math\n",
+                "import scipy\n"
+                "import math\n"
                 "import numpy as np\n"
                 "import jax.numpy as jnp\n"
                 "from scipy.optimize import minimize, differential_evolution\n"
@@ -171,7 +174,35 @@ Give an excellent and novel heuristic algorithm to solve this task and also give
             budget = self.budget_factor
 
             # Compile and instantiate the LLM-generated optimizer
-            safe_globals = {"__builtins__": builtins, "np": np, "numpy": np}
+            import scipy
+            from scipy.optimize import minimize, differential_evolution
+            import math
+            try:
+                import lensgopt.optics.optics as optics
+            except ImportError:
+                optics = None
+            try:
+                import cma
+            except ImportError:
+                cma = None
+
+            def lhs_sampling(n_samples, n_dim):
+                from scipy.stats import qmc
+                sampler = qmc.LatinHypercube(d=n_dim)
+                return sampler.random(n=n_samples) * 2 - 1
+
+            safe_globals = {
+                "__builtins__": builtins,
+                "np": np,
+                "numpy": np,
+                "scipy": scipy,
+                "math": math,
+                "optics": optics,
+                "cma": cma,
+                "minimize": minimize,
+                "differential_evolution": differential_evolution,
+                "latin_hypercube_sampling": lhs_sampling,
+            }
             exec(solution.code, safe_globals)
             OptimizerClass = safe_globals.get("Optimizer")
             if OptimizerClass is None:
@@ -181,6 +212,11 @@ Give an excellent and novel heuristic algorithm to solve this task and also give
                     error="Missing Optimizer class.",
                 )
                 return solution
+
+            # Proactively inject common methods that LLMs often hallucinate on 'self'
+            if not hasattr(OptimizerClass, "latin_hypercube_sampling"):
+                # Use staticmethod so it works as self.latin_hypercube_sampling(...)
+                OptimizerClass.latin_hypercube_sampling = staticmethod(lhs_sampling)
 
             # Evaluate across training instances (random seeds)
             losses = []
