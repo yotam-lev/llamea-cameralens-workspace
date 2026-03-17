@@ -30,6 +30,8 @@ dependencies = [
     "smac>=2.3.1",
     "virtualenv>=20.34.0",
     "feedparser>=6.0.12",
+    "cma>=4.4.4",
+    "pydoe>=0.9.7",
 ]
 
 [project.urls]
@@ -43,7 +45,7 @@ iohblade-webapp = "iohblade.webapp:main"
 dev = [
     "black>=25.11.0,<26",
     "isort>=5.12.0,<6",
-    "pytest>=7.4.3,<8",
+    "pytest>=7.4.3",
     "jupyter>=1.0.0,<2",
     "pytest-cov>=4.1.0,<5",
     "codecov>=2.1.13,<3",

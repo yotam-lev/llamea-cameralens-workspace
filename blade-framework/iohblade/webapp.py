@@ -55,6 +55,16 @@ def _rgba(color: str, alpha: float) -> str:
     return color
 
 
+def safe_fitness(s):
+    try:
+        if not isinstance(s, dict):
+            return -float("inf")
+        val = s.get("fitness", -float("inf"))
+        return float(val)
+    except (ValueError, TypeError):
+        return -float("inf")
+
+
 def plotly_convergence(df: pd.DataFrame, aggregate: bool = False) -> go.Figure:
     fig = go.Figure()
     palette = px.colors.qualitative.Plotly  # or px.colors.qualitative.D3
@@ -299,9 +309,7 @@ def run() -> None:
                 m_runs = runs[runs["method_name"] == m]
                 m_runs = m_runs.sort_values(
                     by=["solution"],
-                    key=lambda col: col.apply(
-                        lambda s: s.get("fitness", -float("inf"))
-                    ),
+                    key=lambda col: col.apply(safe_fitness),
                     ascending=False,
                 )
                 top = m_runs.head(3)
@@ -319,8 +327,28 @@ def run() -> None:
                         )
 
             st.markdown("#### Run Logs")
+            runs = logger.get_data()
             for m in method_sel:
-                m_runs = runs[runs["method_name"] == m].sort_values(by=["seed"])
+                m_runs = runs[runs["method_name"] == m]
+                
+                # Bulletproof fitness extractor
+                def safe_get_fitness(s):
+                    if not isinstance(s, dict):
+                        return -float("inf")
+                    fit = s.get("fitness")
+                    if fit is None:
+                        return -float("inf")
+                    try:
+                        return float(fit)
+                    except (ValueError, TypeError):
+                        return -float("inf")
+
+                m_runs = m_runs.sort_values(
+                    by=["solution"],
+                    key=lambda col: col.apply(safe_get_fitness),
+                    ascending=False,
+                )
+                
                 with st.expander(m):
                     for _, r in m_runs.iterrows():
                         label = f"{r['method_name']} | {r['problem_name']} | seed {r['seed']}"

@@ -1,0 +1,17 @@
+[project]
+name = "lens-blade-workspace"
+version = "0.1.0"
+description = "Unified workspace for Camera Lens Simulation and BLADE Framework"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "iohblade",
+    "lensgopt",
+]
+
+[tool.uv.workspace]
+members = ["blade-framework", "camera-lens-simulation"]
+
+[tool.uv.sources]
+iohblade = { workspace = true }
+lensgopt = { workspace = true }

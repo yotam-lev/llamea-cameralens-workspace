@@ -63,4 +63,8 @@ class ContextualLensOptimisation(LensOptimisation):
             "The objective is to MINIMISE the loss value (lower is better). "
             "Your optimiser receives a callable `func(x)` that takes a "
             "numpy array of shape (dim,) and returns a scalar loss.\n\n"
+
+            "Environment Note: The following modules are already imported "
+            "and available in the global namespace: `np`, `scipy`, `math`, and "
+            "`optics`. Do NOT write import statements for these."
         )

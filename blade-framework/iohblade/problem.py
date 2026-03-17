@@ -18,6 +18,11 @@ BASE_DEPENDENCIES = [
     "numpy>=2",
     "cloudpickle>=3.1.0,<4",
     "joblib>=1.4.2,<2",
+    "jax>=0.4",
+    "scipy>=1.10",
+    "jaxlib>=0.4",
+    "pandas>=2",
+    "openpyxl>=3",
 ]
 
 import copy

@@ -11,7 +11,7 @@ from __future__ import annotations
 import traceback
 import numpy as np
 import builtins
-
+import os
 from ..problem import Problem
 from ..solution import Solution
 #from ..utils import OverBudgetException, aoc_logger, correcct_aoc
@@ -55,13 +55,17 @@ class LensOptimisation(Problem):
                 "openpyxl>=3",
             ]
             try:
-                dependencies.append("lensgopt")
+                dependencies.append("lensgopt")  
             except ImportError:
                 dependencies.append("lensgopt @ git+https://github.com/yotam-lev/CameraLensSimulation.git")
         if imports is None:
             imports = (
+                "import scipy\n",
+                "import math\n",
                 "import numpy as np\n"
                 "import jax.numpy as jnp\n"
+                "from scipy.optimize import minimize, differential_evolution\n"
+                "from lensgopt import DoubleGaussObjective\n"
             )
 
         # Training instances = (seed,) tuples for reproducibility
@@ -121,10 +125,14 @@ class LensOptimisation(Problem):
         )
 
         self.format_prompt = (
-            "Return only the Python class code. The class MUST be named "
-            "`Optimizer`. It must accept `budget` and `dim` in __init__, "
-            "and its __call__ must accept a callable `func` and return "
-            "`(best_fitness, best_solution)` as a tuple.\n"
+            """
+Give an excellent and novel heuristic algorithm to solve this task and also give it a one-line description, describing the main idea. Give the response in the format:
+# Description: <short-description>
+# Code: 
+```python
+<code>
+```
+"""
         )
 
         # EoH compatibility settings
@@ -163,13 +171,9 @@ class LensOptimisation(Problem):
             budget = self.budget_factor
 
             # Compile and instantiate the LLM-generated optimizer
-            local_ns = {}
-             
             safe_globals = {"__builtins__": builtins, "np": np, "numpy": np}
-            exec(Solution.code, safe_globals, local_ns)
-
-            exec(solution.code, {"np": np, "numpy": np}, local_ns)
-            OptimizerClass = local_ns.get("Optimizer")
+            exec(solution.code, safe_globals)
+            OptimizerClass = safe_globals.get("Optimizer")
             if OptimizerClass is None:
                 solution.set_scores(
                     -np.inf,

@@ -73,7 +73,7 @@ def configure_run(llm, n_jobs):
         training_instances=training_seeds,
         test_instances=test_seeds,
         budget_factor=2000,
-        eval_timeout=60,
+        eval_timeout=300,
         name="DoubleGauss_v2",
     )
 

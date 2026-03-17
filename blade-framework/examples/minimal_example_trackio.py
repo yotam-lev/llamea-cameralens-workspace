@@ -44,7 +44,6 @@ task_prompt = "Write the problem description part here."
 example_prompt = """
 An example code is as follows:
 ```python
-import numpy as np
 
 class RandomSearch:
     def __init__(self, budget=10000, dim=10):
