@@ -358,6 +358,35 @@ class Problem(ABC):
                 capture_output=True,
                 text=True,
             )
+        
+        # Install the local camera-lens-simulation package to make `lensgopt` available
+        try:
+            # Assumes this file is at blade-framework/iohblade/problem.py
+            project_root = Path(__file__).resolve().parents[2]
+            camera_lens_path = project_root / "camera-lens-simulation"
+            if camera_lens_path.exists() and (camera_lens_path / "setup.py").exists():
+                print(f"--- DEBUG: Attempting to install local package: {camera_lens_path} ---")
+                subprocess.run(
+                    [str(self._python_bin), "-m", "pip", "install", "-e", str(camera_lens_path)],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+                print("--- DEBUG: Local package installation successful ---")
+        except subprocess.CalledProcessError as e:
+            print("\n--- DEBUG: CRITICAL ERROR IN SUBPROCESS ENVIRONMENT SETUP ---")
+            print("The command to 'pip install' the local 'camera-lens-simulation' package failed.")
+            print(f"Return Code: {e.returncode}")
+            print("\n--- pip stdout: ---")
+            print(e.stdout)
+            print("\n--- pip stderr: ---")
+            print(e.stderr)
+            print("--- END DEBUG ---")
+            # Re-raise the exception to halt the process, as this is a fatal error.
+            raise e
+        except Exception as e:
+            print(f"Warning: An unexpected error occurred during local package install: {e}")
+
 
     def cleanup(self):
         try:

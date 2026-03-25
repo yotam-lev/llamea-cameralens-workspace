@@ -171,21 +171,22 @@ def get_llm():
     Returns:
         LLM: An instance of Gemini_LLM or Ollama_LLM.
     """
-    #api_key = os.getenv("GEMINI_API_KEY")
-    api_key = None  # Force Ollama fallback for now, as Gemini API is not yet available
+    api_key = os.getenv("GEMINI_API_KEY")
+     # Force Ollama fallback for now, as Gemini API is not yet available
 
     if api_key:
         try:
             from iohblade.llm import Gemini_LLM
 
-            llm = Gemini_LLM(api_key=api_key, model="gemini-2.0-flash")
+            llm = Gemini_LLM(api_key=api_key, model="gemini-2.5-flash")
+
 
             # Test with a minimal query to catch 429 / invalid key
             response = llm.query(
                 [{"role": "user", "content": "Respond with only: OK"}]
             )
             if response:
-                logger.info("[config] ✅ Using Gemini API (gemini-2.0-flash)")
+                logger.info("[config] ✅ Using Gemini API (gemini-2.5-flash)")
                 return llm
 
         except Exception as e:

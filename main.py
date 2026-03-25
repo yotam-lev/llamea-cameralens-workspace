@@ -32,7 +32,6 @@ def smoke_test():
         
         problem = LensOptimisation(training_instances=[(1,)])
         code = """
-import numpy as np
 class Optimizer:
     def __init__(self, budget, dim):
         self.budget = budget
@@ -96,23 +95,25 @@ def run_experiments():
     os.chdir(_BLADE_DIR)
 
     try:
+        import cameralens_main
         from cameralens_main import main as cli_main
-        # Re-inject sys.argv for the wrapped CLI
-        # We only want to pass arguments that cameralens_main.py understands
-        new_argv = [sys.argv[0]]
+        
+        # FIX: Point sys.argv[0] to the framework's actual script, NOT main.py
+        new_argv = [cameralens_main.__file__]
+        
         if args.run:
             new_argv.extend(["--run", args.run])
         if args.list:
             new_argv.append("--list")
         
-        # Also pass through any unknown arguments that might be intended for the underlying CLI
-        # but filter out things already handled
+        # Pass through unknown arguments
         for arg in unknown:
             if arg not in ["--run", "--list", "--smoke-test"]:
                 new_argv.append(arg)
                 
         sys.argv = new_argv
         cli_main()
+        
     except ImportError as e:
         print(f"Error: Could not import 'cameralens_main' from blade-framework.")
         print(f"Detailed error: {e}")

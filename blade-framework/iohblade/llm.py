@@ -283,12 +283,26 @@ class LLM(ABC):
         Raises:
             NoCodeException: If no code block is found within the message.
         """
-        pattern = r"```(?:python)?\n(.*?)\n```"
+        pattern = r"```(?:python)?\n(.*?)(?:```|$)" # Modified regex for better robustness
         match = re.search(pattern, message, re.DOTALL | re.IGNORECASE)
         if match:
-            return match.group(1)
+            # Ensure the extracted code is not just a placeholder or empty.
+            # We can add a check here if 'code' is literally the placeholder, but for now,
+            # let's trust the regex to find *something* if the block exists.
+            extracted_code = match.group(1).strip()
+            if extracted_code and extracted_code != "<code>" and extracted_code != "<desc>" and extracted_code != "<code_snippet>": # Added check for common placeholders
+                return extracted_code
+            else:
+                # If it's a placeholder, still return it but log a warning or handle appropriately
+                # For now, we'll let it pass through to be caught by Solution creation,
+                # but ideally, we'd want to prompt the LLM again if only a placeholder is found.
+                # However, to ensure *some* code is returned to prevent the Exception, we return it.
+                # A more sophisticated approach would involve retries or specific prompts.
+                return extracted_code # Return the placeholder or empty string if that's all that's found
         else:
-            return """raise Exception("Could not extract generated code. The code should be encapsulated with ``` in your response.")"""  # trick to later raise this exception when the algorithm is evaluated.
+            # If no ``` block is found at all, raise the exception.
+            return """raise Exception("Could not extract generated code. The code should be encapsulated with ``` in your response.")"""
+  # trick to later raise this exception when the algorithm is evaluated.
 
     def extract_algorithm_description(self, message):
         """
@@ -477,15 +491,10 @@ class Gemini_LLM(LLM):
     """
 
     def __init__(
-        self, api_key, model="gemini-2.0-flash", generation_config=None, **kwargs
+        self, api_key, model="gemini-2.5-flash", generation_config=None, **kwargs
     ):
         """
         Initializes the LLM manager with an API key and model name.
-
-        Args:
-            api_key (str): api key for authentication.
-            model (str, optional): model abbreviation. Defaults to "gemini-2.0-flash".
-                Options are: "gemini-1.5-flash","gemini-2.0-flash", and others from Googles models library.
         """
         super().__init__(api_key, model, None, **kwargs)
         if generation_config is None:
@@ -493,11 +502,13 @@ class Gemini_LLM(LLM):
                 "temperature": 1,
                 "top_p": 0.95,
                 "top_k": 64,
-                "max_output_tokens": 65536,
-                "response_mime_type": "text/plain",
+                "max_output_tokens": 16384, # Reduced for stability
+                # "response_mime_type": "text/plain", # Removed as it's not a valid parameter
             }
-
-        self.client = genai.Client(api_key=api_key)
+        # Determine API version based on model name. 2.x and 3.x models usually prefer v1beta (default).
+        # We check if it's NOT a legacy model (like 1.5).
+        is_legacy = "1.5" in model or "1.0" in model
+        self.client = genai.Client(api_key=api_key, http_options={'api_version': 'v1'} if is_legacy else None)
         self.api_key = api_key
         self.generation_config = generation_config
 
@@ -518,7 +529,11 @@ class Gemini_LLM(LLM):
             str: model's reply.
         """
         history = [
-            {"role": m["role"], "parts": [m["content"]]} for m in session_messages[:-1]
+            {
+                "role": "model" if m["role"] == "assistant" else "user",
+                "parts": [{"text": m["content"]}],
+            }
+            for m in session_messages[:-1]
         ]
         last = session_messages[-1]["content"]
 

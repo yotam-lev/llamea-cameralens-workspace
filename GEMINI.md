@@ -13,7 +13,18 @@ This workspace integrates the **BLADE Framework** (utilizing the LLaMEA algorith
 2. **`camera-lens-simulation/`**: The physics engine.
    * `examples/double_gauss_objective.py`: Contains the `DoubleGaussObjective` class.
 
+## 🧪 Infrastructure & Hallucination Defense (v4)
+To bridge the gap between LLM code generation and the execution environment, the following "Senior-Grade" strategies are implemented:
+
+1.  **Polymorphic Wrappers**: The `latin_hypercube_sampling` (alias `lhs`) tool is wrapped in a class that handles both function calls and object-style `.sample()` calls. It automatically maps mismatched keyword arguments (e.g., `dim` vs `n_dim`).
+2.  **Virtual Module Registry**: Using `sys.modules` injection and `CallableModule` proxies, the framework "tricks" the interpreter into allowing modules to be called directly, preventing `'module' object is not callable` errors.
+3.  **Attribute & Global Force-Injection**: To prevent `NameError` for `func` and `grad_func`:
+    *   They are injected into the instance (`self.func`).
+    *   They are injected into the global namespace of the `exec` block.
+4.  **Signature Inspection**: `inspect.signature` is used to detect the LLM's chosen `__init__` and `__call__` patterns, automatically adjusting the number of arguments passed to avoid `TypeError`.
+
 ## ✅ RESOLVED: The `-inf` Evaluation Score Bug
+... (rest of the file)
 The "Critical Bug" previously documented regarding `-inf` scores has been resolved. 
 
 ### What was fixed:

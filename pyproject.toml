@@ -7,6 +7,7 @@ requires-python = ">=3.11"
 dependencies = [
     "iohblade",
     "lensgopt",
+    "jax"
 ]
 
 [tool.uv.workspace]

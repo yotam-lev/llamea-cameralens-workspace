@@ -29,10 +29,25 @@ class LLaMEA(Method):
         Returns:
             Solution: The best solution found.
         """
+        # Save prompts used in this run for transparency and tuning
+        if problem.logger_dir:
+            import json
+            import os
+            prompts = {
+                "role_prompt": "You are a senior applied physicist with extensive background in software engineering.",
+                "task_prompt": problem.task_prompt,
+                "example_prompt": problem.example_prompt,
+                "output_format_prompt": problem.format_prompt,
+                "mutation_prompts": self.kwargs.get("mutation_prompts", []),
+            }
+            os.makedirs(problem.logger_dir, exist_ok=True)
+            with open(os.path.join(problem.logger_dir, "prompts.json"), "w") as f:
+                json.dump(prompts, f, indent=4)
+
         self.llamea_instance = LLAMEA_Algorithm(
             f=problem,  # Ensure evaluation integrates with our framework
             llm=self.llm,
-            role_prompt="You are an excellent Python programmer.",  # not needed, it is part of the task prompt.
+            role_prompt="",  # Already part of the task_prompt in lens problems
             task_prompt=problem.task_prompt,
             example_prompt=problem.example_prompt,
             output_format_prompt=problem.format_prompt,

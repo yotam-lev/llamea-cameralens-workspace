@@ -2908,12 +2908,14 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "iohblade" },
+    { name = "jax" },
     { name = "lensgopt" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "iohblade", editable = "blade-framework" },
+    { name = "jax" },
     { name = "lensgopt", editable = "camera-lens-simulation" },
 ]
 

@@ -1,271 +1,178 @@
 """
 BLADE Problem wrapper for the CameraLensSimulation Double-Gauss
 lens optimisation benchmark.
-
-Each BLADE Solution contains LLM-generated Python code that defines
-a callable optimizer class. This Problem executes that optimizer
-against the DoubleGaussObjective and scores it by the best loss found.
 """
 from __future__ import annotations
 
 import traceback
 import numpy as np
-import builtins
-import os
+import re
+import sys
+import types
+import inspect
+from scipy.stats import qmc
 from ..problem import Problem
 from ..solution import Solution
-#from ..utils import OverBudgetException, aoc_logger, correcct_aoc
 
 
+class OverBudgetExecption (Exception):
+    """"Raised when the optimizer exceeds the allowed budget.w"""
 
+class LHSWrapper:
+    """Polymorphic tool that handles almost any calling pattern and arg naming."""
+    def __call__(self, n_samples, n_dim=None, **kwargs):
+        # Resolve 'dim' vs 'n_dim' hallucination
+        actual_dim = n_dim if n_dim is not None else kwargs.get('dim')
+        if actual_dim is None:
+            # Fallback for positional confusion
+            if isinstance(n_samples, int) and isinstance(n_dim, int):
+                pass # Already correct
+            elif len(kwargs) > 0:
+                actual_dim = list(kwargs.values())[0]
+        
+        sampler = qmc.LatinHypercube(d=actual_dim if actual_dim else 24)
+        return sampler.random(n=n_samples) * 2 - 1
+    
+    def sample(self, *args, **kwargs):
+        return self.__call__(*args, **kwargs)
+        
+    def __getattr__(self, name):
+        """Redirects any sub-attribute (e.g. .LatinHypercube()) to itself."""
+        return self
+
+class CallableModule(types.ModuleType):
+    """A module that behaves like a function to support 'import lhs; lhs()'."""
+    def __init__(self, name, tool):
+        super().__init__(name)
+        self._tool = tool
+        self.__dict__.update(tool.__class__.__dict__)
+        self.sample = tool.sample
+        self.latin_hypercube_sampling = tool
+        self.lhs = tool
+
+    def __call__(self, *args, **kwargs):
+        return self._tool(*args, **kwargs)
+        
+    def __getattr__(self, name):
+        return getattr(self._tool, name)
 
 class LensOptimisation(Problem):
-    """
-    Problem class for Double-Gauss camera lens design.
-    
-    LLM generates a Python class with signature:
-        class Optimizer:
-            def __init__(self, budget: int, dim: int): ...
-            def __call__(self, func) -> tuple[float, np.ndarray]: ...
-    
-    Where:
-        - func(x) returns a scalar loss for parameter vector x
-        - budget is the max number of func evaluations allowed
-        - dim is the dimensionality of the search space
-    """
-
-    def __init__(
-        self,
-        training_instances=None,
-        test_instances=None,
-        budget_factor: int = 5000,
-        name: str = "Lensoptimisation",
-        eval_timeout: int = 600,
-        seeds=5,
-        logger=None,
-        dependencies=None,
-        imports=None,
-    ):
-        # Dependencies that will be pip-installed in the eval sandbox
-        if dependencies is None:
-            dependencies = [
-                "jax>=0.4",
-                "jaxlib>=0.4",
-                "pandas>=2",
-                "openpyxl>=3",
-                "scipy>=1.10",
-                "cma>=3.3",
-                "pydoe>=0.3",
-            ]
-            try:
-                dependencies.append("lensgopt")  
-            except ImportError:
-                dependencies.append("lensgopt @ git+https://github.com/yotam-lev/CameraLensSimulation.git")
-        if imports is None:
-            imports = (
-                "import scipy\n"
-                "import math\n"
-                "import numpy as np\n"
-                "import jax.numpy as jnp\n"
-                "from scipy.optimize import minimize, differential_evolution\n"
-                "from lensgopt import DoubleGaussObjective\n"
-            )
-
-        # Training instances = (seed,) tuples for reproducibility
-        if training_instances is None:
-            training_instances = [(seed,) for seed in range(1, 6)]
-        if test_instances is None:
-            test_instances = [(seed,) for seed in range(6, 16)]
-
+    def __init__(self, training_instances=None, test_instances=None, budget_factor: int = 5000, 
+                 name: str = "Lensoptimisation", eval_timeout: int = 600, **kwargs):
+        if training_instances is None: training_instances = [(seed,) for seed in range(1, 10)]
+        if test_instances is None: test_instances = [(seed,) for seed in range(11, 16)]
+        
         super().__init__(
-            logger=logger,
-            training_instances=training_instances,
-            test_instances=test_instances,
-            name=name,
-            eval_timeout=eval_timeout,
-            dependencies=dependencies,
-            imports=imports,
+            training_instances=training_instances, test_instances=test_instances,
+            name=name, eval_timeout=eval_timeout,
+            dependencies=["cma>=3.3", "pydoe>=0.3"],
+            imports="import scipy\nimport numpy as np\nimport jax.numpy as jnp\nfrom scipy.optimize import minimize\n"
         )
-
         self.budget_factor = budget_factor
-
-        # ---- Prompts for the LLM ----
         self.task_prompt = (
-            "You are tasked with writing a novel black-box optimisation "
-            "algorithm to minimize a camera lens design loss function. "
-            "The loss function is non-convex, ~24-dimensional (18 continuous "
-            "parameters: 10 curvatures + 8 distances, plus 6 discrete glass "
-            "material IDs treated as continuous for this task), and combines "
-            "RMS spot size across multiple wavelengths and field angles with "
-            "penalty terms for focal length, thickness, and working distance "
-            "constraints.\n\n"
-            "The search space has box bounds. The objective is to MINIMIZE "
-            "the loss value (lower is better). Your optimizer will receive a "
-            "callable `func(x)` that takes a numpy array and returns a scalar "
-            "loss.\n\n"
+            "### STRICT CODING STANDARDS ###\n"
+            "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for the best solution and `es.result[1]` for the best fitness. NEVER use `es.xbest`, `es[0]`, or `es.best.x`.\n"
+            "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize`. The solution is in `res.x`. Ensure `x0` is a 1D array.\n"
+            "3. SCOPING: Define all logic within the `Optimizer` class. If you use helper methods, they MUST accept `func` and `grad_func` as arguments explicitly.\n"
+            "4. DIMENSIONS: indices [0-17] are continuous curvatures/distances. indices [18-23] are categorical glass IDs.\n\n"
+            "### TASK ###\n"
+            "Minimize a 24D lens loss function. indices [0-17] are geometric (differentiable), [18-23] are glass IDs.\n"
+            "Framework FORCE-INJECTS 'self.func' and 'self.grad_func' into your Optimizer. Use them.\n"
+            "The helper 'lhs' is available via global name or import.\n"
         )
+        self.example_prompt = "class Optimizer:\n    def __init__(self, budget, dim):\n        self.budget=budget; self.dim=dim\n    def __call__(self, func, grad_func):\n        return self.func(np.zeros(self.dim)), np.zeros(self.dim)\n"
+        self.format_prompt = "# Description: <Provide a concise description of the algorithm, limited to a maximum of two sentences.>\n# Code:\n```python\n<code>\n```"
 
-        self.example_prompt = (
-            "Write a Python class named `Optimizer` with:\n"
-            "```python\n"
-            "import numpy as np\n\n"
-            "class Optimizer:\n"
-            "    def __init__(self, budget: int, dim: int):\n"
-            "        self.budget = budget\n"
-            "        self.dim = dim\n\n"
-            "    def __call__(self, func) -> tuple[float, np.ndarray]:\n"
-            "        # func(x) returns scalar loss for x in R^dim\n"
-            "        best_f = float('inf')\n"
-            "        best_x = None\n"
-            "        for _ in range(self.budget):\n"
-            "            x = np.random.uniform(-1, 1, self.dim)\n"
-            "            f = func(x)\n"
-            "            if f < best_f:\n"
-            "                best_f = f\n"
-            "                best_x = x\n"
-            "        return best_f, best_x\n"
-            "```\n\n"
-        )
-
-        self.format_prompt = (
-            """
-Give an excellent and novel heuristic algorithm to solve this task and also give it a one-line description, describing the main idea. Give the response in the format:
-# Description: <short-description>
-# Code: 
-```python
-<code>
-```
-"""
-        )
-
-        # EoH compatibility settings
-        self.func_name = "__call__"
-        self.init_inputs = ["budget", "dim"]
-        self.func_inputs = ["func"]
-        self.func_outputs = ["f_opt", "x_opt"]
+    def _get_sandbox_env(self):
+        import scipy.optimize, cma, random, math
+        import jax.numpy as jnp
+        lhs_tool = LHSWrapper()
+        safe_env = {
+            "__builtins__": __builtins__, "np": np, "numpy": np, "scipy": scipy,
+            "minimize": scipy.optimize.minimize, "cma": cma, "math": math, "random": random,
+            "jnp": jnp, "sys": sys, "types": types, "latin_hypercube_sampling": lhs_tool, "lhs": lhs_tool,
+        }
+        for name in ["latin_hypercube_sampling", "lhs"]:
+            sys.modules[name] = CallableModule(name, lhs_tool)
+            safe_env[name] = sys.modules[name]
+        return safe_env
 
     def _build_objective(self):
-        """
-        Lazily construct the DoubleGaussObjective.
-        Returns (objective_fn, dim, bounds_lb, bounds_ub).
-        """
+        from pathlib import Path
+        workspace_root = Path(__file__).resolve().parent
+        for _ in range(5):
+            if (workspace_root / "camera-lens-simulation").exists(): break
+            workspace_root = workspace_root.parent
+        simulation_path = workspace_root / "camera-lens-simulation"
+        if str(simulation_path) not in sys.path: sys.path.insert(0, str(simulation_path))
         from examples.double_gauss_objective import DoubleGaussObjective
+        obj = DoubleGaussObjective(enable_grad=True)
+        def func(x): return obj.objective_theta(np.clip(x, *obj.bounds()))
+        def grad_func(x):
+            xc, xi = obj.split_theta(np.clip(x, *obj.bounds()))
+            return obj.gradient_cont_int(xc, xi)
+        return func, grad_func, obj.n_theta, *obj.bounds()
 
-        obj = DoubleGaussObjective(
-            enable_grad=False, enable_hessian=False
-        )
-        lb, ub = obj.bounds()
-        dim = obj.n_theta
-
-        def func(x):
-            """Wrapper: numpy array → scalar loss."""
-            x_clipped = np.clip(x, lb, ub)
-            return obj.objective_theta(x_clipped)
-
-        return func, dim, lb, ub
-
-    def evaluate(self, solution: Solution) -> Solution:
-        """
-        Execute the LLM-generated optimizer code on training instances.
-        """
+    def evaluate(self, solution: Solution, test=False, ioh_dir="") -> Solution:
         try:
-            # Build the objective
-            func, dim, lb, ub = self._build_objective()
-            budget = self.budget_factor
+            func, grad_fn, dim, lb, ub = self._build_objective()
+            exec_env = self._get_sandbox_env()
+            # Clean LLM code of conflicting imports
+            clean_code = re.sub(r'^(?:from|import)\s+(?:latin_hypercube_sampling|lhs).*$', '', solution.code, flags=re.MULTILINE)
+            
+            # Inject safety globals for common LLM hallucinations
+            exec_env['population_size'] = 20
+            exec_env['pop_size'] = 20
+            exec_env['glass_ids'] = list(range(100))
+            
+            exec(clean_code, exec_env)
+            
+            # Flexible Class Extraction
+            OptimizerClass = exec_env.get("Optimizer")
+            if not OptimizerClass:
+                # If the LLM named the class something else, find any class with a __call__ method
+                from .lens_optimisation import LHSWrapper # ignore this internal class
+                for name, val in exec_env.items():
+                    if isinstance(val, type) and val is not LHSWrapper and hasattr(val, "__call__"):
+                        OptimizerClass = val
+                        break
+            
+            if not OptimizerClass: return solution.set_scores(-np.inf, feedback="No valid 'Optimizer' class found.")
 
-            # Compile and instantiate the LLM-generated optimizer
-            import scipy
-            from scipy.optimize import minimize, differential_evolution
-            import math
+            def call_optimizer(opt_inst, f, g, env):
+                # Double-Layer Injection
+                opt_inst.func, opt_inst.grad_func = f, g
+                env['func'], env['grad_func'] = f, g 
+                sig = inspect.signature(opt_inst.__call__)
+                return opt_inst(f, g) if len(sig.parameters) >= 2 else opt_inst(f)
+
             try:
-                import lensgopt.optics.optics as optics
-            except ImportError:
-                optics = None
-            try:
-                import cma
-            except ImportError:
-                cma = None
+                # PURE POSITIONAL INIT
+                sig_init = inspect.signature(OptimizerClass.__init__)
+                dry_run_opt = OptimizerClass(10, dim) if len(sig_init.parameters) >= 3 else OptimizerClass(10)
+                call_optimizer(dry_run_opt, lambda x: float(np.sum(x**2)), lambda x: 2*x[:18], exec_env)
+            except Exception as e:
+                return solution.set_scores(-np.inf, feedback=f"Optimizer failed during initial dry run: {e}")
 
-            def lhs_sampling(n_samples, n_dim):
-                from scipy.stats import qmc
-                sampler = qmc.LatinHypercube(d=n_dim)
-                return sampler.random(n=n_samples) * 2 - 1
-
-            safe_globals = {
-                "__builtins__": builtins,
-                "np": np,
-                "numpy": np,
-                "scipy": scipy,
-                "math": math,
-                "optics": optics,
-                "cma": cma,
-                "minimize": minimize,
-                "differential_evolution": differential_evolution,
-                "latin_hypercube_sampling": lhs_sampling,
-            }
-            exec(solution.code, safe_globals)
-            OptimizerClass = safe_globals.get("Optimizer")
-            if OptimizerClass is None:
-                solution.set_scores(
-                    -np.inf,
-                    feedback="No class named 'Optimizer' found in the code.",
-                    error="Missing Optimizer class.",
-                )
-                return solution
-
-            # Proactively inject common methods that LLMs often hallucinate on 'self'
-            if not hasattr(OptimizerClass, "latin_hypercube_sampling"):
-                # Use staticmethod so it works as self.latin_hypercube_sampling(...)
-                OptimizerClass.latin_hypercube_sampling = staticmethod(lhs_sampling)
-
-            # Evaluate across training instances (random seeds)
+            instances = self.test_instances if test else self.training_instances
             losses = []
-            for (seed,) in self.training_instances:
+            scale = (ub - lb) / 2.0
+            for (seed,) in instances:
                 np.random.seed(seed)
-                optimizer = OptimizerClass(budget=budget, dim=dim)
-
-                # Create a bounded wrapper so the optimizer sees [-1, 1]
-                def bounded_func(x_normalized):
-                    x_real = lb + (x_normalized + 1.0) / 2.0 * (ub - lb)
-                    return func(x_real)
-
-                best_f, best_x = optimizer(bounded_func)
+                sig_init = inspect.signature(OptimizerClass.__init__)
+                opt = OptimizerClass(self.budget_factor, dim) if len(sig_init.parameters) >= 3 else OptimizerClass(self.budget_factor)
+                b_f = lambda xn: func(lb + (xn + 1.0) / 2.0 * (ub - lb))
+                b_g = lambda xn: grad_fn(lb + (xn + 1.0) / 2.0 * (ub - lb)) * scale[:18]
+                best_f, _ = call_optimizer(opt, b_f, b_g, exec_env)
                 losses.append(float(best_f))
-
-            mean_loss = np.mean(losses)
-            # BLADE maximizes fitness; lens optimisation minimizes loss
-            # So fitness = -mean_loss (higher fitness = lower loss = better)
-            fitness = -mean_loss
-
-            feedback = (
-                f"Mean loss across {len(self.training_instances)} seeds: "
-                f"{mean_loss:.6f}. Best single run: {min(losses):.6f}."
-            )
-            solution.set_scores(fitness, feedback=feedback)
-
+            solution.set_scores(-np.mean(losses), feedback=f"Mean loss: {np.mean(losses):.6f}")
         except Exception as e:
-            solution.set_scores(
-                -np.inf,
-                feedback=f"Error during evaluation: {e}",
-                error=e,
-            )
-
+            solution.set_scores(-np.inf, feedback=f"Error: {e}")
         return solution
 
     def test(self, solution: Solution) -> Solution:
-        """Final evaluation on held-out test instances."""
-        # Swap instances temporarily
-        orig = self.training_instances
-        self.training_instances = self.test_instances
-        result = self.evaluate(solution)
-        self.training_instances = orig
-        return result
+        orig = self.training_instances; self.training_instances = self.test_instances
+        result = self.evaluate(solution, test=True)
+        self.training_instances = orig; return result
 
-    def to_dict(self):
-        return {
-            "name": self.name,
-            "budget_factor": self.budget_factor,
-            "eval_timeout": self.eval_timeout,
-            "training_instances": self.training_instances,
-            "test_instances": self.test_instances,
-        }
+    def to_dict(self): return {"name": self.name, "budget_factor": self.budget_factor}

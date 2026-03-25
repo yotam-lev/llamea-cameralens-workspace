@@ -1,0 +1,358 @@
+%Document with all fixes to easy problems that you find throughout development
+
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+\lstset{basicstyle=\ttfamily\small, breaklines=true, frame=single}
+
+\pagestyle{fancy}
+\fancyhead[L]{BLADE × Lens Optimisation — Development Backlog}
+\fancyhead[R]{\today}
+
+\title{\textbf{BLADE × Lens Optimisation} \\ Development Backlog}
+\author{Yotam Lev}
+\date{3 March 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Project Overview}
+% ============================================================
+
+Integration of the BLADE/LLaMEA framework with the CameraLensSimulation
+library to evolve black-box optimisation algorithms for the Double-Gauss
+lens design problem. The LLM generates Python optimiser code, which is
+evaluated against a 24-dimensional non-convex lens loss function.
+
+\begin{itemize}
+    \item \textbf{Repository (BLADE):} \texttt{blade-framework}
+    \item \textbf{Repository (Lens):} \texttt{camera-lens-simulation}
+    \item \textbf{LLM (local):} Ollama — \texttt{qwen2.5-coder:14b}
+    \item \textbf{LLM (API):} Google Gemini — \texttt{gemini-2.0-flash}
+\end{itemize}
+
+% ============================================================
+\section{Issues Diagnosed \& Resolved}
+% ============================================================
+
+% ------------------------------------------------------------
+\subsection{Issue 1: \texttt{ModuleNotFoundError: No module named 'jax'}}
+% ------------------------------------------------------------
+
+\textbf{Root Cause:} The shell had CameraLensSimulation's virtual environment
+activated (\texttt{VIRTUAL\_ENV} set to its \texttt{.venv}), but \texttt{uv run}
+inside BLADE's directory ignored it and used BLADE's own \texttt{.venv}, which
+lacked \texttt{jax}.
+
+\textbf{Resolution:}
+\begin{enumerate}
+    \item Deactivated all virtual environments before running.
+    \item Deleted stale \texttt{.venv} and \texttt{uv.lock} in both repos.
+    \item Ran \texttt{uv lock \&\& uv sync} in each repo.
+    \item Installed CameraLensSimulation into BLADE's environment:
+          \texttt{uv pip install -e ../camera-lens-simulation}.
+    \item Established rule: never \texttt{source .venv/bin/activate} when using
+          \texttt{uv run}.
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{Issue 2: All evaluations scored \texttt{-inf} (fitness = 0 in webapp)}
+% ------------------------------------------------------------
+
+\textbf{Root Cause:} The \texttt{LocalLensOptimisation} subclass was defined
+inside \texttt{run\_lens\_mvp.py} (\texttt{\_\_main\_\_}). BLADE's subprocess
+evaluation pipeline pickles the problem object with \texttt{cloudpickle},
+which records the class as \texttt{\_\_main\_\_.LocalLensOptimisation}. The
+child process cannot unpickle it because its \texttt{\_\_main\_\_} is a
+different script (\texttt{run\_eval.py} in \texttt{/tmp/blade\_env\_xxx/}).
+
+\textbf{Diagnosis — 4-step verification:}
+\begin{enumerate}
+    \item \textbf{Step 1 — Lens objective:} \checkmark\ Returned real losses
+          (0.00056, 4277.2).
+    \item \textbf{Step 2 — Direct \texttt{evaluate()}:} \checkmark\ Fitness =
+          $-11.24$ (valid).
+    \item \textbf{Step 3 — Subprocess path:} \ding{55}
+          \texttt{AttributeError: Can't get attribute 'TestLensOptimisation'
+          on <module '\_\_main\_\_'>}.
+    \item \textbf{Step 4 — LLM output:} \checkmark\ Valid optimiser code was
+          generated.
+\end{enumerate}
+
+\textbf{Resolution:} Moved the subclass into a separate importable module
+(\texttt{local\_lens\_problem.py}) so \texttt{cloudpickle} can resolve it
+during unpickling.
+
+% ------------------------------------------------------------
+\subsection{Issue 3: \texttt{PYTHONPATH} lost in evaluation subprocess}
+% ------------------------------------------------------------
+
+\textbf{Root Cause:} \texttt{evaluate\_in\_subprocess()} copies
+\texttt{os.environ} and prepends BLADE's root to \texttt{PYTHONPATH}, but the
+CameraLensSimulation path was only available as a relative
+\texttt{PYTHONPATH="../CameraLensSimulation"} from the shell, which resolves
+differently from \texttt{/tmp/blade\_env\_xxx/}.
+
+\textbf{Resolution:} The \texttt{\_ensure\_env()} override in
+\texttt{local\_lens\_problem.py} injects the \textbf{absolute path} of
+CameraLensSimulation into \texttt{os.environ["PYTHONPATH"]} before
+subprocess spawning.
+
+% ------------------------------------------------------------
+\subsection{Issue 4: Gemini API — 429 Too Many Requests}
+% ------------------------------------------------------------
+
+\textbf{Root Cause:} Free-tier Gemini API rate limits (15 requests/minute,
+1500/day). The experiment sent requests faster than the quota allowed.
+
+\textbf{Resolution:}
+\begin{itemize}
+    \item Identified need to enable billing or use
+          \texttt{gemini-1.5-flash} (higher free quota).
+    \item Built automatic fallback in \texttt{config.py}: if Gemini fails a
+          test query, the system switches to Ollama.
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsection{Issue 5: \texttt{iohblade-webapp} — \texttt{ModuleNotFoundError}}
+% ------------------------------------------------------------
+
+\textbf{Root Cause (occurrence 1):} Running \texttt{uv run iohblade-webapp}
+from the workspace root instead of the BLADE repo directory.
+
+\textbf{Root Cause (occurrence 2):} \texttt{uv sync} removed the editable
+install of BLADE itself. The \texttt{iohblade-webapp} entry point existed in
+\texttt{.venv/bin/} but the package was gone.
+
+\textbf{Resolution:} \texttt{uv pip install -e .} inside the BLADE directory.
+
+% ------------------------------------------------------------
+\subsection{Issue 6: \texttt{uv sync} removes \texttt{jax} (recurring)}
+% ------------------------------------------------------------
+
+\textbf{Root Cause:} \texttt{jax} is not declared in BLADE's
+\texttt{pyproject.toml}. Running \texttt{uv sync} or \texttt{uv lock} cleans
+out packages not in the dependency tree.
+
+\textbf{Resolution:} After any \texttt{uv sync}, re-run
+\texttt{uv pip install -e ../camera-lens-simulation} to restore \texttt{jax}
+and \texttt{lensgopt}.
+
+% ============================================================
+\section{Files Created}
+% ============================================================
+
+\begin{longtable}{p{5.5cm} p{9cm}}
+\toprule
+\textbf{File} & \textbf{Purpose} \\
+\midrule
+\texttt{.env} & Stores \texttt{GEMINI\_API\_KEY}. Listed in \texttt{.gitignore}
+                 so secrets are never committed. \\
+\midrule
+\texttt{config.py} & Shared configuration module. Provides \texttt{get\_llm()}
+                      (Gemini $\to$ Ollama fallback) and \texttt{get\_n\_jobs()}
+                      (hardware-aware parallelism). Detects Apple Silicon vs
+                      NVIDIA GPU via \texttt{nvidia-smi} and
+                      \texttt{platform.machine()}. \\
+\midrule
+\texttt{local\_lens\_problem.py} & \texttt{LocalLensOptimisation} subclass.
+                                    Overrides \texttt{\_ensure\_env()} to reuse
+                                    the current interpreter and inject
+                                    CameraLensSimulation's absolute path into
+                                    \texttt{PYTHONPATH}. No domain context in
+                                    prompts. \\
+\midrule
+\texttt{contextual\_lens\_problem.py} & \texttt{ContextualLensOptimisation}
+                                         subclass. Same subprocess fix, plus
+                                         injects optics domain knowledge
+                                         (multimodal landscape, discrete glass
+                                         IDs, CMA-ES/DE hints) into the LLM
+                                         task prompt. \\
+\midrule
+\texttt{run\_lens\_mvp.py} & MVP experiment. Budget=20, (1,1) strategy,
+                              2 seeds. Baseline validation that the pipeline
+                              works end-to-end. \\
+\midrule
+\texttt{run\_lens\_v2.py} & V2 experiment. Budget=50, (4,12) strategy,
+                             4 diverse mutation prompts (including
+                             domain-aware), 3 seeds. Uses
+                             \texttt{ContextualLensOptimisation}. \\
+\midrule
+\texttt{run\_lens\_comparison.py} & Head-to-head comparison. Runs
+                                     \texttt{LLaMEA\_blind} (no context) vs
+                                     \texttt{LLaMEA\_informed} (with context)
+                                     vs \texttt{RS\_baseline} across both
+                                     problem variants. 3 seeds each. \\
+\bottomrule
+\end{longtable}
+
+% ============================================================
+\section{Architecture}
+% ============================================================
+
+\begin{lstlisting}
+blade-framework/
+|-- .env                           # GEMINI_API_KEY (gitignored)
+|-- .gitignore                     # includes .env
+|-- config.py                      # LLM + compute configuration
+|-- local_lens_problem.py          # No-context lens problem
+|-- contextual_lens_problem.py     # Domain-aware lens problem
+|-- run_lens_mvp.py                # MVP experiment
+|-- run_lens_v2.py                 # V2 experiment (main)
+|-- run_lens_comparison.py         # Comparison experiment
+|-- results/
+|   |-- lens_mvp/
+|   |-- lens_v2/
+|   |-- lens_comparison/
+|-- iohblade/                      # BLADE framework (upstream)
+|-- pyproject.toml
+\end{lstlisting}
+
+% ============================================================
+\section{Experiment Scripts \& Problem Wrappers}
+% ============================================================
+
+\subsection{Camera Lens Optimization Scripts (\texttt{camera\_problem\_runs/})}
+
+The workspace contains several experiment configurations, each representing a step in the evolutionary research process:
+
+\begin{itemize}
+    \item \textbf{\texttt{lens\_mvp.py}:} The initial validation script. Uses a minimal (1,1) LLaMEA strategy with a budget of 20 generations. It operates on the \texttt{LocalLensOptimisation} problem (no domain context) to verify that the basic LLM-to-simulation pipeline is functional.
+    \item \textbf{\texttt{lens\_v2.py}:} A production-ready run. Increases population size to (4,12) and budget to 50 generations. It introduces \texttt{ContextualLensOptimisation} (domain-aware prompts) and a longer evaluation timeout (300s) to allow for more complex optimizers like CMA-ES.
+    \item \textbf{\texttt{lens\_v3.py}:} Focuses on advanced heuristic guidance. Uses a (6,12) strategy over 100 generations. It employs highly specific mutation prompts targeting the mixed-variable nature of the problem (e.g., hybrid global-local search, specialized categorical handling for glass IDs, and restart strategies).
+    \item \textbf{\texttt{lens\_v4.py}:} The "Gradient-Aware" iteration. It provides the LLM with a \texttt{grad\_func} (computed via JAX) for the 18 continuous dimensions. The prompts encourage the implementation of memetic algorithms that use gradients for local refinement (e.g., L-BFGS-B or SLSQP) while the evolutionary loop handles global exploration.
+    \item \textbf{\texttt{lens\_comparison.py}:} A benchmark script designed to isolate the impact of domain knowledge. It runs \texttt{RS\_baseline}, \texttt{LLaMEA\_blind} (no context), and \texttt{LLaMEA\_informed} (with context) side-by-side against both problem variants.
+\end{itemize}
+
+\subsection{Lens Optimization Problem Wrappers}
+
+The problem wrappers in \texttt{iohblade/problems/} and the local overrides manage how the objective function is presented to the LLM:
+
+\begin{itemize}
+    \item \textbf{\texttt{LensOptimisation} (\texttt{lens\_optimisation.py}):} The foundational class. It manages the integration with \texttt{DoubleGaussObjective}, handles parameter normalization ($[-1, 1] \to [\text{lb}, \text{ub}]$), and implements the \texttt{evaluate} method which executes LLM code in a safe sandbox. It also provides the \texttt{LHSWrapper} to handle various LLM implementation styles for Latin Hypercube Sampling.
+    \item \textbf{\texttt{LocalLensOptimisation} (\texttt{local\_lens\_problem.py}):} Inherits from the base class but uses a generic "black-box" prompt. This serves as the control group for experiments testing the value of domain-specific hints.
+    \item \textbf{\texttt{ContextualLensOptimisation} (\texttt{contextual\_lens\_problem.py}):} The "informed" variant. It overrides the \texttt{task\_prompt} to provide specific optical design context, such as the multimodality of the landscape and the distinction between the 18D continuous geometry and 6D categorical glass IDs.
+\end{itemize}
+
+% ============================================================
+\section{Experimental Results}
+% ============================================================
+
+% ------------------------------------------------------------
+\subsection{MVP Run (Ollama, qwen2.5-coder:14b)}
+% ------------------------------------------------------------
+
+\begin{tabular}{llll}
+\toprule
+\textbf{Run} & \textbf{Best Fitness} & \textbf{Loss} & \textbf{Behaviour} \\
+\midrule
+LLaMEA seed 0 & $-0.212$ & 0.212 & Improved over 7 generations \\
+LLaMEA seed 1 & $-0.499$ & 0.499 & Stuck at initial score \\
+RS baseline seed 0 & Completed & — & Baseline \\
+RS baseline seed 1 & Completed & — & Baseline \\
+\bottomrule
+\end{tabular}
+
+\textbf{Key observation:} Seed 0 showed genuine evolutionary improvement
+($-0.499 \to -0.429 \to -0.286 \to -0.212$). Seed 1 showed no improvement,
+motivating the move to larger populations in V2.
+
+\textbf{Timing issue:} Later generations in seed 1 took 1--2+ hours each due
+to LLM-generated algorithms exceeding the 180s timeout without being killed
+cleanly on macOS. This motivated reducing \texttt{eval\_timeout} to 60s.
+
+% ------------------------------------------------------------
+\subsection{V2 Run (in progress)}
+% ------------------------------------------------------------
+
+Currently executing with:
+\begin{itemize}
+    \item LLM: Ollama \texttt{qwen2.5-coder:14b} (Gemini API rate-limited)
+    \item Budget: 50
+    \item Strategy: $(4, 12)$ with 4 diverse mutation prompts
+    \item Timeout: 60s
+    \item Problem: \texttt{ContextualLensOptimisation} (domain-aware prompts)
+    \item Seeds: 3
+\end{itemize}
+
+% ============================================================
+\section{Design Decisions}
+% ============================================================
+
+\begin{enumerate}
+    \item \textbf{Importable subclass pattern:} Problem subclasses live in
+          their own \texttt{.py} files (not in \texttt{\_\_main\_\_}) to
+          survive \texttt{cloudpickle} serialisation across subprocess
+          boundaries.
+
+    \item \textbf{Automatic LLM fallback:} \texttt{config.get\_llm()} tries
+          Gemini first with a test query; on any failure (429, invalid key,
+          network error) it silently falls back to local Ollama. No code
+          changes needed in experiment scripts.
+
+    \item \textbf{Hardware-aware parallelism:} \texttt{config.get\_n\_jobs()}
+          detects Apple Silicon (cap at 4 workers) vs NVIDIA GPU (use SLURM
+          allocation or $\text{cores} - 2$). Prevents thermal throttling on
+          Mac while maximising throughput on HPC.
+
+    \item \textbf{Domain context injection:} The
+          \texttt{ContextualLensOptimisation} class overrides
+          \texttt{task\_prompt} with optics-specific knowledge (multimodal
+          landscape, discrete glass IDs, effective strategies). This is
+          compared against the blind baseline in the comparison experiment.
+
+    \item \textbf{Diverse mutation prompts:} Four prompt types (refine,
+          explore, simplify, domain-aware) ensure the evolutionary process
+          doesn't converge prematurely on one coding style.
+
+    \item \textbf{Secrets management:} API keys stored in \texttt{.env},
+          loaded via \texttt{python-dotenv}, file listed in
+          \texttt{.gitignore}.
+\end{enumerate}
+
+% ============================================================
+\section{Next Steps}
+% ============================================================
+
+\begin{enumerate}
+    \item \textbf{Resolve Gemini rate limiting:} Enable billing on Google
+          Cloud project to unlock higher quotas, then re-run V2 with
+          \texttt{gemini-2.0-flash} for faster iteration ($\sim$2s vs
+          $\sim$60s per LLM call).
+
+    \item \textbf{Run comparison experiment:} Execute
+          \texttt{run\_lens\_comparison.py} to measure the impact of domain
+          context on generated optimiser quality.
+
+    \item \textbf{Increase \texttt{budget\_factor}:} After validating the
+          pipeline, increase from 2000 to 5000 function evaluations per
+          optimiser to give sophisticated algorithms (CMA-ES, DE) room to
+          converge.
+
+    \item \textbf{Deploy to LIACS HPC:} Transfer the codebase to the cluster,
+          configure SLURM job scripts, run large-scale experiments with
+          \texttt{gemini-2.5-pro} and higher parallelism.
+
+    \item \textbf{Statistical analysis:} With 3+ seeds per configuration,
+          compute mean $\pm$ std of best fitness across seeds. Use
+          Mann-Whitney U test to compare methods.
+
+    \item \textbf{Explore stronger models:} Test \texttt{gemini-2.5-pro} and
+          \texttt{o3} for the final thesis results — stronger code generation
+          should produce more sophisticated optimisers.
+\end{enumerate}
+
+\end{document}

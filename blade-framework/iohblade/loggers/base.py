@@ -428,23 +428,28 @@ class RunLogger:
         Also creates subdirectories for IOH experimenter data and code files.
 
         Args:
-            name (str): The name of the run.
+            name (str): The name of the run (e.g., "LLaMEA_v4_Memetic-DoubleGauss_v4-0").
             root_dir (str): The directory to create the log folder in.
 
         Returns:
             str: The name of the created directory.
         """
-        model_name = name.split("/")[-1]
-        dirname = f"run-{name}"
+        # Construct a timestamped directory name
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        # Format: run-METHOD_NAME-PROBLEM_NAME-SEED_YYYYMMDD_HHMMSS
+        # The 'name' argument here is expected to be like "method.name-problem.name-seed"
+        dirname = f"run-{name}_{timestamp}" 
+        
         dirname = os.path.join(root_dir, dirname)
         if not os.path.exists(root_dir):
             os.mkdir(root_dir)
 
+        # Ensure uniqueness in case of very rapid successive runs, though timestamp should largely handle this.
         tempi = 0
+        original_dirname = dirname
         while os.path.exists(dirname):
             tempi += 1
-            dirname = f"run-{name}-{tempi}"
-            dirname = os.path.join(root_dir, dirname)
+            dirname = f"{original_dirname}-{tempi}"
         os.mkdir(dirname)
         return dirname
 
