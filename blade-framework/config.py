@@ -13,6 +13,9 @@ import multiprocessing
 import platform
 import subprocess
 
+os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
+os.environ["XLA_PYTHON_CLIENT_ALLOCATOR"] = "platform"
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -40,6 +43,19 @@ def _detect_platform() -> str:
 
     # Check for NVIDIA GPU via nvidia-smi
     try:
+        import jax
+        if jax.default_backend() == "gpu":
+            devices = jax.devices("gpu")
+            device_names = [d.device_kind for d in devices]
+            logger.info("[config] 🟢 JAX GPU backend active. Devices: %s", device_names)
+            _PLATFORM_CACHE = "nvidia_gpu"
+            return _PLATFORM_CACHE
+    except Exception as e:
+        logger.debug("[config] JAX GPU check bypassed or failed: %s", e)
+
+    # 2. Fallback: Check for NVIDIA GPU via nvidia-smi 
+    # (Triggers if JAX isn't installed with CUDA support, but hardware is present)
+    try:
         result = subprocess.run(
             ["nvidia-smi", "--query-gpu=name,memory.total",
              "--format=csv,noheader,nounits"],
@@ -47,13 +63,13 @@ def _detect_platform() -> str:
         )
         if result.returncode == 0 and result.stdout.strip():
             gpu_info = result.stdout.strip().split("\n")[0]
-            logger.info("[config] 🟢 NVIDIA GPU detected: %s", gpu_info)
+            logger.warning("[config] ⚠️ NVIDIA GPU hardware detected (%s), but JAX might be using CPU. Check your jaxlib CUDA installation.", gpu_info)
             _PLATFORM_CACHE = "nvidia_gpu"
             return _PLATFORM_CACHE
     except (FileNotFoundError, subprocess.TimeoutExpired):
         pass
 
-    # Check for Apple Silicon
+    # 3. Check for Apple Silicon
     if platform.system() == "Darwin" and platform.machine() == "arm64":
         chip = _get_apple_chip_name()
         logger.info("[config] 🍎 Apple Silicon detected: %s", chip)
@@ -89,23 +105,6 @@ def _get_apple_chip_name() -> str:
     except (FileNotFoundError, subprocess.TimeoutExpired):
         pass
     return "Apple Silicon (unknown model)"
-
-
-def _get_nvidia_vram_gb() -> float:
-    """Return total VRAM in GB of the first NVIDIA GPU, or 0."""
-    try:
-        result = subprocess.run(
-            ["nvidia-smi", "--query-gpu=memory.total",
-             "--format=csv,noheader,nounits"],
-            capture_output=True, text=True, timeout=5,
-        )
-        if result.returncode == 0 and result.stdout.strip():
-            # nvidia-smi reports in MiB
-            mib = float(result.stdout.strip().split("\n")[0])
-            return mib / 1024.0
-    except (FileNotFoundError, subprocess.TimeoutExpired, ValueError):
-        pass
-    return 0.0
 
 
 # ── Compute Configuration ─────────────────────────────────────────
