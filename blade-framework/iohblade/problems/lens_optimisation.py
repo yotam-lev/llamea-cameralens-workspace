@@ -58,7 +58,7 @@ class CallableModule(types.ModuleType):
 
 class LensOptimisation(Problem):
     def __init__(self, training_instances=None, test_instances=None, budget_factor: int = 5000, 
-                 name: str = "Lensoptimisation", eval_timeout: int = 600, **kwargs):
+                 name: str = "Lensoptimisation", eval_timeout: int = 6000, **kwargs):
         if training_instances is None: training_instances = [(seed,) for seed in range(1, 10)]
         if test_instances is None: test_instances = [(seed,) for seed in range(11, 16)]
         

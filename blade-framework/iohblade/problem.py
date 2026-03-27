@@ -446,7 +446,7 @@ class WrappedProblem(Problem):
         evaluate_fn,
         *,
         name="Problem",
-        eval_timeout=600,
+        eval_timeout=6000,
         training_instances=None,
         test_instances=None,
         dependencies=None,

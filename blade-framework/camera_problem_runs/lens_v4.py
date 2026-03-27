@@ -67,8 +67,8 @@ def configure_run(llm, n_jobs):
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=10000, # MATCH PRODUCTION BUDGET
-        eval_timeout=600,   # Increased to handle 10k evals + local search
+        budget_factor=4000, # MATCH PRODUCTION BUDGET
+        eval_timeout=6000,   # Increased to handle 10k evals + local search
         name="DoubleGauss_v4",
     )
 
