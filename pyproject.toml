@@ -16,3 +16,6 @@ members = ["blade-framework", "camera-lens-simulation"]
 [tool.uv.sources]
 iohblade = { workspace = true }
 lensgopt = { workspace = true }
+
+[tool.setuptools.packages.find]
+exclude = ["results*", "lens_visualisation_results*"]
