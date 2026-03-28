@@ -194,5 +194,5 @@ def get_llm():
 
     from iohblade.llm import Ollama_LLM
 
-    logger.info("[config] 🔄 Using Ollama local (qwen2.5-coder:14b)")
-    return Ollama_LLM("qwen2.5-coder:14b")
+    logger.info("[config] 🔄 Using Ollama local (qwen3-coder:30b)")
+    return Ollama_LLM("qwen3-coder:30b")
