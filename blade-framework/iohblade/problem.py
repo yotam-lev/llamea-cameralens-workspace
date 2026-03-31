@@ -222,7 +222,7 @@ class Problem(ABC):
         # For example, if your problem requires a function that takes a function, budget, and dimension,
         # and returns the optimal fitness and solution, set them accordingly.
         self.func_name = "__call__"
-        self.init_inputs = ["budget", "dim"]
+        self.init_inputs = ["budget", "dim", "grad0_cont"]
         self.func_inputs = ["func"]
         self.func_outputs = ["f_opt", "x_opt"]
 

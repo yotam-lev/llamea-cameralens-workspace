@@ -25,7 +25,7 @@ RUN_META = {
 }
 
 def configure_run(llm, n_jobs):
-    budget = 100 # Evolutionary generations
+    budget = 20 # Evolutionary generations
 
     mutation_prompts = [
         # Strategy 1: Memetic Hybrid (Global -> Local)
@@ -55,13 +55,13 @@ def configure_run(llm, n_jobs):
         llm,
         budget=budget,
         name="LLaMEA_v4_Memetic",
-        n_parents=6,
+        n_parents=3,
         n_offspring=12,
-        elitism=True,
+        elitism=False,
         mutation_prompts=mutation_prompts,
     )
 
-    training_seeds = [(s,) for s in range(1, 10)]
+    training_seeds = [(s,) for s in range(1, 3)]
     test_seeds = [(s,) for s in range(11, 16)]
 
     lens_problem = ContextualLensOptimisation(

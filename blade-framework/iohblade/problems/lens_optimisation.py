@@ -56,6 +56,13 @@ class CallableModule(types.ModuleType):
     def __getattr__(self, name):
         return getattr(self._tool, name)
 
+class Optimizer:
+    def __init__(self, budget: int, dim: int):
+        self.budget = budget
+        self.dim = dim
+    def __call__(self, func, grad_func):
+        raise NotImplementedError("Subclasses must implement __call__")
+
 class LensOptimisation(Problem):
     def __init__(self, training_instances=None, test_instances=None, budget_factor: int = 5000, 
                  name: str = "Lensoptimisation", eval_timeout: int = 6000, **kwargs):
@@ -72,7 +79,7 @@ class LensOptimisation(Problem):
         self.task_prompt = (
             "### STRICT CODING STANDARDS ###\n"
             "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for the best solution and `es.result[1]` for the best fitness. NEVER use `es.xbest`, `es[0]`, or `es.best.x`.\n"
-            "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize`. The solution is in `res.x`. Ensure `x0` is a 1D array.\n"
+            "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize(func, x0, jac=grad_func, ...)`. The solution is in `res.x`. Ensure `x0` is a 1D array.\n"
             "3. SCOPING: Define all logic within the `Optimizer` class. If you use helper methods, they MUST accept `func` and `grad_func` as arguments explicitly.\n"
             "4. DIMENSIONS: indices [0-17] are continuous curvatures/distances. indices [18-23] are categorical glass IDs.\n\n"
             "### TASK ###\n"
@@ -80,7 +87,21 @@ class LensOptimisation(Problem):
             "Framework FORCE-INJECTS 'self.func' and 'self.grad_func' into your Optimizer. Use them.\n"
             "The helper 'lhs' is available via global name or import.\n"
         )
-        self.example_prompt = "class Optimizer:\n    def __init__(self, budget, dim):\n        self.budget=budget; self.dim=dim\n    def __call__(self, func, grad_func):\n        return self.func(np.zeros(self.dim)), np.zeros(self.dim)\n"
+        self.example_prompt = (
+            "class Optimizer:\n"
+            "    def __init__(self, budget, dim):\n"
+            "        super().__init__(budget, dim)\n"
+            "    def __call__(self, func, grad_func):\n"
+            "        best_f = float('inf')\n"
+            "        best_x = None\n"
+            "        for _ in range(self.budget):\n"
+            "            x = np.random.uniform(-1, 1, self.dim)\n"
+            "            f = func(x)\n"
+            "            if f < best_f:\n"
+            "                best_f = f\n"
+            "                best_x = x\n"
+            "        return best_f, best_x\n"
+        )
         self.format_prompt = "# Description: <Provide a concise description of the algorithm, limited to a maximum of two sentences.>\n# Code:\n```python\n<code>\n```"
 
     def _get_sandbox_env(self):
@@ -91,6 +112,7 @@ class LensOptimisation(Problem):
             "__builtins__": __builtins__, "np": np, "numpy": np, "scipy": scipy,
             "minimize": scipy.optimize.minimize, "cma": cma, "math": math, "random": random,
             "jnp": jnp, "sys": sys, "types": types, "latin_hypercube_sampling": lhs_tool, "lhs": lhs_tool,
+            "Optimizer": Optimizer,
         }
         for name in ["latin_hypercube_sampling", "lhs"]:
             sys.modules[name] = CallableModule(name, lhs_tool)
@@ -104,75 +126,157 @@ class LensOptimisation(Problem):
             if (workspace_root / "camera-lens-simulation").exists(): break
             workspace_root = workspace_root.parent
         simulation_path = workspace_root / "camera-lens-simulation"
-        if str(simulation_path) not in sys.path: sys.path.insert(0, str(simulation_path))
+        if str(simulation_path) not in sys.path: 
+            sys.path.insert(0, str(simulation_path))
         from examples.double_gauss_objective import DoubleGaussObjective
-        obj = DoubleGaussObjective(enable_grad=True)
-        def func(x): return obj.objective_theta(np.clip(x, *obj.bounds()))
-        def grad_func(x):
-            xc, xi = obj.split_theta(np.clip(x, *obj.bounds()))
-            return obj.gradient_cont_int(xc, xi)
-        return func, grad_func, obj.n_theta, *obj.bounds()
+        obj = DoubleGaussObjective(
+            enable_grad=True, enable_hessian=False
+            )
+        lb, ub = obj.bounds()
+        dim = obj.n_theta
+        x0_cont, x0_ids = obj.init_from_templates()
+        grad0_cont = obj.gradient_cont_int(x0_cont, x0_ids)
 
-    def evaluate(self, solution: Solution, test=False, ioh_dir="") -> Solution:
+        def func(x): 
+            x_clipped = np.clip(x, lb, ub)
+            return obj.objective_theta(x_clipped)
+            
+        def grad_fn(x):
+            x_clipped = np.clip(x, lb, ub)
+            xc, xi = obj.split_theta(x_clipped)
+            return obj.gradient_cont_int(xc, xi)
+
+        return func, grad_fn, dim, lb, ub, grad0_cont
+
+    def evaluate(self, solution: Solution) -> Solution:
+        """
+        Execute the LLM-generated optimizer code on training instances.
+        """
         try:
-            func, grad_fn, dim, lb, ub = self._build_objective()
-            exec_env = self._get_sandbox_env()
-            # Clean LLM code of conflicting imports
+            func, grad_fn, dim, lb, ub, grad0_cont = self._build_objective()
+            print(f"func{func}, grad_fn: {grad_fn}, lb{lb}, ub{ub}, grad0_cont{grad0_cont}")
+            budget = self.budget_factor
+            print(f"budget {budget}")
+            exec_env = self._get_sandbox_env() 
+            
             clean_code = re.sub(r'^(?:from|import)\s+(?:latin_hypercube_sampling|lhs).*$', '', solution.code, flags=re.MULTILINE)
             
-            # Inject safety globals for common LLM hallucinations
             exec_env['population_size'] = 20
             exec_env['pop_size'] = 20
             exec_env['glass_ids'] = list(range(100))
+
+
+            print("\n" + "="*40)
+            print("DEBUG: WHAT IS IN SOLUTION.CODE?")
+            print(repr(solution.code)) # repr() will show if it's just "" or "\n"
+            print("-" * 40)
+            print("DEBUG: WHAT IS IN CLEAN_CODE?")
+            print(repr(clean_code))
+            print("="*40 + "\n")
             
             exec(clean_code, exec_env)
             
-            # Flexible Class Extraction
-            OptimizerClass = exec_env.get("Optimizer")
-            if not OptimizerClass:
-                # If the LLM named the class something else, find any class with a __call__ method
-                from .lens_optimisation import LHSWrapper # ignore this internal class
-                for name, val in exec_env.items():
-                    if isinstance(val, type) and val is not LHSWrapper and hasattr(val, "__call__"):
-                        OptimizerClass = val
-                        break
+            # 1. ROBUST CLASS EXTRACTION
+            # We look for a subclass of Optimizer that isn't Optimizer itself
+            OptimizerClass = None
+            for name, val in exec_env.items():
+                if isinstance(val, type) and issubclass(val, Optimizer) and val is not Optimizer:
+                    OptimizerClass = val
+                    break
             
-            if not OptimizerClass: return solution.set_scores(-np.inf, feedback="No valid 'Optimizer' class found.")
+            if not OptimizerClass:
+                # Fallback: look for ANY class that seems like an optimizer
+                ignore_list = ["LHSWrapper", "Optimizer", "DoubleGaussObjective", "Solution", "Problem"]
+                for name, val in exec_env.items():
+                    if isinstance(val, type) and name not in ignore_list:
+                        if any(hasattr(val, m) for m in ["optimize", "solve", "run", "minimize", "__call__"]):
+                            OptimizerClass = val
+                            break
+            
+            if not OptimizerClass: 
+                return solution.set_scores(-np.inf, feedback="No valid 'Optimizer' class found.")
 
+            sig_init = inspect.signature(OptimizerClass.__init__)
+            init_params = sig_init.parameters
+
+            def create_optimizer(b, d, g_cont):
+                kwargs = {}
+                if 'budget' in init_params: kwargs['budget'] = b
+                if 'dim' in init_params: kwargs['dim'] = d
+                if 'grad0_cont' in init_params: kwargs['grad0_cont'] = g_cont
+                
+                if not kwargs:
+                    num_args = len(init_params) - 1 
+                    if num_args >= 3: return OptimizerClass(b, d, g_cont)
+                    if num_args == 2: return OptimizerClass(b, d)
+                    return OptimizerClass(b)
+                return OptimizerClass(**kwargs)
+
+            # 2. ROBUST EXECUTION WITH ENTRY POINT HUNTING
             def call_optimizer(opt_inst, f, g, env):
-                # Double-Layer Injection
                 opt_inst.func, opt_inst.grad_func = f, g
                 env['func'], env['grad_func'] = f, g 
-                sig = inspect.signature(opt_inst.__call__)
-                return opt_inst(f, g) if len(sig.parameters) >= 2 else opt_inst(f)
+                
+                entry_methods = ["__call__", "optimize", "solve", "run", "minimize"]
+                last_error = None
+                
+                for method_name in entry_methods:
+                    if hasattr(opt_inst, method_name):
+                        method = getattr(opt_inst, method_name)
+                        try:
+                            sig = inspect.signature(method)
+                            num_params = len(sig.parameters)
+                            # Handle both (func, grad_func) and (func)
+                            if num_params >= 2: 
+                                return method(f, g) 
+                            else:
+                                return method(f)
+                        except NotImplementedError as e:
+                            last_error = e
+                            continue 
+                            
+                if last_error: raise last_error 
+                raise AttributeError(f"No valid execution method found. Expected one of: {entry_methods}")
 
+            # Dry Run Phase
             try:
-                # PURE POSITIONAL INIT
-                sig_init = inspect.signature(OptimizerClass.__init__)
-                dry_run_opt = OptimizerClass(10, dim) if len(sig_init.parameters) >= 3 else OptimizerClass(10)
-                call_optimizer(dry_run_opt, lambda x: float(np.sum(x**2)), lambda x: 2*x[:18], exec_env)
+                dry_run_opt = create_optimizer(10, dim, grad0_cont)
+                mock_func = lambda x: float(np.sum(x**2))
+                mock_grad = lambda x: 2*x[:18]
+                call_optimizer(dry_run_opt, mock_func, mock_grad, exec_env)
             except Exception as e:
                 return solution.set_scores(-np.inf, feedback=f"Optimizer failed during initial dry run: {e}")
 
-            instances = self.test_instances if test else self.training_instances
+            # 3. Production Evaluation Loop
             losses = []
             scale = (ub - lb) / 2.0
-            for (seed,) in instances:
+            for (seed,) in self.training_instances:
                 np.random.seed(seed)
-                sig_init = inspect.signature(OptimizerClass.__init__)
-                opt = OptimizerClass(self.budget_factor, dim) if len(sig_init.parameters) >= 3 else OptimizerClass(self.budget_factor)
-                b_f = lambda xn: func(lb + (xn + 1.0) / 2.0 * (ub - lb))
-                b_g = lambda xn: grad_fn(lb + (xn + 1.0) / 2.0 * (ub - lb)) * scale[:18]
-                best_f, _ = call_optimizer(opt, b_f, b_g, exec_env)
+                opt = create_optimizer(self.budget_factor, dim, grad0_cont)
+                
+                def bounded_func(xn):
+                    xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
+                    return func(xr)
+                    
+                def bounded_grad(xn):
+                    xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
+                    # Chain rule: d f(xr(xn)) / d xn = df/dxr * dxr/dxn = grad * (ub-lb)/2
+                    return grad_fn(xr) * scale[:18]
+                
+                best_f, best_x = call_optimizer(opt, bounded_func, bounded_grad, exec_env)
                 losses.append(float(best_f))
-            solution.set_scores(-np.mean(losses), feedback=f"Mean loss: {np.mean(losses):.6f}")
+                
+            mean_loss = np.mean(losses)
+            solution.set_scores(-mean_loss, feedback=f"Mean loss: {mean_loss:.6f}. Best single run: {min(losses):.6f}.")
+            
         except Exception as e:
-            solution.set_scores(-np.inf, feedback=f"Error: {e}")
+            solution.set_scores(-np.inf, feedback=f"Error during evaluation: {e}")
+            
         return solution
 
     def test(self, solution: Solution) -> Solution:
         orig = self.training_instances; self.training_instances = self.test_instances
-        result = self.evaluate(solution, test=True)
+        result = self.evaluate(solution)
         self.training_instances = orig; return result
 
     def to_dict(self): return {"name": self.name, "budget_factor": self.budget_factor}
