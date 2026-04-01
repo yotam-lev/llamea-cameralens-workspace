@@ -63,8 +63,20 @@ class Optimizer:
         raise NotImplementedError("Subclasses must implement __call__")
 
 class LensOptimisation(Problem):
-    def __init__(self, training_instances=None, test_instances=None, budget_factor: int = 5000, 
-                 name: str = "Lensoptimisation", eval_timeout: int = 6000, **kwargs):
+    def __init__(
+            self, 
+            training_instances=None, 
+            test_instances=None, 
+            budget_factor: 
+            int = 5000, 
+            name: str = "Lensoptimisation", 
+            eval_timeout: int = 6000, 
+            seeds=5,
+            task_prompt: str = None,       
+            example_prompt: str = None,    
+            format_prompt: str = None,
+            logger=None,
+            **kwargs):
         if training_instances is None: training_instances = [(seed,) for seed in range(1, 10)]
         if test_instances is None: test_instances = [(seed,) for seed in range(11, 16)]
         
@@ -75,29 +87,40 @@ class LensOptimisation(Problem):
             imports="import scipy\nimport numpy as np\nimport jax.numpy as jnp\nfrom scipy.optimize import minimize\n"
         )
         self.budget_factor = budget_factor
-        self.task_prompt = (
+        self.task_prompt = task_prompt if task_prompt is not None else (
             "### STRICT CODING STANDARDS ###\n"
-            "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for the best solution and `es.result[1]` for the best fitness. NEVER use `es.xbest`, `es[0]`, or `es.best.x`.\n"
+            "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for the best solution and `es.result[1]` for the best fitness. NEVER use `es.xbest`, `es[0]`, or `es.best.x`. To get the population size, use `es.popsize` (NOT population_size).\n"
             "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize(func, x0, jac=grad_func, ...)`. The solution is in `res.x`. Ensure `x0` is a 1D array.\n"
             "3. SCOPING: Define all logic within the `Optimizer` class. If you use helper methods, they MUST accept `func` and `grad_func` as arguments explicitly.\n"
-            "4. DIMENSIONS: indices [0-17] are continuous curvatures/distances. indices [18-23] are categorical glass IDs.\n\n"
+            "4. DIMENSIONS: indices [0-17] are continuous curvatures/distances. indices [18-23] are categorical glass IDs.\n"
+            "5. GRADIENT SHAPE AWARENESS: `grad0_cont` is shape (18,). If you apply it to a 24D vector, you MUST slice the target array first to prevent broadcast errors (e.g., `x[:18] += 0.1 * self.grad0_cont`).\n\n"
             "### TASK ###\n"
             "Minimize a 24D lens loss function. indices [0-17] are geometric (differentiable), [18-23] are glass IDs.\n"
             "Framework FORCE-INJECTS 'self.func' and 'self.grad_func' into your Optimizer. Use them.\n"
             "The helper 'lhs' is available via global name or import.\n"
+
         )
-        self.example_prompt = (
+        
+       
+        self.example_prompt = example_prompt if example_prompt is not None else(
             "class Optimizer:\n"
             "    def __init__(self, budget, dim, grad0_cont):\n"
             "        self.budget = budget\n"
             "        self.dim = dim\n"
-            "        self.grad0_cont = grad0_cont # YOU MUST SAVE THIS TO SELF\n"
+            "        self.grad0_cont = grad0_cont # YOU MUST SAVE THIS\n"
             "    def __call__(self, func, grad_func):\n"
-            "        # Example of how to use it:\n"
-            "        # initial_step = 0.1 * self.grad0_cont\n"
+            "        best_f = float('inf')\n"
+            "        best_x = None\n"
+            "        # ALWAYS use keyword arguments for lhs:\n"
+            "        initial_population = lhs(n_samples=20, n_dim=self.dim)\n"
             "        ...\n"
         )
-        self.format_prompt = "# Description: <Provide a concise description of the algorithm, limited to a maximum of two sentences.>\n# Code:\n```python\n<code>\n```"
+        self.format_prompt = format_prompt if format_prompt is not None else (
+            "# Description: <Provide a concise description of the algorithm, limited to a maximum of two sentences.>\n# Code:\n```python\n<code>\n```"
+        )
+    
+
+
 
     def _get_sandbox_env(self):
         import scipy.optimize, cma, random, math

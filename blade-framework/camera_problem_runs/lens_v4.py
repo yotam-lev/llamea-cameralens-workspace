@@ -27,6 +27,56 @@ RUN_META = {
 def configure_run(llm, n_jobs):
     budget = 20 # Evolutionary generations
 
+    task_prompt = (
+        "You are an elite algorithm designer specializing in mixed-variable, black-box optimization.\n\n"
+        "### Problem Physics & Landscape:\n"
+        "Your task is to MINIMIZE a 24-dimensional camera lens design loss function with strictly bounded `[-1, 1]` parameters.\n"
+        "- Indices `x[0:18]`: 18 Continuous parameters (lens curvatures and distances).\n"
+        "- Indices `x[18:24]`: 6 Categorical glass material IDs.\n"
+        "The landscape is highly non-convex and filled with infeasible 'cliffs' where invalid lenses return extremely high loss (`inf`).\n\n"
+        "### THE GRADIENT ADVANTAGE (`grad0_cont`) ###\n"
+        "You are provided with `grad0_cont` (shape: `(18,)`), the exact analytical gradient of the 18 continuous parameters at the baseline design. "
+        "Use this to bias your initial population or take an initial pseudo-gradient descent step. "
+        "WARNING: Because `grad0_cont` is 18D and your solutions are 24D, you MUST slice your target array before applying the gradient (e.g., `x[:18] -= lr * self.grad0_cont`) to prevent NumPy broadcast crashes.\n\n"
+        "### STRICT CODING STANDARDS (CRITICAL) ###\n"
+        "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for best solution and `es.result[1]` for best fitness. To get population size, use `es.popsize`. Remember `es.ask()` returns a LIST of arrays.\n"
+        "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize(func, x0, jac=grad_func, ...)`. The solution is in `res.x`.\n"
+        "3. LHS SAMPLING: When calling the Latin Hypercube sampler, you MUST use keyword arguments: `samples = lhs(n_samples=20, n_dim=self.dim)`.\n"
+    )
+
+    example_prompt = (
+        "Write a completely self-contained Python class named exactly `Optimizer`.\n"
+        "```python\n"
+        "import numpy as np\n"
+        "import cma\n\n"
+        "class Optimizer:\n"
+        "    def __init__(self, budget: int, dim: int, grad0_cont: np.ndarray):\n"
+        "        self.budget = budget\n"
+        "        self.dim = dim\n"
+        "        # YOU MUST SAVE THE GRADIENT TO SELF\n"
+        "        self.grad0_cont = grad0_cont \n\n"
+        "    def __call__(self, func, grad_func=None) -> tuple[float, np.ndarray]:\n"
+        "        best_f = float('inf')\n"
+        "        best_x = np.zeros(self.dim)\n"
+        "        \n"
+        "        initial_population = lhs(n_samples=20, n_dim=self.dim)\n"
+        "        \n"
+        "        # Example: Biasing the continuous variables using a Gradient Descent step\n"
+        "        # Notice the `-=` for MINIMIZATION and the `[:, :18]` slicing to match shapes!\n"
+        "        if self.grad0_cont is not None:\n"
+        "            learning_rate = 0.05\n"
+        "            initial_population[:, :18] -= learning_rate * self.grad0_cont\n\n"
+        "        # Ensure the bounds are respected after the gradient step\n"
+        "        initial_population = np.clip(initial_population, -1, 1)\n"
+        "        \n"
+        "        # Track your budget!\n"
+        "        evals = 0\n"
+        "        # Apply your advanced mixed-variable strategy here...\n"
+        "                \n"
+        "        return best_f, best_x\n"
+        "```\n\n"
+    )
+
     mutation_prompts = [
         # Strategy 1: Memetic Hybrid (Global -> Local)
         "Implement a memetic strategy: Use a population-based global explorer (like DE) "
@@ -83,6 +133,8 @@ def configure_run(llm, n_jobs):
         exp_logger=logger,
         budget=budget,
         n_jobs=n_jobs,
+        example_prompt = example_prompt,
+        task_prompt = task_prompt
     )
 
 if __name__ == "__main__":

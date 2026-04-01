@@ -40,6 +40,54 @@ def configure_run(llm, n_jobs):
     """
     budget = 100
 
+    task_prompt = (
+        "You are an elite algorithm designer specializing in mixed-variable, black-box optimization.\n\n"
+        "### Problem Physics & Landscape:\n"
+        "Your task is to MINIMIZE a 24-dimensional camera lens design loss function with strictly bounded `[-1, 1]` parameters.\n"
+        "- Indices `x[0:18]`: 18 Continuous parameters (lens curvatures and distances).\n"
+        "- Indices `x[18:24]`: 6 Categorical glass material IDs (evaluated as continuous `[-1, 1]` under the hood).\n"
+        "The landscape is highly non-convex and filled with infeasible 'cliffs' where invalid lenses return extremely high loss (`inf`).\n\n"
+        "### STRICT CODING STANDARDS (CRITICAL) ###\n"
+        "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for best solution and `es.result[1]` for best fitness. To get population size, use `es.popsize` (NOT population_size). Remember `es.ask()` returns a LIST of arrays.\n"
+        "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize(func, x0, jac=grad_func, ...)`. The solution is in `res.x`.\n"
+        "3. LHS SAMPLING: When calling the Latin Hypercube sampler, you MUST use keyword arguments to avoid shape mix-ups: `samples = lhs(n_samples=20, n_dim=self.dim)`.\n"
+        "4. SCOPING: Define all logic within the `Optimizer` class. If you use helper methods, they MUST accept `func` and `grad_func` as arguments explicitly.\n\n"
+        "You must track your function evaluations and strictly adhere to `self.budget`."
+    )
+
+    example_prompt = (
+        "Write a completely self-contained Python class named exactly `Optimizer`.\n"
+        "```python\n"
+        "import numpy as np\n"
+        "import cma\n"
+        "from scipy.optimize import differential_evolution\n\n"
+        "class Optimizer:\n"
+        "    def __init__(self, budget: int, dim: int):\n"
+        "        self.budget = budget\n"
+        "        self.dim = dim\n\n"
+        "    def __call__(self, func, grad_func=None) -> tuple[float, np.ndarray]:\n"
+        "        best_f = float('inf')\n"
+        "        best_x = np.zeros(self.dim)\n"
+        "        \n"
+        "        # ALWAYS use keyword arguments for lhs:\n"
+        "        initial_population = lhs(n_samples=10, n_dim=self.dim)\n"
+        "        \n"
+        "        # Track your budget!\n"
+        "        evals = 0\n"
+        "        for x in initial_population:\n"
+        "            if evals >= self.budget: break\n"
+        "            f = func(x)\n"
+        "            evals += 1\n"
+        "            if f < best_f:\n"
+        "                best_f = f\n"
+        "                best_x = x\n\n"
+        "        # Apply your advanced mixed-variable strategy here...\n"
+        "                \n"
+        "        return best_f, best_x\n"
+        "```\n\n"
+    )
+
+
 
     mutation_prompts = [
         # Strategy 1: Hybridization (Global -> Local)
@@ -98,6 +146,8 @@ def configure_run(llm, n_jobs):
         exp_logger=logger,
         budget=budget,
         n_jobs=n_jobs,
+        task_prompt = task_prompt,
+        example_prompt = example_prompt,
     )
 
 
