@@ -120,6 +120,8 @@ def configure_run(llm, n_jobs):
         budget_factor=5000, # MATCH PRODUCTION BUDGET
         eval_timeout=6000,   # Increased to handle 10k evals + local search
         name="DoubleGauss_v4",
+        example_prompt = example_prompt,
+        task_prompt = task_prompt
     )
 
     os.makedirs("results", exist_ok=True)
@@ -133,8 +135,7 @@ def configure_run(llm, n_jobs):
         exp_logger=logger,
         budget=budget,
         n_jobs=n_jobs,
-        example_prompt = example_prompt,
-        task_prompt = task_prompt
+
     )
 
 if __name__ == "__main__":
