@@ -45,7 +45,6 @@ class CallableModule(types.ModuleType):
     def __init__(self, name, tool):
         super().__init__(name)
         self._tool = tool
-        self.__dict__.update(tool.__class__.__dict__)
         self.sample = tool.sample
         self.latin_hypercube_sampling = tool
         self.lhs = tool
@@ -89,18 +88,14 @@ class LensOptimisation(Problem):
         )
         self.example_prompt = (
             "class Optimizer:\n"
-            "    def __init__(self, budget, dim):\n"
-            "        super().__init__(budget, dim)\n"
+            "    def __init__(self, budget, dim, grad0_cont):\n"
+            "        self.budget = budget\n"
+            "        self.dim = dim\n"
+            "        self.grad0_cont = grad0_cont # YOU MUST SAVE THIS TO SELF\n"
             "    def __call__(self, func, grad_func):\n"
-            "        best_f = float('inf')\n"
-            "        best_x = None\n"
-            "        for _ in range(self.budget):\n"
-            "            x = np.random.uniform(-1, 1, self.dim)\n"
-            "            f = func(x)\n"
-            "            if f < best_f:\n"
-            "                best_f = f\n"
-            "                best_x = x\n"
-            "        return best_f, best_x\n"
+            "        # Example of how to use it:\n"
+            "        # initial_step = 0.1 * self.grad0_cont\n"
+            "        ...\n"
         )
         self.format_prompt = "# Description: <Provide a concise description of the algorithm, limited to a maximum of two sentences.>\n# Code:\n```python\n<code>\n```"
 
@@ -121,6 +116,8 @@ class LensOptimisation(Problem):
 
     def _build_objective(self):
         from pathlib import Path
+
+        print(f"this is the path {Path}")
         workspace_root = Path(__file__).resolve().parent
         for _ in range(5):
             if (workspace_root / "camera-lens-simulation").exists(): break
@@ -132,13 +129,20 @@ class LensOptimisation(Problem):
         obj = DoubleGaussObjective(
             enable_grad=True, enable_hessian=False
             )
+        
+        print(f"this is the double gauss object {obj} \n" )
+        
         lb, ub = obj.bounds()
+        print(f"OBjective bounds {obj.bounds()}\n")
         dim = obj.n_theta
         x0_cont, x0_ids = obj.init_from_templates()
+        print(f"x0 continuous {x0_cont}, x0 ids {x0_ids} \n")
         grad0_cont = obj.gradient_cont_int(x0_cont, x0_ids)
 
         def func(x): 
             x_clipped = np.clip(x, lb, ub)
+
+            print(f"This is the clipped x function thing {x_clipped}\n")
             return obj.objective_theta(x_clipped)
             
         def grad_fn(x):
@@ -149,6 +153,7 @@ class LensOptimisation(Problem):
         return func, grad_fn, dim, lb, ub, grad0_cont
 
     def evaluate(self, solution: Solution) -> Solution:
+        print("We have entered the eval class \n")
         """
         Execute the LLM-generated optimizer code on training instances.
         """
@@ -158,6 +163,7 @@ class LensOptimisation(Problem):
             budget = self.budget_factor
             print(f"budget {budget}")
             exec_env = self._get_sandbox_env() 
+
             
             clean_code = re.sub(r'^(?:from|import)\s+(?:latin_hypercube_sampling|lhs).*$', '', solution.code, flags=re.MULTILINE)
             
@@ -165,30 +171,19 @@ class LensOptimisation(Problem):
             exec_env['pop_size'] = 20
             exec_env['glass_ids'] = list(range(100))
 
-
-            print("\n" + "="*40)
-            print("DEBUG: WHAT IS IN SOLUTION.CODE?")
-            print(repr(solution.code)) # repr() will show if it's just "" or "\n"
-            print("-" * 40)
-            print("DEBUG: WHAT IS IN CLEAN_CODE?")
-            print(repr(clean_code))
-            print("="*40 + "\n")
             
             exec(clean_code, exec_env)
-            
+  
             # 1. ROBUST CLASS EXTRACTION
             # We look for a subclass of Optimizer that isn't Optimizer itself
-            OptimizerClass = None
-            for name, val in exec_env.items():
-                if isinstance(val, type) and issubclass(val, Optimizer) and val is not Optimizer:
-                    OptimizerClass = val
-                    break
+            OptimizerClass = exec_env.get("Optimizer")
             
+            # 2. Safety Fallback (Just in case the LLM names it MyOptimizer, Solver, etc.)
             if not OptimizerClass:
-                # Fallback: look for ANY class that seems like an optimizer
-                ignore_list = ["LHSWrapper", "Optimizer", "DoubleGaussObjective", "Solution", "Problem"]
+                ignore_list = ["LHSWrapper", "DoubleGaussObjective", "Solution", "Problem"]
                 for name, val in exec_env.items():
                     if isinstance(val, type) and name not in ignore_list:
+                        # Check if it has an execution method
                         if any(hasattr(val, m) for m in ["optimize", "solve", "run", "minimize", "__call__"]):
                             OptimizerClass = val
                             break

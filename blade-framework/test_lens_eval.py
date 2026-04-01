@@ -11,45 +11,59 @@ from iohblade.solution import Solution
 # Mocking the objective import if needed, but it should work now with path setup
 # LensOptimisation adds it in _build_objective
 code = """
+import numpy as np
+import cma
+
 class Optimizer:
-    def __init__(self, budget, dim):
+    def __init__(self, budget, dim, grad0_cont):
         self.budget = budget
         self.dim = dim
+        self.grad0_cont = grad0_cont
 
-    def __call__(self, func, grad_func):
-        # Initialize the best solution and fitness with infinity and None
+    def __call__(self, func, grad_func=None):
         best_f = float('inf')
         best_x = None
         
-        # Generate an initial population using Latin Hypercube Sampling
-        initial_population = lhs(self.dim, samples=10)
+        # FIX 1: Explicitly pass arguments to prevent shape mixing
+        initial_population = lhs(n_samples=10, n_dim=self.dim)
         
         # Bias the initial population distribution based on the gradient information
         for i in range(initial_population.shape[0]):
-            # Use the gradient to adjust the first 18 continuous variables
-            initial_population[i, :18] += 0.05 * grad0_cont
+            initial_population[i, :18] += 0.05 * self.grad0_cont
         
-        # Initialize CMA-ES with the biased initial population and adaptive parameters
+        # Initialize CMA-ES with the biased initial population
         es = cma.CMAEvolutionStrategy(initial_population.mean(axis=0), 0.3)
         
-        for _ in range(self.budget):
-            solutions = []
+        # Track evaluations to respect the budget
+        evals = 0
+        
+        while evals < self.budget:
+            # FIX 2: es.ask() returns a full list of solutions (the population)
+            solutions = es.ask()
             fitness_values = []
             
-            # Generate a new batch of solutions
-            while len(solutions) < 10:
-                x = es.ask()
+            for x in solutions:
+                # Stop if we hit the strict evaluation budget
+                if evals >= self.budget:
+                    # Provide a dummy high fitness for unevaluated samples just to keep CMA-ES happy
+                    fitness_values.append(float('inf'))
+                    continue
+                    
                 f = func(x)
+                evals += 1
                 
                 if f < best_f:
                     best_f = f
                     best_x = x
-                
-                solutions.append(x)
+                    
                 fitness_values.append(f)
             
-            # Tell CMA-ES the results of the evaluations, allowing it to adapt its parameters
+            # Tell CMA-ES the results of the evaluations
             es.tell(solutions, fitness_values)
+            
+            # Optional: Stop early if CMA-ES converges
+            if es.stop():
+                break
         
         return best_f, best_x
 """
@@ -76,7 +90,7 @@ if CAMERA_LENS_ROOT not in sys.path:
 print("Evaluating solution...")
 
 evaluated_sol = prob.evaluate(sol)
-print(evaluated_sol)
+print(f"this is the evaluated solution{evaluated_sol}")
 
 print(f"Fitness: {evaluated_sol.fitness}")
 print(f"Feedback: {evaluated_sol.feedback}")

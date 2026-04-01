@@ -6,6 +6,8 @@ from typing import Optional
 
 
 class Solution:
+
+    print("Solution script just got called")
     """
     Represents a candidate solution (an individual) in the evolutionary algorithm.
     Each individual has properties such as code, fitness, feedback, and metadata for additional information.
@@ -21,7 +23,10 @@ class Solution:
         parent_ids=[],
         operator=None,
         task_prompt="",
+
     ):
+        
+
         """
         Initializes an individual with optional attributes.
 
