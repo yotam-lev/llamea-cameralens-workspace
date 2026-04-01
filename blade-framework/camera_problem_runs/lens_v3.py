@@ -133,6 +133,8 @@ def configure_run(llm, n_jobs):
         budget_factor=5000,
         eval_timeout=600,
         name="DoubleGauss_v3",
+        task_prompt = task_prompt,
+        example_prompt = example_prompt,
     )
 
     os.makedirs("results", exist_ok=True)
@@ -146,8 +148,7 @@ def configure_run(llm, n_jobs):
         exp_logger=logger,
         budget=budget,
         n_jobs=n_jobs,
-        task_prompt = task_prompt,
-        example_prompt = example_prompt,
+        
     )
 
 
