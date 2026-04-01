@@ -107,7 +107,10 @@ class Solution:
             `error: Exception`: Exception object encountered during `exec` of the code block.
         """
         self.fitness = fitness
+        print(f"We in solutions this the fitness: {fitness}\n")
+        
         self.feedback = feedback
+        print(f"We in solutions this the feedback: {feedback}\n")
 
         if error is not None:
             if not isinstance(error, Exception):
