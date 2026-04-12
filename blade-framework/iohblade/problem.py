@@ -1,3 +1,5 @@
+
+import time
 import inspect
 import json
 import multiprocessing
@@ -73,6 +75,8 @@ def simplify_subprocess_error(stderr: str, solution=None):
 def evaluate_in_subprocess(problem, conn, solution):
     """Evaluate a solution in a dedicated virtual environment."""
     proc = None
+
+    print(f"Evaluation has begun  {time.ctime()}\n")
     try:
         env_path = problem._env_path
         python_bin = problem._python_bin
@@ -252,6 +256,7 @@ class Problem(ABC):
 
         # solution = self.evaluate(solution) #old fashioned way
         # Else create a new process for evaluation with timeout
+        start_t = time.time()
         stdout = ""
         stderr = ""
         self._last_stdout = ""
@@ -279,6 +284,7 @@ class Problem(ABC):
                 )
             if parent_conn.poll():
                 result = parent_conn.recv()
+                print(f"This is variable result from result = parent_conn.recv ../problem.py: {result}\n")
                 if isinstance(result, dict):
                     stdout = result.get("stdout", "")
                     stderr = result.get("stderr", "")
@@ -305,6 +311,7 @@ class Problem(ABC):
                     raise result
                 elif isinstance(result, Solution):
                     solution = result
+                    print(f"This is the variable solution from l311 problem.py: {solution}")
                 elif isinstance(result, str):
                     solution.set_scores(
                         -np.inf,

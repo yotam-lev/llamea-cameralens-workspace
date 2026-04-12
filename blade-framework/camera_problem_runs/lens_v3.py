@@ -2,6 +2,7 @@
 V2: Larger population, diverse mutations, tighter timeout,
     with domain-aware lens optimisation context.
 """
+
 from math import lcm
 import os
 import sys
@@ -51,7 +52,8 @@ def configure_run(llm, n_jobs):
         "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for best solution and `es.result[1]` for best fitness. To get population size, use `es.popsize` (NOT population_size). Remember `es.ask()` returns a LIST of arrays.\n"
         "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize(func, x0, jac=grad_func, ...)`. The solution is in `res.x`.\n"
         "3. LHS SAMPLING: When calling the Latin Hypercube sampler, you MUST use keyword arguments to avoid shape mix-ups: `samples = lhs(n_samples=20, n_dim=self.dim)`.\n"
-        "4. SCOPING: Define all logic within the `Optimizer` class. If you use helper methods, they MUST accept `func` and `grad_func` as arguments explicitly.\n\n"
+        "4. SCOPING: Define all logic within the `Optimizer` class. If you use helper methods, they MUST accept `func` and `grad_func` as arguments explicitly.\n"
+        "5. FEEDBACK: You can implement `receive_feedback(self, info)` to get structured data after each call, or use `print()` to send debugging info back to yourself.\n\n"
         "You must track your function evaluations and strictly adhere to `self.budget`."
     )
 
@@ -87,27 +89,22 @@ def configure_run(llm, n_jobs):
         "```\n\n"
     )
 
-
-
     mutation_prompts = [
         # Strategy 1: Hybridization (Global -> Local)
         "Implement a two-phase optimization strategy. Use a robust global explorer "
         "(like Differential Evolution) for the first 80% of the budget to find "
         "promising regions, then switch to a high-precision local search (like "
         "CMA-ES or Nelder-Mead) for final refinement.",
-        
         # Strategy 2: Specialized Discrete Handling
         "Dimensions 18-23 are categorical glass material IDs. Refine the algorithm "
         "to treat these dimensions as discrete integers using categorical crossover "
         "or rounding, while maintaining high-precision continuous search for the "
         "first 18 dimensions (curvatures and distances).",
-        
         # Strategy 3: Stagnation & Restarts
         "The lens design landscape is highly multimodal. Implement a multi-start or "
         "restart strategy that detects when the search has stalled in a local "
         "optimum and re-initializes in a new region while preserving the best "
         "solution found so far.",
-        
         # Strategy 4: Adaptive Parameters
         "Improve the algorithm by making its internal parameters (like step size, "
         "mutation factor F, or crossover rate CR) self-adaptive, so they evolve "
@@ -130,11 +127,11 @@ def configure_run(llm, n_jobs):
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=5000,
+        budget_factor=2000,
         eval_timeout=600,
         name="DoubleGauss_v3",
-        task_prompt = task_prompt,
-        example_prompt = example_prompt,
+        task_prompt=task_prompt,
+        example_prompt=example_prompt,
     )
 
     os.makedirs("results", exist_ok=True)
@@ -148,12 +145,10 @@ def configure_run(llm, n_jobs):
         exp_logger=logger,
         budget=budget,
         n_jobs=n_jobs,
-        
     )
 
 
 if __name__ == "__main__":
-    
     experiment = configure_run(get_llm(), n_jobs=1)
 
     print(f"Starting experiment: {RUN_META['name']} - {RUN_META['description']}")

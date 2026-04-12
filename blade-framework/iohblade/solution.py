@@ -1,3 +1,4 @@
+import time
 import json
 import uuid
 import traceback
@@ -7,7 +8,7 @@ from typing import Optional
 
 class Solution:
 
-    print("Solution script just got called")
+    print(f"Solution script just got called {time.ctime()}")
     """
     Represents a candidate solution (an individual) in the evolutionary algorithm.
     Each individual has properties such as code, fitness, feedback, and metadata for additional information.
@@ -107,10 +108,10 @@ class Solution:
             `error: Exception`: Exception object encountered during `exec` of the code block.
         """
         self.fitness = fitness
-        print(f"We in solutions this the fitness: {fitness}\n")
+        print(f"The fitness score is: {fitness}\n")
         
         self.feedback = feedback
-        print(f"We in solutions this the feedback: {feedback}\n")
+        print(f"The feedback: {feedback}\n")
 
         if error is not None:
             if not isinstance(error, Exception):

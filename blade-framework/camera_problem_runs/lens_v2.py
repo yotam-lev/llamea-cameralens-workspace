@@ -2,6 +2,7 @@
 V2: Larger population, diverse mutations, tighter timeout,
     with domain-aware lens optimisation context.
 """
+
 from math import lcm
 import os
 import sys
@@ -42,6 +43,42 @@ def configure_run(llm, n_jobs):
 
     RS = RandomSearch(llm, budget=budget, name="RS_baseline")
 
+    task_prompt = (
+        "You are an algorithm designer writing a Python optimization class.\n\n"
+        "### Problem Details:\n"
+        "Write a completely self-contained Python class named `Optimizer` to minimize a black-box objective function.\n"
+        "Total dimensions = 24. All variables are bounded between [-1, 1].\n"
+        "- Indices 0 to 17 are continuous variables.\n"
+        "- Indices 18 to 23 are discrete categorical variables.\n\n"
+        "### Rules & Strategy:\n"
+        "1. Keep the algorithm simple. Do not use highly complex multi-library hybrid strategies.\n"
+        "2. STRICT BUDGET: You have a strict maximum number of function evaluations defined by `self.budget`. You MUST NOT evaluate `func(x)` more times than `self.budget`.\n"
+        "3. STRATEGY: Treat all 24 variables as continuous during your search (using a simple random search or basic scipy minimizer). However, you MUST apply `np.round()` to indices 18-23 right before passing the vector to the objective function `func`.\n"
+        "4. Return the absolute best fitness value and the best solution vector found.\n"
+        "5. FEEDBACK: You can implement `receive_feedback(self, info)` to get structured data after each call, or use `print()` to send debugging info back to yourself.\n"
+    )
+
+    example_prompt = (
+        "Write a completely self-contained Python class named exactly `Optimizer`.\n"
+        "```python\n"
+        "import numpy as np\n"
+        "from scipy.optimize import minimize\n\n"
+        "class Optimizer:\n"
+        "    def __init__(self, budget: int, dim: int):\n"
+        "        self.budget = budget\n"
+        "        self.dim = dim\n\n"
+        "    def __call__(self, func, grad_func=None) -> tuple[float, np.ndarray]:\n"
+        "        best_f = float('inf')\n"
+        "        best_x = np.zeros(self.dim)\n"
+        "        \n"
+        "        # Implement your simple continuous search here.\n"
+        "        # Remember to round x[18:24] before calling func(x)!\n"
+        "        # Strictly track evaluations to not exceed self.budget.\n"
+        "                \n"
+        "        return best_f, best_x\n"
+        "```\n\n"
+    )
+
     mutation_prompts = [
         # Small refinement — tweak parameters, fix bugs
         "Refine the strategy of the selected algorithm to improve it.",
@@ -75,6 +112,8 @@ def configure_run(llm, n_jobs):
         budget_factor=2000,
         eval_timeout=300,
         name="DoubleGauss_v2",
+        task_prompt=task_prompt,
+        example_prompt=example_prompt,
     )
 
     os.makedirs("results", exist_ok=True)
@@ -92,7 +131,6 @@ def configure_run(llm, n_jobs):
 
 
 if __name__ == "__main__":
-    
     experiment = configure_run(get_llm(), n_jobs=1)
 
     print(f"Starting experiment: {RUN_META['name']} - {RUN_META['description']}")

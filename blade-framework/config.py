@@ -12,7 +12,7 @@ import logging
 import multiprocessing
 import platform
 import subprocess
-
+import sys
 os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
 os.environ["XLA_PYTHON_CLIENT_ALLOCATOR"] = "platform"
 
@@ -194,6 +194,50 @@ def get_llm():
 
 
     from iohblade.llm import Ollama_LLM
+    
+    try:
+        result = subprocess.run(
+            ["ollama", "ls"],
+            capture_output=True, text=True, check=True,
+        )
+        lines = result.stdout.strip().split('\n')
+        
+        if len(lines) < 2:
+            print("No models found. Please pull a model first using 'ollama pull <model>'.")
+            sys.exit(1)
+            
+        # Parse the models, skipping the header line
+        models = []
+        for line in lines[1:]:
+            parts = line.split()
+            if parts:
+                models.append(parts[0]) # The first column is the model name
+                
+        # Print the enumerated list
+        print("Available models:")
+        for i, model in enumerate(models, start=1):
+            print(f"{i}. {model}")
+            
+    except FileNotFoundError:
+        print("Error: Ollama is not installed or not found in your system's PATH.")
+        sys.exit(1)
+    except subprocess.CalledProcessError as e:
+        print(f"Error communicating with Ollama: {e}")
+        sys.exit(1)
 
-    logger.info("[config] 🔄 Using Ollama local (qwen2.5-coder:14b)")
-    return Ollama_LLM("qwen3-coder:30b")
+    while True:
+        choice = input("\nEnter the number of the model you want to use: ").strip()
+        
+        try:
+            choice_idx = int(choice) - 1
+            
+            # Check if the number is within our list bounds
+            if 0 <= choice_idx < len(models):
+                return Ollama_LLM(models[choice_idx])
+            else:
+                print(f"Invalid selection. Please choose a number between 1 and {len(models)}.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+    
+
+    
