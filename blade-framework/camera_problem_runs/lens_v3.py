@@ -29,105 +29,81 @@ RUN_META = {
 
 
 def configure_run(llm, n_jobs):
-    """
-    Return a fully configured Experiment ready to be called.
-
-    Args:
-        llm: Pre-initialized LLM instance from config.
-        n_jobs: Worker count from config.
-
-    Returns:
-        iohblade.experiment.Experiment instance.
-    """
-    budget = 100
+    budget = 20  # Reduced for more focused evolutionary progress
 
     task_prompt = (
-        "You are an elite algorithm designer specializing in mixed-variable, black-box optimization.\n\n"
-        "### Problem Physics & Landscape:\n"
-        "Your task is to MINIMIZE a 24-dimensional camera lens design loss function with strictly bounded `[-1, 1]` parameters.\n"
-        "- Indices `x[0:18]`: 18 Continuous parameters (lens curvatures and distances).\n"
-        "- Indices `x[18:24]`: 6 Categorical glass material IDs (evaluated as continuous `[-1, 1]` under the hood).\n"
-        "The landscape is highly non-convex and filled with infeasible 'cliffs' where invalid lenses return extremely high loss (`inf`).\n\n"
-        "### STRICT CODING STANDARDS (CRITICAL) ###\n"
-        "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for best solution and `es.result[1]` for best fitness. To get population size, use `es.popsize` (NOT population_size). Remember `es.ask()` returns a LIST of arrays.\n"
-        "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize(func, x0, jac=grad_func, ...)`. The solution is in `res.x`.\n"
-        "3. LHS SAMPLING: When calling the Latin Hypercube sampler, you MUST use keyword arguments to avoid shape mix-ups: `samples = lhs(n_samples=20, n_dim=self.dim)`.\n"
-        "4. SCOPING: Define all logic within the `Optimizer` class. If you use helper methods, they MUST accept `func` and `grad_func` as arguments explicitly.\n"
-        "5. FEEDBACK: You can implement `receive_feedback(self, info)` to get structured data after each call, or use `print()` to send debugging info back to yourself.\n\n"
-        "You must track your function evaluations and strictly adhere to `self.budget`."
+        "You are an elite algorithm designer specializing in mixed-variable optimization.\n\n"
+        "### Problem Structure:\n"
+        "Minimize a 24-dimensional lens loss function. Parameters are strictly bounded in `[-1, 1]`.\n"
+        "- `x[0:18]`: Continuous geometry.\n"
+        "- `x[18:24]`: Categorical material IDs (round to nearest integer inside your code).\n\n"
+        "### STRICT API USAGE (DO NOT DEVIATE):\n"
+        "1. LHS SAMPLING: Use exactly this: `samples = lhs(n_samples=N, n_dim=self.dim)`.\n"
+        "2. CMA-ES: Use exactly this: `es = cma.CMAEvolutionStrategy(x0, sigma0, inopts={'popsize': N})`. \n"
+        "   Access results via `es.result[0]` (best x) and `es.result[1]` (best fitness).\n"
+        "3. SCIPY MINIMIZE: `res = minimize(func, x0, method='L-BFGS-B', bounds=[(-1, 1)]*len(x0))`.\n"
+        "4. BUDGET: You MUST check `if self.evals >= self.budget` before every call to `func(x)`.\n"
     )
 
     example_prompt = (
-        "Write a completely self-contained Python class named exactly `Optimizer`.\n"
         "```python\n"
-        "import numpy as np\n"
-        "import cma\n"
-        "from scipy.optimize import differential_evolution\n\n"
         "class Optimizer:\n"
         "    def __init__(self, budget: int, dim: int):\n"
         "        self.budget = budget\n"
-        "        self.dim = dim\n\n"
-        "    def __call__(self, func, grad_func=None) -> tuple[float, np.ndarray]:\n"
-        "        best_f = float('inf')\n"
-        "        best_x = np.zeros(self.dim)\n"
+        "        self.dim = dim\n"
+        "        self.evals = 0\n"
+        "        self.best_f = float('inf')\n"
+        "        self.best_x = np.zeros(dim)\n"
+        "\n"
+        "    def _evaluate(self, x, func):\n"
+        "        if self.evals >= self.budget: return float('inf')\n"
+        "        f = func(x)\n"
+        "        self.evals += 1\n"
+        "        if f < self.best_f:\n"
+        "            self.best_f = f\n"
+        "            self.best_x = x.copy()\n"
+        "        return f\n"
+        "\n"
+        "    def __call__(self, func, grad_func=None):\n"
+        "        # 1. Initialize with LHS\n"
+        "        pop = lhs(n_samples=10, n_dim=self.dim)\n"
+        "        for x in pop: self._evaluate(x, func)\n"
         "        \n"
-        "        # ALWAYS use keyword arguments for lhs:\n"
-        "        initial_population = lhs(n_samples=10, n_dim=self.dim)\n"
+        "        # 2. Optimization Loop (e.g., CMA-ES for continuous 18D)\n"
+        "        # Combine continuous sample x_c with best categorical best_x[18:]\n"
+        "        # full_x = np.concatenate([x_c, self.best_x[18:]])\n"
+        "        # self._evaluate(full_x, func)\n"
         "        \n"
-        "        # Track your budget!\n"
-        "        evals = 0\n"
-        "        for x in initial_population:\n"
-        "            if evals >= self.budget: break\n"
-        "            f = func(x)\n"
-        "            evals += 1\n"
-        "            if f < best_f:\n"
-        "                best_f = f\n"
-        "                best_x = x\n\n"
-        "        # Apply your advanced mixed-variable strategy here...\n"
-        "                \n"
-        "        return best_f, best_x\n"
-        "```\n\n"
+        "        return self.best_f, self.best_x\n"
+        "```\n"
     )
 
     mutation_prompts = [
-        # Strategy 1: Hybridization (Global -> Local)
-        "Implement a two-phase optimization strategy. Use a robust global explorer "
-        "(like Differential Evolution) for the first 80% of the budget to find "
-        "promising regions, then switch to a high-precision local search (like "
-        "CMA-ES or Nelder-Mead) for final refinement.",
-        # Strategy 2: Specialized Discrete Handling
-        "Dimensions 18-23 are categorical glass material IDs. Refine the algorithm "
-        "to treat these dimensions as discrete integers using categorical crossover "
-        "or rounding, while maintaining high-precision continuous search for the "
-        "first 18 dimensions (curvatures and distances).",
-        # Strategy 3: Stagnation & Restarts
-        "The lens design landscape is highly multimodal. Implement a multi-start or "
-        "restart strategy that detects when the search has stalled in a local "
-        "optimum and re-initializes in a new region while preserving the best "
-        "solution found so far.",
-        # Strategy 4: Adaptive Parameters
-        "Improve the algorithm by making its internal parameters (like step size, "
-        "mutation factor F, or crossover rate CR) self-adaptive, so they evolve "
-        "during the run based on the success of the optimization.",
+        "Hybrid Strategy: Use LHS to find a starting basin, then run CMA-ES on the 18 continuous dimensions while keeping the 6 glass IDs fixed. Periodically mutate the glass IDs using random swaps.",
+        "Iterative Refinement: Optimize continuous variables using L-BFGS-B (via scipy.minimize) for 50 evals, then perform a discrete coordinate search on the 6 glass IDs. Repeat until budget is exhausted.",
+        "Population-Based Search: Implement a simple Differential Evolution (DE) algorithm where the 18 continuous variables use DE mutation, but the 6 glass variables use uniform crossover to maintain discrete properties.",
+        "Gradient-Biased Exploration: Use the provided `grad_func` to take a small initial step from the best LHS sample. Then, use that improved point as the centroid for a local CMA-ES search.",
     ]
 
     llamea = LLaMEA(
         llm,
         budget=budget,
-        name="LLaMEA_v3",
-        n_parents=6,
-        n_offspring=12,
+        name="LLaMEA_v3_Robust",
+        n_parents=2,
+        n_offspring=4,
         elitism=True,
         mutation_prompts=mutation_prompts,
     )
 
-    training_seeds = [(s,) for s in range(1, 10)]
-    test_seeds = [(s,) for s in range(11, 16)]
+    training_seeds = [
+        (s,) for s in range(1, 3)
+    ]  # Reduced seeds for faster local evaluation
+    test_seeds = [(s,) for s in range(11, 13)]
 
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=2000,
+        budget_factor=500,  # Reduced budget for 30b stability
         eval_timeout=600,
         name="DoubleGauss_v3",
         task_prompt=task_prompt,
@@ -140,7 +116,7 @@ def configure_run(llm, n_jobs):
     return Experiment(
         methods=[llamea],
         problems=[lens_problem],
-        runs=3,
+        runs=1,
         show_stdout=True,
         exp_logger=logger,
         budget=budget,
