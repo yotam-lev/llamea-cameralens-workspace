@@ -136,6 +136,20 @@ class DoubleGaussObjective:
             self._f_loss(jnp.asarray(theta[: self.n_x]), jnp.asarray(theta[self.n_x :]))
         )
 
+    def objective_components(self, theta: Sequence[float]) -> dict:
+        """Returns individual loss components for detailed feedback."""
+        vals = self.factory.make_jit_loss_full()(
+            jnp.asarray(theta[: self.n_x]), jnp.asarray(theta[self.n_x :])
+        )
+        return {
+            "rms_spot": float(vals[0]),
+            "trace_penalty": float(vals[1]),
+            "edge_thickness_penalty": float(vals[2]),
+            "axis_thickness_penalty": float(vals[3]),
+            "working_distance_penalty": float(vals[4]),
+            "effl_penalty": float(vals[5]),
+        }
+
     def gradient_cont_int(
         self, continuous_params: Sequence[float], glasses_ids: Sequence[float]
     ) -> tuple[np.ndarray, np.ndarray]:

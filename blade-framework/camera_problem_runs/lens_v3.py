@@ -38,7 +38,7 @@ def configure_run(llm, n_jobs):
         "- `x[0:18]`: Continuous geometry.\n"
         "- `x[18:24]`: Categorical material IDs (round to nearest integer inside your code).\n\n"
         "### STRICT API USAGE (DO NOT DEVIATE):\n"
-        "1. LHS SAMPLING: Use exactly this: `samples = lhs(n_samples=N, n_dim=self.dim)`.\n"
+        "1. LHS SAMPLING: The `lhs` function is already injected globally into your environment. DO NOT import it (e.g., NEVER write `from pyDOE import lhs`). Call it exactly like this: `samples = lhs(n_samples=N, n_dim=self.dim)`."
         "2. CMA-ES: Use exactly this: `es = cma.CMAEvolutionStrategy(x0, sigma0, inopts={'popsize': N})`. \n"
         "   Access results via `es.result[0]` (best x) and `es.result[1]` (best fitness).\n"
         "3. SCIPY MINIMIZE: `res = minimize(func, x0, method='L-BFGS-B', bounds=[(-1, 1)]*len(x0))`.\n"

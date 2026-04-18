@@ -331,6 +331,12 @@ class LensOptimisation(Problem):
             losses = []
             scale = (ub - lb) / 2.0
 
+            # Normalize the baseline x0 for the LLM
+            x0_cont, x0_ids = obj.init_from_templates()
+            x0_full = obj.pack_theta(x0_cont, x0_ids)
+            x0_norm = (x0_full - lb) / (ub - lb) * 2.0 - 1.0
+            exec_env["x0_baseline"] = x0_norm
+
             import io
             from contextlib import redirect_stdout, redirect_stderr
 
@@ -338,15 +344,21 @@ class LensOptimisation(Problem):
 
             for (seed,) in self.training_instances:
                 np.random.seed(seed)
+                # Pass baseline to init
                 opt = create_optimizer(self.budget_factor, dim, grad0_cont)
+                if hasattr(opt, "x0_baseline"):
+                    opt.x0_baseline = x0_norm
 
                 def bounded_func(xn):
                     xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
                     f_val = func(xr)
-                    # Provide feedback to the optimizer if it wants it
+                    # Provide rich feedback to the optimizer if it wants it
                     if hasattr(opt, "receive_feedback"):
                         try:
-                            opt.receive_feedback({"loss": f_val, "x_normalized": xn})
+                            # Use the component breakdown from the objective
+                            components = obj.objective_components(xr)
+                            components.update({"loss": f_val, "x_normalized": xn})
+                            opt.receive_feedback(components)
                         except:
                             pass
                     return f_val
