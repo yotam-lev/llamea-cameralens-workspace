@@ -15,110 +15,123 @@ if BLADE_FRAMEWORK_ROOT not in sys.path:
 
 # 2. Define the Optimizer (PASTE YOUR EXTRACTED CODE HERE)
 # ---------------------------------------------------------
+import numpy as np
+from scipy.stats import qmc
+from scipy.optimize import minimize
+import random
+
 class Optimizer:
     def __init__(self, budget: int, dim: int):
         self.budget = budget
         self.dim = dim
-        self.continuous_dim = 18
-        self.categorical_dim = 6
+        self.evals = 0
+        self.best_f = float('inf')
+        self.best_x = np.zeros(dim)
+        self.de_pop = []
+        self.de_pop_size = 200
+        self.de_iter = 0
 
-    def latin_hypercube_sampling(self, n_samples: int) -> np.ndarray:
-        samples = np.zeros((n_samples, self.dim))
-        for i in range(self.continuous_dim):
-            samples[:, i] = np.random.uniform(-1, 1, n_samples)
-        for i in range(self.categorical_dim):
-            samples[:, self.continuous_dim + i] = np.random.randint(0, 100, n_samples)
-        return samples
+    def _evaluate(self, x, func):
+        if self.evals >= self.budget: return float('inf')
+        # FORCE ROUNDING OF CATEGORICALS TO NEAREST 0.5 in [-1, 1]
+        eval_x = x.copy()
+        eval_x[18:24] = np.round(eval_x[18:24] * 2) / 2 
+        eval_x[18:24] = np.clip(eval_x[18:24], -1.0, 1.0)
+        f = func(eval_x)
+        self.evals += 1
+        if f < self.best_f:
+            self.best_f = f
+            self.best_x = eval_x.copy()
+        return f
 
-    def differential_evolution(self, func, pop_size=50, max_iter=100) -> tuple[float, np.ndarray]:
-        bounds = [(-1, 1)] * self.continuous_dim + [(0, 99)] * self.categorical_dim
-        population = self.latin_hypercube_sampling(pop_size)
-        fitness = np.array([func(ind) for ind in population])
-        
-        F = np.random.uniform(0.5, 0.9)
-        CR = np.random.uniform(0.7, 0.9)
+    def _de_mutation(self, pop, idx, F=0.8):
+        """DE mutation strategy"""
+        a, b, c = random.sample(range(len(pop)), 3)
+        while a == idx or b == idx or c == idx:
+            a, b, c = random.sample(range(len(pop)), 3)
+        return pop[a] + F * (pop[b] - pop[c])
 
-        for _ in range(max_iter):
-            new_population = []
-            new_fitness = []
-            for i in range(pop_size):
-                idxs = np.random.choice(pop_size, 3, replace=False)
-                a, b, c = population[idxs]
+    def _de_crossover(self, target, mutant, CR=0.7):
+        """DE crossover"""
+        trial = np.copy(target)
+        if random.random() < CR:
+            j = random.randint(0, len(target) - 1)
+            trial[j] = mutant[j]
+        else:
+            # Ensure at least one dimension is mutated
+            j = random.randint(0, len(target) - 1)
+            trial[j] = mutant[j]
+        return trial
+
+    def __call__(self, func, grad_func=None):
+        # 1. Initialization (LHS)
+        sampler = qmc.LatinHypercube(d=self.dim, seed=42)
+        pop = sampler.random(n=20)
+        pop = qmc.scale(pop, [0]*self.dim, [1]*self.dim)
+        # Convert to [-1, 1] bounds
+        pop = pop * 2 - 1
+        for x in pop: 
+            self._evaluate(x, func)
+
+        # 2. Initialize DE population
+        self.de_pop = [self.best_x.copy()]
+        for _ in range(self.de_pop_size - 1):
+            # Generate random individuals in bounds
+            x = np.random.uniform(-1, 1, self.dim)
+            self.de_pop.append(x)
+        self.de_pop = np.array(self.de_pop)
+
+        # 3. Main Loop
+        while self.evals < self.budget:
+            # DE generation
+            new_pop = []
+            for i in range(len(self.de_pop)):
+                if self.evals >= self.budget: break
                 
-                mutant = np.zeros(self.dim)
-                for j in range(self.continuous_dim):
-                    if np.random.rand() < CR or j == i:
-                        mutant[j] = a[j] + F * (b[j] - c[j])
-                    else:
-                        mutant[j] = population[i][j]
+                # Mutation
+                mutant = self._de_mutation(self.de_pop, i)
                 
-                for j in range(self.categorical_dim):
-                    mutant[self.continuous_dim + j] = np.random.randint(0, 100)
+                # Crossover
+                trial = self._de_crossover(self.de_pop[i], mutant)
                 
-                new_f = func(mutant)
-                if new_f < fitness[i]:
-                    new_population.append(mutant)
-                    new_fitness.append(new_f)
+                # Ensure bounds
+                trial = np.clip(trial, -1, 1)
+                
+                # Evaluate
+                f = self._evaluate(trial, func)
+                new_pop.append(trial)
+                
+                # Keep the best individual from DE
+                if f < self.best_f:
+                    self.de_pop[i] = trial.copy()
                 else:
-                    new_population.append(population[i])
-                    new_fitness.append(fitness[i])
+                    # Keep the old individual
+                    pass
             
-            population = np.array(new_population)
-            fitness = np.array(new_fitness)
-        
-        best_idx = np.argmin(fitness)
-        return fitness[best_idx], population[best_idx]
+            if len(new_pop) > 0:
+                self.de_pop = np.array(new_pop)
+            
+            # Local refinement with L-BFGS-B
+            if grad_func is not None and self.evals < self.budget:
+                # Use best solution from DE for local search
+                x_disc = self.best_x[18:24]
+                x_cont = self.best_x[:18]
+                
+                def cost_wrap(x_cont):
+                    return func(np.concatenate([x_cont, x_disc]))
+                
+                def grad_wrap(x_cont):
+                    return grad_func(np.concatenate([x_cont, x_disc]))[:18]
+                
+                try:
+                    res = minimize(cost_wrap, x_cont, method='L-BFGS-B', jac=grad_wrap, bounds=[(-1, 1)]*18)
+                    if res.success:
+                        x_new = np.concatenate([res.x, x_disc])
+                        self._evaluate(x_new, func)
+                except:
+                    pass
 
-    def local_refinement(self, func, x0, max_iter=50) -> tuple[float, np.ndarray]:
-        # Custom local refinement strategy for handling categorical variables
-        continuous_x = x0[:self.continuous_dim]
-        categorical_x = x0[self.continuous_dim:]
-        
-        # Optimize continuous part using Nelder-Mead
-        def continuous_func(continuous_part):
-            new_x = np.concatenate((continuous_part, categorical_x))
-            return func(new_x)
-        
-        from scipy.optimize import minimize
-        res = minimize(continuous_func, continuous_x, method='Nelder-Mead', options={'maxiter': max_iter})
-        best_continuous_x = res.x
-        
-        # Optimize categorical part by evaluating neighbors
-        best_categorical_f = float('inf')
-        for i in range(self.categorical_dim):
-            for j in [-1, 0, 1]:
-                new_categorical_x = categorical_x.copy()
-                new_categorical_x[i] = (new_categorical_x[i] + j) % 100
-                new_x = np.concatenate((best_continuous_x, new_categorical_x))
-                f = func(new_x)
-                if f < best_categorical_f:
-                    best_categorical_f = f
-                    best_categorical_x = new_categorical_x
-        
-        return best_categorical_f, np.concatenate((best_continuous_x, best_categorical_x))
-
-    def __call__(self, func) -> tuple[float, np.ndarray]:
-        best_f = float('inf')
-        best_x = None
-        
-        # Global exploration phase
-        for _ in range(10):
-            f, x = self.differential_evolution(func)
-            if f < best_f:
-                best_f = f
-                best_x = x
-        
-        # Local exploitation phase
-        if best_f == float('inf'):
-            return best_f, np.zeros(self.dim)
-        
-        for _ in range(5):
-            local_best_f, local_best_x = self.local_refinement(func, best_x)
-            if local_best_f < best_f:
-                best_f = local_best_f
-                best_x = local_best_x
-        
-        return best_f, best_x
+        return self.best_f, self.best_x
 # ---------------------------------------------------------
 
 def main():
@@ -137,8 +150,8 @@ def main():
     print(f"Initial Template Loss: {loss_init:.6f}")
     
     # We use a larger budget for a "production" run
-    budget = 10000 
-    seed = 42
+    budget = 50000 
+    seed = 32
     np.random.seed(seed)
     
     print(f"Running optimization (Budget: {budget}, Seed: {seed})...")

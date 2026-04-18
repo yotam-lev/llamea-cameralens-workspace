@@ -145,10 +145,12 @@ class LLM(ABC):
             try:
                 cost = calculate_prompt_cost(input_msg, self.model)
             except Exception:
+                print(f"Error calculating prompt cost for message: {input_msg[:100]}... with model {self.model}. Error: {Exception}\n")
                 cost = 0
             try:
                 tokens = count_message_tokens(input_msg, model=self.model)
             except Exception:
+                print(f"Error counting tokens for message: {input_msg[:100]}... with model {self.model}. Error: {Exception}\n")
                 tokens = 0
             self.logger.log_conversation(
                 "client",
@@ -156,6 +158,7 @@ class LLM(ABC):
                 cost,
                 tokens,
             )
+            print(f"Tokens used {tokens} \n")
 
         message = self._query(session)
 
@@ -212,6 +215,7 @@ class LLM(ABC):
 
         code = self.extract_algorithm_code(message)
         name = self.extract_classname(code)
+        print(f"Found the name of the class {name}\n")
         desc = self.extract_algorithm_description(message)
         cs = None
         if HPO:
@@ -257,6 +261,7 @@ class LLM(ABC):
         try:
             from ConfigSpace import ConfigurationSpace
         except ImportError:
+            print(f"Import error dueing configuration of experiment set up {ImportError}{time} \n")
             # ConfigSpace not installed, no HPO
             return None
 

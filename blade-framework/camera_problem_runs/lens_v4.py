@@ -2,6 +2,7 @@
 V4: Gradient-Aware Memetic Evolution.
 Explicitly uses JAX gradients for the 18D continuous subspace.
 """
+
 import os
 import sys
 
@@ -20,60 +21,79 @@ from config import get_llm, get_n_jobs
 RUN_META = {
     "name": "Lens V4 (Gradient-Aware)",
     "description": "Memetic LLaMEA leveraging JAX gradients for 18D continuous subspace",
-    "context": True,
-    "version": "v4",
+    "context": False,
+    "version": "v4_1000_False",
 }
 
+
 def configure_run(llm, n_jobs):
-    budget = 20 # Evolutionary generations
+    budget = 40  # Evolutionary generations
 
     task_prompt = (
-        "You are an elite algorithm designer specializing in mixed-variable, black-box optimization.\n\n"
-        "### Problem Physics & Landscape:\n"
-        "Your task is to MINIMIZE a 24-dimensional camera lens design loss function with strictly bounded `[-1, 1]` parameters.\n"
-        "- Indices `x[0:18]`: 18 Continuous parameters (lens curvatures and distances).\n"
-        "- Indices `x[18:24]`: 6 Categorical glass material IDs.\n"
-        "The landscape is highly non-convex and filled with infeasible 'cliffs' where invalid lenses return extremely high loss (`inf`).\n\n"
-        "### THE GRADIENT ADVANTAGE (`grad0_cont`) ###\n"
-        "You are provided with `grad0_cont` (shape: `(18,)`), the exact analytical gradient of the 18 continuous parameters at the baseline design. "
-        "Use this to bias your initial population or take an initial pseudo-gradient descent step. "
-        "WARNING: Because `grad0_cont` is 18D and your solutions are 24D, you MUST slice your target array before applying the gradient (e.g., `x[:18] -= lr * self.grad0_cont`) to prevent NumPy broadcast crashes.\n\n"
-        "### STRICT CODING STANDARDS (CRITICAL) ###\n"
-        "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for best solution and `es.result[1]` for best fitness. To get population size, use `es.popsize`. Remember `es.ask()` returns a LIST of arrays.\n"
-        "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize(func, x0, jac=grad_func, ...)`. The solution is in `res.x`.\n"
-        "3. LHS SAMPLING: When calling the Latin Hypercube sampler, you MUST use keyword arguments: `samples = lhs(n_samples=20, n_dim=self.dim)`.\n"
-    )
-
+    "You are an elite algorithm designer specializing in mixed-variable optimization.\n\n"
+    "### Problem Structure:\n"
+    "Minimize a 24-dimensional lens loss function. Parameters are bounded in `[-1, 1]`.\n"
+    "- `x[0:18]`: Continuous geometry.\n"
+    "- `x[18:24]`: Categorical material IDs.\n\n"
+    "### CRITICAL API USAGE (DO NOT DEVIATE):\n"
+    "1. SIGNATURES: `func(x)` and `grad_func(x)` accept EXACTLY ONE argument: a 24-dimensional numpy array. They return a scalar and a 24D gradient array, respectively.\n"
+    "2. PARTIAL OPTIMIZATION: When optimizing only the 18 continuous variables with `scipy.optimize.minimize`, NEVER pass `args=(x_disc,)`. You MUST wrap the functions to handle concatenation and gradient slicing:\n"
+    "```python\n"
+    "def cost_wrap(x_cont):\n"
+    "    return func(np.concatenate([x_cont, x_disc]))\n\n"
+    "def grad_wrap(x_cont):\n"
+    "    # Slice the gradient to return only the 18 continuous components\n"
+    "    return grad_func(np.concatenate([x_cont, x_disc]))[:18]\n\n"
+    "res = minimize(cost_wrap, x_cont, method='L-BFGS-B', jac=grad_wrap, bounds=[(-1, 1)]*18)\n"
+    "```\n"
+    "3. CMA-ES PERSISTENCE: If you use CMA-ES, initialize `es` ONLY ONCE outside your main loop. `x0` must be a 1D numpy array, not an integer.\n"
+    "4. NUMPY TYPING: If you build a new population in a Python list (`new_pop = []`), you MUST convert it back to a numpy array (`pop = np.array(new_pop)`) at the end of the generation to prevent indexing crashes.\n"
+    "5. BUDGET: You MUST check `if self.evals >= self.budget: break` before EVERY call to `func(x)` or `grad_func(x)`.\n"
+    "6. NO PARTIAL CODE: You MUST output the ENTIRE `class Optimizer:` definition, including `__init__`, `_evaluate`, and `__call__`.\n"
+    "7. NO HARDCODED LOOPS: NEVER use for generation in range(X): for your main loop. Your main loop MUST be while self.evals < self.budget: so you consume the massive budget we are giving you.\n"
+    "8. DISCRETE BOUNDS: When mutating glass IDs in phase 2, NEVER use integers like randint(0, 10). The parameters are STRICTLY [-1, 1]. You must sample from [-1.0, -0.5, 0.0, 0.5, 1.0]."
+)
     example_prompt = (
         "Write a completely self-contained Python class named exactly `Optimizer`.\n"
         "```python\n"
-        "import numpy as np\n"
-        "import cma\n\n"
         "class Optimizer:\n"
-        "    def __init__(self, budget: int, dim: int, grad0_cont: np.ndarray):\n"
+        "    def __init__(self, budget: int, dim: int):\n"
         "        self.budget = budget\n"
         "        self.dim = dim\n"
-        "        # YOU MUST SAVE THE GRADIENT TO SELF\n"
-        "        self.grad0_cont = grad0_cont \n\n"
-        "    def __call__(self, func, grad_func=None) -> tuple[float, np.ndarray]:\n"
-        "        best_f = float('inf')\n"
-        "        best_x = np.zeros(self.dim)\n"
-        "        \n"
-        "        initial_population = lhs(n_samples=20, n_dim=self.dim)\n"
-        "        \n"
-        "        # Example: Biasing the continuous variables using a Gradient Descent step\n"
-        "        # Notice the `-=` for MINIMIZATION and the `[:, :18]` slicing to match shapes!\n"
-        "        if self.grad0_cont is not None:\n"
-        "            learning_rate = 0.05\n"
-        "            initial_population[:, :18] -= learning_rate * self.grad0_cont\n\n"
-        "        # Ensure the bounds are respected after the gradient step\n"
-        "        initial_population = np.clip(initial_population, -1, 1)\n"
-        "        \n"
-        "        # Track your budget!\n"
-        "        evals = 0\n"
-        "        # Apply your advanced mixed-variable strategy here...\n"
-        "                \n"
-        "        return best_f, best_x\n"
+        "        self.evals = 0\n"
+        "        self.best_f = float('inf')\n"
+        "        self.best_x = np.zeros(dim)\n"
+        "\n"
+        "    def _evaluate(self, x, func):\n"
+        "        if self.evals >= self.budget: return float('inf')\n"
+        "        # FORCE ROUNDING OF CATEGORICALS TO NEAREST 0.5 in [-1, 1]\n"
+        "        eval_x = x.copy()\n"
+        "        eval_x[18:24] = np.round(eval_x[18:24] * 2) / 2 \n"
+        "        eval_x[18:24] = np.clip(eval_x[18:24], -1.0, 1.0)\n"
+        "        f = func(eval_x)\n"
+        "        self.evals += 1\n"
+        "        if f < self.best_f:\n"
+        "            self.best_f = f\n"
+        "            self.best_x = eval_x.copy()\n"
+        "        return f\n"
+        "\n"
+        "    def __call__(self, func, grad_func=None):\n"
+        "        # 1. Initialization (LHS)\n"
+        "        pop = lhs(n_samples=10, n_dim=self.dim)\n"
+        "        for x in pop: self._evaluate(x, func)\n"
+        "\n"
+        "        # 2. Gradient Extraction (Slice to 18D!)\n"
+        "        if grad_func is not None:\n"
+        "            grad24 = grad_func(self.best_x)\n"
+        "            grad18 = grad24[:18] # Only take continuous gradients\n"
+        "            # ... Use grad18 to bias your search ...\n"
+        "\n"
+        "        # 3. Main Loop\n"
+        "        while self.evals < self.budget:\n"
+        "            # Implement Memetic / DE / CMA-ES / L-BFGS-B logic here...\n"
+        "            pass\n"
+        "\n"
+        "        return self.best_f, self.best_x\n"
         "```\n\n"
     )
 
@@ -83,22 +103,20 @@ def configure_run(llm, n_jobs):
         "to search the full 24D space. For the best individuals in each generation, "
         "apply a local gradient-based 'polish' (like L-BFGS-B or SLSQP via scipy.optimize.minimize) "
         "to only the first 18 dimensions using the provided grad_func.",
-        
         # Strategy 2: Gradient-Guided Mutation
         "Design a mutation operator that uses the gradient. Instead of random noise, "
         "perturb the first 18 dimensions proportionally to the negative gradient direction "
         "(-grad_func(x)) to accelerate convergence toward the local minimum.",
-        
         # Strategy 3: Categorical vs. Continuous Split
         "The landscape is mixed-variable. Refine the algorithm to treat the last 6 "
         "dimensions as purely categorical (using discrete operators like crossover "
         "or rounding) while treating the first 18 as a smooth, differentiable manifold "
         "to be optimized via first-order information.",
-        
         # Strategy 4: Trust-Region Refinement
         "Implement a trust-region approach: Use the global search to identify promising "
         "basins, then deploy a local search that respects the geometric bounds and uses "
-        "gradients to 'descend' into the deep local optima characteristic of lens design."
+        "gradients to 'descend' into the deep local optima characteristic of lens design.",
+        "Scale your algorithm for a MASSIVE budget. Use a DE population size of at least 100 to 200 individuals to ensure massive global exploration before descending with L-BFGS-B."
     ]
 
     llamea = LLaMEA(
@@ -106,8 +124,8 @@ def configure_run(llm, n_jobs):
         budget=budget,
         name="LLaMEA_v4_Memetic",
         n_parents=3,
-        n_offspring=12,
-        elitism=False,
+        n_offspring=9,
+        elitism=True,
         mutation_prompts=mutation_prompts,
     )
 
@@ -117,25 +135,26 @@ def configure_run(llm, n_jobs):
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=5000, # MATCH PRODUCTION BUDGET
-        eval_timeout=6000,   # Increased to handle 10k evals + local search
+        budget_factor=10000,  # MATCH PRODUCTION BUDGET
+        eval_timeout=900,  # Increased to handle 10k evals + local search
         name="DoubleGauss_v4",
+        example_prompt=example_prompt,
+        task_prompt=task_prompt,
     )
 
     os.makedirs("results", exist_ok=True)
-    logger = ExperimentLogger("results/lens_v4")
+    logger = ExperimentLogger("results/lens_v4_False_10000")
 
     return Experiment(
         methods=[llamea],
         problems=[lens_problem],
-        runs=3,
+        runs=1,
         show_stdout=True,
         exp_logger=logger,
         budget=budget,
         n_jobs=n_jobs,
-        example_prompt = example_prompt,
-        task_prompt = task_prompt
     )
+
 
 if __name__ == "__main__":
     experiment = configure_run(get_llm(), n_jobs=1)

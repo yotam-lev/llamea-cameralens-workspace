@@ -1,3 +1,4 @@
+import time
 import inspect
 import json
 import multiprocessing
@@ -73,6 +74,8 @@ def simplify_subprocess_error(stderr: str, solution=None):
 def evaluate_in_subprocess(problem, conn, solution):
     """Evaluate a solution in a dedicated virtual environment."""
     proc = None
+
+    print(f"Evaluation has begun  {time.ctime()}\n")
     try:
         env_path = problem._env_path
         python_bin = problem._python_bin
@@ -109,6 +112,12 @@ def evaluate_in_subprocess(problem, conn, solution):
         env = os.environ.copy()
         repo_root = Path(__file__).resolve().parents[1]
         env["PYTHONPATH"] = f"{repo_root}{os.pathsep}" + env.get("PYTHONPATH", "")
+
+        # Enable JAX persistent compilation cache to avoid redundant JIT across subprocesses
+        jax_cache_dir = Path(tempfile.gettempdir()) / "jax_cache"
+        jax_cache_dir.mkdir(parents=True, exist_ok=True)
+        env["JAX_COMPILATION_CACHE_DIR"] = str(jax_cache_dir)
+        env["JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS"] = "0"
 
         proc = subprocess.Popen(
             [str(python_bin), str(script_path)],
@@ -252,6 +261,7 @@ class Problem(ABC):
 
         # solution = self.evaluate(solution) #old fashioned way
         # Else create a new process for evaluation with timeout
+        start_t = time.time()
         stdout = ""
         stderr = ""
         self._last_stdout = ""
@@ -279,6 +289,9 @@ class Problem(ABC):
                 )
             if parent_conn.poll():
                 result = parent_conn.recv()
+                print(
+                    f"This is variable result from result = parent_conn.recv ../problem.py: {result}\n"
+                )
                 if isinstance(result, dict):
                     stdout = result.get("stdout", "")
                     stderr = result.get("stderr", "")
@@ -305,6 +318,9 @@ class Problem(ABC):
                     raise result
                 elif isinstance(result, Solution):
                     solution = result
+                    print(
+                        f"This is the variable solution from l311 problem.py: {solution}"
+                    )
                 elif isinstance(result, str):
                     solution.set_scores(
                         -np.inf,
@@ -358,16 +374,25 @@ class Problem(ABC):
                 capture_output=True,
                 text=True,
             )
-        
+
         # Install the local camera-lens-simulation package to make `lensgopt` available
         try:
             # Assumes this file is at blade-framework/iohblade/problem.py
             project_root = Path(__file__).resolve().parents[2]
             camera_lens_path = project_root / "camera-lens-simulation"
             if camera_lens_path.exists() and (camera_lens_path / "setup.py").exists():
-                print(f"--- DEBUG: Attempting to install local package: {camera_lens_path} ---")
+                print(
+                    f"--- DEBUG: Attempting to install local package: {camera_lens_path} ---"
+                )
                 subprocess.run(
-                    [str(self._python_bin), "-m", "pip", "install", "-e", str(camera_lens_path)],
+                    [
+                        str(self._python_bin),
+                        "-m",
+                        "pip",
+                        "install",
+                        "-e",
+                        str(camera_lens_path),
+                    ],
                     check=True,
                     capture_output=True,
                     text=True,
@@ -375,7 +400,9 @@ class Problem(ABC):
                 print("--- DEBUG: Local package installation successful ---")
         except subprocess.CalledProcessError as e:
             print("\n--- DEBUG: CRITICAL ERROR IN SUBPROCESS ENVIRONMENT SETUP ---")
-            print("The command to 'pip install' the local 'camera-lens-simulation' package failed.")
+            print(
+                "The command to 'pip install' the local 'camera-lens-simulation' package failed."
+            )
             print(f"Return Code: {e.returncode}")
             print("\n--- pip stdout: ---")
             print(e.stdout)
@@ -385,8 +412,9 @@ class Problem(ABC):
             # Re-raise the exception to halt the process, as this is a fatal error.
             raise e
         except Exception as e:
-            print(f"Warning: An unexpected error occurred during local package install: {e}")
-
+            print(
+                f"Warning: An unexpected error occurred during local package install: {e}"
+            )
 
     def cleanup(self):
         try:

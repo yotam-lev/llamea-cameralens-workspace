@@ -35,7 +35,8 @@ class ContextualLensOptimisation(LensOptimisation):
 
         super().__init__(**kwargs)
 
-        self.task_prompt = (
+        if not getattr(self, "task_prompt", None):
+            self.task_prompt = (
             "### STRICT CODING STANDARDS ###\n"
             "1. CMA-ES ACCESS: When using `cma.CMAEvolutionStrategy`, use `es.result[0]` for the best solution and `es.result[1]` for the best fitness. NEVER use `es.xbest`, `es[0]`, or `es.best.x`.\n"
             "2. SCIPY MINIMIZE: Use `scipy.optimize.minimize(func, x0, jac=grad_func, ...)`. The solution is in `res.x`. Ensure `x0` is a 1D array.\n"
