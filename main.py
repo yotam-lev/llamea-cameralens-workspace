@@ -16,7 +16,7 @@ _BLADE_DIR = _PROJECT_ROOT / "blade-framework"
 def smoke_test():
     """Run a quick single evaluation to verify the environment."""
     print("\n" + "="*60)
-    print("SMOKE TEST: Running a single evaluation (1 seed, budget 5000)")
+    print("SMOKE TEST: Running a single evaluation (1 seed, budget 100)")
     print("="*60)
     
     if str(_BLADE_DIR) not in sys.path:
@@ -30,7 +30,7 @@ def smoke_test():
         import time
         import numpy as np
         
-        problem = LensOptimisation(training_instances=[(1,)])
+        problem = LensOptimisation(training_instances=[(1,)], budget_factor=100)
         code = """
 class Optimizer:
     def __init__(self, budget, dim):

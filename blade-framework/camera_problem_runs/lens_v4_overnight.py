@@ -5,6 +5,8 @@ Explicitly uses JAX gradients and strict API guardrails.
 
 import os
 import sys
+import inspect
+from typing import Optional, Callable
 
 # Ensure the blade-framework root is on sys.path
 _FRAMEWORK_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -12,10 +14,12 @@ if _FRAMEWORK_ROOT not in sys.path:
     sys.path.insert(0, _FRAMEWORK_ROOT)
 
 from iohblade.experiment import Experiment
-from iohblade.methods import LLaMEA
+from iohblade.methods import LLaMEA as BaseLLaMEAa
 from iohblade.loggers import ExperimentLogger
+from iohblade.problem import Problem
 from contextual_lens_problem import ContextualLensOptimisation
 from config import get_llm, get_n_jobs
+from llamea import LLaMEA as LLAMEA_Algorithm
 
 # Metadata for the run selector
 RUN_META = {
@@ -24,6 +28,77 @@ RUN_META = {
     "context": True,
     "version": "v4_overnight",
 }
+
+class PhaseLLAMEA(LLAMEA_Algorithm):
+    """
+    Custom LLaMEA algorithm that uses specific prompts for seeding Gen 0,
+    then switches to general mutation prompts for Gen 1+.
+    """
+    def __init__(self, *args, **kwargs):
+        self.general_prompts = kwargs.pop('general_prompts', [])
+        super().__init__(*args, **kwargs)
+        self.initial_prompts = self.mutation_prompts.copy()
+
+    def initialize_single(self):
+        if not hasattr(self, '_init_prompt_idx'):
+            self._init_prompt_idx = 0
+        
+        # Pick one specific prompt to guide this initial individual (Gen 0)
+        guide = self.initial_prompts[self._init_prompt_idx % len(self.initial_prompts)]
+        self._init_prompt_idx += 1
+        
+        # Temporarily modify task_prompt to seed the initial algorithm with this strategy
+        old_task = self.task_prompt
+        self.task_prompt = old_task + f"\n\n### STRATEGIC GOAL FOR THIS INITIAL VERSION:\n{guide}\n\nImplement the above strategy in your initial design."
+        res = super().initialize_single()
+        self.task_prompt = old_task
+        return res
+
+    def initialize(self):
+        super().initialize()
+        # After Gen 0 is created, switch to general mutation prompts for all subsequent evolution
+        if self.general_prompts:
+            self.logevent("Initialization complete. Reverting to general mutation prompts.")
+            self.mutation_prompts = self.general_prompts
+
+class LLaMEA_Phase(BaseLLaMEA):
+    """
+    Wrapper for PhaseLLAMEA to integrate with the BLADE Experiment framework.
+    """
+    def __call__(self, problem: Problem):
+        if problem.logger_dir:
+            import json
+            import os
+            prompts = {
+                "role_prompt": "You are an elite algorithm designer specializing in mixed-variable optimization.",
+                "task_prompt": problem.task_prompt,
+                "example_prompt": problem.example_prompt,
+                "output_format_prompt": problem.format_prompt,
+                "initial_mutation_prompts": self.kwargs.get("mutation_prompts", []),
+                "general_mutation_prompts": self.kwargs.get("general_prompts", []),
+            }
+            os.makedirs(problem.logger_dir, exist_ok=True)
+            with open(os.path.join(problem.logger_dir, "prompts.json"), "w") as f:
+                json.dump(prompts, f, indent=4)
+
+        # Filter kwargs to only pass those supported by LLAMEA_Algorithm
+        sig = inspect.signature(LLAMEA_Algorithm)
+        valid_kwargs = {k: v for k, v in self.kwargs.items() if k in sig.parameters}
+        
+        self.llamea_instance = PhaseLLAMEA(
+            f=problem,
+            llm=self.llm,
+            role_prompt="",
+            task_prompt=problem.task_prompt,
+            example_prompt=problem.example_prompt,
+            output_format_prompt=problem.format_prompt,
+            log=None,
+            budget=self.budget,
+            max_workers=1,
+            general_prompts=self.kwargs.get('general_prompts', []),
+            **valid_kwargs
+        )
+        return self.llamea_instance.run()
 
 def configure_run(llm, n_jobs):
     budget = 50  # Evolutionary generations
@@ -117,11 +192,19 @@ def configure_run(llm, n_jobs):
     mutation_prompts = [
         "Implement a memetic strategy: Use a population-based global explorer (like DE) to search the full 24D space. For the best individuals in each generation, apply a local gradient-based 'polish' (like L-BFGS-B) to only the first 18 dimensions using the provided grad_func.",
         "Design a mutation operator that uses the gradient. Instead of random noise, perturb the first 18 dimensions proportionally to the negative gradient direction (-grad_func(x)) to accelerate convergence toward the local minimum.",
-        "Implement a trust-region approach: Use the global search to identify promising basins, then deploy a local search that respects the geometric bounds and uses gradients to 'descend' into the deep local optima characteristic of lens design.",
+        "Implement a trust-region approach: Use a global search to identify promising basins, then deploy a local search that respects the geometric bounds and uses gradients to 'descend' into the deep local optima characteristic of lens design.",
         "Scale your algorithm for a MASSIVE budget. Use a DE population size of at least 150 to 200 individuals to ensure massive global exploration before descending with L-BFGS-B."
     ]
 
-    llamea = LLaMEA(
+    general_mutation_prompts = [
+        "Refine the strategy of the selected solution to improve its performance and robustness.",
+        "Propose structural changes to the algorithm to better explore the search space.",
+        "Optimize the internal logic and parameters of the algorithm for faster convergence.",
+        "Identify potential weaknesses in the current optimization approach and address them.",
+        "Refine the current algorithm by introducing more sophisticated local search or mutation operators."
+    ]
+
+    llamea = LLaMEA_Phase(
         llm,
         budget=budget,
         name="LLaMEA_v4_Memetic_Overnight",
@@ -129,7 +212,9 @@ def configure_run(llm, n_jobs):
         n_offspring=12,
         elitism=True,  # CRITICAL: Ensures the best algorithms survive
         mutation_prompts=mutation_prompts,
+        general_prompts=general_mutation_prompts
     )
+
 
     training_seeds = [(s,) for s in range(1, 3)]
     test_seeds = [(s,) for s in range(11, 16)]
@@ -137,8 +222,8 @@ def configure_run(llm, n_jobs):
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=50000, 
-        eval_timeout=14400,  
+        budget_factor=500, 
+        eval_timeout=600,  
         name="DoubleGauss_v4",
         example_prompt=example_prompt,
         task_prompt=task_prompt,

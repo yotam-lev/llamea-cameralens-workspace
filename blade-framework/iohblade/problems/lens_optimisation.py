@@ -204,14 +204,14 @@ class LensOptimisation(Problem):
             xc, xi = obj.split_theta(x_clipped)
             return obj.gradient_cont_int(xc, xi)
 
-        return func, grad_fn, dim, lb, ub, grad0_cont
+        return func, grad_fn, dim, lb, ub, grad0_cont, obj
 
     def evaluate(self, solution: Solution) -> Solution:
         """
         Execute the LLM-generated optimizer code on training instances.
         """
         try:
-            func, grad_fn, dim, lb, ub, grad0_cont = self._build_objective()
+            func, grad_fn, dim, lb, ub, grad0_cont, obj = self._build_objective()
             budget = self.budget_factor
             exec_env = self._get_sandbox_env()
             exec_env["grad0_cont"] = grad0_cont
