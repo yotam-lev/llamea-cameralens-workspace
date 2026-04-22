@@ -209,6 +209,7 @@ class Problem(ABC):
         self.training_instances = training_instances if training_instances else []
         self.test_instances = test_instances if test_instances else []
         self.task_prompt = "Write the problem description part here."
+        self.initial_prompt = "Write the initial instructions part here. This will only be shown for the first evaluation of a solution."
         self.example_prompt = "Write an example code here."
         self.format_prompt = "Write the format description part here."
         self.name = name
@@ -435,8 +436,18 @@ class Problem(ABC):
         """
         Get the full prompt describing the problem and how to format the answer.
         """
+       
         return self.task_prompt + self.example_prompt + self.format_prompt
+        
 
+    def get_init_prompt(self):
+        """
+        Get initial problem prompt 
+        """
+        return self.task_prompt + self.example_prompt + self.format_prompt + self.initial_prompt
+
+    
+    
     @abstractmethod
     def evaluate(self, solution: Solution):
         """
@@ -480,6 +491,7 @@ class WrappedProblem(Problem):
         dependencies=None,
         imports=None,
         task_prompt="",
+        initial_prompt="",
         example_prompt="",
         logger=None,
     ):
@@ -494,6 +506,8 @@ class WrappedProblem(Problem):
         )
         if task_prompt:
             self.task_prompt = task_prompt
+        if initial_prompt:
+            initial_prompt = initial_prompt
         if example_prompt:
             self.example_prompt = example_prompt
 
@@ -539,6 +553,7 @@ def wrap_problem(
     dependencies=None,
     imports=None,
     task_prompt="",
+    initial_prompt="",
     example_prompt="",
     logger=None,
 ):
@@ -551,6 +566,7 @@ def wrap_problem(
         dependencies=dependencies,
         imports=imports,
         task_prompt=task_prompt,
+        initial_prompt=initial_prompt,
         example_prompt=example_prompt,
         logger=logger,
     )

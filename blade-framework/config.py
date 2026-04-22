@@ -164,35 +164,49 @@ def get_llm():
     Returns a ready-to-use LLM instance.
 
     Priority:
-        1. Gemini API (if GEMINI_API_KEY is set and a test query succeeds)
-        2. Ollama local fallback (qwen2.5-coder:14b)
-
-    Returns:
-        LLM: An instance of Gemini_LLM or Ollama_LLM.
+        1. Rotating Gemini API (if GEMINI_API_KEY_1 and GEMINI_API_KEY_2 are set)
+        2. Single Gemini API (if GEMINI_API_KEY is set)
+        3. Ollama local fallback
     """
-    api_key = None
-    #os.getenv("GEMINI_API_KEY")
-     # Force Ollama fallback for now, as Gemini API is not yet available
+    #key1 = os.getenv("GEMINI_API_KEY_1")
+    #key2 = os.getenv("GEMINI_API_KEY_2")
+    #single_key = os.getenv("GEMINI_API_KEY")
+    key1 = None
+    key2 = key1
+    single_key = key1
 
+    from iohblade.llm import Gemini_LLM, Multi_LLM, RateLimited_LLM
+
+    # Scenario 1: Dual Keys
+    if key1 and key2:
+        try:
+            llm1 = Gemini_LLM(api_key=key1, model="gemini-2.0-flash")
+            llm2 = Gemini_LLM(api_key=key2, model="gemini-2.0-flash")
+            
+            # Combine them to alternate strictly
+            multi = Multi_LLM([llm1, llm2])
+            
+            # Wrap with rate limiting: 3 calls/min PER key = 6 total per minute
+            limited = RateLimited_LLM(multi, calls_per_minute=6)
+            
+            logger.info("[config] ✅ Using Rotating Gemini API (Dual Keys, 6/pm total)")
+            return limited
+        except Exception as e:
+            logger.warning("[config] ⚠️  Dual Gemini setup failed: %s", e)
+
+    # Scenario 2: Single Key
+    api_key = single_key or key1 or key2
     if api_key:
         try:
-            from iohblade.llm import Gemini_LLM
-
-            llm = Gemini_LLM(api_key=api_key, model="gemini-2.5-flash")
-
-
-            # Test with a minimal query to catch 429 / invalid key
-            response = llm.query(
-                [{"role": "user", "content": "Respond with only: OK"}]
-            )
-            if response:
-                logger.info("[config] ✅ Using Gemini API (gemini-2.5-flash)")
-                return llm
-
+            llm = Gemini_LLM(api_key=api_key, model="gemini-2.0-flash")
+            # Limit to 3 calls/min
+            limited = RateLimited_LLM(llm, calls_per_minute=3)
+            logger.info("[config] ✅ Using Gemini API (Single Key, 3/pm)")
+            return limited
         except Exception as e:
-            logger.warning("[config] ⚠️  Gemini failed: %s", e)
+            logger.warning("[config] ⚠️  Gemini setup failed: %s", e)
 
-
+    # Fallback to Ollama
     from iohblade.llm import Ollama_LLM
     
     try:

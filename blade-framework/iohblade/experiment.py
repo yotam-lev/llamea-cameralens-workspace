@@ -38,7 +38,8 @@ class Experiment(ABC):
         n_jobs=1,
     ):
         """
-        Initializes an experiment with multiple methods and problems.
+
+\        Initializes an experiment with multiple methods and problems.
 
         Args:
             methods (list): List of method instances.

@@ -345,7 +345,7 @@ class LLM(ABC):
 class Multi_LLM(LLM):
     def __init__(self, llms: list[LLM]):
         """
-        Combine multiple LLM instances and randomly choose one per call.
+        Combine multiple LLM instances and alternate between them per call.
 
         Args:
             llms (list[LLM]): A list of LLM instances to combine.
@@ -355,13 +355,15 @@ class Multi_LLM(LLM):
         model = "multi-llm"
         super().__init__("", model)
         self.llms = llms
+        self.current_idx = 0
 
     def _pick_llm(self) -> LLM:
         """
-        Randomly selects one of the LLMs from the list.
-        This method is used to alternate between LLMs during evolution.
+        Alternates between the LLMs from the list.
         """
-        return random.choice(self.llms)
+        llm = self.llms[self.current_idx % len(self.llms)]
+        self.current_idx += 1
+        return llm
 
     def set_logger(self, logger):
         self.logger = logger
@@ -372,6 +374,45 @@ class Multi_LLM(LLM):
     def _query(self, session_messages, **kwargs):
         llm = self._pick_llm()
         return llm._query(session_messages, **kwargs)
+
+
+class RateLimited_LLM(LLM):
+    def __init__(self, llm: LLM, calls_per_minute: int = 3):
+        """
+        Wrapper that enforces a rate limit on LLM queries.
+
+        Args:
+            llm (LLM): The LLM instance to wrap.
+            calls_per_minute (int): Maximum calls allowed in a 60-second window.
+        """
+        super().__init__(llm.api_key, llm.model)
+        self.llm = llm
+        self.calls_per_minute = calls_per_minute
+        self.call_history = []  # List of timestamps
+
+    def set_logger(self, logger):
+        self.logger = logger
+        self.log = True
+        self.llm.set_logger(logger)
+
+    def _query(self, session_messages, **kwargs):
+        now = time.time()
+        # Remove timestamps older than 60 seconds
+        self.call_history = [t for t in self.call_history if now - t < 60]
+
+        if len(self.call_history) >= self.calls_per_minute:
+            # Wait until the oldest call in the window is older than 60 seconds
+            wait_time = 60 - (now - self.call_history[0])
+            if wait_time > 0:
+                print(f"[RateLimit] ⏳ Limit of {self.calls_per_minute} calls/min reached. Waiting {wait_time:.2f}s...")
+                time.sleep(wait_time)
+            
+            # Recalculate 'now' and cleanup again after waiting
+            now = time.time()
+            self.call_history = [t for t in self.call_history if now - t < 60]
+
+        self.call_history.append(time.time())
+        return self.llm._query(session_messages, **kwargs)
 
 
 class OpenAI_LLM(LLM):

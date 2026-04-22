@@ -97,7 +97,7 @@ def configure_run(llm, n_jobs):
         "```\n\n"
     )
 
-    mutation_prompts = [
+    initial_prompt = (
         # Strategy 1: Memetic Hybrid (Global -> Local)
         "Implement a memetic strategy: Use a population-based global explorer (like DE) "
         "to search the full 24D space. For the best individuals in each generation, "
@@ -117,7 +117,7 @@ def configure_run(llm, n_jobs):
         "basins, then deploy a local search that respects the geometric bounds and uses "
         "gradients to 'descend' into the deep local optima characteristic of lens design.",
         "Scale your algorithm for a MASSIVE budget. Use a DE population size of at least 100 to 200 individuals to ensure massive global exploration before descending with L-BFGS-B."
-    ]
+    )
 
     llamea = LLaMEA(
         llm,
@@ -157,6 +157,6 @@ def configure_run(llm, n_jobs):
 
 
 if __name__ == "__main__":
-    experiment = configure_run(get_llm(), n_jobs=get_n_jobs())
+    experiment = configure_run(get_llm(), n_jobs=1)
     print(f"Starting experiment: {RUN_META['name']}")
     experiment()

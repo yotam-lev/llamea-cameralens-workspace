@@ -141,15 +141,13 @@ RESULTS_DIR = "results"
 
 
 def discover_experiments(root=RESULTS_DIR):
-    """Return list of experiment directories containing an experimentlog.jsonl."""
+    """Return list of experiment directories containing an experimentlog.jsonl, searching recursively."""
     exps = []
     if os.path.isdir(root):
-        for entry in os.listdir(root):
-            path = os.path.join(root, entry)
-            if os.path.isdir(path) and os.path.exists(
-                os.path.join(path, "progress.json")
-            ):
-                exps.append(entry)
+        for dirpath, dirnames, filenames in os.walk(root):
+            if "experimentlog.jsonl" in filenames:
+                # Store path relative to root for display, or full path
+                exps.append(os.path.relpath(dirpath, root))
     return sorted(exps)
 
 
@@ -158,7 +156,10 @@ def read_progress(exp_dir):
     path = os.path.join(exp_dir, "progress.json")
     if os.path.exists(path):
         with open(path) as f:
-            return json.load(f)
+            try:
+                return json.load(f)
+            except json.JSONDecodeError:
+                return None
     return None
 
 
@@ -172,8 +173,13 @@ def run() -> None:
     params = st.query_params
     conv = params.get("conv")
     exp = params.get("exp")
+    
+    # We need to know the actual RESULTS_DIR used to find the log_path
+    # For now we assume it's stored in session state or we use a default
+    current_results_dir = st.session_state.get("results_dir", RESULTS_DIR)
+
     if conv and exp:
-        log_path = os.path.join(RESULTS_DIR, exp, conv, "conversationlog.jsonl")
+        log_path = os.path.join(current_results_dir, exp, conv, "conversationlog.jsonl")
         st.title("Conversation Log")
         if os.path.exists(log_path):
             with jsonlines.open(log_path) as f:
@@ -200,14 +206,24 @@ def run() -> None:
             LOGO_LIGHT if st.context.theme.type == "light" else LOGO_DARK,
             width=150,
         )
+        
+        st.markdown("### Settings")
+        res_dir = st.text_input("Results Root Directory", value=current_results_dir)
+        if res_dir != current_results_dir:
+            st.session_state["results_dir"] = res_dir
+            st.session_state["selected_exp"] = None
+            st.rerun()
+        current_results_dir = res_dir
+
     st.sidebar.markdown("### Experiments")
 
-    experiments = discover_experiments()
+    experiments = discover_experiments(current_results_dir)
     selected = st.session_state.get("selected_exp")
 
     if experiments:
         for exp in experiments:
-            prog = read_progress(os.path.join(RESULTS_DIR, exp))
+            exp_full_path = os.path.join(current_results_dir, exp)
+            prog = read_progress(exp_full_path)
             icon = "✅" if prog and prog.get("end_time") else "⏳"
             if st.sidebar.button(exp, key=f"btn_{exp}", type="tertiary", icon=icon):
                 st.session_state["selected_exp"] = exp
@@ -217,13 +233,13 @@ def run() -> None:
                 pct = prog.get("current", 0) / total if total else 0
                 st.sidebar.progress(pct)
     else:
-        st.sidebar.write("No experiments found in 'results'.")
+        st.sidebar.write(f"No experiments found in '{current_results_dir}'.")
 
     if selected is None and experiments:
         selected = experiments[0]
 
     if selected:
-        exp_dir = os.path.join(RESULTS_DIR, selected)
+        exp_dir = os.path.join(current_results_dir, selected)
         logger = ExperimentLogger(exp_dir, read=True)
 
         prog = read_progress(exp_dir)

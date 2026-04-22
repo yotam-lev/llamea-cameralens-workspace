@@ -40,6 +40,7 @@ Repository = "https://github.com/XAI-liacs/BLADE"
 
 [project.scripts]
 iohblade-webapp = "iohblade.webapp:main"
+iohblade-plot = "iohblade.cli_plotter:main"
 
 [dependency-groups]
 dev = [

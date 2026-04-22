@@ -12,7 +12,7 @@ class Prompt:
         """
         Returns initialisation prompt.
         """
-        return self.problem.get_prompt()
+        return self.problem.get_init_prompt()
 
     def get_prompt_o_index(self, individual: Solution) -> str:
         return f"""I have one algorithm with its code as follows.\\
