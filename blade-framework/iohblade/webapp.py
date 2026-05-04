@@ -137,20 +137,20 @@ def plotly_convergence(df: pd.DataFrame, aggregate: bool = False) -> go.Figure:
     return fig
 
 
-RESULTS_DIR = "results"
+RESULTS_DIR = "results-documentation"
+
+print(f"Starting BLADE Experiment Browser... at results dir: {RESULTS_DIR}")
 
 
 def discover_experiments(root=RESULTS_DIR):
     """Return list of experiment directories containing an experimentlog.jsonl."""
-    exps = []
-    if os.path.isdir(root):
-        for entry in os.listdir(root):
-            path = os.path.join(root, entry)
-            if os.path.isdir(path) and os.path.exists(
-                os.path.join(path, "progress.json")
-            ):
-                exps.append(entry)
+    root_path = Path(root)
+    if not root_path.is_dir():
+        return []
+    progress_files = root_path.rglob("progress.json")
+    exps = [str(p.parent.relative_to(root)) for p in progress_files if p.is_file()]
     return sorted(exps)
+
 
 
 def read_progress(exp_dir):

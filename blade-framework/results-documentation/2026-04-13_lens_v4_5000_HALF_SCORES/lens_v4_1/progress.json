@@ -1,0 +1,1 @@
+{"start_time": "2026-04-13T17:52:49.135903", "end_time": null, "current": 0, "total": 1, "runs": [{"method_name": "LLaMEA_v4_Memetic_1", "problem_name": "DoubleGauss_v4", "seed": 0, "budget": 20, "evaluations": 6, "start_time": "2026-04-13T17:53:36.478035", "end_time": null, "log_dir": "run-LLaMEA_v4_Memetic_1-DoubleGauss_v4-0_20260413_175336"}]}

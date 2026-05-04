@@ -1,0 +1,1 @@
+{"start_time": "2026-04-14T12:59:32.141327", "end_time": null, "current": 0, "total": 1, "runs": [{"method_name": "LLaMEA_v5_Hessian_10000", "problem_name": "DoubleGauss_v5", "seed": 0, "budget": 40, "evaluations": 15, "start_time": "2026-04-14T13:00:49.397294", "end_time": null, "log_dir": "run-LLaMEA_v5_Hessian_10000-DoubleGauss_v5-0_20260414_130049"}]}
