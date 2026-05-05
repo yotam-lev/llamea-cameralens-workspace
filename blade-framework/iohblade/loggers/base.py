@@ -179,10 +179,10 @@ class ExperimentLogger:
         run_object = {
             "method_name": method.name,
             "problem_name": problem.name,
-            "llm_name": llm.model,
+            "llm_name": llm.model if llm is not None else "None",
             "method": method.to_dict(),
             "problem": problem.to_dict(),
-            "llm": llm.to_dict(),
+            "llm": llm.to_dict() if llm is not None else {},
             "solution": solution.to_dict(),
             "log_dir": rel_log_dir,
             "seed": seed,

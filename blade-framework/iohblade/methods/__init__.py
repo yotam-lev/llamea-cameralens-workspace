@@ -1,6 +1,7 @@
 from .funsearch import funsearch
 from .llamea import LLaMEA
 from .random_search import RandomSearch
+from .rlemmo import RLEMMO
 from .lhns import LHNS_Method
 from .mcts_ahd import MCTS_Method
 
@@ -15,6 +16,7 @@ except Exception:  # pragma: no cover - optional dependency
 __all__ = [
     "LLaMEA",
     "RandomSearch",
+    "RLEMMO",
     "EoH",
     "funsearch",
     "ReEvo",

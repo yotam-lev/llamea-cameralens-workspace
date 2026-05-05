@@ -138,10 +138,10 @@ def configure_run(llm, n_jobs):
     llamea = LLaMEA(
         llm,
         budget=budget,
-        name="LLaMEA_v4_Memetic_Broad",
+        name="LLaMEA_v4_OpenPrompt_False",
         n_parents=4,
-        n_offspring=12,
-        elitism=True,  # CRITICAL: Ensures the best algorithms survive
+        n_offspring=9,
+        elitism=False,  # CRITICAL: Ensures the best algorithms survive
         mutation_prompts=mutation_prompts,
     )
 
@@ -161,7 +161,7 @@ def configure_run(llm, n_jobs):
     )
 
     os.makedirs("results", exist_ok=True)
-    logger = ExperimentLogger("results/lens_v4_overnight")
+    logger = ExperimentLogger("results/v4_openprompt_false_500")
 
     return Experiment(
         methods=[llamea],

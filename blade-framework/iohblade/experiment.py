@@ -172,7 +172,7 @@ class Experiment(ABC):
                 self.exp_logger.add_run(
                     method,
                     problem,
-                    method.llm,
+                    getattr(method, "llm", None),
                     solution,
                     log_dir=logger.dirname,
                     seed=seed,
@@ -188,10 +188,16 @@ class Experiment(ABC):
 
     def _run_single(self, method, problem, logger, seed):
         np.random.seed(seed)
-        method.llm.set_logger(logger)
+        
+        # Robustly handle methods without LLMs (like RLEMMO baseline)
+        llm = getattr(method, "llm", None)
+        if llm is not None and hasattr(llm, "set_logger"):
+            llm.set_logger(logger)
+            
         logger.log_stdout = self.log_stdout
         if hasattr(logger, "start_run"):
-            logger.start_run(method.llm)
+            logger.start_run(llm)
+            
         if self.show_stdout:
             problem._ensure_env()
             result = method(problem)
