@@ -120,12 +120,12 @@ def configure_run(llm, n_jobs):
         "```\n\n"
     )
 
-    initial_prompt = (
+    initial_prompt = [
         "Implement a memetic strategy: Use a population-based global explorer (like DE) to search the full 24D space. For the best individuals in each generation, apply a local gradient-based 'polish' (like L-BFGS-B) to only the first 18 dimensions using the provided grad_func.",
         "Design a mutation operator that uses the gradient. Instead of random noise, perturb the first 18 dimensions proportionally to the negative gradient direction (-grad_func(x)) to accelerate convergence toward the local minimum.",
         "Implement a trust-region approach: Use a global search to identify promising basins, then deploy a local search that respects the geometric bounds and uses gradients to 'descend' into the deep local optima characteristic of lens design.",
         "Scale your algorithm for a MASSIVE budget. Use a DE population size of at least 150 to 200 individuals to ensure massive global exploration before descending with L-BFGS-B."
-    )
+    ]
 
     mutation_prompts = [
         "Refine the strategy of the selected solution to improve its performance and robustness.",
@@ -152,8 +152,8 @@ def configure_run(llm, n_jobs):
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=500, 
-        eval_timeout=1200,  
+        budget_factor=50, 
+        eval_timeout=35,  
         name="DoubleGauss_v4",
         example_prompt=example_prompt,
         task_prompt=task_prompt,

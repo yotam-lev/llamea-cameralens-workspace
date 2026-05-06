@@ -36,6 +36,7 @@ class LLaMEA(Method):
             prompts = {
                 "role_prompt": "You are a senior applied physicist with extensive background in software engineering.",
                 "task_prompt": problem.task_prompt,
+                "initial_prompt": problem.initial_prompt if problem.initial_prompt else [],  # Save initial prompt if provided, otherwise save empty list
                 "example_prompt": problem.example_prompt,
                 "output_format_prompt": problem.format_prompt,
                 "mutation_prompts": self.kwargs.get("mutation_prompts", []),
@@ -47,8 +48,8 @@ class LLaMEA(Method):
         self.llamea_instance = LLAMEA_Algorithm(
             f=problem,  # Ensure evaluation integrates with our framework
             llm=self.llm,
-            role_prompt="",  # Already part of the task_prompt in lens problems
-            task_prompt=problem.task_prompt,
+            role_prompt="You are a senior applied physicist.",
+            task_prompt=problem.get_prompt(), # Call the method to get a string
             example_prompt=problem.example_prompt,
             output_format_prompt=problem.format_prompt,
             log=None,  # We do not use the LLaMEA native logger, we use the experiment logger instead which is attached on problem level.

@@ -209,7 +209,7 @@ class Problem(ABC):
         self.training_instances = training_instances if training_instances else []
         self.test_instances = test_instances if test_instances else []
         self.task_prompt = "Write the problem description part here."
-        self.initial_prompt = "Write the initial instructions part here. This will only be shown for the first evaluation of a solution."
+        self.initial_prompt = []
         self.example_prompt = "Write an example code here."
         self.format_prompt = "Write the format description part here."
         self.name = name
@@ -355,9 +355,10 @@ class Problem(ABC):
         return solution
 
     def _ensure_env(self):
-        """Create the virtual environment for evaluations if it does not exist."""
-        if self._env_path is not None:
+        """Create or reuse the virtual environment for evaluations."""
+        if self._env_path is not None and self._env_path.exists():
             return
+        
         import virtualenv
 
         env_dir = tempfile.mkdtemp(prefix="blade_env_")
@@ -366,7 +367,8 @@ class Problem(ABC):
         self._python_bin = (
             self._env_path / ("Scripts" if os.name == "nt" else "bin") / "python"
         )
-
+        
+        # ... keep the rest of the installation logic ...
         deps = getattr(self, "dependencies", [])
         if deps:
             subprocess.run(
@@ -432,19 +434,22 @@ class Problem(ABC):
         if logger != None:
             self.logger_dir = logger.get_log_dir()
 
-    def get_prompt(self):
+    def get_prompt(self, generation=None):
         """
-        Get the full prompt describing the problem and how to format the answer.
+        Get the full prompt describing the problem and how to format the answer,
+        optionally including the initial instructions for the first four generations.
         """
-       
-        return self.task_prompt + self.example_prompt + self.format_prompt
+        prompt = self.task_prompt + self.example_prompt + self.format_prompt
+        if generation is not None and generation < 4:
+            prompt += str(self.initial_prompt)
+        return prompt
         
 
     def get_init_prompt(self):
         """
         Get initial problem prompt 
         """
-        return self.task_prompt + self.example_prompt + self.format_prompt + self.initial_prompt
+        return self.task_prompt + self.example_prompt + self.initial_prompt + self.format_prompt
 
     
     
@@ -507,7 +512,7 @@ class WrappedProblem(Problem):
         if task_prompt:
             self.task_prompt = task_prompt
         if initial_prompt:
-            initial_prompt = initial_prompt
+            self.initial_prompt = initial_prompt
         if example_prompt:
             self.example_prompt = example_prompt
 
