@@ -439,17 +439,17 @@ class Problem(ABC):
         Get the full prompt describing the problem and how to format the answer,
         optionally including the initial instructions for the first four generations.
         """
-        prompt = self.task_prompt + self.example_prompt + self.format_prompt
-        if generation is not None and generation < 4:
-            prompt += str(self.initial_prompt)
-        return prompt
+        return self.task_prompt + self.example_prompt + self.format_prompt
+        
+        
+        
         
 
     def get_init_prompt(self):
         """
         Get initial problem prompt 
         """
-        return self.task_prompt + self.example_prompt + self.initial_prompt + self.format_prompt
+        return self.initial_prompt
 
     
     

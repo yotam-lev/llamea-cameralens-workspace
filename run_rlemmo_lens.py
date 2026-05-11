@@ -17,6 +17,7 @@ from iohblade.experiment import Experiment
 from iohblade.methods import RLEMMO, RandomSearch
 from iohblade.loggers import ExperimentLogger
 from contextual_lens_problem import ContextualLensOptimisation
+from iohblade.problems.lens_optimisation import lens_optimisation
 
 def run_rlemmo_baseline():
     print("\n" + "="*60)
@@ -24,16 +25,16 @@ def run_rlemmo_baseline():
     print("="*60)
     
     # 1. Setup Method
-    rlemmo = RLEMMO(budget=1, pop_size=50, name="RLEMMO_Baseline")
+    rlemmo = RLEMMO(budget=1, pop_size=100, name="RLEMMO_Baseline")
     
     # 2. Setup Problem
     training_seeds = [(1,)] 
     test_seeds = [(11,)]
     
-    lens_problem = ContextualLensOptimisation(
+    lens_problem = lens_optimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=5000, 
+        budget_factor=100000, 
         eval_timeout=600,
         name="DoubleGauss_RLEMMO_Test"
     )

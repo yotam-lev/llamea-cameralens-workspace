@@ -18,7 +18,8 @@ from iohblade.methods import LLaMEA
 from iohblade.loggers import ExperimentLogger
 from iohblade.problem import Problem
 from contextual_lens_problem import ContextualLensOptimisation
-from config import get_llm, get_n_jobs
+from iohblade.problems.lens_optimisation import LensOptimisation
+from iohblade.problems.lens_optimisation import get_llm, get_n_jobs
 from llamea import LLaMEA as LLAMEA_Algorithm
 
 # Metadata for the run selector
@@ -149,7 +150,7 @@ def configure_run(llm, n_jobs):
     training_seeds = [(s,) for s in range(1, 3)]
     test_seeds = [(s,) for s in range(11, 16)]
 
-    lens_problem = ContextualLensOptimisation(
+    lens_problem = LensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
         budget_factor=500, 

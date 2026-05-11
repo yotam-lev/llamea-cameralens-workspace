@@ -32,6 +32,7 @@ dependencies = [
     "feedparser>=6.0.12",
     "cma>=4.4.4",
     "pydoe>=0.9.7",
+    "matplotlib>=3.10.8",
 ]
 
 [project.urls]

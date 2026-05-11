@@ -51,6 +51,7 @@ class LLaMEA(Method):
             role_prompt="You are a senior applied physicist.",
             task_prompt=problem.get_prompt(), # Call the method to get a string
             example_prompt=problem.example_prompt,
+            initial_prompt=problem.get_init_prompt() if problem.get_init_prompt() else [],  # Provide empty list if no initial prompt
             output_format_prompt=problem.format_prompt,
             log=None,  # We do not use the LLaMEA native logger, we use the experiment logger instead which is attached on problem level.
             budget=self.budget,

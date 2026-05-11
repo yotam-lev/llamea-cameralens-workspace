@@ -22,6 +22,7 @@ class Solution:
         parent_ids=[],
         operator=None,
         task_prompt="",
+        initial_prompt="",
 
     ):
         
@@ -52,6 +53,7 @@ class Solution:
         self.metadata = {}  # Dictionary to store additional metadata
         self.operator = operator
         self.task_prompt = task_prompt
+        self.inital_prompt = initial_prompt
 
     def __getstate__(self):
         return self.to_dict()
@@ -160,6 +162,7 @@ class Solution:
             parent_ids=[self.id],  # Link this solution as the parent
             operator=self.operator,
             task_prompt=self.task_prompt,
+            inital_prompt=self.inital_prompt,
         )
         new_solution.feedback = self.feedback
         new_solution.error = self.error
@@ -249,6 +252,7 @@ class Solution:
         Converts the individual to a JSON string.
 
         Returns:
+
             str: A JSON string representation of the individual.
         """
         return json.dumps(self.to_dict(), default=str, indent=4)
