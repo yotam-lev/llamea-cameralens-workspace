@@ -449,7 +449,7 @@ class Problem(ABC):
         """
         Get initial problem prompt 
         """
-        return self.initial_prompt
+        return getattr(self, "initial_prompt", [])
 
     
     

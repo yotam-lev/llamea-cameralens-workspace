@@ -137,7 +137,7 @@ def plotly_convergence(df: pd.DataFrame, aggregate: bool = False) -> go.Figure:
     return fig
 
 
-RESULTS_DIR = "results"
+RESULTS_DIR = "results-documentation"
 
 
 def discover_experiments(root=RESULTS_DIR):

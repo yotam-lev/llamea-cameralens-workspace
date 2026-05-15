@@ -157,6 +157,6 @@ def configure_run(llm, n_jobs):
 
 
 if __name__ == "__main__":
-    experiment = configure_run(get_llm(), n_jobs=get_n_jobs())
+    experiment = configure_run(get_llm(), n_jobs=1)
     print(f"Starting experiment: {RUN_META['name']}")
     experiment()

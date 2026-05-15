@@ -15,6 +15,8 @@ from iohblade.experiment import Experiment
 from iohblade.methods import LLaMEA, RandomSearch
 from iohblade.loggers import ExperimentLogger
 from contextual_lens_problem import ContextualLensOptimisation
+from iohblade.problems.lens_optimisation import LensOptimisation
+
 from config import get_llm, get_n_jobs
 
 # Metadata for the run selector
@@ -132,7 +134,7 @@ def configure_run(llm, n_jobs):
     training_seeds = [(s,) for s in range(1, 3)]
     test_seeds = [(s,) for s in range(11, 16)]
 
-    lens_problem = ContextualLensOptimisation(
+    lens_problem = LensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
         budget_factor=10000,  # MATCH PRODUCTION BUDGET

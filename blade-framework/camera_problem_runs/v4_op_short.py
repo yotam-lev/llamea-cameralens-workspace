@@ -17,7 +17,6 @@ from iohblade.experiment import Experiment
 from iohblade.methods import LLaMEA
 from iohblade.loggers import ExperimentLogger
 from iohblade.problem import Problem
-from contextual_lens_problem import ContextualLensOptimisation
 from iohblade.problems.lens_optimisation import LensOptimisation
 from iohblade.problems.lens_optimisation import get_llm, get_n_jobs
 from llamea import LLaMEA as LLAMEA_Algorithm
@@ -156,6 +155,7 @@ def configure_run(llm, n_jobs):
         budget_factor=500, 
         eval_timeout=600,  
         name="DoubleGauss_v4",
+
         example_prompt=example_prompt,
         task_prompt=task_prompt,
         initial_prompt=initial_prompt,

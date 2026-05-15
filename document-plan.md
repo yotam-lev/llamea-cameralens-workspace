@@ -16,16 +16,53 @@ This thesis investigates the application of Large Language Model-based Evolution
 ### 2. V2 & V3 Iterations (Late March - Early April)
 *   **Target:** `lens_v2.py`, `lens_v3.py`
 *   **Focus:** Introduction of prompt engineering to guide optimizer structure.
+*   **Performance insight:** was not acheiving very great results and would often achieve no evaluated results, the feww runs that did recieve a value received a value betwen 2 and 0.07 which is not good when comparing to state of the art results of 0.0005...
 
 ### 3. V4 (The Gradient-Aware Memetic Shift)
 *   **Target:** `lens_v4.py`, `lens_v4_overnight_5000.py`
-*   **Focus:** Bridging LLM optimization and physical gradient descent.
-*   **Performance Insight:** Discovered bottleneck in environment lifecycle (`_ensure_env` per evaluation), now optimized with persistent caching.
+*   **Focus:** Bridging LLM optimization and physical gradient descent, provided grad0_cont variable which is the gradient of all continuous variables (provided from the camera-lens-simulation codebase).
+*   **Performance Insight:** Discovered bottleneck in environment lifecycle (`_ensure_env` per evaluation), now optimized with persistent caching, environment was reinitiailising jax for every run instead of keeping an initialised env for all evaluations. Mean loss function improved with the 500 budget factor runs acheiving scores of 0.01 and the 50,000 budget factor score achieving 0.004. which is 8 times the state of the art result we are chasing, closer but still nowhere near.
 
-### 4. RLEMMO Baseline Implementation
-*   **Target:** `blade-framework/iohblade/methods/rlemmo.py`
-*   **Purpose:** To serve as a high-quality, multimodal evolutionary algorithm baseline to validate LLaMEA performance against a state-of-the-art heuristic.
-*   **Testing Focus:** Verification of multimodal capabilities, cluster-based search, and adaptive operator selection.
+*   ***Insights from all runs:***
+- it was necessary to update to the qwen3.0:32b model as the 14b model was struggling to generate syntactically correct algorithms.
+- it was found that generally elitism off generates greater results as it enables greater variation in parent nodes. elitism == true also would occaisionally cause a perpetual cycle of -inf results and in general scores -inf with far greater frequency then when it is turned off. 
+- The most recent update to lens v4 saw the implementation of a more open prompt, this enables greater exploration for the llm which is backed up by the tsne plots generated. These have been experimented with budget factors of 500-1000 however not more as there is a persistant bug which I am finding difficult to resolve, causing evaluation to take far longer than expected. 
+
+### 4. RLEMMO algorithm implementation
+
+Run 1: The Single-Core Baseline
+The Setup: This was your original run_rlemmo_lens.py script. It used a simple Multi-Armed Bandit (MAB) algorithm to randomly select exploration strategies. It ran on a single CPU core with a population of 100 explorers and a budget of 100,000 evaluations.
+
+The Result: -0.0264
+
+The Takeaway: This run proved the code worked but highlighted the flaw of standard evolutionary algorithms: getting stuck. Because the MAB algorithm is "blind" to its exact location on the map, it got trapped in a shallow local minimum and couldn't randomly guess its way out before the budget expired.
+
+Run 2: The HPC Brute-Force (MAB Scaled)
+The Setup: To utilize your cluster's 10 cores, we wrapped the baseline script in an iohblade.Experiment set to spawn 10 completely independent universes (runs=10) simultaneously. We also scaled the population up to 1,000 explorers to cast a wider net.
+
+The Result: * Worst Run: -0.0287
+
+Average (Median): -0.0156
+
+Best Run: -0.0104
+
+The Takeaway: A massive success. By giving the algorithm 10 independent chances, one of the search parties managed to bypass the local traps and find a valley that was more than twice as optimized as your initial baseline (-0.0104 vs -0.0264). However, the massive variance in the boxplot proved that MAB is highly volatile and relies heavily on "getting lucky."
+
+Run 3: The Deep RL Local Prototype
+The Setup: We completely tore down the MAB statistical array and replaced it with a context-aware PyTorch Neural Network (PPO). To test the complex new architecture safely, you ran a highly restricted local test (small population, tiny budget of ~1,000 steps).
+
+The Result: -0.3427 and -0.4565 (Followed by a Monitor logger crash).
+
+The Takeaway: As expected for a 1,000-step test, the actual lens fitness was quite poor (far away from zero). However, this run was a critical architectural victory. It proved the ray-tracer environments successfully converted to a Gym MDP, the neural network initialized correctly, and the Deep RL backpropagation worked. We fixed the logger crash immediately after.
+
+Run 4: The Deep RL HPC Production Run
+The Setup: With the code verified and the NVIDIA CUDA driver mismatch bypassed by forcing CPU gradient updates, you deployed the Deep RL agent to the cluster for a massive 800,000+ step run.
+
+The Result: Plateaued strictly around -0.0107 (specifically tracking from -0.010718 down to -0.010709).
+
+The Takeaway: The PyTorch AI successfully learned the macro-landscape! It swiftly navigated down to -0.0107, which is mathematically neck-and-neck with the absolute luckiest brute-force run (-0.0104). However, it suffered from "Entropy Collapse." Because we didn't give it microscopic step sizes or high enough rewards for tiny improvements, the neural network decided it was "good enough" and stopped exploring, plateauing at the 5th decimal place.
+
+
 
 ## 📝 Document Chapters
 

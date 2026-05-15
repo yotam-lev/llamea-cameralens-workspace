@@ -14,6 +14,9 @@ import inspect
 from scipy.stats import qmc
 from ..problem import Problem
 from ..solution import Solution
+from  pathlib import Path
+import os
+
 
 
 class OverBudgetExecption(Exception):
@@ -143,6 +146,8 @@ class LensOptimisation(Problem):
                 "STRICT FORMATTING: # Description: <Description, max 2 sentences>\n # Code:\n```python\n<code>\n```"
             )
         )
+        self.initial_prompt = kwargs.get("initial_prompt", [])
+        super().__init__(**kwargs)
 
     def _get_sandbox_env(self):
         import scipy.optimize, cma, random, math

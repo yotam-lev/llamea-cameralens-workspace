@@ -6,6 +6,7 @@ Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 Requires-Dist: iohblade
 Requires-Dist: lensgopt
+Requires-Dist: jax
 
 # LLaMEA Camera Lens Optimization Workspace
 
