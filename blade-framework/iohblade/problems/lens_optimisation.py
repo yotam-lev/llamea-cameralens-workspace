@@ -210,190 +210,187 @@ class LensOptimisation(Problem):
         """
         Execute the LLM-generated optimizer code on training instances.
         """
-        try:
-            func, grad_fn, dim, lb, ub, grad0_cont = self._build_objective()
-            budget = self.budget_factor
-            exec_env = self._get_sandbox_env()
-            exec_env["grad0_cont"] = grad0_cont
+        # 1. LET THE CODE RUN WITHOUT AN OUTER TRY-EXCEPT BLOCK
+        # This allows the underlying obj NameError to crash the script natively
+        func, grad_fn, dim, lb, ub, grad0_cont = self._build_objective()
+        budget = self.budget_factor
+        exec_env = self._get_sandbox_env()
+        exec_env["grad0_cont"] = grad0_cont
 
-            clean_code = re.sub(
-                r"^(?:from|import)\s+(?:latin_hypercube_sampling|lhs).*$",
-                "",
-                solution.code,
-                flags=re.MULTILINE,
+        clean_code = re.sub(
+            r"^(?:from|import)\s+(?:latin_hypercube_sampling|lhs).*$",
+            "",
+            solution.code,
+            flags=re.MULTILINE,
+        )
+
+        exec_env["population_size"] = 20
+        exec_env["pop_size"] = 20
+        exec_env["glass_ids"] = list(range(100))
+
+        exec(clean_code, exec_env)
+
+        # 1. ROBUST CLASS EXTRACTION
+        # We look for a subclass of Optimizer that isn't Optimizer itself
+        OptimizerClass = exec_env.get("Optimizer")
+
+        # 2. Safety Fallback (Just in case the LLM names it MyOptimizer, Solver, etc.)
+        if not OptimizerClass:
+            ignore_list = [
+                "LHSWrapper",
+                "DoubleGaussObjective",
+                "Solution",
+                "Problem",
+            ]
+            for name, val in exec_env.items():
+                if isinstance(val, type) and name not in ignore_list:
+                    # Check if it has an execution method
+                    if any(
+                        hasattr(val, m)
+                        for m in [
+                            "optimize",
+                            "solve",
+                            "run",
+                            "minimize",
+                            "__call__",
+                        ]
+                    ):
+                        OptimizerClass = val
+                        break
+
+        if not OptimizerClass:
+            return solution.set_scores(
+                -np.inf, feedback="No valid 'Optimizer' class found."
             )
 
-            exec_env["population_size"] = 20
-            exec_env["pop_size"] = 20
-            exec_env["glass_ids"] = list(range(100))
+        sig_init = inspect.signature(OptimizerClass.__init__)
+        init_params = sig_init.parameters
 
-            exec(clean_code, exec_env)
+        def create_optimizer(b, d, g_cont):
+            kwargs = {}
+            if "budget" in init_params:
+                kwargs["budget"] = b
+            if "dim" in init_params:
+                kwargs["dim"] = d
+            if "grad0_cont" in init_params:
+                kwargs["grad0_cont"] = g_cont
 
-            # 1. ROBUST CLASS EXTRACTION
-            # We look for a subclass of Optimizer that isn't Optimizer itself
-            OptimizerClass = exec_env.get("Optimizer")
+            if not kwargs:
+                num_args = len(init_params) - 1
+                if num_args >= 3:
+                    return OptimizerClass(b, d, g_cont)
+                if num_args == 2:
+                    return OptimizerClass(b, d)
+                return OptimizerClass(b)
+            return OptimizerClass(**kwargs)
 
-            # 2. Safety Fallback (Just in case the LLM names it MyOptimizer, Solver, etc.)
-            if not OptimizerClass:
-                ignore_list = [
-                    "LHSWrapper",
-                    "DoubleGaussObjective",
-                    "Solution",
-                    "Problem",
-                ]
-                for name, val in exec_env.items():
-                    if isinstance(val, type) and name not in ignore_list:
-                        # Check if it has an execution method
-                        if any(
-                            hasattr(val, m)
-                            for m in [
-                                "optimize",
-                                "solve",
-                                "run",
-                                "minimize",
-                                "__call__",
-                            ]
-                        ):
-                            OptimizerClass = val
-                            break
+        # 2. ROBUST EXECUTION WITH ENTRY POINT HUNTING
+        def call_optimizer(opt_inst, f, g, env):
+            opt_inst.func, opt_inst.grad_func = f, g
+            env["func"], env["grad_func"] = f, g
 
-            if not OptimizerClass:
-                return solution.set_scores(
-                    -np.inf, feedback="No valid 'Optimizer' class found."
-                )
+            # Ensure the optimizer has a way to receive structured feedback if it wants to
+            if not hasattr(opt_inst, "receive_feedback"):
+                opt_inst.receive_feedback = lambda x: None
 
-            sig_init = inspect.signature(OptimizerClass.__init__)
-            init_params = sig_init.parameters
+            entry_methods = ["__call__", "optimize", "solve", "run", "minimize"]
+            last_error = None
 
-            def create_optimizer(b, d, g_cont):
-                kwargs = {}
-                if "budget" in init_params:
-                    kwargs["budget"] = b
-                if "dim" in init_params:
-                    kwargs["dim"] = d
-                if "grad0_cont" in init_params:
-                    kwargs["grad0_cont"] = g_cont
-
-                if not kwargs:
-                    num_args = len(init_params) - 1
-                    if num_args >= 3:
-                        return OptimizerClass(b, d, g_cont)
-                    if num_args == 2:
-                        return OptimizerClass(b, d)
-                    return OptimizerClass(b)
-                return OptimizerClass(**kwargs)
-
-            # 2. ROBUST EXECUTION WITH ENTRY POINT HUNTING
-            def call_optimizer(opt_inst, f, g, env):
-                opt_inst.func, opt_inst.grad_func = f, g
-                env["func"], env["grad_func"] = f, g
-
-                # Ensure the optimizer has a way to receive structured feedback if it wants to
-                if not hasattr(opt_inst, "receive_feedback"):
-                    opt_inst.receive_feedback = lambda x: None
-
-                entry_methods = ["__call__", "optimize", "solve", "run", "minimize"]
-                last_error = None
-
-                for method_name in entry_methods:
-                    if hasattr(opt_inst, method_name):
-                        method = getattr(opt_inst, method_name)
-                        try:
-                            sig = inspect.signature(method)
-                            num_params = len(sig.parameters)
-                            # Handle both (func, grad_func) and (func)
-                            if num_params >= 2:
-                                return method(f, g)
-                            else:
-                                return method(f)
-                        except NotImplementedError as e:
-                            last_error = e
-                            continue
-
-                if last_error:
-                    raise last_error
-                raise AttributeError(
-                    f"No valid execution method found. Expected one of: {entry_methods}"
-                )
-
-            # Dry Run Phase
-            try:
-                dry_run_opt = create_optimizer(10, dim, grad0_cont)
-                mock_func = lambda x: float(np.sum(x**2))
-                mock_grad = lambda x: 2 * x[:18]
-                call_optimizer(dry_run_opt, mock_func, mock_grad, exec_env)
-            except Exception as e:
-                return solution.set_scores(
-                    -np.inf, feedback=f"Optimizer failed during initial dry run: {e}"
-                )
-
-            # 3. Production Evaluation Loop
-            losses = []
-            scale = (ub - lb) / 2.0
-
-            import io
-            from contextlib import redirect_stdout, redirect_stderr
-
-            captured_output = io.StringIO()
-
-            for (seed,) in self.training_instances:
-                np.random.seed(seed)
-                opt = create_optimizer(self.budget_factor, dim, grad0_cont)
-
-                def bounded_func(xn):
-                    xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
-                    f_val = func(xr)
-                    # Provide feedback to the optimizer if it wants it
-                    if hasattr(opt, "receive_feedback"):
-                        try:
-                            opt.receive_feedback({"loss": f_val, "x_normalized": xn})
-                        except:
-                            pass
-                    return f_val
-
-                def bounded_grad(xn):
-                    xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
-                    # Chain rule: d f(xr(xn)) / d xn = df/dxr * dxr/dxn = grad * (ub-lb)/2
-                    g_val = grad_fn(xr) * scale[:18]
-                    # Provide gradient feedback to the optimizer if it wants it
-                    if hasattr(opt, "receive_feedback"):
-                        try:
-                            opt.receive_feedback({"grad": g_val, "x_normalized": xn})
-                        except:
-                            pass
-                    return g_val
-
-                with redirect_stdout(captured_output), redirect_stderr(captured_output):
+            for method_name in entry_methods:
+                if hasattr(opt_inst, method_name):
+                    method = getattr(opt_inst, method_name)
                     try:
-                        best_f, best_x = call_optimizer(
-                            opt, bounded_func, bounded_grad, exec_env
-                        )
-                        losses.append(float(best_f))
-                    except Exception as e:
-                        print(f"Seed {seed} failed: {e}")
-                        losses.append(float("inf"))
+                        sig = inspect.signature(method)
+                        num_params = len(sig.parameters)
+                        # Handle both (func, grad_func) and (func)
+                        if num_params >= 2:
+                            return method(f, g)
+                        else:
+                            return method(f)
+                    except NotImplementedError as e:
+                        last_error = e
+                        continue
 
-            mean_loss = np.mean(losses)
-
-            # Construct final feedback including captured output
-            output_str = captured_output.getvalue()
-            feedback_msg = (
-                f"Mean loss: {mean_loss:.6f}. Best single run: {min(losses):.6f}."
+            if last_error:
+                raise last_error
+            raise AttributeError(
+                f"No valid execution method found. Expected one of: {entry_methods}"
             )
-            if output_str:
-                feedback_msg += (
-                    f"\n\n--- Optimizer Console Output ---\n{output_str[:2000]}"
-                )
-                if len(output_str) > 2000:
-                    feedback_msg += "\n(Output truncated...)"
 
-            solution.set_scores(-mean_loss, feedback=feedback_msg)
-
+        # Dry Run Phase
+        try:
+            dry_run_opt = create_optimizer(10, dim, grad0_cont)
+            mock_func = lambda x: float(np.sum(x**2))
+            mock_grad = lambda x: 2 * x[:18]
+            call_optimizer(dry_run_opt, mock_func, mock_grad, exec_env)
         except Exception as e:
-            solution.set_scores(-np.inf, feedback=f"Error during evaluation: {e}")
+            return solution.set_scores(
+                -np.inf, feedback=f"Optimizer failed during initial dry run: {e}"
+            )
 
+        # 3. Production Evaluation Loop
+        losses = []
+        scale = (ub - lb) / 2.0
+
+        import io
+        from contextlib import redirect_stdout, redirect_stderr
+
+        captured_output = io.StringIO()
+
+        for (seed,) in self.training_instances:
+            np.random.seed(seed)
+            opt = create_optimizer(self.budget_factor, dim, grad0_cont)
+
+            def bounded_func(xn):
+                xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
+                f_val = func(xr)
+                # Provide feedback to the optimizer if it wants it
+                if hasattr(opt, "receive_feedback"):
+                    try:
+                        opt.receive_feedback({"loss": f_val, "x_normalized": xn})
+                    except:
+                        pass
+                return f_val
+
+            def bounded_grad(xn):
+                xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
+                # Chain rule: d f(xr(xn)) / d xn = df/dxr * dxr/dxn = grad * (ub-lb)/2
+                g_val = grad_fn(xr) * scale[:18]
+                # Provide gradient feedback to the optimizer if it wants it
+                if hasattr(opt, "receive_feedback"):
+                    try:
+                        opt.receive_feedback({"grad": g_val, "x_normalized": xn})
+                    except:
+                        pass
+                return g_val
+
+            with redirect_stdout(captured_output), redirect_stderr(captured_output):
+                try:
+                    best_f, best_x = call_optimizer(
+                        opt, bounded_func, bounded_grad, exec_env
+                    )
+                    losses.append(float(best_f))
+                except Exception as e:
+                    print(f"Seed {seed} failed: {e}")
+                    losses.append(float("inf"))
+
+        mean_loss = np.mean(losses)
+
+        # Construct final feedback including captured output
+        output_str = captured_output.getvalue()
+        feedback_msg = (
+            f"Mean loss: {mean_loss:.6f}. Best single run: {min(losses):.6f}."
+        )
+        if output_str:
+            feedback_msg += (
+                f"\n\n--- Optimizer Console Output ---\n{output_str[:2000]}"
+            )
+            if len(output_str) > 2000:
+                feedback_msg += "\n(Output truncated...)"
+
+        solution.set_scores(-mean_loss, feedback=feedback_msg)
         return solution
-
+    
     def test(self, solution: Solution) -> Solution:
         orig = self.training_instances
         self.training_instances = self.test_instances

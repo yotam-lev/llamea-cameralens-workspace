@@ -27,7 +27,7 @@ RUN_META = {
 
 
 def configure_run(llm, n_jobs):
-    budget = 20  # Evolutionary generations
+    budget = 100  # Evolutionary generations
 
     task_prompt = (
         "You are an elite algorithm designer specializing in mixed-variable, black-box optimization.\n\n"
@@ -126,8 +126,8 @@ def configure_run(llm, n_jobs):
         llm,
         budget=budget,
         name="LLaMEA_v4_Memetic",
-        n_parents=2,
-        n_offspring=4,
+        n_parents=4,
+        n_offspring=12,
         elitism=False,
         mutation_prompts=mutation_prompts,
     )
@@ -138,15 +138,15 @@ def configure_run(llm, n_jobs):
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=1000,  # MATCH PRODUCTION BUDGET
-        eval_timeout=600,  # Increased to handle 10k evals + local search
+        budget_factor=500,  # MATCH PRODUCTION BUDGET
+        eval_timeout=1800,  # Increased to handle 10k evals + local search
         name="DoubleGauss_v4",
         example_prompt=example_prompt,
         task_prompt=task_prompt,
     )
 
     os.makedirs("results", exist_ok=True)
-    logger = ExperimentLogger("results/lens_v4")
+    logger = ExperimentLogger("results/Lens_v4_50000_F_100Gen")
 
     return Experiment(
         methods=[llamea],
