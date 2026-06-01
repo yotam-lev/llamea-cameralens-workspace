@@ -123,10 +123,11 @@ class Optimizer:
 
 def main():
     from examples.double_gauss_objective import DoubleGaussObjective
+    import inspect
     
     # 3. Initialize Objective
     print("Initializing Double-Gauss Objective...")
-    obj = DoubleGaussObjective(enable_grad=False, enable_hessian=False)
+    obj = DoubleGaussObjective(enable_grad=True, enable_hessian=False)
     lb, ub = obj.bounds()
     dim = obj.n_theta
 
@@ -136,29 +137,92 @@ def main():
     loss_init = obj.objective_theta(theta_init)
     print(f"Initial Template Loss: {loss_init:.6f}")
     
+    # === PHASE 1: EXPLOIT AUTOPSY (PROOF OF FABRICATION) ===
+    print("\n--- EXPLOIT AUTOPSY (PROOF OF FABRICATION) ---")
+    theta_exploit = theta_init.copy()
+    # Inject continuous phantom glass IDs into indices 18-23
+    theta_exploit[18:24] = [36.432, 48.789, 34.112, 34.901, 48.345, 48.876]
+    
+    loss_continuous = obj.objective_theta(np.clip(theta_exploit, lb, ub))
+    loss_projected = obj.objective_theta(obj.project_theta(theta_exploit, lb=lb, ub=ub))
+    
+    print(f"Loss with Continuous Phantom Glass IDs (np.clip): {loss_continuous:.6f}")
+    print(f"Loss with Strict MINLP Snapping (project_theta):  {loss_projected:.6f}")
+    print(f"Discrepancy / Optimization Distortion:            {loss_projected - loss_continuous:.6f}")
+    print("------------------------------------------------\n")
+    
+    # Compute baseline gradient for initialization
+    grad0_cont = obj.gradient_cont_int(x_cont_init, x_mat_init)
+    
     # We use a larger budget for a "production" run
     budget = 10000 
-    seed = 42
+    seed = 1
     np.random.seed(seed)
     
+    # Dynamic signature check for Optimizer constructor
+    sig_init = inspect.signature(Optimizer.__init__)
+    init_params = sig_init.parameters
+    
+    kwargs = {}
+    if "budget" in init_params:
+        kwargs["budget"] = budget
+    if "dim" in init_params:
+        kwargs["dim"] = dim
+    if "grad0_cont" in init_params:
+        kwargs["grad0_cont"] = grad0_cont
+        
     print(f"Running optimization (Budget: {budget}, Seed: {seed})...")
-    optimizer = Optimizer(budget=budget, dim=dim)
+    if kwargs:
+        optimizer = Optimizer(**kwargs)
+    else:
+        # Fallback positional matching
+        num_args = len(init_params) - 1
+        if num_args >= 3:
+            optimizer = Optimizer(budget, dim, grad0_cont)
+        elif num_args == 2:
+            optimizer = Optimizer(budget, dim)
+        else:
+            optimizer = Optimizer(budget)
     
     # Wrapper to handle normalization [-1, 1] -> [lb, ub]
     def bounded_func(x_normalized):
         x_real = lb + (x_normalized + 1.0) / 2.0 * (ub - lb)
-        # Objective handles its own clipping internally usually, 
-        # but we ensure it's within bounds.
-        return obj.objective_theta(np.clip(x_real, lb, ub))
+        x_proj = obj.project_theta(x_real, lb=lb, ub=ub)
+        
+
+        
+        return obj.objective_theta(x_proj)
+
+    scale = (ub - lb) / 2.0
+
+    def bounded_grad(x_normalized):
+        x_real = lb + (x_normalized + 1.0) / 2.0 * (ub - lb)
+        x_proj = obj.project_theta(x_real, lb=lb, ub=ub)
+        xc, xi = obj.split_theta(x_proj)
+        
+
+        
+        # Recreate scaling & apply to continuous gradients
+        g_val = obj.gradient_cont_int(xc, xi) * scale[:18]
+        return g_val
 
     import time
     start_time = time.time()
-    best_f, best_x_normalized = optimizer(bounded_func)
+    
+    # Dynamic signature check for Optimizer.__call__
+    sig_call = inspect.signature(optimizer.__call__)
+    call_params = sig_call.parameters
+    
+    if "grad_func" in call_params or len(call_params) >= 2:
+        best_f, best_x_normalized = optimizer(bounded_func, bounded_grad)
+    else:
+        best_f, best_x_normalized = optimizer(bounded_func)
+        
     end_time = time.time()
     
     # 4. Map back to real space
     best_x_real = lb + (best_x_normalized + 1.0) / 2.0 * (ub - lb)
-    best_x_real = np.clip(best_x_real, lb, ub)
+    best_x_real = obj.project_theta(best_x_real, lb=lb, ub=ub)
     
     print(f"\nOptimization Complete in {end_time - start_time:.2f}s")
     print(f"Best Loss Found: {best_f:.6f}")

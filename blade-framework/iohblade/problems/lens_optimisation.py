@@ -204,7 +204,7 @@ class LensOptimisation(Problem):
             xc, xi = obj.split_theta(x_clipped)
             return obj.gradient_cont_int(xc, xi)
 
-        return func, grad_fn, dim, lb, ub, grad0_cont
+        return obj, func, grad_fn, dim, lb, ub, grad0_cont
 
     def evaluate(self, solution: Solution) -> Solution:
         """
@@ -212,7 +212,7 @@ class LensOptimisation(Problem):
         """
         # 1. LET THE CODE RUN WITHOUT AN OUTER TRY-EXCEPT BLOCK
         # This allows the underlying obj NameError to crash the script natively
-        func, grad_fn, dim, lb, ub, grad0_cont = self._build_objective()
+        obj, func, grad_fn, dim, lb, ub, grad0_cont = self._build_objective()
         budget = self.budget_factor
         exec_env = self._get_sandbox_env()
         exec_env["grad0_cont"] = grad0_cont
@@ -343,7 +343,11 @@ class LensOptimisation(Problem):
 
             def bounded_func(xn):
                 xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
-                f_val = func(xr)
+                xr_proj = obj.project_theta(xr, lb=lb, ub=ub)
+                
+
+                
+                f_val = obj.objective_theta(xr_proj)
                 # Provide feedback to the optimizer if it wants it
                 if hasattr(opt, "receive_feedback"):
                     try:
@@ -354,8 +358,13 @@ class LensOptimisation(Problem):
 
             def bounded_grad(xn):
                 xr = lb + (xn + 1.0) / 2.0 * (ub - lb)
-                # Chain rule: d f(xr(xn)) / d xn = df/dxr * dxr/dxn = grad * (ub-lb)/2
-                g_val = grad_fn(xr) * scale[:18]
+                xr_proj = obj.project_theta(xr, lb=lb, ub=ub)
+                xc, xi = obj.split_theta(xr_proj)
+                
+
+                
+                # Chain rule scaling for continuous gradients
+                g_val = obj.gradient_cont_int(xc, xi) * scale[:18]
                 # Provide gradient feedback to the optimizer if it wants it
                 if hasattr(opt, "receive_feedback"):
                     try:
