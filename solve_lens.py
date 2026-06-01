@@ -1,5 +1,13 @@
 import os
 import sys
+import multiprocessing
+
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+os.environ["XLA_FLAGS"] = "--xla_cpu_multi_thread_eigen=false"
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -33,7 +41,9 @@ class Optimizer:
     def differential_evolution(self, func, pop_size=50, max_iter=100) -> tuple[float, np.ndarray]:
         bounds = [(-1, 1)] * self.continuous_dim + [(0, 99)] * self.categorical_dim
         population = self.latin_hypercube_sampling(pop_size)
-        fitness = np.array([func(ind) for ind in population])
+        num_cores = multiprocessing.cpu_count()
+        with multiprocessing.Pool(num_cores) as pool:
+            fitness = np.array([func(ind) for ind in population])
         
         F = np.random.uniform(0.5, 0.9)
         CR = np.random.uniform(0.7, 0.9)

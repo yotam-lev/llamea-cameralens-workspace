@@ -26,7 +26,7 @@ RUN_META = {
 
 
 def configure_run(llm, n_jobs):
-    budget = 3  # Generations (LLaMEA loop budget)
+    budget = 100  # Generations (LLaMEA loop budget)
 
     task_prompt = (
         "You are an elite algorithm designer specializing in mixed-variable, black-box optimization.\n\n"
@@ -103,7 +103,7 @@ def configure_run(llm, n_jobs):
         training_instances=training_seeds,
         test_instances=test_seeds,
         budget_factor=50000,
-        eval_timeout=300,
+        eval_timeout=600,
         name="DoubleGauss_Local_Test",
         example_prompt=example_prompt,
         task_prompt=task_prompt,

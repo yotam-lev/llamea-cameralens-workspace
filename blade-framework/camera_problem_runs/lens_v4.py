@@ -33,7 +33,7 @@ def configure_run(llm, n_jobs):
         "You are an elite algorithm designer specializing in mixed-variable, black-box optimization.\n\n"
         "### Problem Physics & Landscape:\n"
         "Your task is to MINIMIZE a 24-dimensional camera lens design loss function with strictly bounded `[-1, 1]` parameters.\n"
-        "- Indices `x[0:18]`: 18 Continuous parameters (lens curvatures and distances).\n"
+        "- Indices `x[0:18]`: 18 Continuous parameters (lens  curvatures and distances).\n"
         "- Indices `x[18:24]`: 6 Categorical glass material IDs.\n"
         "The landscape is highly non-convex and filled with infeasible 'cliffs' where invalid lenses return extremely high loss (`inf`).\n\n"
         "### THE GRADIENT ADVANTAGE (`grad0_cont`) ###\n"
@@ -53,6 +53,10 @@ def configure_run(llm, n_jobs):
         "2. func MUST be called with a full 24-dimensional vector. Never pass an 18-dimensional vector to func.\n"
         "3. Do not manually write evaluation loops if using scipy.optimize. Map them through a wrapper function that tracks the budget.\n"
         "4. FEEDBACK: You can implement `receive_feedback(self, info)` to get structured data after each call, or use `print()` to send debugging info back to yourself.\n"
+        "4. DIMENSIONS & DISCRETIZATION: Indices [0-17] are continuous. Indices [18-23] represent categorical glass IDs. "
+        "CRITICAL: Do NOT attempt to round, bin, or discretize indices [18-23] yourself. "
+        "Treat the entire 24D vector as continuous floats between [-1.0, 1.0]. "
+        "The target environment will automatically handle the mapping and integer projection of the glass IDs.\n"
     )
 
     example_prompt = (
@@ -138,7 +142,7 @@ def configure_run(llm, n_jobs):
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=500,  # MATCH PRODUCTION BUDGET
+        budget_factor=50000,  # MATCH PRODUCTION BUDGET
         eval_timeout=1800,  # Increased to handle 10k evals + local search
         name="DoubleGauss_v4",
         example_prompt=example_prompt,
