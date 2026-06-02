@@ -1,0 +1,1 @@
+{"start_time": "2026-05-24T18:35:35.547707", "end_time": null, "current": 0, "total": 1, "runs": [{"method_name": "LLaMEA_v5_Hardened", "problem_name": "DoubleGauss_v5", "seed": 0, "budget": 100, "evaluations": 89, "start_time": "2026-05-24T18:36:28.167708", "end_time": null, "log_dir": "run-LLaMEA_v5_Hardened-DoubleGauss_v5-0_20260524_183628"}]}

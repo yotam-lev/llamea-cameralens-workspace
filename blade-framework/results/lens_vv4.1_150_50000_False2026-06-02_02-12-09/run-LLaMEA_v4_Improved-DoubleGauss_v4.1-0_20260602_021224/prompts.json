@@ -1,0 +1,17 @@
+{
+    "role_prompt": "You are a senior applied physicist with extensive background in software engineering.",
+    "task_prompt": [
+        "You are an elite algorithm designer specializing in mixed-variable, black-box optimization.\n\n### Problem Physics & Landscape:\nMINIMIZE a 24-dimensional camera lens design loss function.\n- Indices `x[0:18]`: 18 Continuous parameters (curvatures/distances).\n- Indices `x[18:24]`: 6 Categorical glass material IDs (must be integers within [0, N_materials-1]).\nThe landscape contains 'cliffs' where invalid lenses return `inf`.\n\n### STRICT CODING STANDARDS (CRITICAL) ###\n1. CATEGORICAL HANDLING: You MUST treat indices 18-24 as integers. Before passing ANY array to `func` or `grad_func`, you MUST apply a mapping: `x[18:24] = np.clip(np.round(x[18:24]), 0, 5).astype(int)`. Failing to do this causes simulation crashes.\n2. GRADIENT ACCESS: When using gradients, slice them correctly. `grad_func(full_x)` returns an 18D gradient. Do not use this gradient to mutate categorical dimensions.\n3. CMA-ES ACCESS: Use `es.result[0]` for best x, `es.result[1]` for best fitness. `es.ask()` returns a LIST.\n4. SCIPY MINIMIZE: Use `scipy.optimize.minimize(..., jac=grad_func)`. Ensure `res.x` is clamped to valid categories before further use.\n5. WRAPPER: Use the provided `_evaluate` method to track evaluations. If `evals >= budget`, return `inf`.\n### LENS DESIGN TASK ###\nMemetic: Use CMA-ES on the continuous 18D space. For each offspring, round/clamp the 6 categorical indices before evaluation.",
+        "Gradient-guided: Use `-grad0_cont` to perturb continuous variables. Resample categorical variables randomly from `[0, 5]` integers.",
+        "Local Search: Identify promising basins via global search, then use SLSQP on the 18D subspace while keeping the best categorical configuration fixed."
+    ],
+    "example_prompt": "Write a completely self-contained Python class named `Optimizer`.\n```python\nimport numpy as np\nclass Optimizer:\n    def __init__(self, budget: int, dim: int):\n        self.budget = budget\n        self.dim = dim\n        self.evals = 0\n        self.best_f = float('inf')\n        self.best_x = np.zeros(dim)\n\n    def _map_categorical(self, x):\n        # Forces indices 18-24 to be valid integer categories [0, 5]\n        x_out = x.copy()\n        x_out[18:24] = np.clip(np.round(x_out[18:24]), 0, 5).astype(int)\n        return x_out\n\n    def _evaluate(self, x, func):\n        if self.evals >= self.budget: return float('inf')\n        x_clean = self._map_categorical(x)\n        f = func(x_clean)\n        self.evals += 1\n        if f < self.best_f:\n            self.best_f = f\n            self.best_x = x_clean.copy()\n        return f\n\n    def __call__(self, func, grad_func=None):\n        # Implementation here using self._evaluate(x, func)\n        return self.best_f, self.best_x\n```\n",
+    "output_format_prompt": "STRICT FORMATTING: # Description: <Description, max 2 sentences>\n # Code:\n```python\n<code>\n```",
+    "mutation_prompts": [
+        "Refine the strategy of the selected solution to improve its performance and robustness.",
+        "Propose structural changes to the algorithm to better explore the search space.",
+        "Optimize the internal logic and parameters of the algorithm for faster convergence.",
+        "Identify potential weaknesses in the current optimization approach and address them.",
+        "Refine the current algorithm by introducing more sophisticated local search or mutation operators."
+    ]
+}
