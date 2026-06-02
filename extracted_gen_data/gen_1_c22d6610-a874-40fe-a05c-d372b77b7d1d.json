@@ -1,0 +1,11 @@
+{
+    "id": "c22d6610-a874-40fe-a05c-d372b77b7d1d",
+    "parent_ids": [
+        "3c1960bc-d6e3-4199-b4e6-d54cc6d9c709"
+    ],
+    "fitness": -1023.8905648325082,
+    "feedback": "Mean loss: 1023.890565. Best single run: 1023.890565.",
+    "code": "import numpy as np\n\nclass Optimizer:\n    def __init__(self, budget: int, dim: int):\n        self.budget = budget\n        self.dim = dim\n        self.evals = 0\n        self.best_f = float('inf')\n        self.best_x = np.zeros(dim)\n\n    def _evaluate(self, x, func):\n        \"\"\"Wrapper to safely track budget and update best solution.\"\"\"\n        if self.evals >= self.budget:\n            return float('inf')\n        f = func(x)\n        self.evals += 1\n        if f < self.best_f:\n            self.best_f = f\n            self.best_x = x.copy()\n        return f\n\n    def __call__(self, func, grad_func=None):\n        # Initial population (LHS)\n        initial_population = lhs(n_samples=10, n_dim=self.dim)\n        for x in initial_population:\n            self._evaluate(x, func)\n\n        # Simulated Annealing parameters\n        T_initial = 1.0\n        T_final = 0.001\n        alpha = 0.95\n        current_temp = T_initial\n\n        if grad_func is not None:\n            baseline_x = np.zeros(self.dim)\n            lr = 0.01  # Learning rate for the gradient step\n            gradient_step = lr * grad_func(baseline_x)[:18]\n            baseline_x[:18] -= gradient_step\n            self._evaluate(baseline_x, func)\n\n        # Simulated Annealing main loop\n        current_x = initial_population[0]\n        current_f = self.best_f\n\n        while current_temp > T_final and self.evals < self.budget:\n            for _ in range(10):  # Number of iterations per temperature\n                new_x = np.random.uniform(-1, 1, self.dim)\n                new_f = func(new_x)\n\n                if new_f < current_f or np.exp((current_f - new_f) / current_temp) > np.random.rand():\n                    current_x = new_x\n                    current_f = new_f\n\n            # Update temperature\n            current_temp *= alpha\n\n        return self.best_f, self.best_x",
+    "generation": 1,
+    "name": "Optimizer"
+}

@@ -70,7 +70,7 @@ class Optimizer:
 """
 
 sol = Solution(code=code.strip())
-prob = LensOptimisation(budget_factor=10000, training_instances=[(1,)])
+prob = LensOptimisation(budget_factor=10000, training_instances=[(1,3)])
 
 
 

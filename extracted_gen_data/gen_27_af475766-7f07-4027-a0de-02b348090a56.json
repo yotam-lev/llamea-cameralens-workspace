@@ -1,0 +1,11 @@
+{
+    "id": "af475766-7f07-4027-a0de-02b348090a56",
+    "parent_ids": [
+        "edd48bfe-82e4-4cc6-b13f-d06befa8d85c"
+    ],
+    "fitness": "-inf",
+    "feedback": "Optimizer failed during initial dry run: Subclasses must implement __call__",
+    "code": "import numpy as np\n\nclass RandomSearchOptimizer:\n    def __init__(self, budget: int, dim: int):\n        self.budget = budget\n        self.dim = dim\n        self.evals = 0\n        self.best_f = float('inf')\n        self.best_x = np.zeros(dim)\n        self.materials = list(range(6))  # Assuming categorical variables are IDs from 0 to 5\n\n    def _evaluate(self, x, func):\n        \"\"\"Wrapper to safely track budget and update best solution.\"\"\"\n        if self.evals >= self.budget:\n            return float('inf')\n        f = func(x)\n        self.evals += 1\n        if f < self.best_f:\n            self.best_f = f\n            self.best_x = x.copy()\n        return f\n\n    def __call__(self, func):\n        # Initialization (LHS sampling)\n        initial_population = lhs(n_samples=20, n_dim=self.dim)\n        for x in initial_population:\n            self._evaluate(x, func)\n\n        while self.evals < self.budget:\n            candidate_x = self.best_x.copy()\n\n            # Gaussian mutation for continuous variables\n            candidate_x[:18] += np.random.normal(0, 0.1, 18)\n            candidate_x[:18] = np.clip(candidate_x[:18], -1, 1)  # Ensure bounds\n\n            # Random perturbation for categorical variables\n            for i in range(18, 24):\n                if np.random.rand() < 0.1:\n                    candidate_x[i] = np.random.choice(self.materials)\n\n            candidate_f = func(candidate_x)\n            self._evaluate(candidate_x, func)\n\n        return self.best_f, self.best_x",
+    "generation": 27,
+    "name": "RandomSearchOptimizer"
+}

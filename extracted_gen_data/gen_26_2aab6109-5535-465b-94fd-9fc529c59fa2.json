@@ -1,0 +1,11 @@
+{
+    "id": "2aab6109-5535-465b-94fd-9fc529c59fa2",
+    "parent_ids": [
+        "cc71d5ee-ddbb-4172-9cb8-9ec306f5ffd1"
+    ],
+    "fitness": "-inf",
+    "feedback": "Optimizer failed during initial dry run: Subclasses must implement __call__",
+    "code": "import numpy as np\n\nclass SimulatedAnnealingOptimizer:\n    def __init__(self, budget: int, dim: int, initial_temp: float = 100.0, cooling_rate: float = 0.95):\n        self.budget = budget\n        self.dim = dim\n        self.evals = 0\n        self.best_f = float('inf')\n        self.best_x = np.zeros(dim)\n        self.materials = list(range(6))  # Assuming categorical variables are IDs from 0 to 5\n        self.temp = initial_temp\n        self.cooling_rate = cooling_rate\n\n    def _evaluate(self, x, func):\n        \"\"\"Wrapper to safely track budget and update best solution.\"\"\"\n        if self.evals >= self.budget:\n            return float('inf')\n        f = func(x)\n        self.evals += 1\n        if f < self.best_f:\n            self.best_f = f\n            self.best_x = x.copy()\n        return f\n\n    def __call__(self, func):\n        # Initialization (LHS sampling)\n        initial_population = lhs(n_samples=20, n_dim=self.dim)\n        for x in initial_population:\n            self._evaluate(x, func)\n\n        while self.evals < self.budget:\n            candidate_x = self.best_x.copy()\n\n            # Gaussian mutation for continuous variables\n            candidate_x[:18] += np.random.normal(0, 0.1, 18)\n            candidate_x[:18] = np.clip(candidate_x[:18], -1, 1)  # Ensure bounds\n\n            # Random perturbation for categorical variables\n            for i in range(18, 24):\n                if np.random.rand() < 0.1:\n                    candidate_x[i] = np.random.choice(self.materials)\n\n            candidate_f = self._evaluate(candidate_x, func)\n            delta_f = candidate_f - self.best_f\n\n            # Acceptance criterion\n            if delta_f > 0 and np.random.rand() > np.exp(-delta_f / self.temp):\n                continue\n\n            self.best_f = candidate_f\n            self.best_x = candidate_x.copy()\n\n            # Cool down the temperature\n            self.temp *= self.cooling_rate\n\n        return self.best_f, self.best_x",
+    "generation": 26,
+    "name": "SimulatedAnnealingOptimizer"
+}

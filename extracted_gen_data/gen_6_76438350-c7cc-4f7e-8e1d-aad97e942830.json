@@ -1,0 +1,11 @@
+{
+    "id": "76438350-c7cc-4f7e-8e1d-aad97e942830",
+    "parent_ids": [
+        "957ffb7d-6c6d-4b15-9aa4-e67c9e8ec91c"
+    ],
+    "fitness": -0.5413149453159285,
+    "feedback": "Mean loss: 0.541315. Best single run: 0.541315.",
+    "code": "<code>",
+    "generation": 6,
+    "name": "Optimizer"
+}

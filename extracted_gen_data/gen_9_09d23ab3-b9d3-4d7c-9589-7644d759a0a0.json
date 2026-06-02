@@ -1,0 +1,11 @@
+{
+    "id": "09d23ab3-b9d3-4d7c-9589-7644d759a0a0",
+    "parent_ids": [
+        "0a97998c-249a-4169-a633-964e267caf8b"
+    ],
+    "fitness": "-inf",
+    "feedback": "Optimizer failed during initial dry run: Subclasses must implement __call__",
+    "code": "import numpy as np\nfrom scipy.optimize import minimize\n\nclass SimulatedAnnealingOptimizer(Optimizer):\n    def __init__(self, budget: int, dim: int, initial_temp: float = 100.0, cooling_rate: float = 0.95):\n        super().__init__(budget, dim)\n        self.initial_temp = initial_temp\n        self.cooling_rate = cooling_rate\n\n    def __call__(self, func, grad_func=None):\n        # Initialization (LHS)\n        initial_population = lhs(n_samples=20, n_dim=self.dim)\n        for x in initial_population:\n            self._evaluate(x, func)\n\n        # Simulated Annealing\n        current_temp = self.initial_temp\n        while self.evals < self.budget and current_temp > 1e-8:\n            # Generate a new candidate solution by Gaussian mutation around the best found solution\n            sigma = 0.1  # Mutation strength\n            x_candidate = np.random.uniform(-1, 1, self.dim)\n            \n            # Ensure bounds are respected for continuous variables\n            x_candidate[:18] = np.clip(x_candidate[:18], -1, 1)\n\n            # Evaluate the candidate solution\n            f_candidate = func(x_candidate)\n\n            if f_candidate < self.best_f or np.random.rand() < np.exp((self.best_f - f_candidate) / current_temp):\n                self.best_f = f_candidate\n                self.best_x = x_candidate.copy()\n\n            # Cool down the temperature\n            current_temp *= self.cooling_rate\n\n        return self.best_f, self.best_x",
+    "generation": 9,
+    "name": "SimulatedAnnealingOptimizer"
+}

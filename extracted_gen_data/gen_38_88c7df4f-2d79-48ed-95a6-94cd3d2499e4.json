@@ -1,0 +1,11 @@
+{
+    "id": "88c7df4f-2d79-48ed-95a6-94cd3d2499e4",
+    "parent_ids": [
+        "12ec0eea-c3b1-4ed1-b6a1-284563d40b09"
+    ],
+    "fitness": "-inf",
+    "feedback": "Optimizer failed during initial dry run: Subclasses must implement __call__",
+    "code": "import numpy as np\n\nclass RandomSearchOptimizer:\n    def __init__(self, budget: int, dim: int, grad0_cont: np.ndarray):\n        self.budget = budget\n        self.dim = dim\n        self.evals = 0\n        self.best_f = float('inf')\n        self.best_x = np.zeros(dim)\n        self.materials = list(range(6))  # Assuming categorical variables are IDs from 0 to 5\n        self.grad0_cont = grad0_cont\n\n    def _evaluate(self, x, func):\n        \"\"\"Wrapper to safely track budget and update best solution.\"\"\"\n        if self.evals >= self.budget:\n            return float('inf')\n        f = func(x)\n        self.evals += 1\n        if f < self.best_f:\n            self.best_f = f\n            self.best_x = x.copy()\n        return f\n\n    def __call__(self, func):\n        # Initialization (LHS sampling)\n        initial_population = lhs(n_samples=20, n_dim=self.dim)\n        for x in initial_population:\n            self._evaluate(x, func)\n\n        # Initial step using grad0_cont\n        current_x = self.best_x.copy()\n        lr = 0.01  # Learning rate for the gradient step\n        current_x[:18] -= lr * self.grad0_cont\n        current_x[:18] = np.clip(current_x[:18], -1, 1)  # Ensure bounds\n        self._evaluate(current_x, func)\n\n        # Random Search main loop\n        while self.evals < self.budget:\n            candidate_x = current_x.copy()\n\n            # Gaussian mutation for continuous variables\n            candidate_x[:18] += np.random.normal(0, 0.1, 18)\n            candidate_x[:18] = np.clip(candidate_x[:18], -1, 1)  # Ensure bounds\n\n            # Random perturbation for categorical variables\n            for i in range(18, 24):\n                if np.random.rand() < 0.1:\n                    candidate_x[i] = np.random.choice(self.materials)\n\n            self._evaluate(candidate_x, func)\n            current_x = candidate_x.copy()\n\n        return self.best_f, self.best_x",
+    "generation": 38,
+    "name": "RandomSearchOptimizer"
+}
