@@ -163,3 +163,89 @@ if __name__ == "__main__":
     experiment = configure_run(get_llm(), n_jobs=1)
     print(f"Starting experiment: {RUN_META['name']}")
     experiment()
+
+
+"""
+V4: Gradient-Aware Memetic Evolution.
+Explicitly uses JAX gradients for the 18D continuous subspace.
+"""
+
+import os
+import sys
+
+# Ensure the blade-framework root is on sys.path
+_FRAMEWORK_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _FRAMEWORK_ROOT not in sys.path:
+    sys.path.insert(0, _FRAMEWORK_ROOT)
+
+from iohblade.experiment import Experiment
+from iohblade.methods import LLaMEA, RandomSearch
+from iohblade.loggers import ExperimentLogger
+from contextual_lens_problem import ContextualLensOptimisation
+from config import get_llm, get_n_jobs
+
+# Metadata for the run selector
+RUN_META = {
+    "name": "Lens V4 (Gradient-Aware)",
+    "description": "Memetic LLaMEA leveraging JAX gradients for 18D continuous subspace",
+    "context": True,
+    "version": "v4",
+}
+
+
+def configure_run(llm, n_jobs):
+    budget = 100  # Evolutionary generations
+
+    task_prompt = (
+        #<Task_prompt>
+    )
+
+    example_prompt = (
+        #<Example_prompt>
+    )
+
+    mutation_prompts = [
+        #<Mutation_prompts>
+    ]
+
+    llamea = LLaMEA(
+        llm,
+        budget=budget,
+        name="LLaMEA_v4_Memetic",
+        n_parents=4,
+        n_offspring=12,
+        elitism=False,
+        mutation_prompts=mutation_prompts,
+    )
+
+    training_seeds = [(s,) for s in range(1, 3)]
+    test_seeds = [(s,) for s in range(11, 16)]
+
+    lens_problem = ContextualLensOptimisation(
+        training_instances=training_seeds,
+        test_instances=test_seeds,
+        budget_factor=500,  # MATCH PRODUCTION BUDGET
+        eval_timeout=1800,  # Increased to handle 10k evals + local search
+        name="DoubleGauss_v4",
+        example_prompt=example_prompt,
+        task_prompt=task_prompt,
+    )
+
+    os.makedirs("results", exist_ok=True)
+    logger = ExperimentLogger("results/Lens_v4_50000_F_100Gen")
+
+    return Experiment(
+        methods=[llamea],
+        problems=[lens_problem],
+        runs=1,
+        show_stdout=True,
+        exp_logger=logger,
+        budget=budget,
+        n_jobs=n_jobs,
+    )
+
+
+if __name__ == "__main__":
+    experiment = configure_run(get_llm(), n_jobs=1)
+    print(f"Starting experiment: {RUN_META['name']}")
+    experiment()

@@ -11,65 +11,66 @@ from iohblade.solution import Solution
 # Mocking the objective import if needed, but it should work now with path setup
 # LensOptimisation adds it in _build_objective
 code = """
+
 import numpy as np
-import cma
 
 class Optimizer:
-    def __init__(self, budget, dim, grad0_cont):
+    def __init__(self, budget: int, dim: int):
         self.budget = budget
         self.dim = dim
+        self.evals = 0
+        self.best_f = float('inf')
+        self.best_x = np.zeros(dim)
+        self.grad0_cont = None
+
+    def set_initial_gradient(self, grad0_cont):
         self.grad0_cont = grad0_cont
 
+    def _evaluate(self, x, func):
+        if self.evals >= self.budget:
+            return float('inf')
+        f = func(x)
+        self.evals += 1
+        if f < self.best_f:
+            self.best_f = f
+            self.best_x = x.copy()
+        return f
+
     def __call__(self, func, grad_func=None):
-        best_f = float('inf')
-        best_x = None
-        
-        # FIX 1: Explicitly pass arguments to prevent shape mixing
-        initial_population = lhs(n_samples=10, n_dim=self.dim)
-        
-        # Bias the initial population distribution based on the gradient information
-        for i in range(initial_population.shape[0]):
-            initial_population[i, :18] += 0.05 * self.grad0_cont
-        
-        # Initialize CMA-ES with the biased initial population
-        es = cma.CMAEvolutionStrategy(initial_population.mean(axis=0), 0.3)
-        
-        # Track evaluations to respect the budget
-        evals = 0
-        
-        while evals < self.budget:
-            # FIX 2: es.ask() returns a full list of solutions (the population)
-            solutions = es.ask()
-            fitness_values = []
-            
-            for x in solutions:
-                # Stop if we hit the strict evaluation budget
-                if evals >= self.budget:
-                    # Provide a dummy high fitness for unevaluated samples just to keep CMA-ES happy
-                    fitness_values.append(float('inf'))
-                    continue
-                    
-                f = func(x)
-                evals += 1
-                
-                if f < best_f:
-                    best_f = f
-                    best_x = x
-                    
-                fitness_values.append(f)
-            
-            # Tell CMA-ES the results of the evaluations
-            es.tell(solutions, fitness_values)
-            
-            # Optional: Stop early if CMA-ES converges
-            if es.stop():
-                break
-        
-        return best_f, best_x
+        # Initialization (LHS)
+        initial_population = lhs(n_samples=20, n_dim=self.dim)
+        for x in initial_population:
+            self._evaluate(x, func)
+
+        # Initial gradient step
+        if grad_func is not None and self.grad0_cont is not None:
+            baseline_x = np.zeros(self.dim)
+            lr = 0.01  # Learning rate for the gradient step
+            gradient_step = lr * self.grad0_cont[:18]
+            baseline_x[:18] -= gradient_step
+            self._evaluate(baseline_x, func)
+
+        # Enhanced Random Search with Gaussian mutation 
+        while self.evals < self.budget:
+            if np.random.rand() < 0.5:
+                x = np.random.uniform(-1, 1, self.dim)
+            else:
+                # Gaussian mutation around the best found solution
+                sigma = 0.1  # Mutation strength
+                x = self.best_x.copy()
+                x[:18] += np.random.normal(0, sigma, 18)  # Mutate continuous variables
+                # Ensure bounds are respected for continuous variables
+                x[:18] = np.clip(x[:18], -1, 1)
+                # Categorical variables remain unchanged as they are discrete
+
+            self._evaluate(x, func)
+
+        return self.best_f, self.best_x
+  
 """
 
 sol = Solution(code=code.strip())
-prob = LensOptimisation(budget_factor=50, training_instances=[(1,)])
+prob = LensOptimisation(budget_factor=10000, training_instances=[(1,)])
 
 
 

@@ -100,8 +100,8 @@ def configure_run(llm, n_jobs):
         llm,
         budget=budget,
         name="LLaMEA_v4_Improved",
-        n_parents=4,
-        n_offspring=12,
+        n_parents=3,
+        n_offspring=8,
         elitism= elitism_flag,
         mutation_prompts=mutation_prompts,
     )
@@ -109,8 +109,8 @@ def configure_run(llm, n_jobs):
 
 
     lens_problem = ContextualLensOptimisation(
-        training_instances=[(s,) for s in range(1, 3)],
-        test_instances=[(s,) for s in range(11, 16)],
+        training_instances=[(s,) for s in range(1,)],
+        test_instances=[(s,) for s in range(11, 13)],
         budget_factor=budget_factor,
         eval_timeout=1800,
         name="DoubleGauss_v4.1",

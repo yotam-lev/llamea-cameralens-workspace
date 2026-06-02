@@ -15,110 +15,79 @@ if BLADE_FRAMEWORK_ROOT not in sys.path:
 
 # 2. Define the Optimizer (PASTE YOUR EXTRACTED CODE HERE)
 # ---------------------------------------------------------
+import numpy as np
+def lhs(n_samples, n_dim):
+    """
+    Basic Latin Hypercube Sampling generating values in [-1, 1].
+    """
+    result = np.empty((n_samples, n_dim))
+    d = 1.0 / n_samples
+    for i in range(n_dim):
+        # Generate uniform samples for each interval
+        result[:, i] = np.random.uniform(
+            low=np.arange(n_samples) * d,
+            high=(np.arange(n_samples) + 1) * d,
+            size=n_samples
+        )
+        # Shuffle the samples for this dimension
+        np.random.shuffle(result[:, i])
+    
+    # Map from [0, 1] to [-1, 1] to match the optimizer's bounds
+    return result * 2.0 - 1.0
+
 class Optimizer:
     def __init__(self, budget: int, dim: int):
         self.budget = budget
         self.dim = dim
-        self.continuous_dim = 18
-        self.categorical_dim = 6
+        self.evals = 0
+        self.best_f = float('inf')
+        self.best_x = np.zeros(dim)
+        self.grad0_cont = None
 
-    def latin_hypercube_sampling(self, n_samples: int) -> np.ndarray:
-        samples = np.zeros((n_samples, self.dim))
-        for i in range(self.continuous_dim):
-            samples[:, i] = np.random.uniform(-1, 1, n_samples)
-        for i in range(self.categorical_dim):
-            samples[:, self.continuous_dim + i] = np.random.randint(0, 100, n_samples)
-        return samples
+    def set_initial_gradient(self, grad0_cont):
+        self.grad0_cont = grad0_cont
 
-    def differential_evolution(self, func, pop_size=50, max_iter=100) -> tuple[float, np.ndarray]:
-        bounds = [(-1, 1)] * self.continuous_dim + [(0, 99)] * self.categorical_dim
-        population = self.latin_hypercube_sampling(pop_size)
-        fitness = np.array([func(ind) for ind in population])
-        
-        F = np.random.uniform(0.5, 0.9)
-        CR = np.random.uniform(0.7, 0.9)
+    def _evaluate(self, x, func):
+        """Wrapper to safely track budget and update best solution."""
+        if self.evals >= self.budget:
+            return float('inf')
+        f = func(x)
+        self.evals += 1
+        if f < self.best_f:
+            self.best_f = f
+            self.best_x = x.copy()
+        return f
 
-        for _ in range(max_iter):
-            new_population = []
-            new_fitness = []
-            for i in range(pop_size):
-                idxs = np.random.choice(pop_size, 3, replace=False)
-                a, b, c = population[idxs]
-                
-                mutant = np.zeros(self.dim)
-                for j in range(self.continuous_dim):
-                    if np.random.rand() < CR or j == i:
-                        mutant[j] = a[j] + F * (b[j] - c[j])
-                    else:
-                        mutant[j] = population[i][j]
-                
-                for j in range(self.categorical_dim):
-                    mutant[self.continuous_dim + j] = np.random.randint(0, 100)
-                
-                new_f = func(mutant)
-                if new_f < fitness[i]:
-                    new_population.append(mutant)
-                    new_fitness.append(new_f)
-                else:
-                    new_population.append(population[i])
-                    new_fitness.append(fitness[i])
-            
-            population = np.array(new_population)
-            fitness = np.array(new_fitness)
-        
-        best_idx = np.argmin(fitness)
-        return fitness[best_idx], population[best_idx]
+    def __call__(self, func, grad_func=None):
+        # Initialization (LHS)
+        initial_population = lhs(n_samples=20, n_dim=self.dim)
+        for x in initial_population:
+            self._evaluate(x, func)
 
-    def local_refinement(self, func, x0, max_iter=50) -> tuple[float, np.ndarray]:
-        # Custom local refinement strategy for handling categorical variables
-        continuous_x = x0[:self.continuous_dim]
-        categorical_x = x0[self.continuous_dim:]
-        
-        # Optimize continuous part using Nelder-Mead
-        def continuous_func(continuous_part):
-            new_x = np.concatenate((continuous_part, categorical_x))
-            return func(new_x)
-        
-        from scipy.optimize import minimize
-        res = minimize(continuous_func, continuous_x, method='Nelder-Mead', options={'maxiter': max_iter})
-        best_continuous_x = res.x
-        
-        # Optimize categorical part by evaluating neighbors
-        best_categorical_f = float('inf')
-        for i in range(self.categorical_dim):
-            for j in [-1, 0, 1]:
-                new_categorical_x = categorical_x.copy()
-                new_categorical_x[i] = (new_categorical_x[i] + j) % 100
-                new_x = np.concatenate((best_continuous_x, new_categorical_x))
-                f = func(new_x)
-                if f < best_categorical_f:
-                    best_categorical_f = f
-                    best_categorical_x = new_categorical_x
-        
-        return best_categorical_f, np.concatenate((best_continuous_x, best_categorical_x))
+        # Initial gradient step
+        if grad_func is not None and self.grad0_cont is not None:
+            baseline_x = np.zeros(self.dim)
+            lr = 0.01  # Learning rate for the gradient step
+            gradient_step = lr * self.grad0_cont[:18]
+            baseline_x[:18] -= gradient_step
+            self._evaluate(baseline_x, func)
 
-    def __call__(self, func) -> tuple[float, np.ndarray]:
-        best_f = float('inf')
-        best_x = None
-        
-        # Global exploration phase
-        for _ in range(10):
-            f, x = self.differential_evolution(func)
-            if f < best_f:
-                best_f = f
-                best_x = x
-        
-        # Local exploitation phase
-        if best_f == float('inf'):
-            return best_f, np.zeros(self.dim)
-        
-        for _ in range(5):
-            local_best_f, local_best_x = self.local_refinement(func, best_x)
-            if local_best_f < best_f:
-                best_f = local_best_f
-                best_x = local_best_x
-        
-        return best_f, best_x
+        # Enhanced Random Search with Gaussian mutation 
+        while self.evals < self.budget:
+            if np.random.rand() < 0.5:
+                x = np.random.uniform(-1, 1, self.dim)
+            else:
+                # Gaussian mutation around the best found solution
+                sigma = 0.1  # Mutation strength
+                x = self.best_x.copy()
+                x[:18] += np.random.normal(0, sigma, 18)  # Mutate continuous variables
+                # Ensure bounds are respected for continuous variables
+                x[:18] = np.clip(x[:18], -1, 1)
+                # Categorical variables remain unchanged as they are discrete
+
+            self._evaluate(x, func)
+
+        return self.best_f, self.best_x
 # ---------------------------------------------------------
 
 def main():
@@ -137,8 +106,8 @@ def main():
     print(f"Initial Template Loss: {loss_init:.6f}")
     
     # We use a larger budget for a "production" run
-    budget = 10000 
-    seed = 42
+    budget = 50000 
+    seed = 25
     np.random.seed(seed)
     
     print(f"Running optimization (Budget: {budget}, Seed: {seed})...")
