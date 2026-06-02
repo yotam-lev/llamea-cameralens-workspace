@@ -102,7 +102,7 @@ def configure_run(llm, n_jobs):
     lens_problem = ContextualLensOptimisation(
         training_instances=training_seeds,
         test_instances=test_seeds,
-        budget_factor=50000,
+        budget_factor=500,
         eval_timeout=600,
         name="DoubleGauss_Local_Test",
         example_prompt=example_prompt,
