@@ -117,6 +117,12 @@ class DataExtractorAgent:
                 if fitness is None:
                     self.lineage_ambiguities.append(f"ID {algo_id}: Missing 'fitness'")
                     fitness = -float("inf")
+                else:
+                    try:
+                        fitness = float(fitness)
+                    except (ValueError, TypeError):
+                        self.lineage_ambiguities.append(f"ID {algo_id}: Invalid fitness value '{fitness}'")
+                        fitness = -float("inf")
                 
                 if not code:
                     self.lineage_ambiguities.append(f"ID {algo_id}: Missing 'code' block")
