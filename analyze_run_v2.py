@@ -124,7 +124,7 @@ class DataExtractorAgent:
                     try:
                         fitness = float(fitness)
                     except (ValueError, TypeError):
-                        self.lineage_ambiguities.append(f"ID {algo_id}: Invalid fitness value '{fitness}'")
+                        self.lineage_ambiguities.append(f"ID {algo_id}: Invalid 'fitness' format: {fitness}")
                         fitness = -float("inf")
                 
                 if not code:
