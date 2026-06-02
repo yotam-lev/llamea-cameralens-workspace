@@ -101,7 +101,7 @@ def main():
 
     # Benchmark: Template Loss
     x_cont_init, x_mat_init = obj.init_from_templates()
-    theta_init = obj.pack_theta(x_cont_init, x_mat_init)
+    theta_init = obj.pack_theta(x_cont_init, x_mat_ init)
     loss_init = obj.objective_theta(theta_init)
     print(f"Initial Template Loss: {loss_init:.6f}")
     

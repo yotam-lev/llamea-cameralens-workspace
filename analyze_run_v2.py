@@ -21,9 +21,9 @@ DEFAULT_MODEL = "qwen2.5-coder:14b"
 FALLBACK_MODEL = "mistral:latest"
 
 # Output Directories
-EXTRACTED_DIR = Path("./extracted_gen_data")
-PSEUDOCODE_DIR = Path("./pseudocode_data")
-REPORTS_DIR = Path("./evolution_reports")
+EXTRACTED_DIR = Path("./Lens_v4_50000_F/extracted_gen_data")
+PSEUDOCODE_DIR = Path("./Lens_v4_50000_F/pseudocode_data")
+REPORTS_DIR = Path("./Lens_v4_50000_F/evolution_reports")
 
 def setup_directories():
     """Ensure output directories exist."""
