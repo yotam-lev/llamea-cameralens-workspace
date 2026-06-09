@@ -1,0 +1,2718 @@
+[
+  {
+    "id": "3ceee0ff-e8f7-414d-b5d6-424b1defcc44",
+    "token": "[VAR_0]",
+    "original_var_name": "budget",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "6a0931ac-5387-4013-9b4c-f19bf4dbe890",
+    "token": "[VAR_1]",
+    "original_var_name": "dim",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "064699b1-c3d2-4a41-a041-95e0243e4aac",
+    "token": "[VAR_2]",
+    "original_var_name": "evals",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#4"
+  },
+  {
+    "id": "9c8096e3-1099-4a72-acfa-b827476b3cf3",
+    "token": "[VAR_3]",
+    "original_var_name": "best_f",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#5"
+  },
+  {
+    "id": "ed5fc82b-6b36-4a8b-8488-c5363c637d5e",
+    "token": "[VAR_4]",
+    "original_var_name": "best_x",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#6"
+  },
+  {
+    "id": "f9e9df74-ba18-4f3c-bf3e-065ac4de481c",
+    "token": "[VAR_5]",
+    "original_var_name": "f",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "a1d90e74-62b1-4998-900b-b623c2ebc98a",
+    "token": "[VAR_6]",
+    "original_var_name": "eval_x",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#3"
+  },
+  {
+    "id": "7e3fb476-6790-446b-9e48-75a565992f77",
+    "token": "[VAR_44]",
+    "original_var_name": "fun",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#1"
+  },
+  {
+    "id": "d33502bc-29d1-4bf0-bb49-6e28f86fb74e",
+    "token": "[VAR_45]",
+    "original_var_name": "best_idx",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#1"
+  },
+  {
+    "id": "95b4713b-8519-4c4a-b829-cd0584f59d96",
+    "token": "[VAR_46]",
+    "original_var_name": "local_search_count",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#11"
+  },
+  {
+    "id": "6d73866b-39c7-442d-82ef-17d983155fd1",
+    "token": "[VAR_7]",
+    "original_var_name": "x",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "3eb39697-f6d1-4553-9bb5-a49248e1ff5a",
+    "token": "[VAR_8]",
+    "original_var_name": "func",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "dee7ddb1-63e8-4a13-8add-b7710fa09368",
+    "token": "[VAR_47]",
+    "original_var_name": "hess_func",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#1"
+  },
+  {
+    "id": "bed68bbe-5750-4ab5-9a39-5e73bb19fdc9",
+    "token": "[VAR_48]",
+    "original_var_name": "full_b",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#2"
+  },
+  {
+    "id": "95baed57-bb0c-48f7-84f6-7aa848ca77d8",
+    "token": "[VAR_49]",
+    "original_var_name": "H_reg",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#6"
+  },
+  {
+    "id": "ff106ac4-43ae-4beb-b330-85fe78e1cbb8",
+    "token": "[VAR_9]",
+    "original_var_name": "gen",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "ccdda6bd-ec31-4496-9232-fb623a911ed8",
+    "token": "[VAR_10]",
+    "original_var_name": "random",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "a754e514-ea40-4a58-8321-7b9c1601f84d",
+    "token": "[VAR_11]",
+    "original_var_name": "cat_state",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "bacf67f6-3f72-4b68-88fd-ec1ff0031dbf",
+    "token": "[VAR_12]",
+    "original_var_name": "candidates",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "3f4d3405-ff79-4538-9f0c-5bafd87ab5b6",
+    "token": "[VAR_13]",
+    "original_var_name": "fitnesses",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#4"
+  },
+  {
+    "id": "14aec29d-021a-4084-92d3-5c8f501eff4c",
+    "token": "[VAR_14]",
+    "original_var_name": "x_c",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "cc4cb632-e2d3-4546-adbd-28a8c631a0c1",
+    "token": "[VAR_15]",
+    "original_var_name": "x_full",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "c50cf58d-1a24-4807-995e-95e1983a75ac",
+    "token": "[VAR_16]",
+    "original_var_name": "idx",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "42c79bfc-b8d7-4055-9aad-a02445906e18",
+    "token": "[VAR_17]",
+    "original_var_name": "cat_ref",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#3"
+  },
+  {
+    "id": "d1ff9a5c-538b-4599-98ae-94505f4e58d4",
+    "token": "[VAR_18]",
+    "original_var_name": "hess_func",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "a486a176-effa-4211-acee-f74a5a39338f",
+    "token": "[VAR_19]",
+    "original_var_name": "grad_func",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "7f791c55-9cb6-42dd-b5a4-ca276997d886",
+    "token": "[VAR_20]",
+    "original_var_name": "linalg",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#7"
+  },
+  {
+    "id": "c78fb992-6614-4be2-ab33-05f0aaf4546b",
+    "token": "[VAR_21]",
+    "original_var_name": "grad",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#3"
+  },
+  {
+    "id": "571e46c5-8faa-4bdd-86d3-52f13471ca1c",
+    "token": "[VAR_22]",
+    "original_var_name": "hess",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#5"
+  },
+  {
+    "id": "6524916f-a529-4f6e-a761-bff81dcd25fb",
+    "token": "[VAR_23]",
+    "original_var_name": "eigvals",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#7"
+  },
+  {
+    "id": "d625c3a7-6c5d-4087-a864-52998053d4df",
+    "token": "[VAR_24]",
+    "original_var_name": "eigvecs",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#7"
+  },
+  {
+    "id": "f707137a-4c8c-4c60-846d-e2e0d4f1565d",
+    "token": "[VAR_25]",
+    "original_var_name": "H_reg",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#9"
+  },
+  {
+    "id": "1c5aed32-b363-430e-b8a5-744e649eacdb",
+    "token": "[VAR_26]",
+    "original_var_name": "step",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#10"
+  },
+  {
+    "id": "0f5949d0-33e2-4b18-a0bb-83606afadd7b",
+    "token": "[VAR_27]",
+    "original_var_name": "x_new_c",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#11"
+  },
+  {
+    "id": "c5043cf8-c431-4c2f-a013-8af7617e1626",
+    "token": "[VAR_28]",
+    "original_var_name": "xc",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "0ade31d5-695b-495f-99c6-526225df48cd",
+    "token": "[VAR_29]",
+    "original_var_name": "trust",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#7"
+  },
+  {
+    "id": "25a209d0-84e6-4940-8851-ad19be7f5314",
+    "token": "[VAR_30]",
+    "original_var_name": "constr",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#7"
+  },
+  {
+    "id": "e495da7b-6312-4e2c-ab75-71b8d4859ff6",
+    "token": "[VAR_31]",
+    "original_var_name": "maxiter",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#8"
+  },
+  {
+    "id": "067c795b-96f1-4a8d-b37a-433af763a223",
+    "token": "[VAR_32]",
+    "original_var_name": "verbose",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#8"
+  },
+  {
+    "id": "2e58a588-1261-45a0-ad4b-ae813e400351",
+    "token": "[VAR_33]",
+    "original_var_name": "res",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "b6cdfd8c-d89c-4e02-a957-59f60bec11dd",
+    "token": "[VAR_34]",
+    "original_var_name": "jac",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#4"
+  },
+  {
+    "id": "a9c098e9-bb0c-4438-9561-3524f6276804",
+    "token": "[VAR_35]",
+    "original_var_name": "bounds",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#6"
+  },
+  {
+    "id": "dadda333-63f8-4137-b824-7ea6ad216f83",
+    "token": "[VAR_36]",
+    "original_var_name": "method",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#7"
+  },
+  {
+    "id": "f0ccc786-df11-4a5d-bee1-867d42e57e45",
+    "token": "[VAR_37]",
+    "original_var_name": "options",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#8"
+  },
+  {
+    "id": "125ef9e8-b864-4883-8ee4-88e0557f9d97",
+    "token": "[VAR_38]",
+    "original_var_name": "success",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "d5c89a25-09bc-4359-ab7b-199c22bda33a",
+    "token": "[VAR_39]",
+    "original_var_name": "es",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "30dae6c1-d1fa-4a09-b1fb-4102185d27af",
+    "token": "[VAR_40]",
+    "original_var_name": "disp",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#41"
+  },
+  {
+    "id": "fa7c2306-c652-4d8f-a034-856ae89308c4",
+    "token": "[VAR_50]",
+    "original_var_name": "sigma",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#1"
+  },
+  {
+    "id": "8e5ce14c-aa3c-4090-8b74-33cafa22fdca",
+    "token": "[VAR_41]",
+    "original_var_name": "kwargs",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "a1392eba-1d34-4af9-8079-87d4a7aee250",
+    "token": "[VAR_42]",
+    "original_var_name": "popsize",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#9"
+  },
+  {
+    "id": "c5fbfa9d-84f6-41ab-8bfd-44977735ec3f",
+    "token": "[VAR_43]",
+    "original_var_name": "n_init",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "4cf49e53-2d1b-4b3a-bc14-36f78a765846",
+    "token": "[VAR_44]",
+    "original_var_name": "mean",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#7"
+  },
+  {
+    "id": "ab28ec3f-02f4-41b3-894e-bdd5a9207c66",
+    "token": "[VAR_45]",
+    "original_var_name": "sigma0",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#8"
+  },
+  {
+    "id": "5ab34d58-3942-4633-aafc-573e30392ba5",
+    "token": "[VAR_46]",
+    "original_var_name": "opts",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#9"
+  },
+  {
+    "id": "c6c07190-dd77-4474-a782-3b84c730c446",
+    "token": "[VAR_51]",
+    "original_var_name": "kwargs",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#1"
+  },
+  {
+    "id": "d509b6a8-29a1-4b63-8287-5c2cb7b5ba8b",
+    "token": "[VAR_52]",
+    "original_var_name": "dim_cont",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#2"
+  },
+  {
+    "id": "90c504d2-61a9-40dd-b138-6011c71e6a88",
+    "token": "[VAR_53]",
+    "original_var_name": "sigma0",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#3"
+  },
+  {
+    "id": "b1eeef37-4b31-4c67-ae32-01051569bfa9",
+    "token": "[VAR_54]",
+    "original_var_name": "x0",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#4"
+  },
+  {
+    "id": "87da8970-8271-431a-a52a-5a7da9f1d445",
+    "token": "[VAR_55]",
+    "original_var_name": "mu",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#7"
+  },
+  {
+    "id": "9cfd0770-e1d1-49bc-9859-153e721cecaa",
+    "token": "[VAR_47]",
+    "original_var_name": "numpy",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#1"
+  },
+  {
+    "id": "a53a023e-f235-473e-aa3f-9aa985078820",
+    "token": "[VAR_48]",
+    "original_var_name": "optimize",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "08fd1735-d24b-447a-b708-2054ce19538a",
+    "token": "[VAR_49]",
+    "original_var_name": "minimize",
+    "class_source": "optimisation_0",
+    "line_id": "optimisation_0_line#2"
+  },
+  {
+    "id": "e8479a6d-1b34-4b30-b7c0-b05b833051ba",
+    "token": "[VAR_0]",
+    "original_var_name": "budget",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "823d04ec-0911-44eb-b7dd-bc8d587b5131",
+    "token": "[VAR_1]",
+    "original_var_name": "dim",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "32ca7d4f-2e85-40a0-8956-f15ae2368239",
+    "token": "[VAR_2]",
+    "original_var_name": "evals",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#4"
+  },
+  {
+    "id": "b13670ca-ea3d-4edd-8936-fffb79447ae7",
+    "token": "[VAR_3]",
+    "original_var_name": "best_f",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#5"
+  },
+  {
+    "id": "e35ac85e-08cf-4776-b975-5c4e813439fc",
+    "token": "[VAR_4]",
+    "original_var_name": "best_x",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#6"
+  },
+  {
+    "id": "2f6aebea-4814-4d2f-87a5-8a1182997840",
+    "token": "[VAR_5]",
+    "original_var_name": "f",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "8c399fd4-e39d-461a-9490-b7c36bc44e11",
+    "token": "[VAR_6]",
+    "original_var_name": "x",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#3"
+  },
+  {
+    "id": "950eab7e-8b34-44f6-9f29-7513fea32ede",
+    "token": "[VAR_7]",
+    "original_var_name": "func",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "8469ffe3-bf09-458f-968c-d95390761fda",
+    "token": "[VAR_56]",
+    "original_var_name": "numpy",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#1"
+  },
+  {
+    "id": "93ebdb21-b3c3-4345-a4cc-117bb0911987",
+    "token": "[VAR_57]",
+    "original_var_name": "optimize",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#2"
+  },
+  {
+    "id": "f63957a5-c7c9-40e1-85a5-d8bdf74db70c",
+    "token": "[VAR_58]",
+    "original_var_name": "minimize",
+    "class_source": "optimisation_4",
+    "line_id": "optimisation_4_line#2"
+  },
+  {
+    "id": "c3b2cb8f-fb58-4ec0-8065-11f42707d2b6",
+    "token": "[VAR_8]",
+    "original_var_name": "H",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "c980b736-f673-4042-b7d2-da8e53072d3d",
+    "token": "[VAR_9]",
+    "original_var_name": "linalg",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "fa26a807-418e-4d47-9dc2-cdc976f54c73",
+    "token": "[VAR_10]",
+    "original_var_name": "eigs",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "de865320-0c36-481e-8bcf-b72e2eab4614",
+    "token": "[VAR_11]",
+    "original_var_name": "Q",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "cb911883-e2cd-420c-a572-9905542df8ad",
+    "token": "[VAR_12]",
+    "original_var_name": "pop_f",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#4"
+  },
+  {
+    "id": "5ab04fcd-3a6c-41ae-83ae-3439a3725ac4",
+    "token": "[VAR_13]",
+    "original_var_name": "obj",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "6db77f4b-4bbe-4c1e-aefb-bfcaa07382e2",
+    "token": "[VAR_14]",
+    "original_var_name": "x_c",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "44812852-6e1e-46a0-8ea9-f8dc1d48c4f2",
+    "token": "[VAR_15]",
+    "original_var_name": "jac",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#3"
+  },
+  {
+    "id": "9c2237c0-c138-4f5f-9c77-c226af4f9ef3",
+    "token": "[VAR_16]",
+    "original_var_name": "hess",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#3"
+  },
+  {
+    "id": "aaa801a0-487b-4838-b4b5-c6281314f85f",
+    "token": "[VAR_17]",
+    "original_var_name": "trust",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#4"
+  },
+  {
+    "id": "c464864a-757a-4ec4-99f5-d6ac82dcde24",
+    "token": "[VAR_18]",
+    "original_var_name": "constr",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#4"
+  },
+  {
+    "id": "a9bb7c3f-1839-4dd8-a59a-0c3171ad20d9",
+    "token": "[VAR_19]",
+    "original_var_name": "maxiter",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#6"
+  },
+  {
+    "id": "f3e1c5a4-843e-4f79-acec-c59a71053d4b",
+    "token": "[VAR_20]",
+    "original_var_name": "res",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "910f284e-b0b9-49cb-8448-06313d75d3fb",
+    "token": "[VAR_21]",
+    "original_var_name": "method",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#4"
+  },
+  {
+    "id": "97b3148e-56fc-4c95-b86e-d87542511d20",
+    "token": "[VAR_22]",
+    "original_var_name": "bounds",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#5"
+  },
+  {
+    "id": "9c6122d5-07d3-4a14-bc6f-a01c2dab9d10",
+    "token": "[VAR_23]",
+    "original_var_name": "options",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#6"
+  },
+  {
+    "id": "e60b896a-b52f-44aa-a3a6-a47c7b7a2e6f",
+    "token": "[VAR_24]",
+    "original_var_name": "cat_ids",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "f4e0f180-959f-4a79-8c1e-82ec490afc94",
+    "token": "[VAR_25]",
+    "original_var_name": "new_x",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "9319a4c8-c5d0-4679-987b-c987aecda98d",
+    "token": "[VAR_26]",
+    "original_var_name": "new_f",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#3"
+  },
+  {
+    "id": "ee16eb02-b077-4ad5-8975-72b8a2735298",
+    "token": "[VAR_27]",
+    "original_var_name": "best_idx",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#4"
+  },
+  {
+    "id": "45cd98e2-bca2-43d5-978e-ce7a17d55c62",
+    "token": "[VAR_28]",
+    "original_var_name": "xc",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#4"
+  },
+  {
+    "id": "1d89bd45-6568-46c8-b69b-2d8d95e33aeb",
+    "token": "[VAR_29]",
+    "original_var_name": "H_raw",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "97f0e1ba-e66e-46f9-a501-0c0df85c3ad3",
+    "token": "[VAR_30]",
+    "original_var_name": "H_reg",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#3"
+  },
+  {
+    "id": "70a10ed2-5920-4838-b968-dc49777937bc",
+    "token": "[VAR_31]",
+    "original_var_name": "hess_func",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "0db1be14-f270-4fe3-b377-1acae34d7694",
+    "token": "[VAR_32]",
+    "original_var_name": "grad_func",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "3d098729-6b9e-4f43-8894-560c2390873e",
+    "token": "[VAR_33]",
+    "original_var_name": "x_best",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#3"
+  },
+  {
+    "id": "64810a65-6a58-4694-b470-f011735fd1ee",
+    "token": "[VAR_0]",
+    "original_var_name": "budget",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "8b7b1022-7a76-4f80-932e-bc0f86a5a6cf",
+    "token": "[VAR_1]",
+    "original_var_name": "dim",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "7fc2f492-a1c9-48b2-b790-221c46259878",
+    "token": "[VAR_2]",
+    "original_var_name": "evals",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#4"
+  },
+  {
+    "id": "d1d5ddb9-b57c-4da7-97a6-12ddbc1276e3",
+    "token": "[VAR_3]",
+    "original_var_name": "best_f",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#5"
+  },
+  {
+    "id": "8d3afeed-4f45-4ee1-ab0c-1d7eeabc6d52",
+    "token": "[VAR_4]",
+    "original_var_name": "best_x",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#6"
+  },
+  {
+    "id": "6bc72190-e9b9-46bb-8d48-b247bf6071ae",
+    "token": "[VAR_5]",
+    "original_var_name": "n_particles",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#7"
+  },
+  {
+    "id": "fffe29e4-3f5e-4ef1-b007-ceefea828a2e",
+    "token": "[VAR_6]",
+    "original_var_name": "w",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#8"
+  },
+  {
+    "id": "c5753f36-eb44-47b0-9fb0-9acf1791e8ec",
+    "token": "[VAR_7]",
+    "original_var_name": "c1",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#9"
+  },
+  {
+    "id": "2eb26324-bdb7-4d4c-9649-d601786d8e15",
+    "token": "[VAR_8]",
+    "original_var_name": "c2",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#10"
+  },
+  {
+    "id": "a552f94a-bcd4-4e10-8eb5-daa831f69a50",
+    "token": "[VAR_9]",
+    "original_var_name": "vel",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#12"
+  },
+  {
+    "id": "289fe7f1-02fb-4d9c-a799-2fc2b62e712b",
+    "token": "[VAR_10]",
+    "original_var_name": "pbest",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#13"
+  },
+  {
+    "id": "3d24a283-e31f-4a2c-a602-222915b1ec0f",
+    "token": "[VAR_11]",
+    "original_var_name": "pbest_f",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#14"
+  },
+  {
+    "id": "e36253e4-48ce-432c-ad85-e03710a50403",
+    "token": "[VAR_12]",
+    "original_var_name": "gbest_idx",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#15"
+  },
+  {
+    "id": "441e8ff6-c12e-4091-86d0-adfa9071d843",
+    "token": "[VAR_13]",
+    "original_var_name": "gbest_f",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#16"
+  },
+  {
+    "id": "602bac91-3e8b-4113-8bca-67e1ef496899",
+    "token": "[VAR_14]",
+    "original_var_name": "gbest_x",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#17"
+  },
+  {
+    "id": "60245bc7-1f92-436e-be5b-45ad5ca4567a",
+    "token": "[VAR_15]",
+    "original_var_name": "H_scale",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#18"
+  },
+  {
+    "id": "0dda892a-4e91-4657-b5b0-7e99d3b62431",
+    "token": "[VAR_16]",
+    "original_var_name": "last_hess_evals",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#19"
+  },
+  {
+    "id": "e0e9ad37-ff9a-4b18-b4b7-793637ada437",
+    "token": "[VAR_34]",
+    "original_var_name": "parents",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "0592a6f7-3405-4bd0-95e2-7c69b68a2683",
+    "token": "[VAR_35]",
+    "original_var_name": "random",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#3"
+  },
+  {
+    "id": "f195dd42-af44-4c4e-806b-cfb6da241b80",
+    "token": "[VAR_36]",
+    "original_var_name": "offspring",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#5"
+  },
+  {
+    "id": "178514dd-6fee-4e45-836a-27ac04d501f6",
+    "token": "[VAR_37]",
+    "original_var_name": "_",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "e1c06f54-4a9a-4da7-97eb-964429b12cc5",
+    "token": "[VAR_38]",
+    "original_var_name": "mu",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#2"
+  },
+  {
+    "id": "cf783149-9ca7-4ec8-af60-8763cc7755a2",
+    "token": "[VAR_17]",
+    "original_var_name": "f",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "1822ff0a-ab00-450e-bb26-c303a830adf6",
+    "token": "[VAR_18]",
+    "original_var_name": "x",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#3"
+  },
+  {
+    "id": "f3f5cca6-27ef-4f76-aed1-acd26670cd4a",
+    "token": "[VAR_39]",
+    "original_var_name": "pop_f_off",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#4"
+  },
+  {
+    "id": "1e130287-6fce-44e2-9203-c9fdec17674f",
+    "token": "[VAR_40]",
+    "original_var_name": "p_idx",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#26"
+  },
+  {
+    "id": "c5d1bcc7-45bf-4553-8592-3bcf0ab42602",
+    "token": "[VAR_41]",
+    "original_var_name": "combined",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#41"
+  },
+  {
+    "id": "ce8da937-d4b2-489c-91a6-aaf112abcefc",
+    "token": "[VAR_42]",
+    "original_var_name": "combined_f",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#42"
+  },
+  {
+    "id": "1328cc17-a5cb-4b25-a93f-f700d970bcd6",
+    "token": "[VAR_43]",
+    "original_var_name": "keep",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#43"
+  },
+  {
+    "id": "d71443d4-fde8-4d94-a452-3e888a9db5d1",
+    "token": "[VAR_19]",
+    "original_var_name": "func",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "818cfffe-9ee5-49ff-99e5-1c1dcde67829",
+    "token": "[VAR_44]",
+    "original_var_name": "kwargs",
+    "class_source": "optimisation_1",
+    "line_id": "optimisation_1_line#1"
+  },
+  {
+    "id": "71ccc327-041f-4e1a-8d76-139c5617b304",
+    "token": "[VAR_20]",
+    "original_var_name": "H",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "912c5366-8b13-425f-a4cf-a9b6bc6d74a4",
+    "token": "[VAR_21]",
+    "original_var_name": "linalg",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "4e8e87c0-1138-4e61-beb6-5752ceedd4b5",
+    "token": "[VAR_22]",
+    "original_var_name": "eigs",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "7a8a8666-6bc3-432d-9ff1-39ca028b6304",
+    "token": "[VAR_23]",
+    "original_var_name": "Q",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "073b0413-0768-41d5-9747-c3fb47672c60",
+    "token": "[VAR_24]",
+    "original_var_name": "eps",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#3"
+  },
+  {
+    "id": "6b155891-9b7e-4a0f-8ed8-a752d81fd583",
+    "token": "[VAR_25]",
+    "original_var_name": "diag_vals",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#4"
+  },
+  {
+    "id": "98b17865-5a49-4567-bbcb-9d9cd91bb965",
+    "token": "[VAR_26]",
+    "original_var_name": "i",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#3"
+  },
+  {
+    "id": "34b8f1eb-625a-44d3-a8cf-1174efc392b4",
+    "token": "[VAR_27]",
+    "original_var_name": "iter_count",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "ff70bfa2-69dd-475b-a668-920487c2f560",
+    "token": "[VAR_28]",
+    "original_var_name": "cat_ids",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "73fc2c62-cb0b-4f2e-8b14-22423198350b",
+    "token": "[VAR_29]",
+    "original_var_name": "x_c",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#3"
+  },
+  {
+    "id": "ffc376b8-49a0-4e88-8bf8-2bc7549980b5",
+    "token": "[VAR_30]",
+    "original_var_name": "full_x",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#4"
+  },
+  {
+    "id": "bb61d899-d402-4f7b-9bf0-677d53378ba6",
+    "token": "[VAR_31]",
+    "original_var_name": "H_raw",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#5"
+  },
+  {
+    "id": "42f3823c-442d-45e2-a3db-1d95b6dcb907",
+    "token": "[VAR_32]",
+    "original_var_name": "hess_func",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "480834a4-3dde-4ee1-ad0c-4b8d6c4e5d48",
+    "token": "[VAR_33]",
+    "original_var_name": "v_std",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "4efefbdc-cedb-452f-b5d5-bcf8506d32ac",
+    "token": "[VAR_34]",
+    "original_var_name": "xc",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "6ecc728f-384f-42da-bbd5-cac38102aaab",
+    "token": "[VAR_35]",
+    "original_var_name": "g",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "56cee2ab-c075-4fdd-a5f8-58f3a4de5f12",
+    "token": "[VAR_36]",
+    "original_var_name": "jac",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "a476b473-5ba0-4ef0-b761-de6bdacae34f",
+    "token": "[VAR_37]",
+    "original_var_name": "hess",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "823a51f6-986c-4913-90c2-b71f8cfad1d2",
+    "token": "[VAR_38]",
+    "original_var_name": "trust",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#3"
+  },
+  {
+    "id": "32062505-b2f3-4feb-942d-6619900c5409",
+    "token": "[VAR_39]",
+    "original_var_name": "constr",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#3"
+  },
+  {
+    "id": "34fbb52e-1531-40fc-be17-15d7ba7a1544",
+    "token": "[VAR_40]",
+    "original_var_name": "maxiter",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#5"
+  },
+  {
+    "id": "a0c1eac1-4b75-4bcb-9ce0-12cd801108c4",
+    "token": "[VAR_41]",
+    "original_var_name": "res",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "3e46f0cf-0193-46e5-8c4f-3a94f49db88f",
+    "token": "[VAR_42]",
+    "original_var_name": "obj",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "6ddbd478-397c-44bc-b21f-8aa7b670dbfa",
+    "token": "[VAR_43]",
+    "original_var_name": "method",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#3"
+  },
+  {
+    "id": "97a5b2c5-b2f4-40cb-9739-58336093a9f2",
+    "token": "[VAR_44]",
+    "original_var_name": "bounds",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#4"
+  },
+  {
+    "id": "d294b87a-0957-4e98-b062-78254e6e0093",
+    "token": "[VAR_45]",
+    "original_var_name": "options",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#5"
+  },
+  {
+    "id": "bc90abdd-7174-40e9-a8f5-1bd8bd076fbe",
+    "token": "[VAR_46]",
+    "original_var_name": "cand_f",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "5f207b0f-9fa7-4fc3-9c9e-f93f9be88f47",
+    "token": "[VAR_47]",
+    "original_var_name": "cand",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#4"
+  },
+  {
+    "id": "73b3c4b8-7094-4687-bef3-18db220921d5",
+    "token": "[VAR_48]",
+    "original_var_name": "H_reg",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#5"
+  },
+  {
+    "id": "122e61a8-d8e9-4409-b8d2-a37622730b2c",
+    "token": "[VAR_49]",
+    "original_var_name": "random",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#11"
+  },
+  {
+    "id": "77ba6aed-a0ac-4463-9015-e76a6681b503",
+    "token": "[VAR_50]",
+    "original_var_name": "r1",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#11"
+  },
+  {
+    "id": "d821dcbb-29be-41f6-b4cf-daf0e715e44b",
+    "token": "[VAR_51]",
+    "original_var_name": "r2",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#12"
+  },
+  {
+    "id": "f1cd9f9c-9dbe-4073-bbb8-18f6bc91cdca",
+    "token": "[VAR_52]",
+    "original_var_name": "vel_g",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#13"
+  },
+  {
+    "id": "370c507f-9ad0-4859-b06f-8484a35eb431",
+    "token": "[VAR_53]",
+    "original_var_name": "vel_p",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#14"
+  },
+  {
+    "id": "072d6f6a-455f-4aa8-81fe-0093cad39998",
+    "token": "[VAR_54]",
+    "original_var_name": "kwargs",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "18c9228a-b7cb-479d-8110-19bf71ae1630",
+    "token": "[VAR_55]",
+    "original_var_name": "grad_func",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "011e8b90-5bd6-4087-8a69-b7b0bccaf826",
+    "token": "[VAR_56]",
+    "original_var_name": "numpy",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#1"
+  },
+  {
+    "id": "89fb1647-8d00-4b53-bd72-81caf0a1b6ea",
+    "token": "[VAR_57]",
+    "original_var_name": "optimize",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "8683885e-7b02-4cb2-b815-9aebc8045153",
+    "token": "[VAR_58]",
+    "original_var_name": "minimize",
+    "class_source": "optimisation_5",
+    "line_id": "optimisation_5_line#2"
+  },
+  {
+    "id": "7e2686ac-d2a6-40c6-9ce7-574b81f225e1",
+    "token": "[VAR_0]",
+    "original_var_name": "budget",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "578b68d3-830c-4eb0-b0a4-ce99bc066891",
+    "token": "[VAR_1]",
+    "original_var_name": "dim",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "a673dfe7-b1b4-4fef-8346-47ff17ec3463",
+    "token": "[VAR_2]",
+    "original_var_name": "evals",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#4"
+  },
+  {
+    "id": "72172d93-058c-4271-85b9-13cdcf87b6b6",
+    "token": "[VAR_3]",
+    "original_var_name": "best_f",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#5"
+  },
+  {
+    "id": "62fa02f9-3ac4-4ebb-bcfe-af2516cc85ba",
+    "token": "[VAR_4]",
+    "original_var_name": "best_x",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#6"
+  },
+  {
+    "id": "461c9224-8f44-41f2-a82b-103bd929e9d2",
+    "token": "[VAR_5]",
+    "original_var_name": "f",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "178bb18d-7148-4387-9f6b-32d51ebd389a",
+    "token": "[VAR_6]",
+    "original_var_name": "eval_x",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#3"
+  },
+  {
+    "id": "570cddf8-d598-401b-8eeb-f82949f3e095",
+    "token": "[VAR_7]",
+    "original_var_name": "x",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "445044ed-f910-4b27-8d9a-7e37c8c0ad13",
+    "token": "[VAR_8]",
+    "original_var_name": "func",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "82632a06-223f-45b7-ac3b-78b2b60ffa40",
+    "token": "[VAR_9]",
+    "original_var_name": "gen",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "146af091-ccf0-4b97-9119-55425ed6245e",
+    "token": "[VAR_10]",
+    "original_var_name": "popsize",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "cb1d8035-9f13-42ed-9810-f9217173fe60",
+    "token": "[VAR_11]",
+    "original_var_name": "es",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#3"
+  },
+  {
+    "id": "ec4a8730-4df5-4ee5-ba70-0b65f03fd1f4",
+    "token": "[VAR_12]",
+    "original_var_name": "random",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "ccfab661-277d-4b97-a7bc-585736183a49",
+    "token": "[VAR_13]",
+    "original_var_name": "p_cat_mut",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "3cb2c771-7a30-437d-bbc0-dfae25b45e27",
+    "token": "[VAR_14]",
+    "original_var_name": "cat_state",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#2"
+  },
+  {
+    "id": "e1b07362-850f-43e7-ae07-6570cec2edc6",
+    "token": "[VAR_15]",
+    "original_var_name": "candidates",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "eeca8690-032c-4c32-a3ec-16ae91e7b381",
+    "token": "[VAR_16]",
+    "original_var_name": "fitnesses",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#4"
+  },
+  {
+    "id": "9e357097-3ca2-4771-a866-92fdbe3c4b80",
+    "token": "[VAR_17]",
+    "original_var_name": "x_c",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "1d9109bf-2cce-4e01-9042-6b3594896f57",
+    "token": "[VAR_18]",
+    "original_var_name": "x_full",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#2"
+  },
+  {
+    "id": "9cef1e72-94cb-480b-9ba8-673af2786bf1",
+    "token": "[VAR_19]",
+    "original_var_name": "best_f_history",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "5acd7f8c-f32b-4eeb-9eea-9e040b1cb53e",
+    "token": "[VAR_20]",
+    "original_var_name": "improv_rate",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "97efc437-4e61-4e70-99e7-7339102c3431",
+    "token": "[VAR_21]",
+    "original_var_name": "stagnation_counter",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#2"
+  },
+  {
+    "id": "b82a63e8-3dfc-442c-87b1-0a66d524f25b",
+    "token": "[VAR_22]",
+    "original_var_name": "sigma",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#3"
+  },
+  {
+    "id": "bb243e76-6bca-49bd-826c-26a9513cc94c",
+    "token": "[VAR_23]",
+    "original_var_name": "sigma_init",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#4"
+  },
+  {
+    "id": "be8cacdf-488a-44d7-bd1c-8ac74970dfe5",
+    "token": "[VAR_24]",
+    "original_var_name": "idx",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#2"
+  },
+  {
+    "id": "c456de74-4a38-4684-bc9f-372a89550c85",
+    "token": "[VAR_25]",
+    "original_var_name": "cat_ref",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#3"
+  },
+  {
+    "id": "4a5d2879-a5b9-4f78-9a86-570b8219536f",
+    "token": "[VAR_26]",
+    "original_var_name": "freq",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "453acde9-b5c5-45fb-8855-5c5abdee2e29",
+    "token": "[VAR_27]",
+    "original_var_name": "hess_func",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "c57d2aba-a44d-4992-b3b2-e499c2bab4e9",
+    "token": "[VAR_28]",
+    "original_var_name": "grad_func",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "328dfd29-412b-4c91-a2de-c1ba8cad6b6d",
+    "token": "[VAR_29]",
+    "original_var_name": "linalg",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#7"
+  },
+  {
+    "id": "b74ecaf2-0838-467c-9220-02995697d42a",
+    "token": "[VAR_30]",
+    "original_var_name": "grad",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#3"
+  },
+  {
+    "id": "df5b050b-70fb-46aa-b0e9-c419b3924044",
+    "token": "[VAR_31]",
+    "original_var_name": "hess",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#5"
+  },
+  {
+    "id": "f3a766fd-86c4-4527-9818-7a3bc139cfad",
+    "token": "[VAR_32]",
+    "original_var_name": "eigvals",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#7"
+  },
+  {
+    "id": "04c337c4-bb5b-4e87-a098-f98041f11638",
+    "token": "[VAR_33]",
+    "original_var_name": "eigvecs",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#7"
+  },
+  {
+    "id": "f59856f7-d8c3-4903-9e15-95908e76efea",
+    "token": "[VAR_34]",
+    "original_var_name": "max_eig",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#8"
+  },
+  {
+    "id": "2b48fbf2-18fe-43d5-9368-97e49ce35724",
+    "token": "[VAR_35]",
+    "original_var_name": "min_eig",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#9"
+  },
+  {
+    "id": "ab485c53-b1da-4467-a32a-27c70d5f5d9e",
+    "token": "[VAR_36]",
+    "original_var_name": "cond_num",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#10"
+  },
+  {
+    "id": "0f513f6b-2139-4860-90a8-8e2b6bb61486",
+    "token": "[VAR_37]",
+    "original_var_name": "reg_lambda",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#11"
+  },
+  {
+    "id": "9510f74a-c800-4707-8c82-eb6d9b368b55",
+    "token": "[VAR_38]",
+    "original_var_name": "eigvals_reg",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#12"
+  },
+  {
+    "id": "a7265bad-1e2b-44db-beea-80c5e54df79c",
+    "token": "[VAR_39]",
+    "original_var_name": "H_reg",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#13"
+  },
+  {
+    "id": "a0d3d335-0404-47cf-964b-1a3d7a737a8f",
+    "token": "[VAR_40]",
+    "original_var_name": "step",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#14"
+  },
+  {
+    "id": "29a196ef-a885-40a2-becd-1a6ee4ddd50f",
+    "token": "[VAR_41]",
+    "original_var_name": "step_scale",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#15"
+  },
+  {
+    "id": "75a8b833-0c4c-4fbf-a5b0-b56f8f32a1a2",
+    "token": "[VAR_42]",
+    "original_var_name": "x_new_c",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#16"
+  },
+  {
+    "id": "48304e88-c189-4e58-b83d-212328720957",
+    "token": "[VAR_43]",
+    "original_var_name": "xc",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#2"
+  },
+  {
+    "id": "4ab28596-9d42-431f-8a5d-923447d0930d",
+    "token": "[VAR_44]",
+    "original_var_name": "trust",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#7"
+  },
+  {
+    "id": "6717411f-a886-431d-b626-b03cd5be97e9",
+    "token": "[VAR_45]",
+    "original_var_name": "constr",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#7"
+  },
+  {
+    "id": "ab18b33a-d467-4d84-bb27-bd3147070e01",
+    "token": "[VAR_46]",
+    "original_var_name": "maxiter",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#8"
+  },
+  {
+    "id": "f5730fcf-2c70-433a-b265-29ce9b4e7847",
+    "token": "[VAR_47]",
+    "original_var_name": "local_budget",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#8"
+  },
+  {
+    "id": "fced2738-a89a-4f70-9727-09836608475d",
+    "token": "[VAR_48]",
+    "original_var_name": "verbose",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#8"
+  },
+  {
+    "id": "d4705c7c-84d6-433a-849b-7d0683ef99b4",
+    "token": "[VAR_49]",
+    "original_var_name": "res",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "dc09907f-e312-4e31-bc91-e390862ae722",
+    "token": "[VAR_50]",
+    "original_var_name": "jac",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#4"
+  },
+  {
+    "id": "8d2d93bf-5d05-404c-8950-c4b527ac2709",
+    "token": "[VAR_51]",
+    "original_var_name": "bounds",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#6"
+  },
+  {
+    "id": "71dcc7be-92b3-443b-85f5-17d5af44d02b",
+    "token": "[VAR_52]",
+    "original_var_name": "method",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#7"
+  },
+  {
+    "id": "5af007b7-25a4-4c6d-98a0-b85fa4f96d91",
+    "token": "[VAR_53]",
+    "original_var_name": "options",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#8"
+  },
+  {
+    "id": "34451365-5f93-4902-8a02-8dabf94544ac",
+    "token": "[VAR_54]",
+    "original_var_name": "success",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "9f73d959-b4fa-45cb-bca8-c560c5c61ad8",
+    "token": "[VAR_55]",
+    "original_var_name": "budget_frac",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#3"
+  },
+  {
+    "id": "3a2c7a95-86bc-4d10-b073-80860468cf5c",
+    "token": "[VAR_56]",
+    "original_var_name": "min_local_search_freq",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#31"
+  },
+  {
+    "id": "3400aed8-f0c6-4cc1-90b7-3cde04327079",
+    "token": "[VAR_57]",
+    "original_var_name": "max_local_search_freq",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#31"
+  },
+  {
+    "id": "e5f0ca11-d31e-4133-9e7f-eee9182c0953",
+    "token": "[VAR_58]",
+    "original_var_name": "disp",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#67"
+  },
+  {
+    "id": "d53e6b22-9a26-45e0-99f6-b46e90d491ea",
+    "token": "[VAR_59]",
+    "original_var_name": "kwargs",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "65554a11-f3f0-4d63-93e0-cc6e7a3449be",
+    "token": "[VAR_60]",
+    "original_var_name": "n_init",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#7"
+  },
+  {
+    "id": "04b7f446-c883-43d0-b6db-7d053572cf8a",
+    "token": "[VAR_61]",
+    "original_var_name": "mean",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#12"
+  },
+  {
+    "id": "490d315a-78be-4314-916a-6f95b5c6b69e",
+    "token": "[VAR_62]",
+    "original_var_name": "numpy",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#1"
+  },
+  {
+    "id": "ab0d27ac-c645-4bd3-971d-ea62d0dc2b83",
+    "token": "[VAR_63]",
+    "original_var_name": "optimize",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#2"
+  },
+  {
+    "id": "99b22380-d031-4fd9-9345-327b8dcd5614",
+    "token": "[VAR_64]",
+    "original_var_name": "minimize",
+    "class_source": "optimisation_6",
+    "line_id": "optimisation_6_line#2"
+  },
+  {
+    "id": "80e8a69e-64a8-4a50-9d82-16b7fe1475fd",
+    "token": "[VAR_0]",
+    "original_var_name": "budget",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "538396d1-af34-4a8e-b452-a91765b9219c",
+    "token": "[VAR_1]",
+    "original_var_name": "dim",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "a6759f45-cbcf-4d01-b5f2-f2c2915107b0",
+    "token": "[VAR_2]",
+    "original_var_name": "evals",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "a5412b2b-e798-4798-badb-ccd0b3046d68",
+    "token": "[VAR_3]",
+    "original_var_name": "best_f",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#5"
+  },
+  {
+    "id": "f75120c0-d4a3-4097-b6a4-e0813d2c9a58",
+    "token": "[VAR_4]",
+    "original_var_name": "best_x",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#6"
+  },
+  {
+    "id": "83e2b777-cde0-434d-9653-f7811100f9df",
+    "token": "[VAR_5]",
+    "original_var_name": "f",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "c4c8b63e-a9b0-4d65-84c7-ea5f999723d9",
+    "token": "[VAR_6]",
+    "original_var_name": "x",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "7fb6630f-0450-47ef-a4d6-12aa2813b082",
+    "token": "[VAR_7]",
+    "original_var_name": "func",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "71aaa9d9-b467-449a-a458-2d363c3eafa7",
+    "token": "[VAR_8]",
+    "original_var_name": "min_eig",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "7bd0d21b-3619-421e-ae08-5260356dc92f",
+    "token": "[VAR_9]",
+    "original_var_name": "eps",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "f8d57b8b-acfe-4610-b208-0f9dd0d85feb",
+    "token": "[VAR_10]",
+    "original_var_name": "eigs",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "fd9868a3-5bc5-4fc1-a206-72dfde6a4519",
+    "token": "[VAR_11]",
+    "original_var_name": "Q",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "5508cc4f-de96-4ef8-a946-95e6bb18572c",
+    "token": "[VAR_12]",
+    "original_var_name": "x_c",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "82845eb3-96d7-4f23-9c39-cb297b13010f",
+    "token": "[VAR_13]",
+    "original_var_name": "alpha_saddle",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "82c60f87-ed09-424d-a6ba-3595d4a18892",
+    "token": "[VAR_14]",
+    "original_var_name": "idx_neg",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "55349751-c8ea-4bf8-a94a-a9a393411568",
+    "token": "[VAR_15]",
+    "original_var_name": "v_neg",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "c44f8e59-3bdf-4596-b73c-106da8026b58",
+    "token": "[VAR_16]",
+    "original_var_name": "x_new_c",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "62a1ff44-d259-4f7b-afa5-41e1ffecd605",
+    "token": "[VAR_17]",
+    "original_var_name": "max_eig",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "825a8e99-6c1f-4a3e-b67f-7d66bc6533c2",
+    "token": "[VAR_18]",
+    "original_var_name": "thresh_cond",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "e6dc6bf8-71c8-463f-b77d-60731910093a",
+    "token": "[VAR_19]",
+    "original_var_name": "random",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "3aa055f8-c88f-4924-b8a7-a05d74f4ba52",
+    "token": "[VAR_20]",
+    "original_var_name": "scale",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "37b70cfd-888e-4659-9b1e-b38bd9035f63",
+    "token": "[VAR_21]",
+    "original_var_name": "D_inv_sqrt",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "9ffe1eed-c8b0-4f31-89c2-241652f235da",
+    "token": "[VAR_22]",
+    "original_var_name": "levy",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "6a498d8b-c7f4-41b2-b2ab-293c7f0ce2f9",
+    "token": "[VAR_23]",
+    "original_var_name": "jac",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "96bab566-5cf4-454d-8081-98ee76a82f96",
+    "token": "[VAR_24]",
+    "original_var_name": "hess",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "ac1cc618-f4c3-463b-9532-84878455d177",
+    "token": "[VAR_25]",
+    "original_var_name": "trust",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "67a7397d-eea3-4f04-9b2f-a849b0033ad6",
+    "token": "[VAR_26]",
+    "original_var_name": "constr",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "d7ad7695-8c9e-448e-b71e-866f16e2762f",
+    "token": "[VAR_27]",
+    "original_var_name": "maxiter",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#5"
+  },
+  {
+    "id": "86660a39-cf12-462e-9b50-a2e9e2df06ef",
+    "token": "[VAR_28]",
+    "original_var_name": "verbose",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#5"
+  },
+  {
+    "id": "4c8d3202-76e2-4231-a380-d8a1c13e34ae",
+    "token": "[VAR_29]",
+    "original_var_name": "res",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "e22ded4c-6209-4bbc-b5bd-877a1db8b038",
+    "token": "[VAR_30]",
+    "original_var_name": "obj",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "65780fd2-46a6-4df7-8654-a2bbabbc92ca",
+    "token": "[VAR_31]",
+    "original_var_name": "method",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "0640dac2-0901-48a7-a7ed-a30839fbefbb",
+    "token": "[VAR_32]",
+    "original_var_name": "bounds",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "144bc86b-0a5f-480f-942d-508d259c491a",
+    "token": "[VAR_33]",
+    "original_var_name": "options",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#5"
+  },
+  {
+    "id": "7cad8362-d3d8-4430-941c-2c29af2eb6a3",
+    "token": "[VAR_34]",
+    "original_var_name": "Abort",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "6602e27c-d6d4-42ec-aa19-13ef219dde93",
+    "token": "[VAR_35]",
+    "original_var_name": "hit",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "2f885427-d6e8-424c-bdbf-373c99bf3186",
+    "token": "[VAR_36]",
+    "original_var_name": "during",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "6eb8926e-d6d2-476d-a0e9-583ed4063e64",
+    "token": "[VAR_37]",
+    "original_var_name": "sub",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "e44c4d71-be2f-4ccf-822e-dfb1ba8556e5",
+    "token": "[VAR_38]",
+    "original_var_name": "xc",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "1a2959bb-e519-49ea-bbe4-226bc47f8d88",
+    "token": "[VAR_39]",
+    "original_var_name": "cat_ids",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "cb4a1b17-d07f-4e80-b60d-84aea8e3730d",
+    "token": "[VAR_40]",
+    "original_var_name": "H_reg",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "7ae98b22-1dd0-4ba8-b320-44e9bd17ea08",
+    "token": "[VAR_41]",
+    "original_var_name": "grad_func",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "37d27f86-e0ec-4596-b6fc-e423d8a80f56",
+    "token": "[VAR_42]",
+    "original_var_name": "hess_func",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "b0815da7-c332-4a9d-844d-591d63f82a1c",
+    "token": "[VAR_43]",
+    "original_var_name": "linalg",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#5"
+  },
+  {
+    "id": "6aeccdd3-73cb-4a25-bccf-62b3ec076e92",
+    "token": "[VAR_44]",
+    "original_var_name": "H_raw",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "e9f63b96-d2eb-420a-ba8c-7358f9c01317",
+    "token": "[VAR_45]",
+    "original_var_name": "pop_f",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "093bfab7-f9ba-43a6-b98e-39d22ccbf77e",
+    "token": "[VAR_46]",
+    "original_var_name": "prev_best",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "6a1a1dd4-7862-4cbe-b2f7-df5c0eadd8ef",
+    "token": "[VAR_47]",
+    "original_var_name": "stagnation_count",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "353bd995-ed9e-491f-8995-8baf0208121f",
+    "token": "[VAR_48]",
+    "original_var_name": "x_worst",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "67c9f2fb-9494-410c-9d28-df37d2b8024b",
+    "token": "[VAR_49]",
+    "original_var_name": "x_new",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "4c6dd0aa-ff1b-4b3c-89a4-8d0cf82b5ab9",
+    "token": "[VAR_50]",
+    "original_var_name": "new_f",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "49101b63-f404-408b-99aa-f7908afdd8d2",
+    "token": "[VAR_51]",
+    "original_var_name": "worst_idx",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "be364a3a-aa41-4fcf-81eb-73a6dd11c79d",
+    "token": "[VAR_52]",
+    "original_var_name": "p_idx",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "5ea556ac-208e-4d90-a00d-ad7804e5458a",
+    "token": "[VAR_53]",
+    "original_var_name": "replace",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "9dcac5fc-4564-4a86-bb45-0b583628efd1",
+    "token": "[VAR_54]",
+    "original_var_name": "offspring",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#6"
+  },
+  {
+    "id": "5a9e5ee1-98ce-4efe-8cf7-b8dd225da09e",
+    "token": "[VAR_55]",
+    "original_var_name": "_",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "e877b251-0708-48fe-9261-802c275cea1f",
+    "token": "[VAR_56]",
+    "original_var_name": "idx_rand",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "ecd7e56e-8c32-4925-8889-03c762a13839",
+    "token": "[VAR_57]",
+    "original_var_name": "mu",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#3"
+  },
+  {
+    "id": "cb0e8983-dde6-4217-9479-7739cbe09e15",
+    "token": "[VAR_58]",
+    "original_var_name": "pop_f_off",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#4"
+  },
+  {
+    "id": "2f2412da-5c72-4659-97e4-c93163a6f9dc",
+    "token": "[VAR_59]",
+    "original_var_name": "combined",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#39"
+  },
+  {
+    "id": "b1f57395-cc71-475e-9e1c-6c26bfba95f9",
+    "token": "[VAR_60]",
+    "original_var_name": "combined_f",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#40"
+  },
+  {
+    "id": "c5bc00e0-3fa4-4a03-9565-ddf774cb66a9",
+    "token": "[VAR_61]",
+    "original_var_name": "keep",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#41"
+  },
+  {
+    "id": "76ed2936-cf64-4dee-83a3-5d450199c5b8",
+    "token": "[VAR_62]",
+    "original_var_name": "kwargs",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "862f2359-ef04-48a6-a3c5-2068a049f5cb",
+    "token": "[VAR_63]",
+    "original_var_name": "numpy",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#1"
+  },
+  {
+    "id": "7aa32578-905d-40a9-bc75-1baf7cece00a",
+    "token": "[VAR_64]",
+    "original_var_name": "optimize",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "1fe198c4-6035-41c3-b231-3cbf25a251e9",
+    "token": "[VAR_65]",
+    "original_var_name": "minimize",
+    "class_source": "optimisation_7",
+    "line_id": "optimisation_7_line#2"
+  },
+  {
+    "id": "7aff1a99-def9-4f16-8084-d539481432d2",
+    "token": "[VAR_0]",
+    "original_var_name": "budget",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "f582583a-f165-462e-8298-18ce14b20d6e",
+    "token": "[VAR_1]",
+    "original_var_name": "dim",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "2704cdd6-fc7a-4db3-bf09-e29530a0c60f",
+    "token": "[VAR_2]",
+    "original_var_name": "evals",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#4"
+  },
+  {
+    "id": "7858c6b3-d9b7-4fe2-9859-5e504b304450",
+    "token": "[VAR_3]",
+    "original_var_name": "best_f",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#5"
+  },
+  {
+    "id": "5172039e-3fbc-4879-b267-2ddddd73e8fa",
+    "token": "[VAR_4]",
+    "original_var_name": "best_x",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#6"
+  },
+  {
+    "id": "d086c491-d51a-4331-8bf3-4154498bdce5",
+    "token": "[VAR_5]",
+    "original_var_name": "dim_c",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#7"
+  },
+  {
+    "id": "37f3db8d-a4e5-44d7-8244-2d6fd39c07b4",
+    "token": "[VAR_6]",
+    "original_var_name": "dim_cat",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#8"
+  },
+  {
+    "id": "c4347c73-9aa3-4c94-9c61-0f6c4d8f37be",
+    "token": "[VAR_7]",
+    "original_var_name": "manifold_scores",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#9"
+  },
+  {
+    "id": "98ca2a13-e466-47c2-a8c0-a779665678f0",
+    "token": "[VAR_8]",
+    "original_var_name": "manifold_probs",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#10"
+  },
+  {
+    "id": "64e40b69-52e0-479e-801b-c68b59248d12",
+    "token": "[VAR_9]",
+    "original_var_name": "best_cont_for_cat",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#11"
+  },
+  {
+    "id": "530589b8-9a8b-4b6e-8f30-db195b2ee452",
+    "token": "[VAR_10]",
+    "original_var_name": "f",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "4371328d-4402-46f1-bbb7-1ef4a9e8b384",
+    "token": "[VAR_11]",
+    "original_var_name": "eval_x",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#3"
+  },
+  {
+    "id": "0ee58d1a-f580-4499-943e-7ef103050e5a",
+    "token": "[VAR_12]",
+    "original_var_name": "x",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "badc7e99-5335-4ce8-a0a0-d3e208dadf8f",
+    "token": "[VAR_13]",
+    "original_var_name": "func",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "cf1b02b7-6808-417b-b523-209d1aef373a",
+    "token": "[VAR_14]",
+    "original_var_name": "bounds",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "7d0f4ec8-0b15-4899-a5d1-6e774640495e",
+    "token": "[VAR_15]",
+    "original_var_name": "popsize",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "599cd69e-cb29-41ac-b555-19d88ed70ced",
+    "token": "[VAR_16]",
+    "original_var_name": "verbose",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "50b32d7a-713a-41f7-b136-30f26372a05a",
+    "token": "[VAR_17]",
+    "original_var_name": "opts",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "b005c821-7111-4419-a664-b93989c7d5bb",
+    "token": "[VAR_18]",
+    "original_var_name": "i",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "8b07e38a-faa6-44ba-a755-de4c17828c22",
+    "token": "[VAR_19]",
+    "original_var_name": "cat_state",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "935e47c5-6422-49ee-8ea9-a71d6e9151a2",
+    "token": "[VAR_20]",
+    "original_var_name": "w",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "8b6c2c1f-f153-4f69-a456-be752b3d5ae8",
+    "token": "[VAR_21]",
+    "original_var_name": "weights",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#3"
+  },
+  {
+    "id": "f1ae3ded-2f42-4e9e-a492-f0bec7811a27",
+    "token": "[VAR_22]",
+    "original_var_name": "hist_mean",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#4"
+  },
+  {
+    "id": "a2655ad5-a66a-4b19-8be0-7a745c5f3cba",
+    "token": "[VAR_23]",
+    "original_var_name": "linalg",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#4"
+  },
+  {
+    "id": "06a0aa4d-e28a-4eb8-8db1-f66cee6b20bb",
+    "token": "[VAR_24]",
+    "original_var_name": "es",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#6"
+  },
+  {
+    "id": "5db53102-a1b5-4a32-80ff-1d2c7dfe22a8",
+    "token": "[VAR_25]",
+    "original_var_name": "sigma",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#6"
+  },
+  {
+    "id": "e04d5ab4-70c2-471c-8c88-2e5a5c503a7a",
+    "token": "[VAR_26]",
+    "original_var_name": "sigma0",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#6"
+  },
+  {
+    "id": "79fe43b0-e2aa-4634-bdf0-39da67c6e2eb",
+    "token": "[VAR_27]",
+    "original_var_name": "x_test",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "06f8fa7d-0e6b-4dd2-9e19-01f8898c0739",
+    "token": "[VAR_28]",
+    "original_var_name": "hess",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#3"
+  },
+  {
+    "id": "ea38a730-26dc-44ae-9d7f-550430c5777b",
+    "token": "[VAR_29]",
+    "original_var_name": "eigvals",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#4"
+  },
+  {
+    "id": "45b5da8e-7083-4bbe-8ffc-ea89332ebf41",
+    "token": "[VAR_30]",
+    "original_var_name": "cond",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#5"
+  },
+  {
+    "id": "1f9961bb-c854-470c-98a7-d4cd61d7deab",
+    "token": "[VAR_31]",
+    "original_var_name": "Exception",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "715f8a07-aa7b-4c2b-a8e2-fa3a01ae3399",
+    "token": "[VAR_32]",
+    "original_var_name": "hess_func",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "97e851cb-16ea-4132-b2f4-a71dc84414c2",
+    "token": "[VAR_33]",
+    "original_var_name": "candidates",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "6bef8821-5c74-49bd-b839-2b8e7ddd98e2",
+    "token": "[VAR_34]",
+    "original_var_name": "fitnesses",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#4"
+  },
+  {
+    "id": "c0f7e129-c50a-43d0-804d-389dbc1983e9",
+    "token": "[VAR_35]",
+    "original_var_name": "x_c",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "dcbba1d8-e063-4211-9b13-5b981507f530",
+    "token": "[VAR_36]",
+    "original_var_name": "x_full",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "42802dd6-d095-4b5a-a72e-4f199a9656fe",
+    "token": "[VAR_37]",
+    "original_var_name": "slot",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "073ed061-57f6-4617-a776-f04482371ed1",
+    "token": "[VAR_38]",
+    "original_var_name": "best_f_c",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "fd197356-bc2d-47cb-a790-8f3f4628b979",
+    "token": "[VAR_39]",
+    "original_var_name": "best_c",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#3"
+  },
+  {
+    "id": "94bb8248-ebbb-4aa7-8ce6-a4dc4a8a9f15",
+    "token": "[VAR_40]",
+    "original_var_name": "best",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "f2e4c298-3e5a-41dc-b816-57d52770e389",
+    "token": "[VAR_41]",
+    "original_var_name": "xindex",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "244565b3-310f-40ba-aa94-67d6948a876d",
+    "token": "[VAR_42]",
+    "original_var_name": "Use",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "09071fd1-3825-4eda-aee4-243740a357a2",
+    "token": "[VAR_43]",
+    "original_var_name": "individual",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "e2ca784f-a2a0-4e48-a62f-8177a51fa5d5",
+    "token": "[VAR_44]",
+    "original_var_name": "index",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "ff85a249-7f6d-4a91-9471-739457b11098",
+    "token": "[VAR_45]",
+    "original_var_name": "proxy",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "0e0fb9c7-6717-4ecb-bb10-626df1187985",
+    "token": "[VAR_46]",
+    "original_var_name": "manifold",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "bd977a32-134e-48b5-a013-efbeb3b1a55f",
+    "token": "[VAR_47]",
+    "original_var_name": "visit",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "3bf400d0-94e5-4ed4-81a7-2484379f3c62",
+    "token": "[VAR_48]",
+    "original_var_name": "budget_cma",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "9269cd30-4e01-445a-8f8d-0bc183fad13e",
+    "token": "[VAR_49]",
+    "original_var_name": "_",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "86ff7047-37ee-43d2-a190-d161f407c197",
+    "token": "[VAR_50]",
+    "original_var_name": "best_idx",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#11"
+  },
+  {
+    "id": "55d0411d-9538-4665-a6f5-1466b8b0543c",
+    "token": "[VAR_51]",
+    "original_var_name": "xc",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "eed69c05-267f-4c87-ac67-ba80553f559e",
+    "token": "[VAR_52]",
+    "original_var_name": "cat_ref",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "675ea5a6-170b-4274-9e2a-31284d5f207e",
+    "token": "[VAR_53]",
+    "original_var_name": "x_ref_c",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#3"
+  },
+  {
+    "id": "55924cfc-09ea-40f1-8f91-9ceeec9d8670",
+    "token": "[VAR_54]",
+    "original_var_name": "step",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#3"
+  },
+  {
+    "id": "a45ec243-5d38-4639-b2db-06e5c8e2511a",
+    "token": "[VAR_55]",
+    "original_var_name": "trust",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#6"
+  },
+  {
+    "id": "9f6b90c6-201f-4b20-be7b-979830e99b81",
+    "token": "[VAR_56]",
+    "original_var_name": "constr",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#6"
+  },
+  {
+    "id": "325b8cdb-fa05-4032-8528-fedb4d4860db",
+    "token": "[VAR_57]",
+    "original_var_name": "maxiter",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#7"
+  },
+  {
+    "id": "2a2959d0-dfb1-49b8-b6ad-6874167c2f45",
+    "token": "[VAR_58]",
+    "original_var_name": "res",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "76e5008f-a972-48a4-8a68-523148630a4e",
+    "token": "[VAR_59]",
+    "original_var_name": "jac",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#4"
+  },
+  {
+    "id": "bd81b454-8aa1-412b-85ec-9fd9a425e06f",
+    "token": "[VAR_60]",
+    "original_var_name": "method",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#6"
+  },
+  {
+    "id": "5d3a4922-be37-446a-a9fd-3c81e3acdc1c",
+    "token": "[VAR_61]",
+    "original_var_name": "options",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#7"
+  },
+  {
+    "id": "8a5868e9-3631-4daf-8605-7a6c80706ffb",
+    "token": "[VAR_62]",
+    "original_var_name": "f_ref",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "ee062a33-5ae1-4223-85de-4841a5435f52",
+    "token": "[VAR_63]",
+    "original_var_name": "best_slot",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "c4c1eb02-ff27-470d-ae50-a82dd4d8a1ac",
+    "token": "[VAR_64]",
+    "original_var_name": "best_cat_val",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "90734852-e2a5-40c6-b230-02342325ea8d",
+    "token": "[VAR_65]",
+    "original_var_name": "success",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "786fbc85-ab05-44a8-8ec5-eae0b9211c22",
+    "token": "[VAR_66]",
+    "original_var_name": "hess_ref",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "0c3651ef-5a6b-41de-902f-ef954a1f0793",
+    "token": "[VAR_67]",
+    "original_var_name": "eigvecs",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#3"
+  },
+  {
+    "id": "f3e5b283-f916-46d4-a145-1d950917c840",
+    "token": "[VAR_68]",
+    "original_var_name": "H_reg",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#5"
+  },
+  {
+    "id": "8846b933-cd50-4290-9814-54f824488346",
+    "token": "[VAR_69]",
+    "original_var_name": "grad",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#6"
+  },
+  {
+    "id": "11dda8d7-9b22-4844-927c-09b38da2a997",
+    "token": "[VAR_70]",
+    "original_var_name": "grad_func",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "34be4e66-4fa3-4e78-991b-b8a8b4901d44",
+    "token": "[VAR_71]",
+    "original_var_name": "gen",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "fa34193c-395b-4af5-84ab-2addd1c15194",
+    "token": "[VAR_72]",
+    "original_var_name": "axis",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "685818c3-0fdc-42d5-b58d-69071a904e6a",
+    "token": "[VAR_73]",
+    "original_var_name": "random",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "ddd148e7-f74b-495d-b01e-70ea292e0e6b",
+    "token": "[VAR_74]",
+    "original_var_name": "p",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "764d9fac-28bf-45ca-81c2-f5c364bdd67b",
+    "token": "[VAR_75]",
+    "original_var_name": "keepdims",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#39"
+  },
+  {
+    "id": "83044153-3552-4fd4-8808-7dc98a2b9e47",
+    "token": "[VAR_76]",
+    "original_var_name": "Exploration",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#41"
+  },
+  {
+    "id": "bdb077b9-e3e1-4836-bce9-32bb5843dacf",
+    "token": "[VAR_77]",
+    "original_var_name": "bias",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#41"
+  },
+  {
+    "id": "b3c0acb3-e017-4d18-b20a-3a51dba042dc",
+    "token": "[VAR_78]",
+    "original_var_name": "xmean",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#10"
+  },
+  {
+    "id": "2ceb2b68-8c9b-4dcd-9263-8f049d38e346",
+    "token": "[VAR_79]",
+    "original_var_name": "score_diff",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#39"
+  },
+  {
+    "id": "7fa340d9-0784-49fe-b187-8a29903920b2",
+    "token": "[VAR_80]",
+    "original_var_name": "disp",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#72"
+  },
+  {
+    "id": "64d6c01a-0a6d-4525-9d89-e2ea541b998d",
+    "token": "[VAR_81]",
+    "original_var_name": "kwargs",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "36eeadbf-3da5-4da1-b63e-35b3730c66c4",
+    "token": "[VAR_82]",
+    "original_var_name": "n_init",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "1897c3f5-0d73-4c28-bfa7-b0af33d6b26a",
+    "token": "[VAR_83]",
+    "original_var_name": "mean_c",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#7"
+  },
+  {
+    "id": "d35e6ace-0f36-443e-bb0d-650f299a072f",
+    "token": "[VAR_84]",
+    "original_var_name": "current_cat",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#12"
+  },
+  {
+    "id": "9ed8c43d-c82f-479f-abc1-ac828b66abe1",
+    "token": "[VAR_85]",
+    "original_var_name": "numpy",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#1"
+  },
+  {
+    "id": "789b1499-4a31-4a1a-a9cc-f108d26c2d56",
+    "token": "[VAR_86]",
+    "original_var_name": "optimize",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  },
+  {
+    "id": "00ffabdb-3e95-411d-9a5e-095290cbecd6",
+    "token": "[VAR_87]",
+    "original_var_name": "minimize",
+    "class_source": "optimisation_8",
+    "line_id": "optimisation_8_line#2"
+  }
+]

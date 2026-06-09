@@ -1,0 +1,57 @@
+name: "LLaMEA Pipeline Agent Context"
+description: >
+  This file provides in-depth context for any agent starting a session in this workspace. 
+  It describes the environment, the global goals, and the structure of the data processing pipeline.
+
+environment:
+  python_manager: "uv"
+  execution_rule: >
+    All python scripts MUST be run using `uv run python <script>`. DO NOT use `python3` directly,
+    as it will bypass the virtual environment and its dependencies.
+  working_directories:
+    - "blade-framework/output-analysis/"
+    - "blade-framework/results/"
+
+global_goal:
+  description: >
+    The primary objective is to deduce a KPI metric for similarity between LLM-generated 
+    optimisation algorithms. This produces a wealth of actionable data. We achieve this by converting 
+    raw code into a standard, abstracted form, translating it into pseudocode using a local LLM, 
+    and then calculating a 2D sequence similarity matrix across different classes.
+  
+pipeline_steps:
+  1_extraction: "Look through the `log.jsonl` file and extract Python optimisation scripting from the `code` field."
+  2_stripping: "Strip the extracted classes of all comments, empty lines, and spaces between RHS and LHS of assignments (e.g. `RHS=LHS`)."
+  3_variable_abstraction: "Translate all variables to arbitrary names (e.g., [VAR_X]), ensuring no duplication of entries. Logic handles equivalencies like `x_self = self.x_self == y_self = self.y_self`. A log is kept of all variable names, their original position, and a `class_id_line#with_in_class` identifier."
+  4_logic_standardisation: "Apply regex-based standardisation to simplify lines with identical logic (e.g., `x_var.copy() = copy(x_var)` or `np.clip(np.round(x[18:24]), 0, 5).astype(int) = np.clip(np.round(x[18:24]), INTEGER).astype(int)`)."
+  5_recursive_chunking: "Implement LLM translation recursively based on indentation. The most nested chunk is passed to the LLM first. Once translated to pseudocode, the logic-based standardiser and the LLM skip over the nested, already-translated chunks when evaluating the higher-order chunk."
+  6_similarity_scoring: "Fuzzy sequence matching is applied across the classes to calculate the final 2D similarity KPI matrix."
+
+agents:
+  CodeExtractor:
+    role: "Extracts code from raw `log.jsonl` files."
+    responsibilities:
+      - "Parses JSONL objects."
+      - "Strips whitespace, comments, and empty lines."
+      - "Normalizes variable assignment formatting."
+
+  Canonicalizer:
+    role: "Handles Variable Abstraction and Logic Standardisation."
+    responsibilities:
+      - "Abstracts variables to generic tokens while logging original lineage."
+      - "Handles duplicate assignment logic and prunes dead variables."
+      - "Applies logic equivalencies via regex to standardize operations."
+
+  LLMTranslator:
+    role: "Recursively processes code chunks and queries the LLM."
+    responsibilities:
+      - "Identifies nested indented code blocks."
+      - "Queries the LLM (e.g., qwen2.5-coder:14b) for pseudocode translation from the inside out."
+      - "Replaces translated chunks with placeholder tokens to avoid repetitive translation."
+
+  MetricsAnalyzer:
+    role: "Calculates the KPI similarity metric."
+    responsibilities:
+      - "Parses the final translated pseudocode."
+      - "Uses Levenshtein distance and sequence matchers to compute similarity scores."
+      - "Outputs the 2D KPI matrix."

@@ -1,0 +1,113 @@
+import numpy as np
+from scipy.optimize import minimize
+
+class Optimizer:
+    // :::PSEUDOCODE:::
+    // ```
+    // // Pseudocode for __init__ method
+    // 
+    // INITIALIZE FUNCTION [METHOD_NAME](SELF, [VAR_3]: INTEGER, [VAR_4]: INTEGER)
+    //     SET SELF.[VAR_3] TO [VAR_3]
+    //     SET SELF.[VAR_4] TO [VAR_4]
+    //     SET SELF.[VAR_53] TO 0
+    //     SET SELF.[VAR_54] TO INFINITY
+    //     SET SELF.[VAR_55] TO ARRAY OF ZEROS WITH SIZE [VAR_4]
+    // END FUNCTION
+    // 
+    // // END Pseudocode for __init__ method
+    // ```
+    // :::END_PSEUDOCODE:::
+
+    // :::PSEUDOCODE:::
+    // ```
+    // FUNCTION _evaluate([VAR_5], [VAR_6]):
+    //     IF self.[VAR_53] >= self.[VAR_3] THEN
+    //         RETURN infinity
+    //     END IF
+    //     
+    //     [VAR_56] = [OP_BOUND](copy([VAR_5]), INTEGER, INTEGER)
+    //     [VAR_56][18:24] = [OP_BOUND](round([VAR_56][18:24]), INTEGER, INTEGER).astype(int)
+    //     
+    //     [VAR_57] = [VAR_6]([VAR_56])
+    //     self.[VAR_53] += 1
+    //     
+    //     IF [VAR_57] IS LESS THAN self.[VAR_54] THEN  
+    //         self.[VAR_54] = [VAR_57]  
+    //         self.[VAR_55] = COPY OF [VAR_56]  
+    //     END IF
+    //     
+    //     RETURN [VAR_57]
+    // ```
+    // :::END_PSEUDOCODE:::
+
+    // :::PSEUDOCODE:::
+    // ```
+    // FUNCTION _regularize_hessian(VAR_7)
+    //     CALL eigh ON VAR_7 WITH np.VAR_8, ASSIGN TO VAR_54 AND VAR_55
+    //     SET VAR_54 TO ABSOLUTE VALUES OF VAR_54 PLUS 1e-6
+    //     SET VAR_56 TO [VAR_55] TIMES DIAGONAL OF VAR_54 TIMES TRANSPOSE OF [VAR_55]
+    //     RETURN INVERSE OF VAR_56 USING np.VAR_8.inv
+    // END FUNCTION
+    // ```
+    // :::END_PSEUDOCODE:::
+
+    def __call__(self, func, grad_func=None, hess_func=None, **kwargs):
+
+        x_current = np.random.uniform(-1, 1, self.dim)
+        self._evaluate(x_current, func)
+        
+        T = 1.0
+        alpha = 1.0
+        min_T = 1e-6
+        cat_pert_prob = 0.1
+        
+        // :::PSEUDOCODE:::
+        // ```
+        // WHILE T > [VAR_60] AND self.[VAR_49] < self.[VAR_3]
+        //     T *= 0.98
+        //     
+        //     // :::PSEUDOCODE:::
+        //     // IF [VAR_9] IS NOT NONE AND self.[VAR_49] LESS THAN self.[VAR_3] THEN
+        //     //     // :::PSEUDOCODE:::
+        //     //     // Existing pseudocode block would go here
+        //     //     // :::END_PSEUDOCODE:::
+        //     // END IF
+        //     // ELSE
+        //     // END ELSE
+        //     // :::END_PSEUDOCODE:::
+        // 
+        //     [VAR_63] = np.[VAR_12].randn(18)
+        //     [VAR_64] = [VAR_59] * T * ([VAR_62] @ [VAR_63])
+        //     
+        //     [VAR_65] = copy([VAR_58])
+        //     [VAR_65][:18] += [VAR_64]
+        //     
+        // 
+        //     // :::PSEUDOCODE:::
+        //     // IF np.[VAR_12].rand() < [VAR_61]
+        //     //     THEN 
+        //     //         [VAR_67] = np.[VAR_12].choice([-1, 0, 1])
+        //     //         [VAR_65][18:24] = [OP_BOUND]([VAR_65][18:24] + [VAR_67], INTEGER, INTEGER)
+        //     //     END IF
+        //     // :::END_PSEUDOCODE:::
+        // 
+        //     [VAR_65] = [OP_BOUND]([VAR_65], INTEGER, INTEGER)
+        //     [VAR_65][18:24] = [OP_BOUND](np.round([VAR_65][18:24]), INTEGER, INTEGER).astype(int)
+        // 
+        // END WHILE
+        // ```
+        // :::END_PSEUDOCODE:::
+            // :::PSEUDOCODE:::
+            // IF [VAR_70] < 0 OR np.[VAR_12].rand() < np.exp(-[VAR_70] / max(T, 1e-10)) THEN
+            //     [VAR_59] *= (1.0 + 0.1 * np.exp(-[VAR_70]))
+            // END IF
+            // :::END_PSEUDOCODE:::
+            // :::PSEUDOCODE:::
+            // ```
+            // ELSE
+            //     [VAR_59] = [VAR_59] * 0.95
+            // END IF
+            // ```
+            // :::END_PSEUDOCODE:::
+                
+        return self.best_f, self.best_x

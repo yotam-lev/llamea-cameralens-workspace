@@ -1,0 +1,2712 @@
+{
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/__init__.py": {
+    "mtime": 1779286371.4444516,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/lens_comparison.py": {
+    "mtime": 1779286371.4445791,
+    "ast_hash": "e92a8365cd1e7b6ddd368ecb04c756d3",
+    "semantic_hash": "e92a8365cd1e7b6ddd368ecb04c756d3"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/lens_local_test.py": {
+    "mtime": 1780403911.3360245,
+    "ast_hash": "9c7824f5850dd150919ae6b348f9c767",
+    "semantic_hash": "9c7824f5850dd150919ae6b348f9c767"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/lens_mvp.py": {
+    "mtime": 1779286371.444655,
+    "ast_hash": "6ac6f522d315fc019f3cc721fd22c424",
+    "semantic_hash": "6ac6f522d315fc019f3cc721fd22c424"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/lens_v2.py": {
+    "mtime": 1779286371.444826,
+    "ast_hash": "2892aca4b185304409667485d47b0e71",
+    "semantic_hash": "2892aca4b185304409667485d47b0e71"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/lens_v3.py": {
+    "mtime": 1779286467.8126302,
+    "ast_hash": "aedbe95f0c9f1cb1f44c525a8bca67dd",
+    "semantic_hash": "aedbe95f0c9f1cb1f44c525a8bca67dd"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/lens_v4.py": {
+    "mtime": 1780500186.9440255,
+    "ast_hash": "3e7688bdf6c6e441fa5b818e386677bc",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/lens_v4_improved.py": {
+    "mtime": 1780403911.3382728,
+    "ast_hash": "cbd24c9fd86170b5c8c21652f2fd3a92",
+    "semantic_hash": "cbd24c9fd86170b5c8c21652f2fd3a92"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/camera_problem_runs/lens_v5.py": {
+    "mtime": 1779714569.8373337,
+    "ast_hash": "5cbc7c70cb1558084ec727eb1a9e3aaf",
+    "semantic_hash": "5cbc7c70cb1558084ec727eb1a9e3aaf"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/cameralens_main.py": {
+    "mtime": 1779286371.446279,
+    "ast_hash": "37d2fde6a08774b17c461e1149cb6475",
+    "semantic_hash": "37d2fde6a08774b17c461e1149cb6475"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/config.py": {
+    "mtime": 1780364030.9445589,
+    "ast_hash": "067afa0a81db56fec69290b7bdc33f4c",
+    "semantic_hash": "067afa0a81db56fec69290b7bdc33f4c"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/contextual_lens_problem.py": {
+    "mtime": 1779628222.605401,
+    "ast_hash": "c8337fbb40173f27389019e4a2df6330",
+    "semantic_hash": "c8337fbb40173f27389019e4a2df6330"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/conf.py": {
+    "mtime": 1779286371.4517775,
+    "ast_hash": "12d86c90bf59cdc24765d9c03ce85220",
+    "semantic_hash": "12d86c90bf59cdc24765d9c03ce85220"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/minimal_example.py": {
+    "mtime": 1779286371.4619882,
+    "ast_hash": "9132884936ecab9ae5f7fb4b049c907e",
+    "semantic_hash": "9132884936ecab9ae5f7fb4b049c907e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/minimal_example_trackio.py": {
+    "mtime": 1779286371.4620857,
+    "ast_hash": "8cc544c81f9976a9c95c01568902c6c4",
+    "semantic_hash": "8cc544c81f9976a9c95c01568902c6c4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/process_bbob_runs.py": {
+    "mtime": 1779286371.4621837,
+    "ast_hash": "4bf91e8763bc99b9cd236c93e24c2fad",
+    "semantic_hash": "4bf91e8763bc99b9cd236c93e24c2fad"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run-automl.py": {
+    "mtime": 1779286371.4623106,
+    "ast_hash": "033bc06a4c69434fe3deaf8c7993e395",
+    "semantic_hash": "033bc06a4c69434fe3deaf8c7993e395"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run-bbob-logging.py": {
+    "mtime": 1779286371.4624264,
+    "ast_hash": "e21becd8b09eea756047ea78b1e2c90f",
+    "semantic_hash": "e21becd8b09eea756047ea78b1e2c90f"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run-kerneltuner-info.py": {
+    "mtime": 1779286371.4625113,
+    "ast_hash": "1d4801b57f3e82b7afc06a77884e37f4",
+    "semantic_hash": "1d4801b57f3e82b7afc06a77884e37f4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run-kerneltuner.py": {
+    "mtime": 1779286371.4625928,
+    "ast_hash": "df34a48818a8eee3b03f4ab63bd736b0",
+    "semantic_hash": "df34a48818a8eee3b03f4ab63bd736b0"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run-mabbob.py": {
+    "mtime": 1779286371.462732,
+    "ast_hash": "d5b83ab6f061e315854820d88fd0fbc4",
+    "semantic_hash": "d5b83ab6f061e315854820d88fd0fbc4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run-min-max-distance-ratio-mcts.py": {
+    "mtime": 1779286371.4628289,
+    "ast_hash": "328ed9b23c66a535efdafc777f51c857",
+    "semantic_hash": "328ed9b23c66a535efdafc777f51c857"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run-sbox.py": {
+    "mtime": 1779286371.462929,
+    "ast_hash": "6f91d4aa80dd130dfd4157c729a450c7",
+    "semantic_hash": "6f91d4aa80dd130dfd4157c729a450c7"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run_lens_optimisation.py": {
+    "mtime": 1779286371.4630184,
+    "ast_hash": "f7b3f9c8bdbe51fb3bc7695ba912be67",
+    "semantic_hash": "f7b3f9c8bdbe51fb3bc7695ba912be67"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run_lhns_example.py": {
+    "mtime": 1779286371.463106,
+    "ast_hash": "5bb97a6c0b116ac2fe3b4ee29298e8f1",
+    "semantic_hash": "5bb97a6c0b116ac2fe3b4ee29298e8f1"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/run_ollama_client.py": {
+    "mtime": 1779286371.4631886,
+    "ast_hash": "6f09dc9a422bef2be5f268c31a6efb66",
+    "semantic_hash": "6f09dc9a422bef2be5f268c31a6efb66"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/test-kerneltuner.json": {
+    "mtime": 1779286371.4633045,
+    "ast_hash": "d3a4f1d7756b081ecc0af1b7a52c7575",
+    "semantic_hash": "d3a4f1d7756b081ecc0af1b7a52c7575"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/examples/visualize_bbob.py": {
+    "mtime": 1779286371.4650252,
+    "ast_hash": "f99114131b4c8c3f0919dbf85d11b730",
+    "semantic_hash": "f99114131b4c8c3f0919dbf85d11b730"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/__init__.py": {
+    "mtime": 1779286371.4759073,
+    "ast_hash": "317f6407c8cc535fefaee98d7e8329ff",
+    "semantic_hash": "317f6407c8cc535fefaee98d7e8329ff"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/assets.py": {
+    "mtime": 1779286371.4761024,
+    "ast_hash": "0d27455d6496a4aa61350dec8b7d1e5c",
+    "semantic_hash": "0d27455d6496a4aa61350dec8b7d1e5c"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/baselines/__init__.py": {
+    "mtime": 1779286371.476434,
+    "ast_hash": "be2f2b6435fa2d994c595db09155ef77",
+    "semantic_hash": "be2f2b6435fa2d994c595db09155ef77"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/baselines/modcma.py": {
+    "mtime": 1779286371.4765334,
+    "ast_hash": "66f500fb1dbb16235d9ae5ce5ffa531a",
+    "semantic_hash": "66f500fb1dbb16235d9ae5ce5ffa531a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/behaviour_metrics.py": {
+    "mtime": 1779286371.4766407,
+    "ast_hash": "0bef57eb19e521f2aeccbe118738d7cc",
+    "semantic_hash": "0bef57eb19e521f2aeccbe118738d7cc"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/analysis/__init__.py": {
+    "mtime": 1779286371.4769082,
+    "ast_hash": "be90ab050fee738117d6d3a330e55cf6",
+    "semantic_hash": "be90ab050fee738117d6d3a330e55cf6"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/analysis/auto_correlation_base_spec.py": {
+    "mtime": 1779286371.4770448,
+    "ast_hash": "30c1152c0ec9fa3b8263223c3213443a",
+    "semantic_hash": "30c1152c0ec9fa3b8263223c3213443a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/analysis/auto_correlation_ineq1.py": {
+    "mtime": 1779286371.47714,
+    "ast_hash": "de6f3f7d047b96b47c094511d7a2d4a5",
+    "semantic_hash": "de6f3f7d047b96b47c094511d7a2d4a5"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/analysis/auto_correlation_ineq2.py": {
+    "mtime": 1779286371.4772465,
+    "ast_hash": "224bc81f6d9701cd79550b0014dbe8f3",
+    "semantic_hash": "224bc81f6d9701cd79550b0014dbe8f3"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/analysis/auto_correlation_ineq3.py": {
+    "mtime": 1779286371.477337,
+    "ast_hash": "301c7618b2ed9ad55eca96e8490a51ce",
+    "semantic_hash": "301c7618b2ed9ad55eca96e8490a51ce"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/analysis/get_analysis_problems.py": {
+    "mtime": 1779286371.4774828,
+    "ast_hash": "9f5cd0ab542d2eb88d6ebf45fd84ed15",
+    "semantic_hash": "9f5cd0ab542d2eb88d6ebf45fd84ed15"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/__init__.py": {
+    "mtime": 1779286371.482585,
+    "ast_hash": "3b05e90bba44afaa5320db6c3dea50b4",
+    "semantic_hash": "3b05e90bba44afaa5320db6c3dea50b4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/erdos_min_overlap.py": {
+    "mtime": 1779286371.4826934,
+    "ast_hash": "60cadc926d3bf385c779b1ca9871958e",
+    "semantic_hash": "60cadc926d3bf385c779b1ca9871958e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/euclidian_steiner_tree.py": {
+    "mtime": 1779286371.4828134,
+    "ast_hash": "23189a7dc5d36be439cd7c57a652663f",
+    "semantic_hash": "23189a7dc5d36be439cd7c57a652663f"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/get_erdos_problem.py": {
+    "mtime": 1779286371.4828894,
+    "ast_hash": "40a4ff0a71e014bb17ccfab5402810a2",
+    "semantic_hash": "40a4ff0a71e014bb17ccfab5402810a2"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/graph_coloring.py": {
+    "mtime": 1779286371.4829683,
+    "ast_hash": "d0ccf02023fbceab0c16177f57bfdb93",
+    "semantic_hash": "d0ccf02023fbceab0c16177f57bfdb93"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/fourier/__init__.py": {
+    "mtime": 1779286371.4831614,
+    "ast_hash": "628e763e15afe2be6630c97813e1b143",
+    "semantic_hash": "628e763e15afe2be6630c97813e1b143"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/fourier/fourier_base.py": {
+    "mtime": 1779286371.4832432,
+    "ast_hash": "393eec66ac71fe2fbdebc6f049badb76",
+    "semantic_hash": "393eec66ac71fe2fbdebc6f049badb76"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/fourier/get_fourier_problem.py": {
+    "mtime": 1779286371.483316,
+    "ast_hash": "60deb98b62c040126d09d5a5784aac81",
+    "semantic_hash": "60deb98b62c040126d09d5a5784aac81"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/fourier/uncertainty_inequality.py": {
+    "mtime": 1779286371.4834154,
+    "ast_hash": "286dba7c4fa22636fa0b9b33c8486c5a",
+    "semantic_hash": "286dba7c4fa22636fa0b9b33c8486c5a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/__init__.py": {
+    "mtime": 1779286371.48361,
+    "ast_hash": "1defbfc7bc8e539bd7e731b0807fa9db",
+    "semantic_hash": "1defbfc7bc8e539bd7e731b0807fa9db"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/geometry_base_class.py": {
+    "mtime": 1779286371.483725,
+    "ast_hash": "e5de3ce9d3c87f22f238eeb34593e9c9",
+    "semantic_hash": "e5de3ce9d3c87f22f238eeb34593e9c9"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/get_geometry_problems.py": {
+    "mtime": 1779286371.4840279,
+    "ast_hash": "18e7210b79cb180b604b919e4bedfb3f",
+    "semantic_hash": "18e7210b79cb180b604b919e4bedfb3f"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/heilbronn_convex_region.py": {
+    "mtime": 1779286371.4844801,
+    "ast_hash": "3a3e16e3cabc963cb227a99cb41bd988",
+    "semantic_hash": "3a3e16e3cabc963cb227a99cb41bd988"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/heilbronn_triangle.py": {
+    "mtime": 1779286371.4845881,
+    "ast_hash": "85685d63e9ac5d578f2f95b2c61f1b1d",
+    "semantic_hash": "85685d63e9ac5d578f2f95b2c61f1b1d"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/kissing_number_11d.py": {
+    "mtime": 1779286371.4847171,
+    "ast_hash": "8d1d17c0db093fd85c44df380eef2228",
+    "semantic_hash": "8d1d17c0db093fd85c44df380eef2228"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/min_max_distance_ratio.py": {
+    "mtime": 1779286371.4848106,
+    "ast_hash": "814bbd5ba72f3e4ed39bc0ef45f7daad",
+    "semantic_hash": "814bbd5ba72f3e4ed39bc0ef45f7daad"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/spherical_code.py": {
+    "mtime": 1779286371.4849124,
+    "ast_hash": "1b7a49d4069d09d723a315a33d13c293",
+    "semantic_hash": "1b7a49d4069d09d723a315a33d13c293"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/logistics/A-n53-k7.json": {
+    "mtime": 1779286371.485046,
+    "ast_hash": "4e914bdd5de2c0f21670d3b403b989a5",
+    "semantic_hash": "4e914bdd5de2c0f21670d3b403b989a5"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/logistics/__init__.py": {
+    "mtime": 1779286371.4851162,
+    "ast_hash": "af0b6bfa7f9b9e9374cf865ea71c5a71",
+    "semantic_hash": "af0b6bfa7f9b9e9374cf865ea71c5a71"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/logistics/tsp.py": {
+    "mtime": 1779286371.4852135,
+    "ast_hash": "1c45ab7075c033cf5a8ac0dd63ab9974",
+    "semantic_hash": "1c45ab7075c033cf5a8ac0dd63ab9974"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/logistics/vrp.py": {
+    "mtime": 1779286371.4853277,
+    "ast_hash": "fec9d5e2e39164819324154067020b71",
+    "semantic_hash": "fec9d5e2e39164819324154067020b71"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/__init__.py": {
+    "mtime": 1779286371.4855263,
+    "ast_hash": "5871d83181f63d5eaf354c2a400c5617",
+    "semantic_hash": "5871d83181f63d5eaf354c2a400c5617"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/constants.py": {
+    "mtime": 1779286371.485606,
+    "ast_hash": "4730e6a11caa403ebae4c97d4615c997",
+    "semantic_hash": "4730e6a11caa403ebae4c97d4615c997"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/get_evaluator.py": {
+    "mtime": 1779286371.4857185,
+    "ast_hash": "127189ecd50c4209a162212127278b0a",
+    "semantic_hash": "127189ecd50c4209a162212127278b0a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/problem_sets.py": {
+    "mtime": 1779286371.485797,
+    "ast_hash": "3c83fe5e0197d7ef8d31eaf027719dd8",
+    "semantic_hash": "3c83fe5e0197d7ef8d31eaf027719dd8"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/run_optimization.py": {
+    "mtime": 1779286371.4858873,
+    "ast_hash": "824bb4972c578d7e326009271879d4ca",
+    "semantic_hash": "824bb4972c578d7e326009271879d4ca"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/task_specification.py": {
+    "mtime": 1779286371.4859722,
+    "ast_hash": "071f22ee013c24679e9631f7749986a4",
+    "semantic_hash": "071f22ee013c24679e9631f7749986a4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/verify.py": {
+    "mtime": 1779286371.486079,
+    "ast_hash": "723bb3082bad90c9f028c1fda0f9a0cf",
+    "semantic_hash": "723bb3082bad90c9f028c1fda0f9a0cf"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/number_theory/__init__.py": {
+    "mtime": 1779286371.4862885,
+    "ast_hash": "824f461030e7be0a613628839153426d",
+    "semantic_hash": "824f461030e7be0a613628839153426d"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/number_theory/get_num_theory_problems.py": {
+    "mtime": 1779286371.486418,
+    "ast_hash": "88e3795fe0eddbc89acfe3f981f55e53",
+    "semantic_hash": "88e3795fe0eddbc89acfe3f981f55e53"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/number_theory/number_theory_base.py": {
+    "mtime": 1779286371.4865222,
+    "ast_hash": "20e535238d9e1000df81172cebc6b00f",
+    "semantic_hash": "20e535238d9e1000df81172cebc6b00f"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/number_theory/sums_vs_differences.py": {
+    "mtime": 1779286371.4866395,
+    "ast_hash": "ed36576d7948d11cb233d1d0927f5bce",
+    "semantic_hash": "ed36576d7948d11cb233d1d0927f5bce"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/__init__.py": {
+    "mtime": 1779286371.4868505,
+    "ast_hash": "df17abb6dac3a5cf819668a3ce3a0e5e",
+    "semantic_hash": "df17abb6dac3a5cf819668a3ce3a0e5e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/circles.py": {
+    "mtime": 1779286371.4870265,
+    "ast_hash": "3d8e51315b3a083e611434ade8d9b44f",
+    "semantic_hash": "3d8e51315b3a083e611434ade8d9b44f"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/get_packing_problems.py": {
+    "mtime": 1779286371.4871106,
+    "ast_hash": "ffc772e3ee957415dd074b9a7ff20493",
+    "semantic_hash": "ffc772e3ee957415dd074b9a7ff20493"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/hexagon_packing.py": {
+    "mtime": 1779286371.4872181,
+    "ast_hash": "82b7f1a3a89f5afa6bd860643497131d",
+    "semantic_hash": "82b7f1a3a89f5afa6bd860643497131d"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/packing_base.py": {
+    "mtime": 1779286371.4873278,
+    "ast_hash": "eba1c3f20e0c972e36a0a36cd673429e",
+    "semantic_hash": "eba1c3f20e0c972e36a0a36cd673429e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/rectangle_packing.py": {
+    "mtime": 1779286371.4874325,
+    "ast_hash": "787bdfba74250d1cfeb4ceb6b982cb9b",
+    "semantic_hash": "787bdfba74250d1cfeb4ceb6b982cb9b"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/unit_square_packing.py": {
+    "mtime": 1779286371.4875433,
+    "ast_hash": "a60ebe486531dbcae176cbd85c4ce0ab",
+    "semantic_hash": "a60ebe486531dbcae176cbd85c4ce0ab"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/experiment.py": {
+    "mtime": 1779286371.4876251,
+    "ast_hash": "eabaf3ec63602bdbef9d326842e7c6c8",
+    "semantic_hash": "eabaf3ec63602bdbef9d326842e7c6c8"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/llm.py": {
+    "mtime": 1779286371.4877586,
+    "ast_hash": "3264c3eff6a8863ed534bc143bccc725",
+    "semantic_hash": "3264c3eff6a8863ed534bc143bccc725"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/loggers/__init__.py": {
+    "mtime": 1779286371.4878743,
+    "ast_hash": "0630892abd5b90890e83c95ad04b1861",
+    "semantic_hash": "0630892abd5b90890e83c95ad04b1861"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/loggers/base.py": {
+    "mtime": 1779286371.4879704,
+    "ast_hash": "19d6a0d738b838869c6d23e6d38a192e",
+    "semantic_hash": "19d6a0d738b838869c6d23e6d38a192e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/loggers/mlflow.py": {
+    "mtime": 1779286371.4880583,
+    "ast_hash": "817ff0dc87a990f3f7ee9360bb9fc8c5",
+    "semantic_hash": "817ff0dc87a990f3f7ee9360bb9fc8c5"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/loggers/trackio.py": {
+    "mtime": 1779286371.488163,
+    "ast_hash": "17ed28d3dd6652877d2ba13ec6afb651",
+    "semantic_hash": "17ed28d3dd6652877d2ba13ec6afb651"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/mcts_node.py": {
+    "mtime": 1779286371.4882493,
+    "ast_hash": "2951935ef553d478c5738324919efecd",
+    "semantic_hash": "2951935ef553d478c5738324919efecd"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/method.py": {
+    "mtime": 1779286371.4883213,
+    "ast_hash": "28b0d1caf1db4feb734945816d48029a",
+    "semantic_hash": "28b0d1caf1db4feb734945816d48029a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/__init__.py": {
+    "mtime": 1779286371.4884496,
+    "ast_hash": "b89abbcb4f95ed75fef49fbb4c4729ac",
+    "semantic_hash": "b89abbcb4f95ed75fef49fbb4c4729ac"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/eoh.py": {
+    "mtime": 1779286371.4885662,
+    "ast_hash": "a29777063eebf1a72afd215aab9df285",
+    "semantic_hash": "a29777063eebf1a72afd215aab9df285"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/funsearch.py": {
+    "mtime": 1779286371.4886541,
+    "ast_hash": "2a57288b7d2bcecafc9fd65e33219762",
+    "semantic_hash": "2a57288b7d2bcecafc9fd65e33219762"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/lhns/__init__.py": {
+    "mtime": 1779286371.4887893,
+    "ast_hash": "17824850e70fcd3dada7a4d468a6f302",
+    "semantic_hash": "17824850e70fcd3dada7a4d468a6f302"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/lhns/lhns.py": {
+    "mtime": 1779286371.488907,
+    "ast_hash": "574be14c1796048fad8363ab07f81464",
+    "semantic_hash": "574be14c1796048fad8363ab07f81464"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/lhns/prompt.py": {
+    "mtime": 1779286371.4890032,
+    "ast_hash": "331a27402a585e518e83506c758ede1c",
+    "semantic_hash": "331a27402a585e518e83506c758ede1c"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/lhns/taboo_table.py": {
+    "mtime": 1779286371.4891355,
+    "ast_hash": "1dd25e94f50c39766213b14f1e53d8d5",
+    "semantic_hash": "1dd25e94f50c39766213b14f1e53d8d5"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/llamea.py": {
+    "mtime": 1779286371.4892483,
+    "ast_hash": "0646e177f2e995bd1d532c28da814f85",
+    "semantic_hash": "0646e177f2e995bd1d532c28da814f85"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/mcts_ahd/__init__.py": {
+    "mtime": 1779286371.4894192,
+    "ast_hash": "347cff56dfc4494306f38522e291bbe1",
+    "semantic_hash": "347cff56dfc4494306f38522e291bbe1"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/mcts_ahd/mcts.py": {
+    "mtime": 1779286371.4895513,
+    "ast_hash": "427a936d92729daf03874f26e018933b",
+    "semantic_hash": "427a936d92729daf03874f26e018933b"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/mcts_ahd/prompts.py": {
+    "mtime": 1779286371.4896946,
+    "ast_hash": "4e8c1a806eec4e557f6de38130cc65fc",
+    "semantic_hash": "4e8c1a806eec4e557f6de38130cc65fc"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/random_search.py": {
+    "mtime": 1779286371.4898086,
+    "ast_hash": "85eb804685b5746d0a2f1cc966034573",
+    "semantic_hash": "85eb804685b5746d0a2f1cc966034573"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/methods/reevo.py": {
+    "mtime": 1779286371.4899457,
+    "ast_hash": "e7e7bfd29a95a51c0303bcf6f11f97ff",
+    "semantic_hash": "e7e7bfd29a95a51c0303bcf6f11f97ff"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/misc/__init__.py": {
+    "mtime": 1779286371.490048,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/misc/ast.py": {
+    "mtime": 1779286371.4903498,
+    "ast_hash": "e332407d8bbc2fd691a146d01aff487e",
+    "semantic_hash": "e332407d8bbc2fd691a146d01aff487e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/misc/prepare_namespace.py": {
+    "mtime": 1779286371.4904616,
+    "ast_hash": "9095f98726731deb63b01407317972ed",
+    "semantic_hash": "9095f98726731deb63b01407317972ed"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/plots.py": {
+    "mtime": 1779286371.49061,
+    "ast_hash": "300ae9572095a205d1eef841d1029c8e",
+    "semantic_hash": "300ae9572095a205d1eef841d1029c8e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problem.py": {
+    "mtime": 1779286371.4907541,
+    "ast_hash": "2ab9c49e8884224cebff6ea73facaf00",
+    "semantic_hash": "2ab9c49e8884224cebff6ea73facaf00"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/__init__.py": {
+    "mtime": 1779286371.4910672,
+    "ast_hash": "7fd6cdaaea40a09488d077cbef6f4643",
+    "semantic_hash": "7fd6cdaaea40a09488d077cbef6f4643"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/automl.py": {
+    "mtime": 1779286371.4911902,
+    "ast_hash": "3e8033943ac101dd21dd1200ec060353",
+    "semantic_hash": "3e8033943ac101dd21dd1200ec060353"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/bbob_sboxcost.py": {
+    "mtime": 1779286371.491318,
+    "ast_hash": "d6b5b59d87d11abd8703f95e29ca5e80",
+    "semantic_hash": "d6b5b59d87d11abd8703f95e29ca5e80"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/kerneltuner.py": {
+    "mtime": 1779286371.4914343,
+    "ast_hash": "7b565a3af6f9384e99ddea2aee53507c",
+    "semantic_hash": "7b565a3af6f9384e99ddea2aee53507c"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/lens_optimisation.py": {
+    "mtime": 1780364030.9451847,
+    "ast_hash": "93d1672bc9fc29e2eb6c2c02d104bca0",
+    "semantic_hash": "93d1672bc9fc29e2eb6c2c02d104bca0"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/mabbob.py": {
+    "mtime": 1779286371.4916985,
+    "ast_hash": "772996fcfc0e2b2f74135c8557193fd8",
+    "semantic_hash": "772996fcfc0e2b2f74135c8557193fd8"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics.py": {
+    "mtime": 1779286371.4935281,
+    "ast_hash": "adc9e9d206bbfe886a7d36288f2439b4",
+    "semantic_hash": "adc9e9d206bbfe886a7d36288f2439b4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/__init__.py": {
+    "mtime": 1779286371.4936423,
+    "ast_hash": "ab784d51e155ee88e7a2d23dde0e8d5a",
+    "semantic_hash": "ab784d51e155ee88e7a2d23dde0e8d5a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/exp_photonic.py": {
+    "mtime": 1779286371.493752,
+    "ast_hash": "f98016c92a9f92af342c166f19091696",
+    "semantic_hash": "f98016c92a9f92af342c166f19091696"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/problems/__init__.py": {
+    "mtime": 1779286371.4938211,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/problems/brag_mirror.py": {
+    "mtime": 1779286371.4939387,
+    "ast_hash": "165edcf7750f61c8f7981157829721c1",
+    "semantic_hash": "165edcf7750f61c8f7981157829721c1"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/problems/ellipsometry_inverse.py": {
+    "mtime": 1779286371.4940147,
+    "ast_hash": "8a40af209402e2a4e41a7274ac249d9b",
+    "semantic_hash": "8a40af209402e2a4e41a7274ac249d9b"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/problems/grating2D.py": {
+    "mtime": 1779286371.4941297,
+    "ast_hash": "60fc9b58b1583c4ebc15ae9ba39adada",
+    "semantic_hash": "60fc9b58b1583c4ebc15ae9ba39adada"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/problems/photonic_problem.py": {
+    "mtime": 1779286371.4942162,
+    "ast_hash": "c4dbad9d83b2382182a0999140283c4c",
+    "semantic_hash": "c4dbad9d83b2382182a0999140283c4c"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/problems/plasmonic_nanostructure.py": {
+    "mtime": 1779286371.4942966,
+    "ast_hash": "0133bc13e3680110864d5594dcd11e95",
+    "semantic_hash": "0133bc13e3680110864d5594dcd11e95"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/problems/photonics_instances/problems/sophisticated_antireflection_design.py": {
+    "mtime": 1779286371.494368,
+    "ast_hash": "5c9014d086054e247f7895e7545b7b3a",
+    "semantic_hash": "5c9014d086054e247f7895e7545b7b3a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/solution.py": {
+    "mtime": 1779286371.4944935,
+    "ast_hash": "a245f39d8e22900006ab74ee649c295d",
+    "semantic_hash": "a245f39d8e22900006ab74ee649c295d"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/utils.py": {
+    "mtime": 1779286371.4945962,
+    "ast_hash": "a80cc9da5257ca600d80a97a4d1d8c44",
+    "semantic_hash": "a80cc9da5257ca600d80a97a4d1d8c44"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/webapp.py": {
+    "mtime": 1779286467.813599,
+    "ast_hash": "64cbe66adfd8744241d6e19f1554052d",
+    "semantic_hash": "64cbe66adfd8744241d6e19f1554052d"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/local_lens_problem.py": {
+    "mtime": 1779286371.495037,
+    "ast_hash": "d506779bef2d8af5825fa61f54bb4cfb",
+    "semantic_hash": "d506779bef2d8af5825fa61f54bb4cfb"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/optimisation_analysis/test_analysis.py": {
+    "mtime": 1780403911.3385088,
+    "ast_hash": "16b22b5a761eb5fb919caa656320a0a0",
+    "semantic_hash": "16b22b5a761eb5fb919caa656320a0a0"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/optimisation_analysis/verify_discrepancy.py": {
+    "mtime": 1780403911.338711,
+    "ast_hash": "99b682732fcb5df339580fcd117fa8f7",
+    "semantic_hash": "99b682732fcb5df339580fcd117fa8f7"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/parsers/conv_log_parser.py": {
+    "mtime": 1780403911.3391218,
+    "ast_hash": "bb32371a929775b4c4ecfe8d5a1fd5b5",
+    "semantic_hash": "bb32371a929775b4c4ecfe8d5a1fd5b5"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/parsers/log_parser.py": {
+    "mtime": 1780403911.33951,
+    "ast_hash": "4f4079adba1118045fb4e91760e1f414",
+    "semantic_hash": "4f4079adba1118045fb4e91760e1f414"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/parsers/optimisation_class_parser.py": {
+    "mtime": 1780515714.3762584,
+    "ast_hash": "74abd81f0e01a3b3c4b281a6e677b0dc",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/reproduce_import.py": {
+    "mtime": 1779286371.4966936,
+    "ast_hash": "094941e35faf84d23218434e252aa614",
+    "semantic_hash": "094941e35faf84d23218434e252aa614"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/results_for_agent/Lens_Local_Test_2/progress.json": {
+    "mtime": 1780403911.3405316,
+    "ast_hash": "24a3e635c586e152f953c172b8541f15",
+    "semantic_hash": "24a3e635c586e152f953c172b8541f15"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/results_for_agent/Lens_Local_Test_2/run-LLaMEA_Local_Test-DoubleGauss_Local_Test-0_20260601_221113/prompts.json": {
+    "mtime": 1780403911.3454027,
+    "ast_hash": "aa684f59243535669e8efde059b16ab4",
+    "semantic_hash": "aa684f59243535669e8efde059b16ab4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/auto-correlation.py": {
+    "mtime": 1779286371.5479457,
+    "ast_hash": "a8724fd6ac32c51e06199a2b7138a6f1",
+    "semantic_hash": "a8724fd6ac32c51e06199a2b7138a6f1"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/circle_packing.py": {
+    "mtime": 1779286371.5480556,
+    "ast_hash": "a6e6e997ca4d6382ee89ef9e7c873532",
+    "semantic_hash": "a6e6e997ca4d6382ee89ef9e7c873532"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/cvrp.py": {
+    "mtime": 1779286371.548134,
+    "ast_hash": "c66d0d7f4a99de20e1afb68dcf438fec",
+    "semantic_hash": "c66d0d7f4a99de20e1afb68dcf438fec"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/erdos-min-overlap.py": {
+    "mtime": 1779286371.5482335,
+    "ast_hash": "5515e6c81b326315393b69ca984c52f4",
+    "semantic_hash": "5515e6c81b326315393b69ca984c52f4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/euclidian_steiner_tree.py": {
+    "mtime": 1779286371.5483239,
+    "ast_hash": "5e5a8bc00dbd8fef21aac78805ee9ea6",
+    "semantic_hash": "5e5a8bc00dbd8fef21aac78805ee9ea6"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/graph_coloring.py": {
+    "mtime": 1779286371.5484183,
+    "ast_hash": "b07deb3744b3da0df7c725d180993562",
+    "semantic_hash": "b07deb3744b3da0df7c725d180993562"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/heilbronn_convex_region.py": {
+    "mtime": 1779286371.5485144,
+    "ast_hash": "1778bd8962aa5869ae2b71ba23c1de63",
+    "semantic_hash": "1778bd8962aa5869ae2b71ba23c1de63"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/heilbronn_triangle.py": {
+    "mtime": 1779286371.5486252,
+    "ast_hash": "3dc32ed0f6bec06ed9a6c0b30ab97fe4",
+    "semantic_hash": "3dc32ed0f6bec06ed9a6c0b30ab97fe4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/hexagon_packing.py": {
+    "mtime": 1779286371.5487201,
+    "ast_hash": "a049b72f916b90bf83cb7e962a1c8b61",
+    "semantic_hash": "a049b72f916b90bf83cb7e962a1c8b61"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/kissing-11D.py": {
+    "mtime": 1779286371.548835,
+    "ast_hash": "e25459a683358e77ed475c4d9f580165",
+    "semantic_hash": "e25459a683358e77ed475c4d9f580165"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/mat_mul.py": {
+    "mtime": 1779286371.5489507,
+    "ast_hash": "102892ec0fb51ba9268b6e9a5c8df48a",
+    "semantic_hash": "102892ec0fb51ba9268b6e9a5c8df48a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/min_max_min_distance_ratio.py": {
+    "mtime": 1779286371.5490427,
+    "ast_hash": "6e450e554bc30d60d701263f1902fdf0",
+    "semantic_hash": "6e450e554bc30d60d701263f1902fdf0"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/rectangle_packing.py": {
+    "mtime": 1779286371.549188,
+    "ast_hash": "320ab0555f85ff58375c45800d394dc2",
+    "semantic_hash": "320ab0555f85ff58375c45800d394dc2"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/spherical_code.py": {
+    "mtime": 1779286371.5492654,
+    "ast_hash": "eea0b1c89bea97ed4b77a6fd48d570aa",
+    "semantic_hash": "eea0b1c89bea97ed4b77a6fd48d570aa"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/sum_vs_differences.py": {
+    "mtime": 1779286371.5493333,
+    "ast_hash": "95235e9daf68c7855c43f6d1bedf2cd3",
+    "semantic_hash": "95235e9daf68c7855c43f6d1bedf2cd3"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/tsp.py": {
+    "mtime": 1779286371.5494015,
+    "ast_hash": "a8541b897d86036517ec43aad39803c2",
+    "semantic_hash": "a8541b897d86036517ec43aad39803c2"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/uncertainty_inequality.py": {
+    "mtime": 1779286371.5494673,
+    "ast_hash": "e91b0ae1f1abde1f0060ac86696f2c75",
+    "semantic_hash": "e91b0ae1f1abde1f0060ac86696f2c75"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_benchmarks/unit_square_packing.py": {
+    "mtime": 1779286371.549531,
+    "ast_hash": "ce980739c3ad82670d9ac14793a3786c",
+    "semantic_hash": "ce980739c3ad82670d9ac14793a3786c"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/test_lens_eval.py": {
+    "mtime": 1780403911.3487678,
+    "ast_hash": "188c03464e47ee43a9ba17254a00605e",
+    "semantic_hash": "188c03464e47ee43a9ba17254a00605e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/__init__.py": {
+    "mtime": 1779286371.5497322,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/e2e/__init__.py": {
+    "mtime": 1779286371.5498185,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/e2e/test_completeflow.py": {
+    "mtime": 1779286371.5499542,
+    "ast_hash": "026588a75bee5763a62655fc08858cdd",
+    "semantic_hash": "026588a75bee5763a62655fc08858cdd"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/__init__.py": {
+    "mtime": 1779286371.5500317,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_behaviour_metrics.py": {
+    "mtime": 1779286371.550176,
+    "ast_hash": "b9559431d8ca94d8e113da4c04cf5973",
+    "semantic_hash": "b9559431d8ca94d8e113da4c04cf5973"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_experiment.py": {
+    "mtime": 1779286371.5502856,
+    "ast_hash": "a016f7de9e0a673f2b720fa8e032052a",
+    "semantic_hash": "a016f7de9e0a673f2b720fa8e032052a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_lhns.py": {
+    "mtime": 1779286371.5504167,
+    "ast_hash": "2cff0608a005a6fac824cbf97c86a72e",
+    "semantic_hash": "2cff0608a005a6fac824cbf97c86a72e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_llm.py": {
+    "mtime": 1779286371.5505414,
+    "ast_hash": "3414b6985ba8040a2ccfe2c4924a8612",
+    "semantic_hash": "3414b6985ba8040a2ccfe2c4924a8612"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_loggers.py": {
+    "mtime": 1779286371.550651,
+    "ast_hash": "573ec761ce940585eff6361bbabc5ca0",
+    "semantic_hash": "573ec761ce940585eff6361bbabc5ca0"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_mcts_ahd.py": {
+    "mtime": 1779286371.5507631,
+    "ast_hash": "d163d8c99aaee674dc3a6a8deb8e89b6",
+    "semantic_hash": "d163d8c99aaee674dc3a6a8deb8e89b6"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_method.py": {
+    "mtime": 1779286371.5508556,
+    "ast_hash": "d793b2361339a35b81c94fb992730a3e",
+    "semantic_hash": "d793b2361339a35b81c94fb992730a3e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_mlflowlogger.py": {
+    "mtime": 1779286371.5509531,
+    "ast_hash": "bbf3fd23d0af98a480c56ed3ccfe5105",
+    "semantic_hash": "bbf3fd23d0af98a480c56ed3ccfe5105"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_namespace_management.py": {
+    "mtime": 1779286371.5510416,
+    "ast_hash": "1e762919954bc9fe95f180d69c06178c",
+    "semantic_hash": "1e762919954bc9fe95f180d69c06178c"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_plots.py": {
+    "mtime": 1779286371.551133,
+    "ast_hash": "a6d5749ac1e5d1417c8ec61f809b8685",
+    "semantic_hash": "a6d5749ac1e5d1417c8ec61f809b8685"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_problem.py": {
+    "mtime": 1779286371.551218,
+    "ast_hash": "8ffd7638e4b7627eddd7abc80962c668",
+    "semantic_hash": "8ffd7638e4b7627eddd7abc80962c668"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_solution.py": {
+    "mtime": 1779286371.5513089,
+    "ast_hash": "d190c7b369ef985e78757b0b3c9d2a4b",
+    "semantic_hash": "d190c7b369ef985e78757b0b3c9d2a4b"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_trackio_logger.py": {
+    "mtime": 1779286371.551414,
+    "ast_hash": "459ac08fbbc3a36b944999a1a44521af",
+    "semantic_hash": "459ac08fbbc3a36b944999a1a44521af"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_util.py": {
+    "mtime": 1779286371.55153,
+    "ast_hash": "90e9c4f3cad0e33dd890811c8d258a0d",
+    "semantic_hash": "90e9c4f3cad0e33dd890811c8d258a0d"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_virtualenv.py": {
+    "mtime": 1779286371.551617,
+    "ast_hash": "28fe829a6a42c329bc97a763cbeaf930",
+    "semantic_hash": "28fe829a6a42c329bc97a763cbeaf930"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/tests/unit/test_wrap_problem.py": {
+    "mtime": 1779286371.5517018,
+    "ast_hash": "397693977a51a2c44e5a43bf1c6eb0e9",
+    "semantic_hash": "397693977a51a2c44e5a43bf1c6eb0e9"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/docs2pages.yml": {
+    "mtime": 1779286371.443494,
+    "ast_hash": "24420513a0a2d38cef97aa3795e4395c",
+    "semantic_hash": "24420513a0a2d38cef97aa3795e4395c"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/publish.yml": {
+    "mtime": 1779286371.4435856,
+    "ast_hash": "900b27a9a3af5ca50bfef967103d45e9",
+    "semantic_hash": "900b27a9a3af5ca50bfef967103d45e9"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/test-e2e.yml": {
+    "mtime": 1779286371.4436576,
+    "ast_hash": "97979be77afb7612e2b2f1e610726507",
+    "semantic_hash": "97979be77afb7612e2b2f1e610726507"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/test-ubuntu.yml": {
+    "mtime": 1779286371.443735,
+    "ast_hash": "0c30efc902e92db5ea0eaea27bb8f052",
+    "semantic_hash": "0c30efc902e92db5ea0eaea27bb8f052"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/test-windows.yml": {
+    "mtime": 1779286371.4438138,
+    "ast_hash": "3921edd286c1d3b5632b38ca04195d16",
+    "semantic_hash": "3921edd286c1d3b5632b38ca04195d16"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/AGENTS.md": {
+    "mtime": 1779286371.4439864,
+    "ast_hash": "5b6aabe0f620d2c583fda8101f2ec2c7",
+    "semantic_hash": "5b6aabe0f620d2c583fda8101f2ec2c7"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/CONTRIBUTING.md": {
+    "mtime": 1779286371.4441512,
+    "ast_hash": "cf7a3a06abdb141b2b19fc667c29163e",
+    "semantic_hash": "cf7a3a06abdb141b2b19fc667c29163e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/README.md": {
+    "mtime": 1779286371.4443674,
+    "ast_hash": "228dfd194b67c259ab2ce5b30ebd9bf1",
+    "semantic_hash": "228dfd194b67c259ab2ce5b30ebd9bf1"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/Installation.rst": {
+    "mtime": 1779286371.4466953,
+    "ast_hash": "30a8dbe90ca6e7dd1fc5e7c58d5f718d",
+    "semantic_hash": "30a8dbe90ca6e7dd1fc5e7c58d5f718d"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/Introduction.rst": {
+    "mtime": 1779286371.4467711,
+    "ast_hash": "68713cd3c9e8b50b6c9b7d60c42f60c8",
+    "semantic_hash": "68713cd3c9e8b50b6c9b7d60c42f60c8"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/Quickstart.rst": {
+    "mtime": 1779286371.4469168,
+    "ast_hash": "16d62bfccca6b3a9b48fea3548fb06bf",
+    "semantic_hash": "16d62bfccca6b3a9b48fea3548fb06bf"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/baselines.rst": {
+    "mtime": 1779286371.447278,
+    "ast_hash": "ac8cd3a19abc4d3958f1c3d53ea47fad",
+    "semantic_hash": "ac8cd3a19abc4d3958f1c3d53ea47fad"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/benchmarks.rst": {
+    "mtime": 1779286371.4473593,
+    "ast_hash": "44c0d707f244d1e67c7514fbce023a90",
+    "semantic_hash": "44c0d707f244d1e67c7514fbce023a90"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/experiment.rst": {
+    "mtime": 1779286371.4518538,
+    "ast_hash": "7ea375aafdeebcd4c360b340ecfd6610",
+    "semantic_hash": "7ea375aafdeebcd4c360b340ecfd6610"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/index.rst": {
+    "mtime": 1779286371.4519851,
+    "ast_hash": "d72b3d3441a67839f9afa8032220191a",
+    "semantic_hash": "d72b3d3441a67839f9afa8032220191a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/llm.rst": {
+    "mtime": 1779286371.4520805,
+    "ast_hash": "3e0af4a0823807a82e8890a880a04203",
+    "semantic_hash": "3e0af4a0823807a82e8890a880a04203"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/loggers.rst": {
+    "mtime": 1779286371.4521787,
+    "ast_hash": "915f0a954018d50dbf1b620317c03152",
+    "semantic_hash": "915f0a954018d50dbf1b620317c03152"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/method.rst": {
+    "mtime": 1779286371.4523764,
+    "ast_hash": "3e06903eb1466a8c0e1ead81e8a9dd99",
+    "semantic_hash": "3e06903eb1466a8c0e1ead81e8a9dd99"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/modules.rst": {
+    "mtime": 1779286371.4524574,
+    "ast_hash": "c8af575d97d55423d25aaafeb02726d2",
+    "semantic_hash": "c8af575d97d55423d25aaafeb02726d2"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/plots.rst": {
+    "mtime": 1779286371.4615283,
+    "ast_hash": "38ad7377e4a74e035200c73c4804d5a7",
+    "semantic_hash": "38ad7377e4a74e035200c73c4804d5a7"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/problem.rst": {
+    "mtime": 1779286371.461614,
+    "ast_hash": "c7484d823afb522753fa3235a3e5db47",
+    "semantic_hash": "c7484d823afb522753fa3235a3e5db47"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/solution.rst": {
+    "mtime": 1779286371.461695,
+    "ast_hash": "0cca87da50a44d39f5dc9c496ab7a67f",
+    "semantic_hash": "0cca87da50a44d39f5dc9c496ab7a67f"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/utils.rst": {
+    "mtime": 1779286371.4617755,
+    "ast_hash": "5b4d88c78d63e5559f7fb96b99b138e9",
+    "semantic_hash": "5b4d88c78d63e5559f7fb96b99b138e9"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/webapp.rst": {
+    "mtime": 1779286371.4618504,
+    "ast_hash": "142f4aeecee8e6f39bb4f899eb94c06b",
+    "semantic_hash": "142f4aeecee8e6f39bb4f899eb94c06b"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/analysis/README.md": {
+    "mtime": 1779286371.476826,
+    "ast_hash": "47b45823d94baf724fe9fbaf3c36929b",
+    "semantic_hash": "47b45823d94baf724fe9fbaf3c36929b"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein1.txt": {
+    "mtime": 1779286371.4777536,
+    "ast_hash": "c155b05708442c4705efb5973717896d",
+    "semantic_hash": "c155b05708442c4705efb5973717896d"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein10.txt": {
+    "mtime": 1779286371.4778492,
+    "ast_hash": "e65cc420b92aabccea101b7824c520f3",
+    "semantic_hash": "e65cc420b92aabccea101b7824c520f3"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein100.txt": {
+    "mtime": 1779286371.47801,
+    "ast_hash": "355b76d9635b68282537993c5b4ac928",
+    "semantic_hash": "355b76d9635b68282537993c5b4ac928"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein1000.txt": {
+    "mtime": 1779286371.4786932,
+    "ast_hash": "81993eb1155fbad9771b8cbeac7939f5",
+    "semantic_hash": "81993eb1155fbad9771b8cbeac7939f5"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein10000.txt": {
+    "mtime": 1779286371.4799137,
+    "ast_hash": "e07dbdd9fbd94538019baa35e956db67",
+    "semantic_hash": "e07dbdd9fbd94538019baa35e956db67"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein20.txt": {
+    "mtime": 1779286371.4802659,
+    "ast_hash": "ee7e7115337fb54b280be3a3db609567",
+    "semantic_hash": "ee7e7115337fb54b280be3a3db609567"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein250.txt": {
+    "mtime": 1779286371.4804893,
+    "ast_hash": "63affdaab009e491dd87f9a6ee242b42",
+    "semantic_hash": "63affdaab009e491dd87f9a6ee242b42"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein30.txt": {
+    "mtime": 1779286371.4807937,
+    "ast_hash": "65c384dc0a42bfe5f75ee0e038ae69dd",
+    "semantic_hash": "65c384dc0a42bfe5f75ee0e038ae69dd"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein40.txt": {
+    "mtime": 1779286371.4809,
+    "ast_hash": "fc5f0e968dbe004b9c591988fa9ae317",
+    "semantic_hash": "fc5f0e968dbe004b9c591988fa9ae317"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein50.txt": {
+    "mtime": 1779286371.4810174,
+    "ast_hash": "a71a5f2607024c38ca5a9c05b49b783a",
+    "semantic_hash": "a71a5f2607024c38ca5a9c05b49b783a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein500.txt": {
+    "mtime": 1779286371.4813516,
+    "ast_hash": "e2183888997741f20af35131f35e3d48",
+    "semantic_hash": "e2183888997741f20af35131f35e3d48"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein60.txt": {
+    "mtime": 1779286371.4817977,
+    "ast_hash": "5cf6dbbd4fb944f274077d322ceba647",
+    "semantic_hash": "5cf6dbbd4fb944f274077d322ceba647"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein70.txt": {
+    "mtime": 1779286371.4819412,
+    "ast_hash": "cd5eab9525d7a2bdc109d5bda097aa30",
+    "semantic_hash": "cd5eab9525d7a2bdc109d5bda097aa30"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein80.txt": {
+    "mtime": 1779286371.482069,
+    "ast_hash": "e0a9fef1c71fd5303f0aac55d0832948",
+    "semantic_hash": "e0a9fef1c71fd5303f0aac55d0832948"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein90.txt": {
+    "mtime": 1779286371.4822063,
+    "ast_hash": "172349114523046ca8dcdaefb4a7e9f7",
+    "semantic_hash": "172349114523046ca8dcdaefb4a7e9f7"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Graph_Coloring_Benchmarks/gcol1.txt": {
+    "mtime": 1779286371.4823735,
+    "ast_hash": "1322fa77e5cf82775a6bec2331f9e77e",
+    "semantic_hash": "1322fa77e5cf82775a6bec2331f9e77e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/README.md": {
+    "mtime": 1779286371.4825017,
+    "ast_hash": "4461ae00f4979aa94a5b898a6d04caee",
+    "semantic_hash": "4461ae00f4979aa94a5b898a6d04caee"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/fourier/README.md": {
+    "mtime": 1779286371.4830904,
+    "ast_hash": "e9aa87be99a5140207aef425deaf7ebc",
+    "semantic_hash": "e9aa87be99a5140207aef425deaf7ebc"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/README.md": {
+    "mtime": 1779286371.4835372,
+    "ast_hash": "6cf1ed95872cbc9ae7ec98d2f2c33558",
+    "semantic_hash": "6cf1ed95872cbc9ae7ec98d2f2c33558"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/README.md": {
+    "mtime": 1779286371.4854512,
+    "ast_hash": "41c574e9c229e66a56837a294e8058e8",
+    "semantic_hash": "41c574e9c229e66a56837a294e8058e8"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/number_theory/README.md": {
+    "mtime": 1779286371.4862041,
+    "ast_hash": "bed9ddff1f8a2035469c17937a510307",
+    "semantic_hash": "bed9ddff1f8a2035469c17937a510307"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/README.md": {
+    "mtime": 1779286371.4867568,
+    "ast_hash": "49a2629f571637320070709422c132b4",
+    "semantic_hash": "49a2629f571637320070709422c132b4"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/outcmaes/version.txt": {
+    "mtime": 1779286371.496245,
+    "ast_hash": "803c188723b94f8c48cfc1c03c65f256",
+    "semantic_hash": "803c188723b94f8c48cfc1c03c65f256"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_output.txt": {
+    "mtime": 1779286371.549557,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/_static/logo-dark.png": {
+    "mtime": 1779286371.4470832,
+    "ast_hash": "824ba1da6c26ac19c99d72d8816e6aae",
+    "semantic_hash": "824ba1da6c26ac19c99d72d8816e6aae"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/_static/logo.png": {
+    "mtime": 1779286371.447204,
+    "ast_hash": "3d201f6ee4753aacbfb0df9ba3473d84",
+    "semantic_hash": "3d201f6ee4753aacbfb0df9ba3473d84"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/blade-analyze.png": {
+    "mtime": 1779286371.4482577,
+    "ast_hash": "f4f517cbc1cd013d4be1281c38ee884f",
+    "semantic_hash": "f4f517cbc1cd013d4be1281c38ee884f"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/blade-framework.png": {
+    "mtime": 1779286371.4505084,
+    "ast_hash": "950675a1cb6df74ac5c8d754aba2072a",
+    "semantic_hash": "950675a1cb6df74ac5c8d754aba2072a"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/blade-working.png": {
+    "mtime": 1779286371.451642,
+    "ast_hash": "d962c92dc36a1994abf8224644140704",
+    "semantic_hash": "d962c92dc36a1994abf8224644140704"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/logo-dark.png": {
+    "mtime": 1779286371.4951627,
+    "ast_hash": "824ba1da6c26ac19c99d72d8816e6aae",
+    "semantic_hash": "824ba1da6c26ac19c99d72d8816e6aae"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/logo.png": {
+    "mtime": 1779286371.495284,
+    "ast_hash": "3d201f6ee4753aacbfb0df9ba3473d84",
+    "semantic_hash": "3d201f6ee4753aacbfb0df9ba3473d84"
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.antigravitycli/25524ebc-1330-4df5-8aaf-cbe147ed9c42.json": {
+    "mtime": 1780489802.4078133,
+    "ast_hash": "bca1b8acf88ce2c7d475ab165d30a85a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.gemini/settings.json": {
+    "mtime": 1780492320.5991993,
+    "ast_hash": "71bb72ddbb1a942ddf604c54efca3220",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/analyze_grad.py": {
+    "mtime": 1779286371.4430225,
+    "ast_hash": "bb2b09e3a389ebbbaf5c23b5a6790039",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/analyze_run.py": {
+    "mtime": 1780405970.0922124,
+    "ast_hash": "412f62404bdf20495f9da53bb2c69273",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/analyze_run_v2.py": {
+    "mtime": 1780405970.0925364,
+    "ast_hash": "f64296e94e5cf2065001710d91a68ab3",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/__init__.py": {
+    "mtime": 1780515934.50867,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/analysis_v3.py": {
+    "mtime": 1780909316.065557,
+    "ast_hash": "2b724050fda3cd2c87c3fa8d5ec029a6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/build_notebook.py": {
+    "mtime": 1780506571.6430402,
+    "ast_hash": "d4e1958649987fc02f3b9db4f8381ae2",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/canonicalizer.py": {
+    "mtime": 1780931591.7294614,
+    "ast_hash": "17fa65337cca5db9729e51d1981dcde4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/test_canonicalizer.py": {
+    "mtime": 1780539290.810076,
+    "ast_hash": "eb7e3e8d9492d315206170522edf75bf",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/translation_engine.py": {
+    "mtime": 1780512854.6716924,
+    "ast_hash": "83e39fa43e3c77503d6ad7e2c74a5d38",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/examples/__init__.py": {
+    "mtime": 1779286371.5541098,
+    "ast_hash": "84835e56d3e7eb83e1585a8a7a11a992",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/examples/double_gauss_objective.py": {
+    "mtime": 1779286467.8140461,
+    "ast_hash": "cbc9191c483ce7e01bef8e9b0a5c7c3f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/materials/refractive_index_catalogs.py": {
+    "mtime": 1779286371.571269,
+    "ast_hash": "c987fe30d6708451ceb6ac3d785d7e2f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/optics/loss.py": {
+    "mtime": 1779286371.5714643,
+    "ast_hash": "bc47779c4ed65e4dce7d3bdd3b6e2601",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/optics/meta.py": {
+    "mtime": 1779286371.571561,
+    "ast_hash": "e8b9e395ab34712cf1a893567aa3e9e1",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/optics/model.py": {
+    "mtime": 1779286371.5716774,
+    "ast_hash": "079ded19079cd0dfab91d5b99fda3b38",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/optics/optics.py": {
+    "mtime": 1779286371.5718384,
+    "ast_hash": "8306cc53a47594ac9c41a64a4ef3907a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/optics/shapes.py": {
+    "mtime": 1779286371.5719588,
+    "ast_hash": "bee87485c256b38900cbe41b0f35b984",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/optimization/hillvall/hillvall_bindings.cpp": {
+    "mtime": 1779286371.5721767,
+    "ast_hash": "3a72540ec5577777201f28742db38009",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/parsers/lens_creation.py": {
+    "mtime": 1779286371.5722952,
+    "ast_hash": "230b6e771ffe62842dd1f88723a4599b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/parsers/zmax_fmt.py": {
+    "mtime": 1779286371.5725374,
+    "ast_hash": "d7d08b729eeb6d259decf26a7ad0b390",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/visualization/lens_vis.py": {
+    "mtime": 1779286371.5728593,
+    "ast_hash": "9c7824116cb247d929cd6c514657154a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/setup.py": {
+    "mtime": 1779286371.5730648,
+    "ast_hash": "f59b0c5fd4e16c4fa237fde069f361f8",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_0_3c1960bc-d6e3-4199-b4e6-d54cc6d9c709.json": {
+    "mtime": 1780403911.3510473,
+    "ast_hash": "deafd8f5b36a0924b9793787608b0fb5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_10_e9333763-b575-43a6-9585-485a1406d159.json": {
+    "mtime": 1780403911.3512452,
+    "ast_hash": "ab2b3c23b3f6980bae96445ba2cfd4eb",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_10_e9fe204f-949c-4edc-aa8d-69f1e0cfa96b.json": {
+    "mtime": 1780403911.3517153,
+    "ast_hash": "23751f039d992176ebe8d2a0b65fe778",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_11_34e36237-1722-464e-b806-586658b7cfe9.json": {
+    "mtime": 1780403911.3520272,
+    "ast_hash": "d15a8caa7bc0841c037b5f4c410b1c51",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_11_a6b880e7-8b9a-4568-ac66-0a44b4c401ce.json": {
+    "mtime": 1780403911.3522596,
+    "ast_hash": "99c25a3d1878dba94094a0f812d90513",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_12_77399e8b-ae72-4233-af89-97528d45c012.json": {
+    "mtime": 1780403911.3529286,
+    "ast_hash": "5999af5c6d09a29ef1bc090d6fa879db",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_12_93283445-0eba-423b-b028-a97d8e9a4194.json": {
+    "mtime": 1780403911.3530693,
+    "ast_hash": "334f9e35a0558ad7a7265711257b0e26",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_13_07d2e529-6121-4e8b-b575-dac4f9aa13e3.json": {
+    "mtime": 1780403911.3533313,
+    "ast_hash": "6880712525e4eb6438617f3381c3639f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_13_990de811-b276-4743-94e6-78fcbbbbf074.json": {
+    "mtime": 1780403911.3534606,
+    "ast_hash": "afde7938f35c9baf8edca4736a364267",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_14_23a7f260-2439-469e-bfc5-611bd6068735.json": {
+    "mtime": 1780403911.3535717,
+    "ast_hash": "4b7ddb647c8878cb0bccdf7529e602cd",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_14_b902b7da-ab05-4058-a417-69ebd7d8eabc.json": {
+    "mtime": 1780403911.3536935,
+    "ast_hash": "4a5cf9abe29cc9faf748f6bed52142b1",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_15_00e451ad-f355-4d5e-952a-b5b351b34812.json": {
+    "mtime": 1780403911.3538187,
+    "ast_hash": "9c5a91d123f6bf64a216781d32427f48",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_15_643dd71d-aca6-4be9-ad2c-93acf685e848.json": {
+    "mtime": 1780403911.353938,
+    "ast_hash": "e89be301af681f473340ed5aeb64ea0e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_16_81992852-18fa-4899-9827-0692a432a5ec.json": {
+    "mtime": 1780403911.3545165,
+    "ast_hash": "dec0d4bf543f4656a5cf5adcf41940f4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_16_9e5b8535-bd64-46f5-858f-e158556ef1b1.json": {
+    "mtime": 1780403911.3547204,
+    "ast_hash": "a4f389534db986d1c9f2776638b8fb55",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_17_5e3a32b4-d7db-4e69-9fb7-7c4718eee4d9.json": {
+    "mtime": 1780403911.3554373,
+    "ast_hash": "44d74e9f609167bc0bb6079361dd3a5a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_17_dda60ee0-e51e-47e7-aa94-a7556fe74be6.json": {
+    "mtime": 1780403911.355602,
+    "ast_hash": "fdb9313429afbb3c832777c84a8c6ff6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_18_95245b4d-62c7-40d3-afeb-ebbeb7fa221d.json": {
+    "mtime": 1780403911.3558292,
+    "ast_hash": "462252037130a4af3d6f1d698cca92a4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_18_ceb7a655-0895-4f25-a1f3-9c2fb0d2f5cd.json": {
+    "mtime": 1780403911.3560224,
+    "ast_hash": "c097c03d9891714476bd6d164bbf403a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_19_20a79e6e-029f-4eea-87bb-223147e48071.json": {
+    "mtime": 1780403911.356194,
+    "ast_hash": "c3aa7b0f3f1144d252e4f4b01b133eaf",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_19_dffefd64-02de-4b10-bd26-512bc891ab98.json": {
+    "mtime": 1780403911.3565745,
+    "ast_hash": "a72ae20023031a4f6933d502ea984974",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_1_6875053d-5f14-47e1-9a71-3f160788fba3.json": {
+    "mtime": 1780403911.3566911,
+    "ast_hash": "4ec3eded997d18accec786c0e679c7d6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_1_c22d6610-a874-40fe-a05c-d372b77b7d1d.json": {
+    "mtime": 1780403911.3568091,
+    "ast_hash": "c2037712e17e8821362c156b0d4471e1",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_20_0b606bf2-0c27-44d6-abee-02c427b21c31.json": {
+    "mtime": 1780403911.3570051,
+    "ast_hash": "d4604f090e8710224f0dd0de800b4c33",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_20_4d3b9e01-ff90-4e14-8a9d-23097e7aea5d.json": {
+    "mtime": 1780403911.3572047,
+    "ast_hash": "5814946a15585b2781c6e8633e81c78e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_21_4ce56ae0-3dd9-4d3a-942f-e8a79d8b93ec.json": {
+    "mtime": 1780403911.3577728,
+    "ast_hash": "4a7436f1628d57e54a740e47e3ea290b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_21_d4360d27-818d-4b8c-bd5d-d3ca61bee817.json": {
+    "mtime": 1780403911.3579805,
+    "ast_hash": "c03de3290f3ea2129df9b26a63161c93",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_22_a7f59ef0-2d40-4d28-9e41-609d99643359.json": {
+    "mtime": 1780403911.3582482,
+    "ast_hash": "aae71d920eb3ae849182c1a7dd610256",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_22_cc3658a2-2962-40c4-90e9-09b3e17ab263.json": {
+    "mtime": 1780403911.35846,
+    "ast_hash": "8a18fbfba6b41903c52678b757aff805",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_23_1454d8c9-3b47-4a5c-9d55-fe6c7b4d2735.json": {
+    "mtime": 1780403911.3587391,
+    "ast_hash": "e6b13032545cdcedceeac05127bee93f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_23_1d90c48c-c79a-40ee-ada7-e8043ee5cf6b.json": {
+    "mtime": 1780403911.358903,
+    "ast_hash": "d95d5f510b6c9486e454d62cb66437df",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_24_6d26a83f-1ed6-4009-ace0-815b32b81865.json": {
+    "mtime": 1780403911.359127,
+    "ast_hash": "4614b4c52c140f48c2ea658f08337a48",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_24_768655c2-f033-4836-b4be-2e205232c2ae.json": {
+    "mtime": 1780403911.3593,
+    "ast_hash": "5f91f83e5d12eff4726d6d1551f8b88b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_25_b66b0055-02b9-4238-9727-584597c9c810.json": {
+    "mtime": 1780403911.3595605,
+    "ast_hash": "2e2d57a0aae2576e3dee21abb1ff30e2",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_25_cc71d5ee-ddbb-4172-9cb8-9ec306f5ffd1.json": {
+    "mtime": 1780403911.3598387,
+    "ast_hash": "1ed62a388498cebad095f285ccb190f9",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_26_2aab6109-5535-465b-94fd-9fc529c59fa2.json": {
+    "mtime": 1780403911.3599794,
+    "ast_hash": "a9b3d32b3de73b486b81bda07bb2336f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_26_edd48bfe-82e4-4cc6-b13f-d06befa8d85c.json": {
+    "mtime": 1780403911.360171,
+    "ast_hash": "9fe3d551ca3a6b26c2b51d1febb7c995",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_27_3196895b-784b-4fc7-8523-450354e9b14f.json": {
+    "mtime": 1780403911.3603308,
+    "ast_hash": "ba617182dbc1230ad8a9f6599bd87a43",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_27_af475766-7f07-4027-a0de-02b348090a56.json": {
+    "mtime": 1780403911.360536,
+    "ast_hash": "c349dca7cd366885de0a0f70a23cecca",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_28_1afe2398-4bb7-4cb5-8d3d-82a65093980f.json": {
+    "mtime": 1780403911.3629801,
+    "ast_hash": "e254c8cb49dbb4aba9f3344c408e5050",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_28_d9f35a33-8412-49f3-a112-c357462dea8b.json": {
+    "mtime": 1780403911.3631074,
+    "ast_hash": "b5e2eabb604e2efeb169d883fe49a3ff",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_29_29caa2d8-f489-4e84-ae3e-d8c4547bf6c1.json": {
+    "mtime": 1780403911.363227,
+    "ast_hash": "4f5166fb700530b7fb26b6286341f5f9",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_29_a1a80c2c-7649-49f7-8417-8169a5a295c4.json": {
+    "mtime": 1780403911.3633342,
+    "ast_hash": "193115265f3915b1f47fa3814bab5162",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_2_8856e4b3-7101-4eb2-9f91-03fb5b700aac.json": {
+    "mtime": 1780403911.3635476,
+    "ast_hash": "011f5caa41bcd1143241ef1af0d79254",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_2_9c62d48d-090f-43c6-b523-2da5385591cb.json": {
+    "mtime": 1780403911.3637745,
+    "ast_hash": "337c701897964dbf3a4f325bc2d3a866",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_30_3c751552-7e7b-4723-b15f-043c3caa0fab.json": {
+    "mtime": 1780403911.3640275,
+    "ast_hash": "b57b0aabb7d0756e897fb0a529ed0983",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_30_a9c98030-3a76-4194-8cc9-c5f31255a682.json": {
+    "mtime": 1780403911.3641448,
+    "ast_hash": "98f62c68afbf3503ad7aee0152c39b12",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_31_69b19e71-2cbe-4684-a9ba-fbd5e59e3495.json": {
+    "mtime": 1780403911.3642507,
+    "ast_hash": "578c1b7cbab1f518ab4b2b19ba4e5459",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_31_bf9db42b-63b1-4068-afda-3da458b695e6.json": {
+    "mtime": 1780403911.3643556,
+    "ast_hash": "ea63a60c594e972f53706eb306be0120",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_32_05e62550-f9a1-4e8f-83e8-bbb92ee03f34.json": {
+    "mtime": 1780403911.3644621,
+    "ast_hash": "d342dd0864fb23f56a4fa35eaeca99a0",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_32_adc7cf40-37ca-4f93-9eb4-1d7035e74aec.json": {
+    "mtime": 1780403911.3647053,
+    "ast_hash": "9b0dc38939447190f45b24b1ec08708b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_33_2701bba0-6d51-45ff-8ce6-49af13669a85.json": {
+    "mtime": 1780403911.3648207,
+    "ast_hash": "5ffa9c708eb3c8e0d70968d5a1857f5a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_33_9aaadaed-6434-47b7-93ca-c466b9f41a65.json": {
+    "mtime": 1780403911.3649323,
+    "ast_hash": "e3912f47a4784e2a0e404bbebcb78622",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_34_4e5b59c7-c120-42bb-bcaf-7442236161a9.json": {
+    "mtime": 1780403911.365078,
+    "ast_hash": "cd689f001c2610b5db99c930cfea1161",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_34_aa90daf1-f6d3-4a4b-9b53-2b47cd6192cb.json": {
+    "mtime": 1780403911.3651826,
+    "ast_hash": "dd96453c8e9842d0986fdec34b1dbf2c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_35_1b851c10-15f3-41e5-ae8b-d57eb912d646.json": {
+    "mtime": 1780403911.3652883,
+    "ast_hash": "71990502e33865d910c85ed998f049fc",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_35_b7239a9c-c25f-4c02-9373-ac41e3db7e33.json": {
+    "mtime": 1780403911.365401,
+    "ast_hash": "e149ef3f73b6cbe2027baeb4da1d3b21",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_36_0fd3252d-f671-4dcd-87e5-0762ac14662d.json": {
+    "mtime": 1780403911.365517,
+    "ast_hash": "266a6ed6a375fb0b87a70b404cc1332b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_36_245505fc-4b83-4e95-a719-5ad1caeefdc8.json": {
+    "mtime": 1780403911.36574,
+    "ast_hash": "502fd18a18ac33438ab101098adc073c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_37_12ec0eea-c3b1-4ed1-b6a1-284563d40b09.json": {
+    "mtime": 1780403911.3658538,
+    "ast_hash": "ae0a22ef48e0757ecb39381bd27e1cc5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_37_688329ad-6e84-4b41-b7ba-ead5480d21c0.json": {
+    "mtime": 1780403911.3659651,
+    "ast_hash": "1f67d067b5f5c15f480ef8785a85f5cc",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_38_88c7df4f-2d79-48ed-95a6-94cd3d2499e4.json": {
+    "mtime": 1780403911.3660755,
+    "ast_hash": "69f9b52167fd0ee11aba8ac086665a3f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_38_c47ab74a-7d68-4853-b33e-1a465d291026.json": {
+    "mtime": 1780403911.3661807,
+    "ast_hash": "b1776ffc41befb84c4a94598a4eb64db",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_39_73d45e6c-f346-4b03-b202-e4e12b22d262.json": {
+    "mtime": 1780403911.3662853,
+    "ast_hash": "667ee54665d990585718f2b365a0cad2",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_39_c942499d-f3cc-4cbf-a87c-50d85b936001.json": {
+    "mtime": 1780403911.3664727,
+    "ast_hash": "3d09afff1bdbdc48cedc04b94b55ddcb",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_3_8376d061-f328-499e-a978-dba264d709eb.json": {
+    "mtime": 1780403911.3666515,
+    "ast_hash": "a5e77cb6670b4b17a62afa5212c8095f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_3_d9e72448-2a6a-4f2c-a05e-6818409d1228.json": {
+    "mtime": 1780403911.3668706,
+    "ast_hash": "78eec83cf3bcf690891b8f27516e6001",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_40_62096572-e603-4da5-86b5-792d3b732416.json": {
+    "mtime": 1780403911.3671072,
+    "ast_hash": "1b6fef363e6cb2bf5c4298c499044ef8",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_40_de2634a7-64e9-42df-917d-f6d1f61e24b0.json": {
+    "mtime": 1780403911.3673196,
+    "ast_hash": "cfa6a0a7a8a848833d8c072a70d5f8e8",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_41_03647d11-00d1-4d66-b6ca-1bb6e8721552.json": {
+    "mtime": 1780403911.3675258,
+    "ast_hash": "47142f279cec7104f387cae1cc9cec28",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_41_cfa99548-5b60-448b-9291-66da7b29bfec.json": {
+    "mtime": 1780403911.3677244,
+    "ast_hash": "fc80c22cad350781448640b93f792ec9",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_42_d5b58b0e-a00c-4505-8117-ac6924fe11eb.json": {
+    "mtime": 1780403911.367828,
+    "ast_hash": "fefb3f84af4f58cc683e3411c7dc6c26",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_42_e2c9c950-2dd5-439c-849a-edddf14179f1.json": {
+    "mtime": 1780403911.368067,
+    "ast_hash": "0c48430bbcfb280dafa50cfcb53b6619",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_43_4ecb4ac8-9c47-4070-8b82-51cc7c5b1be4.json": {
+    "mtime": 1780403911.3681943,
+    "ast_hash": "7bf42733084c75027a1f1849a473d703",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_43_ac0a14a3-7c15-4c85-b469-cf0605647266.json": {
+    "mtime": 1780403911.3683045,
+    "ast_hash": "fface9af3dae7c5a252c52cc3a9b8091",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_44_39b0b71e-bf26-49ee-af18-d6c4990a905a.json": {
+    "mtime": 1780403911.368427,
+    "ast_hash": "fd661c0e5be82924db8dc9c5b32c3e23",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_44_c36e3a43-9017-489e-8abf-8fd679e7751d.json": {
+    "mtime": 1780403911.3685584,
+    "ast_hash": "93817b58a6f05798f5c495cf94b38340",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_45_3ce26887-6ac1-4fbe-a9d3-a28549599285.json": {
+    "mtime": 1780403911.3686657,
+    "ast_hash": "f75be0a2ecd4513996b84362ae29550c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_45_ffe4d6b1-30f9-410e-8c1d-d764419246de.json": {
+    "mtime": 1780403911.3687851,
+    "ast_hash": "74df8e171512f0557a3b184b5eb412ca",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_46_dd533268-834c-4848-ad26-897ae7546126.json": {
+    "mtime": 1780403911.368976,
+    "ast_hash": "ec2e5a1ef8726b84ee4de844ce3d22c8",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_46_eec40521-2ef3-4aa7-9092-c56113478791.json": {
+    "mtime": 1780403911.3694184,
+    "ast_hash": "4ae09ee32d659a5aeae1329e5fff4161",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_47_7d384521-18f8-44d3-9eef-a392ec2c61ad.json": {
+    "mtime": 1780403911.3696642,
+    "ast_hash": "70c348418f0b4c807f862382606d9403",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_47_ac8bf0b6-4725-4d2c-9928-faec848e5613.json": {
+    "mtime": 1780403911.3699281,
+    "ast_hash": "968bf4a936dd5c5d095e3d3424f8859e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_48_75f54828-fc0a-419a-9c57-a0602669e8a9.json": {
+    "mtime": 1780403911.3701477,
+    "ast_hash": "f82d545e3a15a45417190d05744bcf8b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_48_f2a0d4e4-4ec9-4412-af3d-6af2122b3c5a.json": {
+    "mtime": 1780403911.3703094,
+    "ast_hash": "cc48ec424837a14eb81b217b852b6436",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_49_029788a1-ab0f-4bd8-bb2a-e36f56866c96.json": {
+    "mtime": 1780403911.3704634,
+    "ast_hash": "2cebbc3250b01ba2b9c29aff9d098eab",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_49_5520c89d-c72d-4127-b68f-bee8b46f0f0a.json": {
+    "mtime": 1780403911.3706064,
+    "ast_hash": "6016f7040e9d8ee92163bffa57d49bbf",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_4_1aeadc93-871b-4c67-97b4-9adc37ff0c6e.json": {
+    "mtime": 1780403911.3708284,
+    "ast_hash": "04c7d657e776ca4bbbb1486d1fa1b600",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_4_a33d17d0-2e34-4066-8f04-6754d30aedfe.json": {
+    "mtime": 1780403911.370979,
+    "ast_hash": "8f35d9e3272b84c0bd74388347b02c00",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_50_3a8fe8d3-24a6-4e66-a318-802ba5a05e47.json": {
+    "mtime": 1780403911.371123,
+    "ast_hash": "91057c3808f23a75572a1e3ff5e09347",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_5_3fd50486-133c-4833-9c43-9337d4b28f83.json": {
+    "mtime": 1780403911.3713398,
+    "ast_hash": "ccba1e16fb7f5c681bdd7f09d9fece92",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_5_957ffb7d-6c6d-4b15-9aa4-e67c9e8ec91c.json": {
+    "mtime": 1780403911.371553,
+    "ast_hash": "f965c8cacfa116303a91608531f2017f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_6_76438350-c7cc-4f7e-8e1d-aad97e942830.json": {
+    "mtime": 1780403911.3717024,
+    "ast_hash": "6978bf752a9622fea5b1dbe70e1aae3c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_6_f5c8ee6e-ca8d-4b7f-a302-8186e82d2af7.json": {
+    "mtime": 1780403911.371845,
+    "ast_hash": "edbb55c8b7b9dc2d7a2ad060a1646f23",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_7_38ed726b-2f62-43c4-acbb-655f372051da.json": {
+    "mtime": 1780403911.3720114,
+    "ast_hash": "db1fb36b090171f98c92d2e494e44d38",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_7_d02a64e9-ab5d-4adc-894e-82b18ea5dc83.json": {
+    "mtime": 1780403911.372214,
+    "ast_hash": "af2fdadf8809e64d79c821dc40d11a16",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_8_0a97998c-249a-4169-a633-964e267caf8b.json": {
+    "mtime": 1780403911.3723671,
+    "ast_hash": "1063b9b29da9c8581264d581a4a30344",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_8_f62ecf43-c977-463d-a853-1eaedd542140.json": {
+    "mtime": 1780403911.372528,
+    "ast_hash": "af3644dfc2b5c32f4ea501b720798ba7",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_9_09d23ab3-b9d3-4d7c-9589-7644d759a0a0.json": {
+    "mtime": 1780403911.3726819,
+    "ast_hash": "3c49703b3c90a2d4b049ccd8eb3a2d0e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/extracted_gen_data/Local_lens_v2/gen_9_5e8acfd4-cef6-4f1c-8f4f-53e5617f2ab9.json": {
+    "mtime": 1780403911.3728852,
+    "ast_hash": "131ee0a5af095db4ffb0bbb9df35ebb1",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/main.py": {
+    "mtime": 1779286371.5796201,
+    "ast_hash": "cc6dc71be1b50cfcb73e2719c2cc56a1",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/16-03_mvp_optimiser_code.py": {
+    "mtime": 1779286371.5927982,
+    "ast_hash": "c4586fedb215e98fec0ac00e49f61d93",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/17-03_lens_v2_10^-1.py": {
+    "mtime": 1779286371.5928936,
+    "ast_hash": "3d56417ca696abb0aa6dd0daf7572975",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/29.03_lens_v3_opt_code.py": {
+    "mtime": 1779286371.5929656,
+    "ast_hash": "324e19f24a644578f087fff43b485352",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/results-shit-31.03/lens_v3/progress.json": {
+    "mtime": 1779286371.5933414,
+    "ast_hash": "e8badc9747fbe11fbcdcaedb1aa6aad8",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/results-shit-31.03/lens_v3/run-LLaMEA_v3-DoubleGauss_v3-0_20260327_182932/prompts.json": {
+    "mtime": 1779286371.5935614,
+    "ast_hash": "130982c66c44a1d6f740a3fa48ba221b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/results-shit-31.03/lens_v3/run-LLaMEA_v3-DoubleGauss_v3-1_20260327_182932/prompts.json": {
+    "mtime": 1779286371.5937936,
+    "ast_hash": "130982c66c44a1d6f740a3fa48ba221b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/results-shit-31.03/lens_v3/run-LLaMEA_v3-DoubleGauss_v3-2/prompts.json": {
+    "mtime": 1779286371.5959384,
+    "ast_hash": "246e641d9adc0a5812ba98867333c717",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/results-shit-31.03/lens_v4/progress.json": {
+    "mtime": 1779286371.596165,
+    "ast_hash": "6fa4358aa2ff48f3023ec52f783331ed",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/results-shit-31.03/lens_v4/run-LLaMEA_v4_Memetic-DoubleGauss_v4-0-1/prompts.json": {
+    "mtime": 1779286371.5988576,
+    "ast_hash": "3e9fcc7e7d4bf7c27e41ee5fb5371cba",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/results-shit-31.03/lens_v4/run-LLaMEA_v4_Memetic-DoubleGauss_v4-1-1/prompts.json": {
+    "mtime": 1779286371.601871,
+    "ast_hash": "3e9fcc7e7d4bf7c27e41ee5fb5371cba",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/results-documentation/results-shit-31.03/lens_v4/run-LLaMEA_v4_Memetic-DoubleGauss_v4-2-1/prompts.json": {
+    "mtime": 1779286371.603984,
+    "ast_hash": "3e9fcc7e7d4bf7c27e41ee5fb5371cba",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/smoke_test_v2.py": {
+    "mtime": 1779286371.6040812,
+    "ast_hash": "60b5c5242725d5a59cafa97fdae7e3f3",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/solve_lens.py": {
+    "mtime": 1780403911.377329,
+    "ast_hash": "28c3ea04189ce2f6e3423b9f219077d2",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/solve_lens_aligned.py": {
+    "mtime": 1781008931.5324023,
+    "ast_hash": "93886de8100548bf3bc099b390ad720c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/test_performance.py": {
+    "mtime": 1779286371.6042702,
+    "ast_hash": "15f73f15127a134eb8dfc857dab9de79",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/tests/fixtures/class_1.py": {
+    "mtime": 1780544325.4501092,
+    "ast_hash": "c71d4ebe517f65cac6195271bad4cad8",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/tests/fixtures/class_2.py": {
+    "mtime": 1780544325.4502397,
+    "ast_hash": "04721277b382832c07732419bd26f251",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/tests/fixtures/class_3.py": {
+    "mtime": 1780544325.4518096,
+    "ast_hash": "a2c957868953728240e4e70888daa9c5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/verify_workspace.py": {
+    "mtime": 1779286371.6056547,
+    "ast_hash": "935007755d522fa8b44520c503ce4278",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.agent/rules/graphify.md": {
+    "mtime": 1780489770.3296404,
+    "ast_hash": "f1e53ecc9194573d3c28fc116c743a2e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.agent/skills/agent-orchestration-multi-agent-optimize/SKILL.md": {
+    "mtime": 1780403911.3116148,
+    "ast_hash": "75ed7fc88bc944e85c81acddf8cd07c3",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.agent/skills/ai-engineer/SKILL.md": {
+    "mtime": 1780403911.311974,
+    "ast_hash": "a011e3afaafad267f966e0de9505ca4c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.agent/skills/ml-pipeline-workflow/SKILL.md": {
+    "mtime": 1780403911.3125002,
+    "ast_hash": "fae7109b888744055617d0437efeaa2f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.agent/skills/python-pro/SKILL.md": {
+    "mtime": 1780403911.3129134,
+    "ast_hash": "ac086b430f57c31ffbd526b7f8cf3906",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.agent/workflows/graphify.md": {
+    "mtime": 1780489770.3298419,
+    "ast_hash": "0bc020d491fca99550c1ea3de0a5f862",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.gemini/GEMINI.md": {
+    "mtime": 1780403911.3132193,
+    "ast_hash": "2c0266da997a4cccc1fbe11600f6106a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.gemini/antigravity/global_workflows/blueprint.md": {
+    "mtime": 1780403911.3135326,
+    "ast_hash": "88126c26f75f245075a380936558da3f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/.gemini/antigravity/global_workflows/debug.md": {
+    "mtime": 1780403911.314138,
+    "ast_hash": "c5aa6163aef68f3ec1b338cbe3d3c9f9",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/Analysis_Summary.md": {
+    "mtime": 1780403911.3146467,
+    "ast_hash": "1ba64f1129d8ea60eabffce2cd1e5a88",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/Evolution_Dashboard.md": {
+    "mtime": 1780403911.314911,
+    "ast_hash": "48b8502960b1965b7e87146e69ae370a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/GEMINI.md": {
+    "mtime": 1780489796.6683266,
+    "ast_hash": "dfef1b6ee2e4b363dde0fdbf6b583e7a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/README.md": {
+    "mtime": 1779286371.4429402,
+    "ast_hash": "4e58987da505531c20d2f2a1ef188bab",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/docs/refractoring_spec.md": {
+    "mtime": 1780515287.2870238,
+    "ast_hash": "9f07da7093c945a9d95dc91f6d8e85d4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/README.md": {
+    "mtime": 1779286371.5540106,
+    "ast_hash": "c99893c8f0ac1d087dd5f776717e2bd1",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/lensgopt/parsers/lenses/double_gauss_schott.txt": {
+    "mtime": 1779286371.5724192,
+    "ast_hash": "dcadf11cbf31e804656f42362ce136df",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/docs/AgentForce.md": {
+    "mtime": 1780403911.349078,
+    "ast_hash": "cd69be55cd0abfdbb4cc71150d05cc9a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/docs/AgentForce_v2.md": {
+    "mtime": 1780403911.34935,
+    "ast_hash": "8fed94260ce1114473227d5b0adaeb55",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/docs/Analysis_Pipeline_Review.md": {
+    "mtime": 1780499279.552425,
+    "ast_hash": "e8e5372dd4a823bea6608eacc935ceec",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/docs/agentic_debugging_plan.md": {
+    "mtime": 1780403911.3503706,
+    "ast_hash": "fa50b9d5c281aae0cbc4715ff1308b02",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/docs/antigravity_ide_multi_agent_prompt.md": {
+    "mtime": 1780403911.350598,
+    "ast_hash": "1cfb6379873627ed65e94aed049dbf57",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/docs/validation_plan.md": {
+    "mtime": 1780406706.0916011,
+    "ast_hash": "63959495c841df1bc7392b1992bda522",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/imgs/LDG-EA-pipeline.png": {
+    "mtime": 1779286371.5677109,
+    "ast_hash": "9978e4a497729640cc4d7a658a007c13",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/camera-lens-simulation/imgs/double-gauss.png": {
+    "mtime": 1779286371.5697942,
+    "ast_hash": "21412899f525f1eb360ef19fab11e72c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/analysis/ind_variables.json": {
+    "mtime": 1780536454.6205084,
+    "ast_hash": "eb8aa1d5b59f3144184973390fa9622c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/docs/agent-orchestration-multi-agent-optimize/profiler_blueprint.py": {
+    "mtime": 1780941126.912294,
+    "ast_hash": "9c84de705c7e14c18868a43d37808fb3",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/analysis/ind_variables.json": {
+    "mtime": 1780944210.7970057,
+    "ast_hash": "5f5ae8e5d05128c6fc94e1e7838eddae",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_17fed202-9f05-4377-a639-6e5cd0950053.py": {
+    "mtime": 1780934543.0424266,
+    "ast_hash": "6687566e326180085767fe22c5c0e4e2",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_219d3d3f-3658-44af-9f21-e98257fe32ef.py": {
+    "mtime": 1780934543.0420465,
+    "ast_hash": "fb9fc6271d18b15cb523ab4eab8ab78f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_21a3d62d-e48e-4161-91b4-4ac43b01cef5.py": {
+    "mtime": 1780934543.04049,
+    "ast_hash": "c997596423af6c81281ed3d52f994d93",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_234dd3c9-b6fb-4a81-b2a3-19b7954cc541.py": {
+    "mtime": 1780934543.041523,
+    "ast_hash": "8da9fcdc600f96a254a9a7f42b9a2cdb",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_76989c24-1abd-4b6a-8c0a-13771328015c.py": {
+    "mtime": 1780934543.041363,
+    "ast_hash": "e86d27d81ef976e8f1ddab6f3bfe8bfe",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_7ffdecc2-01ef-44d0-848b-45f51037a2a0.py": {
+    "mtime": 1780934543.041862,
+    "ast_hash": "0de24355ac6e3024ba074795f4bcbc8b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_91aeb10e-e26c-49c1-807d-eacc4062db60.py": {
+    "mtime": 1780934543.0412045,
+    "ast_hash": "5fd1b9b48830ac6300bf3e9c5a375927",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a.py": {
+    "mtime": 1780934543.0410378,
+    "ast_hash": "62804731dc5b6f8c9d9a0bd24f6472d5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_c93b342c-c459-4479-9731-e7650277faa7.py": {
+    "mtime": 1780934543.0422366,
+    "ast_hash": "c642a3d46b0fe0814b13ed118874e08b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_c9d0657c-f997-4dfb-9d41-97b01bbe12a8.py": {
+    "mtime": 1780934543.0407035,
+    "ast_hash": "73cc75716e83323cce8d61eb8eddcf28",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_dad225c3-3fe0-43d9-a047-4781c1f931df.py": {
+    "mtime": 1780934543.0408773,
+    "ast_hash": "f02db37c2e238ab3e1078e78c32d6e3a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/optimisation_ee684047-59f6-4b21-8bf1-1177c34d18f6.py": {
+    "mtime": 1780934543.0400798,
+    "ast_hash": "8307cbe4e37f1f6e6959330ac5d8061b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/stripped_data/variables.json": {
+    "mtime": 1780934543.0432272,
+    "ast_hash": "94a17d568f932230d1cdae4ab91a80b6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/analysis/ind_variables.json": {
+    "mtime": 1780940241.7100377,
+    "ast_hash": "f2ac0107bb5d9b05e841b6c2d54575ab",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/analysis/line_id_mapping.json": {
+    "mtime": 1780940420.4047697,
+    "ast_hash": "2884fa7f1e4df1f35072fab53d4d95e6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_0.py": {
+    "mtime": 1780932356.9620364,
+    "ast_hash": "f2471eef06376500f2ac2d0f8faf79f5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_1.py": {
+    "mtime": 1780932356.9623764,
+    "ast_hash": "aab43a006b89690cb5e8f393fc71f660",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_2.py": {
+    "mtime": 1780932356.9625134,
+    "ast_hash": "6434b73564f4635917d0039d467245ba",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_3.py": {
+    "mtime": 1780932356.96268,
+    "ast_hash": "4d7b4598658b10f4e9e7ac9f83bb3904",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_4.py": {
+    "mtime": 1780932356.9629526,
+    "ast_hash": "a467c2ef40ca3a7efbc468fc94787874",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_5.py": {
+    "mtime": 1780932356.9631412,
+    "ast_hash": "4a552fcd152158b9ab34b3ae696f7e31",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_6.py": {
+    "mtime": 1780932356.9632947,
+    "ast_hash": "c2a98bd3dfaab1f1ce8239bc8b368ee5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_7.py": {
+    "mtime": 1780932356.9634697,
+    "ast_hash": "2911a4b1f82a23fe236fe2c3676e13e3",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/stripped_data/optimisation_8.py": {
+    "mtime": 1780932356.9636395,
+    "ast_hash": "0aee36af7ff9a1dd80d4ea3b1b411b7e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/translation_dict.json": {
+    "mtime": 1780940295.0343916,
+    "ast_hash": "d91c31e3b43f6e156d397f5b8eec029e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/variables.json": {
+    "mtime": 1780932356.9650543,
+    "ast_hash": "9f60de4ee4cf443e2b02c873b635aa64",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/analysis_v4.py": {
+    "mtime": 1780932685.5792112,
+    "ast_hash": "37149e7e1fa84ab7f769b99afd2e2d79",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/analysis_v4_1.py": {
+    "mtime": 1780931446.798439,
+    "ast_hash": "ca91fd58efe8c669e8c775ac28e08755",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/similarity_metrics.py": {
+    "mtime": 1780925725.4574203,
+    "ast_hash": "16c522879fc9e4632c98c4a8d8891ba2",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/test_similarity_metrics.py": {
+    "mtime": 1780925738.3792624,
+    "ast_hash": "f60f16a8a189fe7dd22b1f5030606f53",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/src/translator.py": {
+    "mtime": 1780932674.1769876,
+    "ast_hash": "fffdb1393c2fbc9b78d7ec32038e41de",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/temp/analysis/ind_variables.json": {
+    "mtime": 1780931598.8528137,
+    "ast_hash": "b7ade53ef9e8fbca5a215bf9b59d578e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/test_new_features.py": {
+    "mtime": 1780931582.5289576,
+    "ast_hash": "8cf1316ff39c8ee2025809efca9be0b7",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/test_regex.py": {
+    "mtime": 1780931481.551214,
+    "ast_hash": "48f43b1d2d4b3000c699c97dc15588b5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/test_strip.py": {
+    "mtime": 1780931436.0980792,
+    "ast_hash": "6d71a1051c59512bd40c1c220aa4e7f0",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/docs/agent-orchestration-multi-agent-optimize/agents_specification.md": {
+    "mtime": 1780941119.6521192,
+    "ast_hash": "dd4f65427a12296b648e346664edf008",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/docs/agent-orchestration-multi-agent-optimize/codebase_map.md": {
+    "mtime": 1780941134.5076745,
+    "ast_hash": "d868c1a7df7fb8b4d506e95938850f96",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/docs/agent-orchestration-multi-agent-optimize/overview.md": {
+    "mtime": 1780941113.4199965,
+    "ast_hash": "31597bd9ec7a47cde55c580364b6ca2c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/iteration_1.md": {
+    "mtime": 1780936146.0627186,
+    "ast_hash": "45ddac5c551368b8773106a46b374bfe",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/iteration_2.md": {
+    "mtime": 1780936351.299435,
+    "ast_hash": "addd3870a141a2fd8d298511ddef14f8",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/iteration_3.md": {
+    "mtime": 1780936487.0815792,
+    "ast_hash": "b2f9d40e4dbef8b2075d74f533af06da",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/iteration_4.md": {
+    "mtime": 1780936588.2813382,
+    "ast_hash": "7ae844f4bb5feb99f1bcd93099106526",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/iteration_5.md": {
+    "mtime": 1780936806.1415384,
+    "ast_hash": "200d3457c83751786ba92dcdf8a48d2d",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/iteration_6.md": {
+    "mtime": 1780937039.7922244,
+    "ast_hash": "3eaa64579e769bb510c4e5d3ba8887e6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/iteration_7.md": {
+    "mtime": 1780937244.3266158,
+    "ast_hash": "e745de5198efe7283632457ddff8e6ef",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/iteration_1.md": {
+    "mtime": 1780940968.9068751,
+    "ast_hash": "e6703e125aa082d02515406db0642906",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/iteration_2.md": {
+    "mtime": 1780941017.4388678,
+    "ast_hash": "f3529ae9eb31f03336e8d3885a0d660b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/iteration_3.md": {
+    "mtime": 1780941055.3257535,
+    "ast_hash": "55385fba53488dcf9598d23de0115382",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/iteration_4.md": {
+    "mtime": 1780941056.9626212,
+    "ast_hash": "a17aae297487f22a20c0f5b0842c0468",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/iteration_5.md": {
+    "mtime": 1780941059.4839811,
+    "ast_hash": "25aa0d60879b3975be6e51de5dc344dc",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/iteration_6.md": {
+    "mtime": 1780941093.1610866,
+    "ast_hash": "85f51157d46cc0bb3ecc331fd5a20fff",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_91aeb10e-e26c-49c1-807d-eacc4062db60/iteration_1.md": {
+    "mtime": 1780940408.9171853,
+    "ast_hash": "e7f79415e15ac7b2501711f35297de7f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_91aeb10e-e26c-49c1-807d-eacc4062db60/iteration_2.md": {
+    "mtime": 1780940512.6109097,
+    "ast_hash": "a22208528a6876fe5e08e1f8b64c46d1",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_91aeb10e-e26c-49c1-807d-eacc4062db60/iteration_3.md": {
+    "mtime": 1780940620.720349,
+    "ast_hash": "b67d1a32159b7516515888f84249b693",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_91aeb10e-e26c-49c1-807d-eacc4062db60/iteration_4.md": {
+    "mtime": 1780940763.3765597,
+    "ast_hash": "275098a8256a25f33054a8e74f8c19ba",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_91aeb10e-e26c-49c1-807d-eacc4062db60/iteration_5.md": {
+    "mtime": 1780940927.6362576,
+    "ast_hash": "0a3e91d74945328834ebd0c846c27f4d",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a/iteration_1.md": {
+    "mtime": 1780939411.5986347,
+    "ast_hash": "0a98aa46f6dcd15d7fb9e553ff3d2ac4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a/iteration_2.md": {
+    "mtime": 1780939579.835066,
+    "ast_hash": "2b1137b59c36675d1e940f23e6b82c2d",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a/iteration_3.md": {
+    "mtime": 1780939641.5306356,
+    "ast_hash": "45439513aef52253b6b1defdcd74a44f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a/iteration_4.md": {
+    "mtime": 1780939831.7075539,
+    "ast_hash": "4d86a28e81855c4b262994e86ae2ee50",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a/iteration_5.md": {
+    "mtime": 1780940045.1827774,
+    "ast_hash": "a849b6cab412628974754af3caeb5f61",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a/iteration_6.md": {
+    "mtime": 1780940196.1302347,
+    "ast_hash": "eb39bdf303870bc693c04d76a06d0bdc",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/iteration_1.md": {
+    "mtime": 1780937592.5114615,
+    "ast_hash": "60b4ab5d5778ed33a704d504ea9977d4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/iteration_2.md": {
+    "mtime": 1780937691.402209,
+    "ast_hash": "09efda85022a64cb46eff81eb6c470f4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/iteration_3.md": {
+    "mtime": 1780937746.1368167,
+    "ast_hash": "d745f606b608c11a1b4931456ae17bf9",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/iteration_4.md": {
+    "mtime": 1780937787.70123,
+    "ast_hash": "478be0c0a6720e2a297b983bd780aacf",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/iteration_5.md": {
+    "mtime": 1780937904.2925634,
+    "ast_hash": "ede0d494e5651015166e146645cbd5f4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/iteration_6.md": {
+    "mtime": 1780938024.8447044,
+    "ast_hash": "0d1d3388332f5bfe29b311d5386013ce",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/iteration_7.md": {
+    "mtime": 1780938216.4703047,
+    "ast_hash": "2fba0b942731f4427de4d44f78c8a677",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_dad225c3-3fe0-43d9-a047-4781c1f931df/iteration_1.md": {
+    "mtime": 1780938627.1505744,
+    "ast_hash": "ba70fb917cd0f2b6552944126eab1c6a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_dad225c3-3fe0-43d9-a047-4781c1f931df/iteration_2.md": {
+    "mtime": 1780938695.3383749,
+    "ast_hash": "f2228d0bf686e51615df3ea2de5d9666",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_dad225c3-3fe0-43d9-a047-4781c1f931df/iteration_3.md": {
+    "mtime": 1780938806.7318738,
+    "ast_hash": "fe6289ad5c7ad77d0500eaa3ccdc0b27",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_dad225c3-3fe0-43d9-a047-4781c1f931df/iteration_4.md": {
+    "mtime": 1780938934.1001086,
+    "ast_hash": "4c5191657d7cb94dd4f4405b06fac603",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_ee684047-59f6-4b21-8bf1-1177c34d18f6/iteration_1.md": {
+    "mtime": 1780935012.2859588,
+    "ast_hash": "c543efc6169af774fbbe3f455d48d52e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_ee684047-59f6-4b21-8bf1-1177c34d18f6/iteration_2.md": {
+    "mtime": 1780935268.1300724,
+    "ast_hash": "d102e2569405fdf92252a799e49ec641",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_ee684047-59f6-4b21-8bf1-1177c34d18f6/iteration_3.md": {
+    "mtime": 1780935412.0269263,
+    "ast_hash": "316b1a51118ab2c0eb24f3b0c60fd1a8",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_ee684047-59f6-4b21-8bf1-1177c34d18f6/iteration_4.md": {
+    "mtime": 1780935570.7483935,
+    "ast_hash": "946cc9baff8f273d2bdd245f46885a3c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_ee684047-59f6-4b21-8bf1-1177c34d18f6/iteration_5.md": {
+    "mtime": 1780935731.1451735,
+    "ast_hash": "0214032321527f3f38391eb21e6637f4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/pseudocode_classes/optimisation_0_Iteration_Final.md": {
+    "mtime": 1780933255.1095185,
+    "ast_hash": "a8be8fab62df2de8108d9d9885f6f562",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/pseudocode_classes/optimisation_4_Iteration_Final.md": {
+    "mtime": 1780933468.0869212,
+    "ast_hash": "0464e827bb37b17c23cd2f1b83eea77a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/pseudocode_classes/optimisation_5_Iteration_Final.md": {
+    "mtime": 1780935250.654356,
+    "ast_hash": "08b7395fa99ef80b9d77cc63c467ffc6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/pseudocode_classes/optimisation_6_Iteration_Final.md": {
+    "mtime": 1780936897.3156075,
+    "ast_hash": "85c9e68496204f5e18ff3da2b8e9f63c",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/pseudocode_classes/optimisation_7_Iteration_Final.md": {
+    "mtime": 1780938439.0496016,
+    "ast_hash": "59e45869244e4cfaa81716a5a948cc5b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/output/pseudocode_classes/optimisation_8_Iteration_Final.md": {
+    "mtime": 1780940295.0359092,
+    "ast_hash": "370eebff8fffef016ba557ce275fbc51",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/docs/Session_context.md": {
+    "mtime": 1780924193.4877796,
+    "ast_hash": "defc43f8c05d7531b295c20c6c2d2297",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/docs/agent_context.yml": {
+    "mtime": 1780931379.207183,
+    "ast_hash": "8cf34d2f1510fba1ae67dab555910863",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/Iteration_Final.md": {
+    "mtime": 1780944210.8052135,
+    "ast_hash": "890783717b7493dd8e88c388c09fdf45",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/final_pseudocode.md": {
+    "mtime": 1780944210.626187,
+    "ast_hash": "890783717b7493dd8e88c388c09fdf45",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/iteration_1.md": {
+    "mtime": 1780943729.6687098,
+    "ast_hash": "23931d3db863f698be1ad94104cf1f7b",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/iteration_2.md": {
+    "mtime": 1780943736.0321538,
+    "ast_hash": "f4664ba21c1cc0098e076f58fcf25d4a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/iteration_3.md": {
+    "mtime": 1780943779.2009199,
+    "ast_hash": "b74ae8025feef7878a143d553b30ef97",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/iteration_4.md": {
+    "mtime": 1780943791.6358666,
+    "ast_hash": "cafe3a28fad70477bab51aaddc132eff",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/iteration_5.md": {
+    "mtime": 1780943912.3714478,
+    "ast_hash": "ab665b3a4993319c1cbe57474c85f575",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/iteration_6.md": {
+    "mtime": 1780944057.3756244,
+    "ast_hash": "dae6162829d9afae3a4dea3b13f80690",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_17fed202-9f05-4377-a639-6e5cd0950053/iteration_7.md": {
+    "mtime": 1780944210.4427152,
+    "ast_hash": "e63ebe4cb5c9de140977edd2f5de2a88",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_219d3d3f-3658-44af-9f21-e98257fe32ef/Iteration_Final.md": {
+    "mtime": 1780944210.7779942,
+    "ast_hash": "9b3cc85d696689b010935cb413fc371f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_219d3d3f-3658-44af-9f21-e98257fe32ef/final_pseudocode.md": {
+    "mtime": 1780944210.6251123,
+    "ast_hash": "9b3cc85d696689b010935cb413fc371f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_219d3d3f-3658-44af-9f21-e98257fe32ef/iteration_1.md": {
+    "mtime": 1780942687.0934908,
+    "ast_hash": "2fe601ecccc8564948e2b487c3d85eae",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_219d3d3f-3658-44af-9f21-e98257fe32ef/iteration_2.md": {
+    "mtime": 1780942775.158334,
+    "ast_hash": "efa4f0f5d639b1d3def2308d87df598a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_219d3d3f-3658-44af-9f21-e98257fe32ef/iteration_3.md": {
+    "mtime": 1780942890.3600001,
+    "ast_hash": "ab5fd2c636a723aa015aca2927a2b7b0",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_219d3d3f-3658-44af-9f21-e98257fe32ef/iteration_4.md": {
+    "mtime": 1780943023.7476654,
+    "ast_hash": "0a4d72d3f72f83af006ab2de50b7e6e9",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_219d3d3f-3658-44af-9f21-e98257fe32ef/iteration_5.md": {
+    "mtime": 1780943179.8638978,
+    "ast_hash": "332fd13750156c35ce9593b9916f5324",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/Iteration_Final.md": {
+    "mtime": 1780944210.6712742,
+    "ast_hash": "ed4fee5eb99b14401ed90e9eabd243ca",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_21a3d62d-e48e-4161-91b4-4ac43b01cef5/final_pseudocode.md": {
+    "mtime": 1780944210.6020093,
+    "ast_hash": "ed4fee5eb99b14401ed90e9eabd243ca",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/Iteration_Final.md": {
+    "mtime": 1780944210.755736,
+    "ast_hash": "4a8861a0682b8b2b3ca13c5c389d8083",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/final_pseudocode.md": {
+    "mtime": 1780944210.6235237,
+    "ast_hash": "44299d5ca606db99c08d990858b5e302",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/iteration_1.md": {
+    "mtime": 1780941379.781235,
+    "ast_hash": "02d670d7a4a09a445212280a584235b6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/iteration_2.md": {
+    "mtime": 1780941509.5025954,
+    "ast_hash": "4a4ab9e277412cbf2cecd7b173b2852d",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/iteration_3.md": {
+    "mtime": 1780941556.8164234,
+    "ast_hash": "7b0df3ddbacb9fc2c98f2bfb73cb2e02",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/iteration_4.md": {
+    "mtime": 1780941616.8906064,
+    "ast_hash": "df5cbc82836c0f528cb92c39e10e85d3",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/iteration_5.md": {
+    "mtime": 1780941618.7541907,
+    "ast_hash": "0cf27dad841efc95a63e643c704666a9",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/iteration_6.md": {
+    "mtime": 1780941729.242225,
+    "ast_hash": "df2ee0d497f33603b3e2a317f96ddd3e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/iteration_7.md": {
+    "mtime": 1780941859.2068145,
+    "ast_hash": "f5eb7eaa3e25f63c09da1a6d5ef153b6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_234dd3c9-b6fb-4a81-b2a3-19b7954cc541/iteration_8.md": {
+    "mtime": 1780942097.8106825,
+    "ast_hash": "701988cbae485e84dca16236ad48651e",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/Iteration_Final.md": {
+    "mtime": 1780944210.7412148,
+    "ast_hash": "bcb382b03282589bbbb74b93d1cbc76f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/final_pseudocode.md": {
+    "mtime": 1780944210.622444,
+    "ast_hash": "bcb382b03282589bbbb74b93d1cbc76f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/iteration_7.md": {
+    "mtime": 1780941189.5975692,
+    "ast_hash": "388971df2c9f61c96c3c3afe509f3ed6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_76989c24-1abd-4b6a-8c0a-13771328015c/iteration_8.md": {
+    "mtime": 1780941332.0739887,
+    "ast_hash": "4e9ac9a99b84548bd747e1ab560fadff",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/Iteration_Final.md": {
+    "mtime": 1780944210.7663093,
+    "ast_hash": "dbdeab50a13ed815ad47577d3059e81f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/final_pseudocode.md": {
+    "mtime": 1780944210.6243749,
+    "ast_hash": "dbdeab50a13ed815ad47577d3059e81f",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/iteration_1.md": {
+    "mtime": 1780942193.8352554,
+    "ast_hash": "a2a08c53deb1595b6e6b977f10445b0d",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/iteration_2.md": {
+    "mtime": 1780942224.8669348,
+    "ast_hash": "90900afb3ddcc62d5798f9c80401d705",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/iteration_3.md": {
+    "mtime": 1780942232.225151,
+    "ast_hash": "ed1b234f9c76f83245155a6cc5d109c7",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/iteration_4.md": {
+    "mtime": 1780942253.7383559,
+    "ast_hash": "4d2b8f0cce4b4a86dca8bcbd2c6cc5d5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/iteration_5.md": {
+    "mtime": 1780942327.0673754,
+    "ast_hash": "d45fb671d630f9a0fa5f8e4c80e4bc66",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/iteration_6.md": {
+    "mtime": 1780942472.7820337,
+    "ast_hash": "5a3570210ab92d835ee127eca28074b5",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_7ffdecc2-01ef-44d0-848b-45f51037a2a0/iteration_7.md": {
+    "mtime": 1780942644.5418296,
+    "ast_hash": "c90786881f70c91d9fe340f67a8772c4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_91aeb10e-e26c-49c1-807d-eacc4062db60/Iteration_Final.md": {
+    "mtime": 1780944210.7324119,
+    "ast_hash": "7db03f2fdc8b9972dc8e8344228c2518",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_91aeb10e-e26c-49c1-807d-eacc4062db60/final_pseudocode.md": {
+    "mtime": 1780944210.6148126,
+    "ast_hash": "7db03f2fdc8b9972dc8e8344228c2518",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a/Iteration_Final.md": {
+    "mtime": 1780944210.7128859,
+    "ast_hash": "7c01a4c8787faf5c4be7d3927aa8aea6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_b4a5d701-e295-4f6d-a2bd-ff63e2f1cd6a/final_pseudocode.md": {
+    "mtime": 1780944210.611166,
+    "ast_hash": "7c01a4c8787faf5c4be7d3927aa8aea6",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c93b342c-c459-4479-9731-e7650277faa7/Iteration_Final.md": {
+    "mtime": 1780944210.791637,
+    "ast_hash": "ac1953cee96a546b00c7f7b35d563127",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c93b342c-c459-4479-9731-e7650277faa7/final_pseudocode.md": {
+    "mtime": 1780944210.62586,
+    "ast_hash": "ac1953cee96a546b00c7f7b35d563127",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c93b342c-c459-4479-9731-e7650277faa7/iteration_1.md": {
+    "mtime": 1780943232.3716998,
+    "ast_hash": "a11744180ba8aa86b1fda91562f73252",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c93b342c-c459-4479-9731-e7650277faa7/iteration_2.md": {
+    "mtime": 1780943263.207892,
+    "ast_hash": "93a0d6d88f0886e6ffd6c6a62439b1ab",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c93b342c-c459-4479-9731-e7650277faa7/iteration_3.md": {
+    "mtime": 1780943394.453876,
+    "ast_hash": "2b0627fbe4341883fefec9e766301b35",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c93b342c-c459-4479-9731-e7650277faa7/iteration_4.md": {
+    "mtime": 1780943485.4803877,
+    "ast_hash": "6f80b5cbf5fa13f6509fe44ca149f277",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c93b342c-c459-4479-9731-e7650277faa7/iteration_5.md": {
+    "mtime": 1780943650.798648,
+    "ast_hash": "a7b4356b47229312eedb1c82be6bb89a",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/Iteration_Final.md": {
+    "mtime": 1780944210.6873298,
+    "ast_hash": "68f1e4ffc012ec7660a3e2002ec49ec4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_c9d0657c-f997-4dfb-9d41-97b01bbe12a8/final_pseudocode.md": {
+    "mtime": 1780944210.607309,
+    "ast_hash": "68f1e4ffc012ec7660a3e2002ec49ec4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_dad225c3-3fe0-43d9-a047-4781c1f931df/Iteration_Final.md": {
+    "mtime": 1780944210.7011268,
+    "ast_hash": "c2714bd24208f6a6321dcab3f7e60966",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_dad225c3-3fe0-43d9-a047-4781c1f931df/final_pseudocode.md": {
+    "mtime": 1780944210.6084797,
+    "ast_hash": "c2714bd24208f6a6321dcab3f7e60966",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_ee684047-59f6-4b21-8bf1-1177c34d18f6/Iteration_Final.md": {
+    "mtime": 1780944210.6570857,
+    "ast_hash": "9f6a27674bcfd87d04d5c8b2478888f4",
+    "semantic_hash": ""
+  },
+  "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/output-analysis/lens_v5_50000_False_v3_08-06-2026/pseudocode_classes/class_ee684047-59f6-4b21-8bf1-1177c34d18f6/final_pseudocode.md": {
+    "mtime": 1780944210.5969076,
+    "ast_hash": "9f6a27674bcfd87d04d5c8b2478888f4",
+    "semantic_hash": ""
+  }
+}

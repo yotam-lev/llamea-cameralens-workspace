@@ -1,0 +1,103 @@
+[
+  {
+    "type": "document",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/docs2pages.yml",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/publish.yml",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/test-e2e.yml",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/test-ubuntu.yml",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/.github/workflows/test-windows.yml",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/AGENTS.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/CONTRIBUTING.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/README.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/Installation.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/Introduction.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/Quickstart.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/baselines.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/benchmarks.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/experiment.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/index.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/llm.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/loggers.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/method.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/modules.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/plots.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/problem.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/solution.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/utils.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/webapp.rst",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/analysis/README.md"
+    ]
+  },
+  {
+    "type": "document",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein1.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein10.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein100.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein1000.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein10000.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein20.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein250.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein30.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein40.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein50.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein500.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein60.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein70.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein80.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Euclidian_Steiner_Benchmarks/estein90.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/Graph_Coloring_Benchmarks/gcol1.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/combinatorics/README.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/fourier/README.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/geometry/README.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/matrix_multiplication/README.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/number_theory/README.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/iohblade/benchmarks/packing/README.md",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/outcmaes/version.txt",
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/run_output.txt"
+    ]
+  },
+  {
+    "type": "image",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/_static/logo-dark.png"
+    ]
+  },
+  {
+    "type": "image",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/_static/logo.png"
+    ]
+  },
+  {
+    "type": "image",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/blade-analyze.png"
+    ]
+  },
+  {
+    "type": "image",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/blade-framework.png"
+    ]
+  },
+  {
+    "type": "image",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/docs/blade-working.png"
+    ]
+  },
+  {
+    "type": "image",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/logo-dark.png"
+    ]
+  },
+  {
+    "type": "image",
+    "files": [
+      "/Users/Yotam/Downloads/thesis_temporary_code/lens_v4_conitnuation/llamea-cameralens-workspace/blade-framework/logo.png"
+    ]
+  }
+]

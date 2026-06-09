@@ -1,0 +1,290 @@
+%
+% template for Bachelor thesis
+% LIACS
+% Version 2025-2026
+%
+
+\documentclass[12pt]{article}
+
+% include some packages
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds,calc,arrows}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[setpagesize=false,colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+
+\input{titlepage}
+
+% Here you enter the meta data for your thesis
+\title{An Interesting Title for a Thesis}
+\author{Yotam Lev}
+\studentnumber{s4045513}
+\date{\today}
+\supervisor{Niki Van Stein}
+\secondsupervisor{Kirill Antonov}
+
+% Select thesis type and study program by commenting/uncommenting
+\thesistype{Bachelor Thesis} 
+%\thesistype{Master Thesis} 
+\studyprogram{Informatica}
+%\studyprogram{Informatica \& Economie}
+%\studyprogram{Data Science and Artificial Intelligence}
+%\studyprogram{Computer Science}
+%\studyprogram{Creative Intelligence and Technology}
+%\studyprogram{ICT in Business and the Public Sector}
+
+\begin{document}
+\maketitle
+
+
+\thispagestyle{empty}
+\begin{abstract}
+\noindent
+This is where you write an abstract that concisely summarizes your thesis.
+Keep it short. No references here --- exceptions do occur.
+\end{abstract}
+
+\newpage
+
+\thispagestyle{empty}
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\setcounter{page}{1}
+
+\section{Introduction} \label{introduction}
+
+The design and optimization of complex optical systems, such as the classical Double-Gauss camera lens objective, represents a very complex high-dimensional, mixed-variable optimization challenge. Historically, optical engineering has been heavily reliant on the deep domain expertise of human designers mixed with computational refinement. Designers manipulate a starting point frequently derived from historical patents and employ local, gradient-based mathematical optimization algorithms to iteratively refine the system configuration. Conventional numerical methods, including the classic Damped-Least-Square (DLS) algorithm and its advanced derivatives, are designed to descend the error surface of a defined optical merit function. However, they frequently get trapped in local optima due to the inherently rugged, complex, multi-modal nature of the optical fitness landscape.
+
+Global black-box optimization algorithms have offered a potential solution to the limitations of local gradient descent, yet designing these evolutionary algorithms requires significant algorithmic and mathematical expertise. The challenge is compounded due to the mixed-variable nature of the problems, encompassing both the smooth, continuous differentiable manifold of lens geometries, curvatures, and lens distances, as well as the strictly discrete, non-differentiable categorical selections of glass materials.
+
+Advancements in artificial intelligence have introduced the Large Language Model based Evolutionary Algorithm (LLaMEA) paradigm, which shifts the burden of algorithmic design from human engineers to generative language models. Integrating Large Language Models (LLMs) with evolutionary computation frameworks enables them to automatically generate, mutate, crossover, and iteratively refine novel meta-heuristic optimization algorithms tailored directly to specific black-box problems. 
+
+This thesis investigates how the LLaMEA architecture can be applied in the use case of optical lens design, scripting it to iteratively discover and improve heuristic algorithms capable of optimizing a 24-dimensional Double-Gauss lens problem. The primary objective is to investigate if an LLM, guided by sophisticated prompt engineering and encapsulated within a secure execution and testing framework, can dynamically write and refine optimization code that performs competitively with traditional human-designed state-of-the-art heuristics. 
+
+
+\subsection{The situation}
+Optical lens design represents an important intersection of classical physics, material science, and high-dimensional computational mathematics, traditionally relying on the leveraging of profound human expertise and computational mathematics. Early design methodologies were heavily anchored in first-order paraxial optics and the analytical application of third-order Seidel aberration theories to lay out initial, rudimentary lens configurations, which were subsequently refined through manual geometric ray-tracing computations. However, the advent of modern computational optics and digital processing power shifted this paradigm, introducing sophisticated algorithmic optimization methods which autonomously traverse the complex multi-modal parameter spaces, achieving results which compete with or surpass traditional state-of-the-art refinement methodologies.
+
+Despite the overwhelming availability of computational power, rapid non-sequential ray-tracing algorithms, and highly optimized real-time caching techniques, the problem of optical design remains computationally bottlenecked. Fundamentally, the aim of optimization in optical lens design is to focus as many light rays into as tight of a focal point as possible. To mathematically capture this, optimization techniques rely on the continuous, exhaustive evaluation of root-mean-square (RMS) spot sizes, effective focal lengths, and specific field numbers. These methods, however, tend to converge prematurely and get trapped in sub-optimal local minima.
+
+
+\subsection{Large Language Model Evolutionary Algorithm (LLaMEA)}
+
+The Large Language Model Evolutionary Algorithm (LLaMEA) is an advanced automated algorithm design \href{https://github.com/XAI-liacs/LLaMEA}{framework}. Its primary computational function is to autonomously leverage the immense generative logic capabilities of modern LLMs to invent, continuously mutate, and rigorously evaluate novel meta-heuristic optimization algorithms for complex black-box optimization problems.
+
+\subsubsection{LLaMEA system architecture}
+The overarching LLaMEA architecture mirrors the macrostructure of classical evolutionary strategies; however, it replaces simple numerical mutation vectors with complex semantic, code-level reasoning. 
+\begin{itemize}
+    \item \textbf{Initialization and Prompt Synthesis:} The framework initializes an evolutionary run by constructing highly structured, dynamic system prompts. The prompts contain the exact task definition, rigid code interface requirements, the mathematical criteria the algorithm must optimize, and frequently a simple sample algorithm/skeleton to establish the expected programmatic output format for the LLM. 
+    \item \textbf{LLMs as Variation Operators (Mutation and Crossover):} LLaMEA uses exclusively the LLM as its primary evolutionary variation operator. During the mutation phase, the LLM is explicitly bound to refine or redesign the algorithm and is provided with the complete optimization class code from parent nodes.
+    \item \textbf{Evaluation Phase:} In the evaluation phase, the simulated physics environment scores the generated code, providing real-time feedback for the next generation.
+\end{itemize}
+
+
+\subsubsection{The algorithmic Loop}
+The operational execution loop of LLaMEA follows a strict, autonomous cycle. [ADD DIAGRAM AND REFERENCE IT PROPERLY]
+
+The LLaMEA framework functions as an autonomous meta-optimizer. Instead of optimizing the lens parameters directly, LLaMEA searches the space of possible algorithmic code to write the most effective Python optimization heuristic for the specific task at hand.
+
+
+\subsection{Thesis overview}
+This chapter contained the introduction; Section~\ref{sec:background} provides the necessary background; Section~\ref{sec:relatedwork} discusses related work; Section~\ref{sec:methodology} presents the proposed methodology; Section~\ref{sec:experiments} describes the experiments and their outcome; Section~\ref{sec:conclusions} concludes. 
+
+
+\section{Background}\label{sec:background}
+
+The mathematical discipline of optimization forms the foundational architecture for countless advancements across scientific, engineering, and computational domains. At its core, the objective of an optimization procedure is to identify a candidate solution vector that minimizes or maximizes a specific objective function. While well-characterized problems possess analytical derivatives that allow for rapid convergence via gradient descent methodologies, a vast proportion of real-world engineering challenges present themselves as entirely opaque systems. These are classified as black-box optimization problems. In a black-box paradigm, the internal mathematical structure, topological gradients, and algebraic properties of the objective function are completely hidden from the solver (\url{https://arxiv.org/abs/2405.20312}). The optimization algorithm can interact with the system solely by querying it with a candidate solution and receiving a scalar or multidimensional fitness value in response, without any insight into how the value was computed.
+
+The necessity for robust, highly adaptable black-box solvers is particularly pronounced in environments where evaluating a single candidate solution requires invoking computationally expensive physical simulations or massive empirical datasets. In such scenarios, the optimizer operates under a severely restricted budget of function evaluations. Furthermore, these landscapes frequently break classical continuity assumptions. The design spaces may consist of a highly non-linear mixture of continuous and discrete parameters, flat topological plateaus punctuated by narrow basins of attraction, and strict, non-differentiable boundaries caused by physical constraints or impossibilities. Consequently, the central algorithmic challenge is balancing exploration (the broad sampling of the design space to locate promising global regions) with exploitation (the localized refinement of known high-quality solutions to achieve maximum precision).
+
+To address these formidable challenges, researchers historically developed a suite of evolutionary computation frameworks and meta-heuristics. However, as the dimensionality and intricacy of tasks continue to scale, these hand-crafted heuristics increasingly demonstrate structural fragility, necessitating immense domain-specific tuning that is ultimately bounded by human bias and intuition (\url{https://arxiv.org/abs/2405.20132}). This has catalyzed a profound paradigm shift in computational intelligence, progressing from static human-engineered algorithms to reinforcement learning mechanisms, and ultimately to the contemporary frontier: Large Language Model-based Automated Algorithm Design (LLM-AAD).
+
+This comprehensive analysis investigates this historical trajectory, establishing the theoretical background of black-box optimization through the lens of one of the most notoriously complex and highly constrained benchmarks in modern engineering: the Double-Gauss optical lens design problem (\url{https://www.researchgate.net/publication/400236737_Lens-descriptor_guided_evolutionary_algorithm_for_optimization_of_complex_optical_systems_with_glass_choice}). By utilizing the Double-Gauss problem as an operative benchmark, this report maps the progression from classical approaches to the Reinforcement Learning-based Evolutionary Multimodal Optimization (RLEMMO) algorithm (\url{https://arxiv.org/abs/2404.08242}), which serves as a vital transitional benchmark. Finally, the analysis explores the revolutionary rise of the Large Language Model Evolutionary Algorithm (LLaMEA) architecture (\url{https://github.com/XAI-liacs/LLaMEA}), detailing how its capacity to iteratively invent, mutate, and evaluate optimization classes autonomously provides an unprecedented mechanism for mastering the complexities of domains like optical system design.
+
+\subsection{The Double-Gauss Problem: The Baseline for Optical Lens Design}
+
+The experiments detailed in this research were conducted on the classical Double-Gauss optical lens problem. Featuring between 24 and 30 optimizable parameters, the Double-Gauss configuration is widely regarded as the foundational baseline for evaluating optical lens design frameworks. The problem presents a concrete, highly demanding optimization environment, inherently requiring the exploration of a high-dimensional, tightly constrained, and extremely multi-modal design space that routinely confounds traditional solvers.
+
+\subsection{Historical Context of Optical Lens Design}
+
+The Double-Gauss lens is a compound lens topology historically engineered to mitigate optical aberrations, primarily spherical and chromatic aberrations, across a wide field of view. 
+
+\subsection{Mathematical Formulation and Topographical Constraints}
+The computational optimization of a classical six-element Double-Gauss lens involves the simultaneous configuration of twenty-four distinct dimensional variables (\url{https://arxiv.org/abs/2601.22075}). This mixed-integer optimization problem fundamentally breaks the assumptions of conventional local search techniques, which generally require continuous, smooth manifolds to calculate gradients. The variables are categorically divided to define the physical geometry and material properties of the refractive paths.
+
+The objective function $F(\Theta)$ utilized to score candidate designs is engineered to penalize any deviation from theoretical diffraction-limited imaging. While the absolute mathematical optimal value is zero, this is practically unachievable due to fundamental physics limits and the constraints of standard glass dispersion curves. The composite merit function balances the core imaging quality against an array of distinct physical penalty terms. The mathematical formulation is defined as:
+\[
+F(\Theta) = (RMS(\Theta))^2 + \sum^{5}_{k=1} w_k P^2_k(\Theta) 
+\]
+In this equation, $RMS(\Theta)$ represents the Root-Mean-Square spot size of the image on the focal plane, serving as the primary metric for image sharpness and aberration control. The variables $P_k(\Theta)$ are specifically designed physical penalty functions scaled by empirically derived weights $w_k$. These terms mathematically constrain the computational search space to ensure that the resulting optical architectures are both physically manufacturable and functionally viable.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{p{4cm} c p{8cm}}
+\hline
+\textbf{Penalty Term} & \textbf{Weight $(w_k)$} & \textbf{Physical Implication and Fitness Landscape Effect} \\
+\hline
+$P_1$: Vignetting / Refracted-Ray & 10 & Imposes a scalar penalty if light rays undergo Total Internal Reflection (TIR) or are vignetted by the lens housing. TIR creates abrupt, non-differentiable walls in the landscape. \\
+\hline
+\end{tabular}
+\end{table}
+
+Furthermore, specific geometric invariants are enforced during the optimization. The distances from the aperture stop to adjacent lens vertices are held constant to maintain the fundamental symmetry of the Double-Gauss topology. Additionally, a paraxial solve is routinely utilized to dynamically calculate the distance from the terminal surface to the sensor, maintaining focus while other variables mutate.
+
+
+\subsection{The Transition to Reinforcement Learning: RLEMMO as a Benchmark}
+Recognizing the structural deficiencies of rigid, human-designed heuristics, researchers initiated the integration of machine learning to dynamically control algorithm behavior in multi-modal landscapes. A pivotal benchmark in this transitional era is the Reinforcement Learning-based Evolutionary Multimodal Optimization (RLEMMO) framework (\url{https://arxiv.org/abs/2404.08242}). RLEMMO exemplifies the shift from hard-coded exploration strategies toward learned, state-dependent search policies.
+
+\subsubsection{Architectural Overview of RLEMMO}
+RLEMMO operates as a sophisticated Meta-Black-Box optimization architecture. It maintains a population of candidate solutions but delegates the granular control of individual search operators to a centralized deep reinforcement learning agent. The guiding philosophy underpinning RLEMMO is the total replacement of fixed mathematical adaptation rules with a highly flexible learned policy. This policy dynamically adjusts searching strategies at the individual level to correspond perfectly with the real-time, up-to-date topographical status of the optimization process.
+
+\subsubsection{Benchmarking and Structural Limitations of RL}
+The efficacy of the RLEMMO methodology was exhaustively validated against the Multimodal Optimization Problem benchmark suite. Through its learned policy, the algorithm demonstrated highly competitive search performance against robust established baselines. By automatically inferring the optimal inflection points at which to exploit known basins versus injecting exploratory diversity to traverse uncharted topologies, RLEMMO showcased the immense potential of machine learning-assisted search governance.
+
+
+\subsection{The LLaMEA Architecture: Iterative LLM-Driven Evolution}
+
+The pinnacle of this convergence between evolutionary computation and advanced natural language processing is the Large Language Model Evolutionary Algorithm (LLaMEA) framework, pioneered by the XAI research group at LIACS. LLaMEA represents a unified, fully automated ecosystem designed to leverage models like GPT-4 for the generation, refinement, and empirical validation of novel meta-heuristic optimization algorithms. 
+
+\subsubsection{Core Evolutionary Loop and Prompt Engineering}
+At its theoretical foundation, LLaMEA operates an intricate evolutionary loop where the ``individuals'' comprising the population are not numerical coordinate vectors, but raw executable Python scripts representing complete optimization algorithms. The system interacts seamlessly with LLMs through highly structured, dynamically updating prompts. 
+
+
+\section{Related Work}\label{sec:relatedwork}
+
+\subsection{Core Frameworks \& Codebase Integration}
+
+\subsection{The LDG-EA Framework and Camera Lens Simulation}
+The physical simulation environment associated with Camera Lens Simulation (CLS) defines the rigorous evaluation landscape essential for multi-element lens design. To navigate the complex problem space, recent advances utilize multi-modal optimizers like Lens Descriptor Guided Evolutionary Algorithm (LDG-EA).
+
+The LDG-EA framework explicitly partitions the global design space into finite, physically interpretable sub-spaces known as ``behavior descriptors,'' defined by the sequences of curvature sign patterns and categorical material indices. By dynamically allocating computational evaluation budgets toward descriptors yielding high-quality local optima, and applying localized search mechanisms (such as the Hill-Valley Evolutionary Algorithm) within those niches, LDG-EA successfully forces multi-modal discovery. On a standard six-element Double-Gauss target, LDG-EA produces a massive average of 14,500 distinct candidate minima spanning 636 unique behavior descriptors within an hour of computation time.
+
+\subsection{Bridging LLaMEA and Camera Lens Simulation Engine}
+Currently, although incredibly powerful, the internal heuristics search within frameworks like the LDG-EA relies on predetermined mathematical models hard-coded by human designers. By strategically deploying LLaMEA as a higher-order algorithm generator, the static heuristics can be dynamically evaluated and replaced.
+
+The rigorous objective function of the CLS, which is comprised of sequential ray tracing and $P_1$ through $P_5$ constraints, can be programmatically wrapped as a custom evaluation environment replacing generic mathematical benchmarking suites. This deep multi-modal capability allows the LLM to process the complex physical feedback from the simulation engine and return debuggable, interpretable text, not just a scalar numerical score.
+
+
+\section{Proposed Methodology}\label{sec:methodology}
+
+This section outlines the technical approach and architectural framework utilized to automatically generate, evaluate, and refine mixed-variable optimization heuristics for the Double-Gauss optical lens design problem. The system builds upon the LLaMEA framework, which has been adapted to support complex physical simulations, dynamic prompt injection, and secure parallel processing. The approach relies on the integration of two distinct, decoupled codebases: the algorithmic discovery framework (LLaMEA) and a highly optimized domain-specific evaluation engine (Camera Lens Simulation).
+
+\subsection{Problem Formulation: The Double-Gauss Model}
+The optical design of a Double-Gauss camera lens is formulated as a Mixed-Integer Non-Linear Programming (MINLP) problem. The target is to minimize a complex multimodal loss function $F(\Theta)$ representing optical aberrations, distortions, and physical constructability constraints.
+
+The optimization search space is defined in twenty-four dimensions, partitioned into a continuous geometric subspace and a discrete material catalog subspace:
+\[ \Theta = [\Theta_{geom}, \Theta_{mat}] \in \mathbb{R}^{24} \]
+
+\subsubsection{Continuous Geometric Subspace ($\Theta_{geom}$)}
+The first eighteen dimensions ($\Theta_i$ for $i \in \{0,\dots, 17\}$) parameterize the physical geometry of the lens elements. This continuous subspace is defined as:
+\[ \Theta_{geom} \in \mathbb{R}^{18} \]
+It comprises:
+\begin{itemize}
+    \item \textbf{Curvatures:} Ten optimization parameters determining the radius of curvature for each spherical refracting surface.
+    \item \textbf{Thickness and Air Spaces:} Eight parameters governing the axial thickness of the glass elements and the physical air gaps separating them.
+\end{itemize}
+
+\subsubsection{Discrete Material Subspace ($\Theta_{mat}$)}
+The remaining six dimensions ($\Theta_i$ for $i \in \{18, \dots, 23\}$) determine the glass materials selected for each lens element. This subspace is discrete and categorical:
+\[ \Theta_{mat} \in  \{0, \dots, 99\}^6 \subset \mathbb{Z}^6 \]
+Each coordinate corresponds to an index mapping to a physical glass material catalog containing real-world refractive indices $n_d$ and Abbe numbers $V_d$.
+
+\subsubsection{Search Space Normalization}
+To insulate the optimizer from varying physical scales (e.g., millimeter thicknesses versus integer catalog IDs), the search space is normalized to a hypercube:
+\[ \Theta_{norm} \in [-1.0, 1.0]^{24} \]
+The evaluation framework maps the normalized search space $\Theta_{norm}$ to the physical parameter space $\Theta_{real} \in [lb, ub]^{24}$ using a linear projection:
+\[ \Theta_{real,i} = lb_i + \frac{\Theta_{norm,i} + 1.0}{2.0} \cdot (ub_i - lb_i) \]
+where $lb \in \mathbb{R}^{24}$ and $ub \in \mathbb{R}^{24}$ represent the lower and upper bounds of the physical design envelope, respectively.
+
+\subsection{System Architecture and Framework Components}
+The foundation of the evaluation pipeline is a highly modular, object-oriented framework designed to isolate untrusted code generation from the core simulation engine. The primary system components include:
+\begin{itemize}
+    \item \textit{config.py} \textbf{(Hardware \& LLM Routing):} Manages the execution environment, dynamically detecting hardware topology (e.g., SLURM allocations on HPC clusters, Apple Silicon, or NVIDIA GPUs) to safely optimize the parallel worker count. It manages LLM routing, enabling navigation between local and cloud models.
+    \item \textit{problem.py} \textbf{(Isolated Subprocess Sandbox):} Governs the instantiation of short-lived execution environments. To safely execute arbitrary LLM-generated code, it uses \textit{cloudpickle} and the \textit{multiprocessing} library to spawn isolated Python subprocesses. It enforces hard timeout constraints and intercepts fatal execution errors. Crucially, it injects persistent JAX compilation caching directly into the evaluation sandbox environment to mitigate computational overhead.
+    \item \textit{lens\_optimisation.py} \textbf{(Domain-Specific Problem Wrapper):} Connects the isolated sandbox and the optics physics engine. It establishes the secure evaluation globals, explicitly restricting the available libraries to safe scientific tooling. Furthermore, it implements resilient class-hunting logic to extract the LLM's arbitrary \textit{Optimizer} definition.
+    \item \textit{solution.py} \textbf{(Genealogical Data Representation):} Models an individual optimization algorithm within the evolutionary population. It stores the generated raw string code, numeric fitness scores, textual feedback, and a lineage graph. When a subprocess crashes, it maps the generated traceback directly to the line numbers of the LLM's code block, forming a self-correcting feedback loop.
+    \item \textit{experiment.py} \textbf{(Evolutionary Orchestration):} The macroscopic orchestrator that manages the LLaMEA generations. Utilizing a \textit{ThreadPoolExecutor}, it manages the parallel evaluation of the LLM-generated heuristics across varying initial seeds. By implementing strict stdout redirection, it transparently intercepts internal debugging print statements.
+\end{itemize}
+
+The evaluation pipeline is built on 64-bit JAX kernels (\texttt{lensgopt/optics/optics.py}), executing geometric paraxial and real ray tracing. System quality is quantified using standard optical metrics, primarily the root-mean-square spot size, while enforcing strict physical manufacturability constraints. A critical feature of this engine is the implementation of JIT-compiled differentiable loss factories (\texttt{lensgopt/optics/loss.py}).
+
+\subsection{Environment Sealing and Constraint Handling}
+Mixed-variable optimization environments are highly susceptible to ``reward hacking'' when continuous optimizers operate over discrete boundaries. In early iterations, optimizers exploited the lack of rounding constraints to evaluate fractional material indices, resulting in mathematically superior but physically impossible ``phantom glasses.'' To ensure the physical realizability of the lens designs and establish a true physical baseline, a strict ``sealing'' architecture is implemented via the \texttt{project\_theta} method inside the JAX evaluation sandbox.
+
+\subsubsection{Snapping and Projection Operator}
+The boundary projection operator maps any arbitrary real-valued search vector $\Theta_{real}$ into a strictly valid MINLP design vector $\Theta_{proj}$:
+\[
+\Theta_{proj, i} =
+\begin{cases} 
+\text{clip}\left(\Theta_{\text{real}, i}, lb_i, ub_i\right) & \text{for } i \in \{0, \dots, 17\} \\
+\text{rint}\left(\text{clip}\left(\Theta_{\text{real}, i}, lb_i, ub_i\right)\right) & \text{for } i \in \{18, \dots, 23\}
+\end{cases}
+\]
+where $\text{rint}(\cdot)$ is the round-to-nearest-integer operator. This snapping guarantees that physical thicknesses and curvatures stay within physical boundaries, preventing structural intersections, and that the categorical glass IDs are snapped exactly to catalog indices.
+
+\subsection{LLaMEA Framework Integration and Execution Flow}
+The evolutionary optimization of the Double-Gauss lens system is driven by the LLaMEA framework. The system orchestrates a highly synchronous data flow that bridges natural language processing and high-performance physics computation through a cyclical loop.
+
+\begin{enumerate}
+    \item \textbf{Prompt Assembly:} A generation begins by assembling multi-layered system prompts composed of the structural rules and strategies from the active experiment runner.
+    \item \textbf{Generation \& Parsing:} The LLM yields a string containing the new mathematical strategy. The framework utilizes resilient regex parsing to extract the isolated \texttt{Optimizer} class block.
+    \item \textbf{Dynamic Physics Injection:} During the evaluation inside the sandbox, \texttt{lens\_optimisation.py} dynamically injects the bounded objective \texttt{func}, the JAX analytical gradient (\texttt{grad\_func}), and the exact Hessian matrix (\texttt{hess\_func}) directly into the instantiated optimizers' \texttt{\_\_call\_\_} loop.
+    \item \textbf{Feedback Aggregation:} The \texttt{Solution} object records the final fitness derived securely from the bounded physics engine, passing this telemetry back to the LLaMEA core to trigger the next generational mutation.
+\end{enumerate}
+
+\subsubsection{Prompt Engineering Guardrails}
+In order to maximize optimization efficiency, specific prompt design patterns are implemented:
+\begin{itemize}
+    \item \textbf{Treating the Space as Continuous:} Prompt instructions force the LLM to treat the entire 24-dimensional normalized space $[-1.0, 1.0]^{24}$ as a continuous manifold, discouraging manual discretization.
+    \item \textbf{LHS Initialization Guidelines:} The Latin Hypercube Sampling (\texttt{lhs}) helper function is pre-loaded and injected into the global sandbox namespace, explicitly warning against importing external modules like \texttt{pyDOE}.
+\end{itemize}
+
+\subsection{Gradient-Aware Memetic Strategy}
+Optical lens design landscapes are notoriously difficult for zero-order (gradient-free) search alone due to the high sensitivity of focal parameters. To address this, the proposed framework leverages a memetic strategy combining global population-based search with analytical local gradients.
+
+\subsubsection{Analytical Gradient Extraction via JAX}
+The underlying simulation engine is compiled using JAX, which provides reverse-mode automatic differentiation. The engine yields exact analytical gradients ($\nabla_{\text{real}} f$) with respect to the 18 continuous variables:
+\[ \nabla_{\text{real}} f = \left[ \frac{\partial f}{\partial \Theta_{\text{real}, 0}}, \dots, \frac{\partial f}{\partial \Theta_{\text{real}, 17}} \right] \in \mathbb{R}^{18} \]
+
+\subsubsection{Chain Rule Gradient Scaling}
+Because the optimizer searches the normalized space $\Theta_{\text{norm}}$, JAX-computed real-space gradients must be scaled back using the multi-variable chain rule:
+\[ \nabla_{\text{norm}} f_i = \nabla_{\text{real}} f_i \cdot \frac{\partial \Theta_{\text{real}, i}}{\partial \Theta_{\text{norm}, i}} = \nabla_{\text{real}} f_i \cdot \frac{ub_i - lb_i}{2.0} \]
+This scaling factor is strictly applied only to the first 18 continuous dimensions.
+
+\subsubsection{The Memetic Search Loop}
+The memetic strategy exploits this gradient advantage through a multi-tier search process:
+\begin{enumerate}
+    \item \textbf{Global Exploration Subspace:} A population-based meta-heuristic explores the joint 24D search space, processing discrete indices $[18:23]$ using discrete mutations while continuously updating geometric parameters $[0:17]$.
+    \item \textbf{Local Exploitation Subspace:} Periodically, the best individuals in the population undergo local refinement (using gradient-based algorithms such as L-BFGS-B or SLSQP). This local search operates exclusively on the 18 continuous geometric parameters $\Theta_{\text{geom}}$:
+    \[ \min_{\Theta_{\text{geom}} \in [-1, 1]^{18}} F\left([\Theta_{\text{geom}}, \Theta_{\text{mat, fixed}}]\right) \]
+    during which the categorical glass selections $\Theta_{\text{mat}}$ remain fixed.
+\end{enumerate}
+
+
+\section{Experiments}\label{sec:experiments}
+
+\subsection{Experimental Protocol}
+To enable the LLaMEA framework to systematically discover optimizers capable of navigating the 24-dimensional mixed-variable space, the experimental methodology progressed through several distinct phases of increasing complexity. All large-scale generation, benchmarking, and evolutionary runs were executed on a High-Performance Computing (HPC) cluster.
+\begin{itemize}
+    \item \textbf{Phase 1 - Baseline Generation (V1/MVP \& V2):} The initial phases established the minimum-viable integration between LLaMEA and the Camera Lens Simulation engine. Utilizing lower generation counts and smaller evaluation budgets, the LLM was progressively injected with optics-specific context to transition from a naive baseline to a system capable of handling the discrete categorical variables inherent to glass catalogue selection.
+    \item \textbf{Phase 2 - Focused Subspace Definition (V3):} To stabilize local exploration, the evolutionary prompt was augmented to explicitly enforce the $[-1, 1]^{24}$ bounding box. LLaMEA was required to generate specific boundary-handling logic for both continuous and discrete parameter partitions. During this phase, the evaluation budget was scaled up to $10,000$ evaluations per algorithm.
+    \item \textbf{Phase 3 - Gradient Aware Memetic Evolution (V4):} Leveraging the differentiable nature of the JAX pipeline, this phase introduced a paradigm shift toward memetic algorithms. The LLM was prompted to explicitly incorporate analytical gradients to execute trust-region refinements on the continuous 18-dimensional subspace. This gradient-aware exploitation phase was crucial for escaping deep local optima inherent to the Double-Gauss topology.
+\end{itemize}
+
+
+\section{Conclusions and Further Research}\label{sec:conclusions}
+
+\bibliographystyle{plain}
+\bibliography{bibliography}
+\addcontentsline{toc}{section}{References}
+
+
+%\appendix
+%appendices here --- if any
+
+\end{document}

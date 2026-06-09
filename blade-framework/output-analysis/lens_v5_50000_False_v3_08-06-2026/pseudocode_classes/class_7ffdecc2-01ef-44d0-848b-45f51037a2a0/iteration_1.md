@@ -1,0 +1,206 @@
+import numpy as np
+from scipy.optimize import minimize
+
+class Optimizer:
+    // :::PSEUDOCODE:::
+    // ```
+    // INITIALIZE [CLASS_NAME]
+    //     INPUT: 
+    //         [VAR_3] as INTEGER, 
+    //         [VAR_4] as INTEGER
+    //     
+    //     SET SELF.[VAR_3] to [VAR_3]
+    //     SET SELF.[VAR_4] to [VAR_4]
+    //     SET SELF.[VAR_36] to 0
+    //     SET SELF.[VAR_37] to INFINITY
+    //     SET SELF.[VAR_38] to ARRAY of size [VAR_4] initialized with zeros
+    //     
+    //     SET SELF.[VAR_39] to 25
+    //     SET SELF.[VAR_40] to 0.7
+    //     SET SELF.[VAR_41] to 2.0
+    //     SET SELF.[VAR_42] to 2.0
+    //     
+    //     SET SELF.pop to ARRAY of size (SELF.[VAR_39], [VAR_4]) initialized with zeros
+    //     SET SELF.[VAR_43] to ARRAY of size (SELF.[VAR_39], [VAR_4]) initialized with zeros
+    //     SET SELF.[VAR_44] to ARRAY of size (SELF.[VAR_39], [VAR_4]) initialized with zeros
+    //     SET SELF.[VAR_45] to ARRAY of size SELF.[VAR_39] initialized with INFINITY
+    //     SET SELF.[VAR_46] to -1
+    //     SET SELF.[VAR_47] to INFINITY
+    //     SET SELF.[VAR_48] to ARRAY of size [VAR_4] initialized with zeros
+    //     
+    //     SET SELF.[VAR_49] to None
+    //     SET SELF.[VAR_50] to 0
+    // END INIT
+    // ```
+    // :::END_PSEUDOCODE:::
+        
+    def _evaluate(self, x, func):
+        // :::PSEUDOCODE:::
+        // ```
+        // IF self.[VAR_38] IS GREATER THAN OR EQUAL TO self.[VAR_4]
+        //     RETURN INFINITY
+        // ```
+        // :::END_PSEUDOCODE:::
+        x = np.clip(x.copy(), -1.0, 1.0)
+        x[18:24] = np.clip(np.round(x[18:24]), 0, 5).astype(int)
+        f = func(x)
+        self.evals += 1
+        // :::PSEUDOCODE:::
+        // ```
+        // IF [VAR_46] < self.[VAR_44] THEN
+        //     self.[VAR_44] = [VAR_46]
+        //     self.[VAR_45] = COPY([VAR_5])
+        // END IF
+        // ```
+        // :::END_PSEUDOCODE:::
+        return f
+
+    // :::PSEUDOCODE:::
+    // ```
+    // FUNCTION _regularize([VAR_12]):
+    //     [VAR_52], [VAR_53] = np.[VAR_13].eigh([VAR_12])
+    //     [VAR_54] = 1e-6
+    //     [VAR_55] = 1.0 / SQRT(ABS([VAR_52]) + [VAR_54])
+    //     RETURN [VAR_53] @ DIAG([VAR_55]) @ TRANSPOSE([VAR_53])
+    // ```
+    // :::END_PSEUDOCODE:::
+
+    def __call__(self, func, grad_func=None, hess_func=None, **kwargs):
+
+        self.pop = np.random.uniform(-1, 1, size=(self.n_particles, self.dim))
+        self.vel = np.random.uniform(-1, 1, size=(self.n_particles, self.dim)) * 0.5
+        
+        for i in range(self.n_particles):
+            if self.evals >= self.budget: break
+            f = self._evaluate(self.pop[i], func)
+            self.pbest[i] = self.pop[i].copy()
+            self.pbest_f[i] = f
+            // :::PSEUDOCODE:::
+            // ```
+            // IF [VAR_51] < self.[VAR_47] THEN
+            //     self.[VAR_47] = [VAR_51]
+            //     self.[VAR_46] = [VAR_19]
+            //     self.[VAR_48] = self.copy(pop[[VAR_19]])
+            //     self.[VAR_37] = [VAR_51]
+            //     self.[VAR_38] = self.copy(pop[[VAR_19]])
+            // END IF
+            // ```
+            // :::END_PSEUDOCODE:::
+
+        iter_count = 0
+        while self.evals < self.budget:
+            iter_count += 1
+            
+
+            if hess_func is not None and self.evals < self.budget:
+                // :::PSEUDOCODE:::
+                // ```
+                // IF [VAR_57] MODULO 5 EQUALS 0 OR self.[VAR_49] IS NONE THEN
+                //     [VAR_58] = self.copy([VAR_48][18:24])
+                //     [VAR_59] = self.copy([VAR_48][:18])
+                //     [VAR_60] = np.concatenate([[VAR_59], [VAR_58]])
+                //     [VAR_61] = [VAR_14]([VAR_60])
+                //     self.[VAR_49] = self._regularize([VAR_61])
+                //     self.[VAR_50] = self.[VAR_36]
+                // END IF
+                // ```
+                // :::END_PSEUDOCODE:::
+
+
+            r1 = np.random.random((self.n_particles, self.dim))
+            r2 = np.random.random((self.n_particles, self.dim))
+            
+            vel_g = self.pop[self.gbest_idx]
+            vel_p = self.pbest
+            
+
+            v_std = self.w * self.vel + self.c1 * r1 * (vel_p - self.pop) + self.c2 * r2 * (vel_g - self.pop)
+            
+
+            if self.H_scale is not None:
+                // :::PSEUDOCODE:::
+                // ```
+                // FOR [VAR_19] FROM 0 TO (self.[VAR_39] - 1) DO
+                //     self.[VAR_43][[VAR_19]] = self.[VAR_49] @ [VAR_66][[VAR_19]]
+                // END FOR
+                // ```
+                // :::END_PSEUDOCODE:::
+            // :::PSEUDOCODE:::
+            // ```
+            // ELSE
+            //     SELF.[VAR_43] = [VAR_66]
+            // END IF
+            // ```
+            // :::END_PSEUDOCODE:::
+                
+
+            self.pop += self.vel
+            
+
+            for i in range(self.n_particles):
+                if self.evals >= self.budget: break
+                f = self._evaluate(self.pop[i], func)
+                // :::PSEUDOCODE:::
+                // ```
+                // IF [VAR_51] < self.[VAR_45][[VAR_19]]
+                //     THEN 
+                //         self.[VAR_45][[VAR_19]] = [VAR_51]
+                //         self.[VAR_44][[VAR_19]] = self.copy(pop[[VAR_19]])
+                // ```
+                // :::END_PSEUDOCODE:::
+                // :::PSEUDOCODE:::
+                // IF [VAR_51] < self.[VAR_47] THEN
+                //     self.[VAR_47] = [VAR_51]
+                //     self.[VAR_46] = [VAR_19]
+                //     self.[VAR_48] = self.copy(pop[[VAR_19]])
+                //     self.[VAR_37] = [VAR_51]
+                //     self.[VAR_38] = self.copy(pop[[VAR_19]])
+                // END IF
+                // :::END_PSEUDOCODE:::
+                    
+
+            if self.evals < self.budget and self.gbest_idx != -1:
+                if hess_func is not None:
+                    x_c = self.gbest_x[:18].copy()
+                    cat_ids = self.gbest_x[18:24].copy()
+                    full_x = np.concatenate([x_c, cat_ids])
+                    H_reg = self._regularize(hess_func(full_x))
+                    
+                    def obj(xc): return func(np.concatenate([xc, cat_ids]))
+                    // :::PSEUDOCODE:::
+                    // ```
+                    // FUNCTION [VAR_75]([VAR_32])
+                    //     [VAR_68] = [VAR_56](CONCATENATE([VAR_32], [VAR_58]))
+                    //     RETURN [VAR_68][0 TO 17]
+                    // END FUNCTION
+                    // ```
+                    // :::END_PSEUDOCODE:::
+                    def hess(xc): return H_reg
+                    
+                    if self.evals < self.budget:
+                        // :::PSEUDOCODE:::
+                        // ```
+                        // SET [VAR_77] TO [VAR_75]
+                        // SET [VAR_59] TO [VAR_76]
+                        // SET [VAR_75] TO [VAR_76]
+                        // ```
+                        // :::END_PSEUDOCODE:::
+                        )
+                        if self.evals < self.budget:
+                            cand = np.concatenate([res.x, cat_ids])
+                            cand_f = self._evaluate(cand, func)
+                            // :::PSEUDOCODE:::
+                            // ```
+                            // IF [VAR_74] < self.[VAR_47] THEN
+                            //     self.[VAR_47] = [VAR_74]
+                            //     self.[VAR_46] = self.[VAR_46]
+                            //     self.[VAR_48] = [VAR_73]
+                            //     self.[VAR_37] = [VAR_74]
+                            //     self.[VAR_38] = [VAR_73]
+                            //     self.[VAR_44][self.[VAR_46]] = [VAR_73]
+                            //     self.[VAR_45][self.[VAR_46]] = [VAR_74]
+                            // END IF
+                            // ```
+                            // :::END_PSEUDOCODE:::
+
+        return self.best_f, self.best_x

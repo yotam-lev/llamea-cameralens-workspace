@@ -1,0 +1,7 @@
+ClassID,optimisation_0,optimisation_4,optimisation_5,optimisation_6,optimisation_7,optimisation_8
+optimisation_0,1.0000,0.0274,0.0320,0.0253,0.0781,0.0594
+optimisation_4,0.0274,1.0000,0.0396,0.1642,0.0385,0.0519
+optimisation_5,0.0320,0.0396,1.0000,0.0354,0.0482,0.0714
+optimisation_6,0.0253,0.1642,0.0354,1.0000,0.0517,0.0449
+optimisation_7,0.0781,0.0385,0.0482,0.0517,1.0000,0.1356
+optimisation_8,0.0594,0.0519,0.0714,0.0449,0.1356,1.0000

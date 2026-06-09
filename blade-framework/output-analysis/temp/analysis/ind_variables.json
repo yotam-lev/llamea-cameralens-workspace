@@ -1,0 +1,23 @@
+[
+  {
+    "id": "489ffb75-821a-4f16-be85-51ee262219aa",
+    "token": "[VAR_0]",
+    "original_var_name": "y_var",
+    "class_source": "class_1",
+    "line_id": "class_1_line#1"
+  },
+  {
+    "id": "0cfff44b-d22d-4a7d-a03f-652cebacdb75",
+    "token": "[VAR_1]",
+    "original_var_name": "x",
+    "class_source": "class_1",
+    "line_id": "class_1_line#1"
+  },
+  {
+    "id": "c609a1eb-5577-4bb9-9cfb-84216fe5364f",
+    "token": "[VAR_2]",
+    "original_var_name": "val",
+    "class_source": "class_1",
+    "line_id": "class_1_line#1"
+  }
+]

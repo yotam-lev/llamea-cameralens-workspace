@@ -1,0 +1,142 @@
+[
+  {
+    "id": "9674d21b-3e4e-495c-8561-e24e8358dc42",
+    "token": "[VAR_0]",
+    "original_var_name": "budget",
+    "class_source": "test",
+    "line_id": "test_line#2"
+  },
+  {
+    "id": "f17e67dc-4516-41d0-a011-320f2b95aafb",
+    "token": "[VAR_1]",
+    "original_var_name": "dim",
+    "class_source": "test",
+    "line_id": "test_line#2"
+  },
+  {
+    "id": "cb1cf349-ceb4-4891-bbf8-732849c601af",
+    "token": "[VAR_2]",
+    "original_var_name": "inf",
+    "class_source": "test",
+    "line_id": "test_line#6"
+  },
+  {
+    "id": "ed8892d9-9682-474b-a987-9ccebdd9c5db",
+    "token": "[VAR_3]",
+    "original_var_name": "zeros",
+    "class_source": "test",
+    "line_id": "test_line#7"
+  },
+  {
+    "id": "029b6667-b019-4fcd-8db3-4e26bd5bfb53",
+    "token": "[VAR_4]",
+    "original_var_name": "x",
+    "class_source": "test",
+    "line_id": "test_line#9"
+  },
+  {
+    "id": "7e4b5db1-a809-4a6f-94a8-edf288b45001",
+    "token": "[VAR_5]",
+    "original_var_name": "func",
+    "class_source": "test",
+    "line_id": "test_line#9"
+  },
+  {
+    "id": "ed5d9d59-eb2a-4a73-b3be-1803299e1101",
+    "token": "[VAR_6]",
+    "original_var_name": "evals",
+    "class_source": "test",
+    "line_id": "test_line#5"
+  },
+  {
+    "id": "9c069ba0-a0e0-417c-b2a2-cc78458da626",
+    "token": "[VAR_7]",
+    "original_var_name": "best_f",
+    "class_source": "test",
+    "line_id": "test_line#6"
+  },
+  {
+    "id": "0fa6fd39-e7c3-452e-95db-cacd2e43afee",
+    "token": "[VAR_8]",
+    "original_var_name": "best_x",
+    "class_source": "test",
+    "line_id": "test_line#7"
+  },
+  {
+    "id": "9b15d053-d6e0-43ed-aa7a-12b2be15a9cf",
+    "token": "[VAR_9]",
+    "original_var_name": "eval_x",
+    "class_source": "test",
+    "line_id": "test_line#11"
+  },
+  {
+    "id": "1f3c8365-f84b-4fc9-a26a-52d7e6e2d8db",
+    "token": "[VAR_10]",
+    "original_var_name": "f",
+    "class_source": "test",
+    "line_id": "test_line#14"
+  },
+  {
+    "id": "9510fe81-61d1-4391-a90c-044f61c1160d",
+    "token": "[VAR_0]",
+    "original_var_name": "budget",
+    "class_source": "test",
+    "line_id": "test_line#2"
+  },
+  {
+    "id": "64e040bd-8315-400f-a0a5-966b5b76168d",
+    "token": "[VAR_1]",
+    "original_var_name": "dim",
+    "class_source": "test",
+    "line_id": "test_line#2"
+  },
+  {
+    "id": "984dc88e-d79e-4f9d-94b8-f6be3fff0c6a",
+    "token": "[VAR_2]",
+    "original_var_name": "x",
+    "class_source": "test",
+    "line_id": "test_line#9"
+  },
+  {
+    "id": "76aa3eb0-ecc4-4495-9cd2-88f65c44c486",
+    "token": "[VAR_3]",
+    "original_var_name": "func",
+    "class_source": "test",
+    "line_id": "test_line#9"
+  },
+  {
+    "id": "3e7d5dc0-dcd3-4c67-a173-6ad04a236d6f",
+    "token": "[VAR_4]",
+    "original_var_name": "evals",
+    "class_source": "test",
+    "line_id": "test_line#5"
+  },
+  {
+    "id": "70d2aed4-e3d6-4d78-8048-469d0b9178d7",
+    "token": "[VAR_5]",
+    "original_var_name": "best_f",
+    "class_source": "test",
+    "line_id": "test_line#6"
+  },
+  {
+    "id": "9c78d098-d567-4ffe-bd2e-7eb3f4dc6c47",
+    "token": "[VAR_6]",
+    "original_var_name": "best_x",
+    "class_source": "test",
+    "line_id": "test_line#7"
+  },
+  {
+    "id": "31312042-82f2-4d71-bf25-9e7bc3114870",
+    "token": "[VAR_7]",
+    "original_var_name": "eval_x",
+    "class_source": "test",
+    "line_id": "test_line#11"
+  },
+  {
+    "id": "466384ad-0721-4420-ab57-a3e01ca79db8",
+    "token": "[VAR_8]",
+    "original_var_name": "f",
+    "class_source": "test",
+    "line_id": "test_line#14"
+  }
+]
