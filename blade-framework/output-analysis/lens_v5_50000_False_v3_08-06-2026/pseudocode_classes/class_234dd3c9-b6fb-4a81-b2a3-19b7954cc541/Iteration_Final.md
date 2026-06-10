@@ -2,7 +2,6 @@
 SET [VAR_0].[VAR_76]['[VAR_77]'] TO '1'
 SET [VAR_0].[VAR_76]['[VAR_78]'] TO '1'
 SET [VAR_0].[VAR_76]['[VAR_79]'] TO '1'
-
 CLASS Optimizer
     // :::PSEUDOCODE:::
     // ```
@@ -19,7 +18,6 @@ CLASS Optimizer
     // // END Pseudocode for __init__ [VAR_110]
     // ```
     // :::END_PSEUDOCODE:::
-
     // :::PSEUDOCODE:::
     // ```
     // FUNCTION _evaluate([VAR_15], [VAR_16])
@@ -45,7 +43,6 @@ CLASS Optimizer
     // END FUNCTION
     // ```
     // :::END_PSEUDOCODE:::
-
     // :::PSEUDOCODE:::
     // ```
     // FUNCTION _regularize_hessian(VAR_8)
@@ -55,7 +52,6 @@ CLASS Optimizer
     // END FUNCTION
     // ```
     // :::END_PSEUDOCODE:::
-
     // :::PSEUDOCODE:::
     // ```
     // FUNCTION __call__ WITH PARAMETERS [VAR_16], [VAR_87] = None, [VAR_24] = None, **[VAR_25]:

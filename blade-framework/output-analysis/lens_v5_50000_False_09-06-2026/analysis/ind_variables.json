@@ -1,0 +1,590 @@
+[
+  {
+    "id": "1c9d35e9-5b2e-496d-992f-f65a3eaf6492",
+    "token": "[VAR_0]",
+    "original_var_name": "numpy",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#1"
+  },
+  {
+    "id": "ffc965a7-bf6f-419a-822f-017a2ffa6c54",
+    "token": "[VAR_1]",
+    "original_var_name": "optimize",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#2"
+  },
+  {
+    "id": "603db4b2-ade1-4ab4-9a4d-36418d63b291",
+    "token": "[VAR_2]",
+    "original_var_name": "minimize",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#2"
+  },
+  {
+    "id": "88a1149f-4d90-4d09-83d3-49f722ef1166",
+    "token": "[VAR_3]",
+    "original_var_name": "budget",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#6"
+  },
+  {
+    "id": "8e9abac9-64b6-4555-8741-348a416f8ffe",
+    "token": "[VAR_4]",
+    "original_var_name": "dim",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#6"
+  },
+  {
+    "id": "ff358a29-798a-4c2d-8ff3-039b438788bd",
+    "token": "[VAR_5]",
+    "original_var_name": "x",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#13"
+  },
+  {
+    "id": "93c03c52-6402-42d8-8e0f-19d732185cf7",
+    "token": "[VAR_6]",
+    "original_var_name": "func",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#13"
+  },
+  {
+    "id": "1ba82096-00a7-4732-b798-2de107417ed5",
+    "token": "[VAR_7]",
+    "original_var_name": "hess_func",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#25"
+  },
+  {
+    "id": "aa23de79-7f42-40f2-bf24-d8bb4d65da9c",
+    "token": "[VAR_8]",
+    "original_var_name": "kwargs",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#25"
+  },
+  {
+    "id": "407e909b-4f9a-49bb-a511-482010ed258c",
+    "token": "[VAR_9]",
+    "original_var_name": "Initial",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#26"
+  },
+  {
+    "id": "8d02e29e-a01a-4eaa-a689-dbfb4c8a023d",
+    "token": "[VAR_10]",
+    "original_var_name": "LHS",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#26"
+  },
+  {
+    "id": "6c6c37de-581e-49bb-970f-8a040e8d11b8",
+    "token": "[VAR_11]",
+    "original_var_name": "exploration",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#26"
+  },
+  {
+    "id": "8f428ecd-429e-476d-aa6f-9ffa2989d139",
+    "token": "[VAR_12]",
+    "original_var_name": "phase",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#26"
+  },
+  {
+    "id": "fb209802-27e1-4180-8286-9a4abed91430",
+    "token": "[VAR_13]",
+    "original_var_name": "random",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#28"
+  },
+  {
+    "id": "a7199302-d7b6-496d-8070-e83df3c4bdbd",
+    "token": "[VAR_14]",
+    "original_var_name": "Global",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#33"
+  },
+  {
+    "id": "7c8b0de8-0e75-4539-b5d4-5593f7380cd6",
+    "token": "[VAR_15]",
+    "original_var_name": "via",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#33"
+  },
+  {
+    "id": "d93ed737-cddb-4108-89fe-bdec7d8115d3",
+    "token": "[VAR_16]",
+    "original_var_name": "CMA",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#33"
+  },
+  {
+    "id": "2c1e979a-e58f-4173-801c-27995d85b641",
+    "token": "[VAR_17]",
+    "original_var_name": "ES",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#33"
+  },
+  {
+    "id": "ac5890d8-a2f0-4aae-9b1d-09948191dc2a",
+    "token": "[VAR_18]",
+    "original_var_name": "on",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#33"
+  },
+  {
+    "id": "87cfa781-f379-4673-a4d2-9da0df4f8d64",
+    "token": "[VAR_19]",
+    "original_var_name": "continuous",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#33"
+  },
+  {
+    "id": "b010fbaa-b37d-41a3-bbad-de2c9241fc29",
+    "token": "[VAR_20]",
+    "original_var_name": "bounds",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#36"
+  },
+  {
+    "id": "7e8b7ed8-66fe-49cd-9d89-b93794b84868",
+    "token": "[VAR_21]",
+    "original_var_name": "popsize",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#36"
+  },
+  {
+    "id": "3f9e4773-4beb-4c78-babb-aa5a9851c10c",
+    "token": "[VAR_22]",
+    "original_var_name": "verbose",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#36"
+  },
+  {
+    "id": "4d9bc902-f68e-4d24-abf9-850819b177c0",
+    "token": "[VAR_23]",
+    "original_var_name": "Periodic",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#46"
+  },
+  {
+    "id": "2f9b70d7-4084-4618-b3b1-8221d7995700",
+    "token": "[VAR_24]",
+    "original_var_name": "categorical",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#46"
+  },
+  {
+    "id": "01b85399-698c-4c76-a962-a33fede4da89",
+    "token": "[VAR_25]",
+    "original_var_name": "perturbation",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#46"
+  },
+  {
+    "id": "e8355a67-3af3-493f-95ab-39c23ccc5745",
+    "token": "[VAR_26]",
+    "original_var_name": "diversity",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#46"
+  },
+  {
+    "id": "05277835-7eda-4cac-891a-f1b3391a9859",
+    "token": "[VAR_27]",
+    "original_var_name": "Second",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#57"
+  },
+  {
+    "id": "15c0f6b0-fbef-40f8-9c0f-98104606ae3c",
+    "token": "[VAR_28]",
+    "original_var_name": "Order",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#57"
+  },
+  {
+    "id": "16610f28-d660-4cb1-88ad-4c47217147e6",
+    "token": "[VAR_29]",
+    "original_var_name": "Newton",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#57"
+  },
+  {
+    "id": "73834c06-ba89-4293-8b95-8742f2a59dd1",
+    "token": "[VAR_30]",
+    "original_var_name": "Memetic",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#57"
+  },
+  {
+    "id": "2e326910-7a8e-48de-bebb-3cbe5379c5c4",
+    "token": "[VAR_31]",
+    "original_var_name": "Hybrid",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#57"
+  },
+  {
+    "id": "3570d5a0-e1d7-4603-a45b-f918291fd86b",
+    "token": "[VAR_32]",
+    "original_var_name": "Regularize",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#65"
+  },
+  {
+    "id": "d916dbf4-24b6-4b2d-8146-df86856b7fba",
+    "token": "[VAR_33]",
+    "original_var_name": "Hessian",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#65"
+  },
+  {
+    "id": "aea3f281-93d3-4a33-90fa-d7a5463a31cb",
+    "token": "[VAR_34]",
+    "original_var_name": "absolute",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#65"
+  },
+  {
+    "id": "5d24f21f-56a7-499c-9c26-15994524f92d",
+    "token": "[VAR_35]",
+    "original_var_name": "eigenvalues",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#65"
+  },
+  {
+    "id": "403a04db-8585-42be-886c-c9d5e6900444",
+    "token": "[VAR_36]",
+    "original_var_name": "to",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#65"
+  },
+  {
+    "id": "66f358a6-232f-423f-ad25-741feff99de5",
+    "token": "[VAR_37]",
+    "original_var_name": "guarantee",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#65"
+  },
+  {
+    "id": "090c442c-3bbd-4d95-8279-110588f0ee87",
+    "token": "[VAR_38]",
+    "original_var_name": "PD",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#65"
+  },
+  {
+    "id": "3fb24274-115b-43fd-93f8-b34d2606644b",
+    "token": "[VAR_39]",
+    "original_var_name": "linalg",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#66"
+  },
+  {
+    "id": "cc55bc93-c5d1-4f55-8d37-39302aecfd16",
+    "token": "[VAR_40]",
+    "original_var_name": "Categorical",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#73"
+  },
+  {
+    "id": "98695b31-ccdc-4e2e-a79a-8387d5d67cd9",
+    "token": "[VAR_41]",
+    "original_var_name": "refinement",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#73"
+  },
+  {
+    "id": "74c4a307-6bc4-4337-b494-56b282115873",
+    "token": "[VAR_42]",
+    "original_var_name": "Trust",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#81"
+  },
+  {
+    "id": "e1184ab3-9130-454b-934b-1d6703ccd0cd",
+    "token": "[VAR_43]",
+    "original_var_name": "Constr",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#81"
+  },
+  {
+    "id": "d02a063d-de09-4715-943f-398d683b1e7e",
+    "token": "[VAR_44]",
+    "original_var_name": "Local",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#81"
+  },
+  {
+    "id": "d404cd11-dcfd-4e88-be87-9ae3fb0aada3",
+    "token": "[VAR_45]",
+    "original_var_name": "Search",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#81"
+  },
+  {
+    "id": "c212277d-7c3a-4ae3-9f6d-fa59db793b8f",
+    "token": "[VAR_46]",
+    "original_var_name": "best",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#81"
+  },
+  {
+    "id": "a60cda1d-85eb-4c6e-8086-8597aa629acc",
+    "token": "[VAR_47]",
+    "original_var_name": "subspace",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#81"
+  },
+  {
+    "id": "cdf5e5d2-1b9e-40c8-8011-222f33abc947",
+    "token": "[VAR_48]",
+    "original_var_name": "xc",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#85"
+  },
+  {
+    "id": "c1c3e9e3-4bc3-4d1b-aa38-531ecf24521d",
+    "token": "[VAR_49]",
+    "original_var_name": "trust",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#90"
+  },
+  {
+    "id": "4d649428-7443-4cf4-92f1-3a68b05189cb",
+    "token": "[VAR_50]",
+    "original_var_name": "constr",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#90"
+  },
+  {
+    "id": "14b5633e-d7d3-479d-a8ba-3c33c23ea6ba",
+    "token": "[VAR_51]",
+    "original_var_name": "maxiter",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#91"
+  },
+  {
+    "id": "49aa05ce-f935-4415-83fd-f9b10adf7ded",
+    "token": "[VAR_52]",
+    "original_var_name": "success",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#93"
+  },
+  {
+    "id": "4d5907dc-6f28-499d-bdd4-f881af283bbe",
+    "token": "[VAR_53]",
+    "original_var_name": "evals",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#9"
+  },
+  {
+    "id": "36f2fa68-61d8-4cac-860b-57017a22de7f",
+    "token": "[VAR_54]",
+    "original_var_name": "best_f",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#10"
+  },
+  {
+    "id": "295735ef-12d8-4442-a48a-611a04815be9",
+    "token": "[VAR_55]",
+    "original_var_name": "best_x",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#11"
+  },
+  {
+    "id": "53be6b03-b743-45e2-8ffb-274d2829c0fa",
+    "token": "[VAR_56]",
+    "original_var_name": "eval_x",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#15"
+  },
+  {
+    "id": "82414b1f-3c6f-4e78-ae3f-c5566c9dfc85",
+    "token": "[VAR_57]",
+    "original_var_name": "f",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#18"
+  },
+  {
+    "id": "4115e66d-df36-4682-8ed3-75b1225429eb",
+    "token": "[VAR_58]",
+    "original_var_name": "grad_func",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#25"
+  },
+  {
+    "id": "62d7f7fa-6cf8-45a7-83f2-fc195eae9c8c",
+    "token": "[VAR_59]",
+    "original_var_name": "n_init",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#27"
+  },
+  {
+    "id": "fed5e71c-64ae-4ea1-9d29-09875d1ca0cb",
+    "token": "[VAR_60]",
+    "original_var_name": "mean",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#34"
+  },
+  {
+    "id": "10ee996f-d04b-4967-b496-602469fc8515",
+    "token": "[VAR_61]",
+    "original_var_name": "sigma0",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#35"
+  },
+  {
+    "id": "42e2c250-577b-47ff-ab5a-7eed707a4f19",
+    "token": "[VAR_62]",
+    "original_var_name": "opts",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#36"
+  },
+  {
+    "id": "dbea71e3-8609-474f-854d-38d760e4ac17",
+    "token": "[VAR_63]",
+    "original_var_name": "es",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#37"
+  },
+  {
+    "id": "64dd6d47-029f-4faf-aff7-a655daeaed83",
+    "token": "[VAR_64]",
+    "original_var_name": "cat_state",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#39"
+  },
+  {
+    "id": "2a74cd9a-a293-4bea-9c11-2e04c4e89529",
+    "token": "[VAR_65]",
+    "original_var_name": "gen",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#40"
+  },
+  {
+    "id": "fd562404-a761-4d4f-8d6d-009471dc6e65",
+    "token": "[VAR_66]",
+    "original_var_name": "candidates",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#42"
+  },
+  {
+    "id": "58dbd90e-4778-47ab-a715-cdf1f54d60f6",
+    "token": "[VAR_67]",
+    "original_var_name": "fitnesses",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#45"
+  },
+  {
+    "id": "ef769f61-3c77-40ad-99b9-3d449d24f009",
+    "token": "[VAR_68]",
+    "original_var_name": "x_c",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#50"
+  },
+  {
+    "id": "3559f72e-28ca-4170-abb7-e4728c37c7db",
+    "token": "[VAR_69]",
+    "original_var_name": "x_full",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#51"
+  },
+  {
+    "id": "7492cbbf-54d5-41b9-895f-437a348089e8",
+    "token": "[VAR_70]",
+    "original_var_name": "grad",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#60"
+  },
+  {
+    "id": "0947d47d-3b38-41f0-97fc-a3bdb03b54d9",
+    "token": "[VAR_71]",
+    "original_var_name": "hess",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#62"
+  },
+  {
+    "id": "5d0d9ee2-2cd1-4db0-8a95-f6487d900255",
+    "token": "[VAR_72]",
+    "original_var_name": "eigvals",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#66"
+  },
+  {
+    "id": "9b04f37a-7ba2-4f8a-9338-d958c170c1e3",
+    "token": "[VAR_73]",
+    "original_var_name": "eigvecs",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#66"
+  },
+  {
+    "id": "c56b142d-4b8f-4258-93ee-3dec1bded9fa",
+    "token": "[VAR_74]",
+    "original_var_name": "H_reg",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#68"
+  },
+  {
+    "id": "e4a7a631-3e14-47b2-a3f8-fc31aaeda701",
+    "token": "[VAR_75]",
+    "original_var_name": "step",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#70"
+  },
+  {
+    "id": "e69b9789-e7e4-4f2d-a05b-c5b1b79efc4d",
+    "token": "[VAR_76]",
+    "original_var_name": "x_new_c",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#71"
+  },
+  {
+    "id": "fecff21a-f7aa-4fb5-9a18-a64b5165dca8",
+    "token": "[VAR_77]",
+    "original_var_name": "cat_ref",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#74"
+  },
+  {
+    "id": "4e1c62c6-5049-4e7e-906b-d622a2a0a0bd",
+    "token": "[VAR_78]",
+    "original_var_name": "idx",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#76"
+  },
+  {
+    "id": "0ebbb222-6eb9-4309-ad1c-d81e7f06e106",
+    "token": "[VAR_79]",
+    "original_var_name": "res",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#84"
+  },
+  {
+    "id": "e17ed7c7-09b0-473c-b363-7fac24a13291",
+    "token": "[VAR_80]",
+    "original_var_name": "jac",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#87"
+  },
+  {
+    "id": "00e19995-ad5c-424c-9413-df943a97fe23",
+    "token": "[VAR_81]",
+    "original_var_name": "method",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#90"
+  },
+  {
+    "id": "ea0c0831-62a1-4a38-bf46-911c8f834a4a",
+    "token": "[VAR_82]",
+    "original_var_name": "options",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#91"
+  },
+  {
+    "id": "2b577dd5-ebbe-4d52-b381-db1dd1b736fa",
+    "token": "[VAR_83]",
+    "original_var_name": "disp",
+    "class_source": "ee684047-59f6-4b21-8bf1-1177c34d18f6",
+    "line_id": "ee684047-59f6-4b21-8bf1-1177c34d18f6_line#96"
+  }
+]

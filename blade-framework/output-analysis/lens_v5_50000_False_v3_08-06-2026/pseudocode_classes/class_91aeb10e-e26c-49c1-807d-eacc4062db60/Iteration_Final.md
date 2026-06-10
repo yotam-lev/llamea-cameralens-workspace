@@ -17,7 +17,6 @@ CLASS Optimizer:
     //     SET SELF.[VAR_124] TO 0.05
     // END FUNCTION
     // :::END_PSEUDOCODE:::
-
     // :::PSEUDOCODE:::
     // FUNCTION _evaluate([VAR_5], [VAR_6])
     //     IF self.[VAR_38] IS GREATER THAN OR EQUAL TO self.[VAR_4]
@@ -37,7 +36,6 @@ CLASS Optimizer:
     // RETURN [VAR_126]
     // END FUNCTION
     // :::END_PSEUDOCODE:::
-
     // :::PSEUDOCODE:::
     // FUNCTION _regularize_hessian([VAR_11])
     //     [VAR_127], [VAR_128] = np.[VAR_12].eigh([VAR_11])
@@ -49,7 +47,6 @@ CLASS Optimizer:
     //     RETURN [VAR_128] @ np.diag([VAR_127]) @ TRANSPOSE([VAR_128])
     // END FUNCTION
     // :::END_PSEUDOCODE:::
-
     // :::PSEUDOCODE:::
     // FUNCTION __CALL__(SELF, [VAR_6], [VAR_129]=None, [VAR_19]=None, **[VAR_20]):
     //     [VAR_131] = np.[VAR_23].uniform(-1, 1, size=(SELF.[VAR_117], SELF.[VAR_4]))
